@@ -3,6 +3,11 @@
 namespace FStudio;
 
 /**
+ * Versión actual de la línea base (Framework Studio)
+ */
+define('FS_VERSION', '1.0.0');
+
+/**
  * Clase para manejar el controlador frontal
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  * @version 1.0.0
@@ -78,6 +83,7 @@ class fsDispatch {
     try {
       $this->loadBasicFiles();
       $this->setRouting();
+      $this->loadAndExecutePlugins();
       $this->loadModuleAndAction();
       $this->executeController();
       $this->renderView();
@@ -86,6 +92,21 @@ class fsDispatch {
       $this->controller = new \FStudio($this->config);
       $this->controller->exception($exc);
       $this->renderView();
+    }
+  }
+
+  /**
+   * Carga los archivos base para la ejecución del sistema
+   */
+  private function loadBasicFiles() {
+    $files = array(
+        'lib/vendor/FStudio/fsModel.class.php',
+        'lib/vendor/FStudio/fsView.class.php',
+        'lib/vendor/FStudio/fsController.class.php',
+        'lib/vendor/FStudio/interfaces/fsAction.interface.php'
+    );
+    foreach ($files as $file) {
+      require_once $this->config->getPath() . $file;
     }
   }
 
@@ -112,17 +133,24 @@ class fsDispatch {
   }
 
   /**
-   * Carga los archivos base para la ejecución del sistema
+   * Carga y ejecuta los plugins configurados en el sistema
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @version 1.0.0
+   * @throws \PDOException
    */
-  private function loadBasicFiles() {
-    $files = array(
-        'lib/vendor/FStudio/fsModel.class.php',
-        'lib/vendor/FStudio/fsView.class.php',
-        'lib/vendor/FStudio/fsController.class.php',
-        'lib/vendor/FStudio/interfaces/fsAction.interface.php'
-    );
-    foreach ($files as $file) {
-      require_once $this->config->getPath() . $file;
+  private function loadAndExecutePlugins() {
+    if (is_array($this->config->getPlugins()) === true and count($this->config->getPlugins()) > 0) {
+      foreach ($this->config->getPlugins() as $plugin) {
+        $path = $this->config->getPath() . 'plugins/' . $plugin;
+        if (is_dir($path) === false) {
+          throw new \PDOException('El plugin ' . $plugin . ' no existe');
+        }
+        $file = $path . '/plugin.php';
+        if (is_file($file) === false) {
+          throw new \PDOException('El archivo de inicio (plugin.php) no existe');
+        }
+        require_once $file;
+      }
     }
   }
 

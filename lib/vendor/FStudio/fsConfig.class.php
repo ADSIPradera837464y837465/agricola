@@ -99,6 +99,13 @@ class fsConfig {
   private $dsn;
 
   /**
+   * Array numérico con los plugins y orden a ejecutar
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @var array
+   */
+  private $plugins;
+
+  /**
    * Obtiene el módulo por defecto del sistema
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    * @version 1.0.0
@@ -221,6 +228,17 @@ class fsConfig {
   }
 
   /**
+   * Obtiene el listado de plugins habilitados en el sistema<br>
+   * Ejemplo: array('fsSecurity', 'fsRouting', 'fsRequest')
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @version 1.0.0
+   * @return array
+   */
+  public function getPlugins() {
+    return $this->plugins;
+  }
+
+  /**
    * Fija el módulo por defecto del sistema
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    * @version 1.0.0
@@ -251,7 +269,7 @@ class fsConfig {
   }
 
   /**
-   * 
+   * Fija la dirección URL del sistema
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    * @version 1.0.0
    * @param string $url
@@ -340,6 +358,15 @@ class fsConfig {
    */
   public function setDsn($dsn) {
     $this->dsn = $dsn;
+  }
+
+  /**
+   * Fija en una array numéricos los plugins del sistema en el orden<br>
+   * respectivo de ejecución
+   * @param array $plugins Array con listado de plugins
+   */
+  public function setPlugins($plugins) {
+    $this->plugins = $plugins;
   }
 
 }

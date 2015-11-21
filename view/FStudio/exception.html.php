@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>ERROR</title>
-    <link rel="stylesheet" href="<?php echo $fsConfig->getUrl() ?>css/FStudio.css">
+    <link rel="stylesheet" href="<?php echo $fsConfig->getUrl() ?>css/FStudio/FStudio.css">
   </head>
   <body>
     <div class="error">
-      <h1><i class="shicon-bug"></i> ERROR!!!</h1>
+      <h1><i class="fs-icon-bug"></i> ERROR!!!</h1>
       <div>
         <div>
           <p><b>Message:</b> <?php echo $exc->getMessage() ?></p>
