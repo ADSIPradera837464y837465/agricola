@@ -7,7 +7,7 @@ use FStudio\model\base\productoBaseTable;
  * @author Julian Andrés Lasso Figueroa <ingeniero.julianlasso@gmail.com>
  * @package FStudio
  * @subpackage model
- * @subpackage table
+ * @subpackage table 
  * @version 1.0.0
  */
 class productoTable extends productoBaseTable {
