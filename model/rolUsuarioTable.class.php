@@ -10,7 +10,7 @@ use FStudio\model\base\rolUsuarioBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class rolUsuarioTable {
+class rolUsuarioTable extends rolUsuarioBaseTable {
  /**
    * obtiene todos los datos demla tabla
    * @return [stdClass | boolean]

@@ -1,5 +1,4 @@
 <?php
-
 namespace FStudio\model\base;
 use FStudio\fsModel as model;
 use FStudio\myConfig as config;
@@ -34,7 +33,7 @@ class rolUsuarioBaseTable extends model {
    * url_create_at de la tabla
    * @var date_time
    */
-  const url_create_at ='url_create_at';
+  const url_created_at ='url_create_at';
   
   /**
    *configuracion del sistema
@@ -62,7 +61,7 @@ class rolUsuarioBaseTable extends model {
    *urlCreateAt de la tabla
    * @var date_time
    */
-  private $urlCreateAt;
+  private $urlCreatedAt;
   
   /**
    * 
@@ -70,15 +69,15 @@ class rolUsuarioBaseTable extends model {
    * @param type $urlId
    * @param type $usrUsuarioId
    * @param type $rolId
-   * @param type $urlCreateAt
+   * @param type $urlCreatedAt
    */
  
-  public function __construct( config $config =null, $urlId=null, $usrUsuarioId=null, $rolId=null, $urlCreateAt=null) {
+  public function __construct( config $config =null, $urlId=null, $usrUsuarioId=null, $rolId=null, $urlCreatedAt=null) {
     $this->config = $config;
     $this->urlId = $urlId;
     $this->usrUsuarioId = $usrUsuarioId;
     $this->rolId = $rolId;
-    $this->urlCreateAt = $urlCreateAt;
+    $this->urlCreatedAt = $urlCreatedAt;
   }
   
   /**
@@ -92,23 +91,37 @@ class rolUsuarioBaseTable extends model {
     return $this->config;
   }
   /**
-   * 
-   * @retorna el getUrlId del registro
+   * Retorna el UrlID del registro
+   * @version 1.0.0
+   * @return integer
    */
 
   public function getUrlId() {
     return $this->urlId;
   }
+  /**
+   *Retorna el UsrUsuarioId del registro
+   * @version 1.0.0
+   * @return integer
+   */
 
   public function getUsrUsuarioId() {
     return $this->usrUsuarioId;
   }
-
+/**
+   * Retorna el RolId del registro
+   * @version 1.0.0
+   * @return integer
+   */
   public function getRolId() {
     return $this->rolId;
   }
-
-  public function getUrlCreateAt() {
+/**
+   * Retorna la fecha y la hora de creación del registro
+   * @version 1.0.0
+   * @return string
+   */
+  public function getUrlCreatedAt() {
     return $this->urlCreateAt;
   }
   
@@ -122,24 +135,37 @@ class rolUsuarioBaseTable extends model {
     $this->config = $config;
   }
   /**
-   * fija el id para el registro en la tabla
-   * @param integer $urlId
+   * Fija el UrlID para un registro del sistema
+   * @version 1.0.0
+   * @param integer $urlId ID de un registro
    */
-
   public function setUrlId($urlId) {
     $this->urlId = $urlId;
   }
-
+/**
+   * Fija el ID de UsrUsurario
+   * @version 1.0.0
+   * @param integer $usrUsuarioId
+   */
   public function setUsrUsuarioId($usrUsuarioId) {
     $this->usrUsuarioId = $usrUsuarioId;
   }
+  /**
+   * Fija el ID de la RolId
+   * @version 1.0.0
+   * @param integer $rolId
+   */
 
   public function setRolId($rolId) {
     $this->rolId = $rolId;
   }
-
-  public function setUrlCreateAt($urlCreateAt) {
-    $this->urlCreateAt = $urlCreateAt;
+/**
+   * Fija la fecha y la hora de creación del registro
+   * @version 1.0.0
+   * @param string $urlCreatedAt Fecha y hora de creación
+   */
+  public function setUrlCreatedAt($urlCreatedAt) {
+    $this->urlCreatedAt = $urlCreatedAt;
   }
 
 
