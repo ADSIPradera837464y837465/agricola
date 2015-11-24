@@ -1,8 +1,5 @@
 <?php
 
-namespace FStudio\model\base;
-use FStudio\fsModel as model;
-use FStudio\myConfig as config;
 
 /**
  * Description of bda_rol
@@ -12,7 +9,7 @@ use FStudio\myConfig as config;
  * @subpackage table
  * @version 1.0.0
  */
-class rolBaseTable extends model {
+class rolTableBase extends model {
 
   /**
    * Id de la tabla

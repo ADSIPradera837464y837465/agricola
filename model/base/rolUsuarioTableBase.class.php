@@ -1,7 +1,4 @@
 <?php
-namespace FStudio\model\base;
-use FStudio\fsModel as model;
-use FStudio\myConfig as config;
 
 /**
  * Description of bda_rolUsuario
@@ -11,7 +8,7 @@ use FStudio\myConfig as config;
  * @subpackage table
  * @version 1.0.0
  */
-class rolUsuarioBaseTable extends model {
+class rolUsuarioTableBase extends model {
  
    /**
    * url_Id de la tabla
