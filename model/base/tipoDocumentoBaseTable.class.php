@@ -1,10 +1,10 @@
 
 <?php
+
 namespace FStudio\model\base;
 
 use FStudio\fsModel as model;
 use FStudio\myConfig as config;
-
 
 /**
  * Description of tipoDocumentoBaseTable
@@ -15,8 +15,8 @@ use FStudio\myConfig as config;
  * @version 1.0.0
  * Description of tipoDocumentoBaseTable
  */
+class tipoDocumentoBaseTable extends model {
 
-class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
   /**
    * ID de la tabla
    */
@@ -62,50 +62,49 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
    * @var config
    */
   protected $config;
-  
+
   /**
    *
    * @var integer
    */
   private $id;
-  
+
   /**
    *
    * @var varchar
    */
   private $descripcion;
-  
+
   /**
    *
    * @var varchar
    */
   private $movimiento;
-  
+
   /**
    *
    * @var boolean
    */
   private $estado;
-  
+
   /**
    *
    * @var date_time 
    */
   private $createdAt;
-  
+
   /**
    *
    * @var date_time
    */
   private $updateAt;
-  
+
   /**
    *
    * @var date_time
    */
   private $deletedAt;
-  
-  
+
   /**
    * 
    * constructor class tipoDocumentoBaseTable
@@ -117,7 +116,6 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
    * @param date_time $updateAt
    * @param date_time $deletedAt
    */
-
   public function __construct(config $config, $id = null, $descripcion = null, $movimiento = null, $estado = null, $createdAt = null, $updateAt = null, $deletedAt = null) {
     $this->config = $config;
     $this->id = $id;
@@ -128,7 +126,7 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     $this->updateAt = $updateAt;
     $this->deletedAt = $deletedAt;
   }
-  
+
   /**
    * Retorna la configuracion
    * @return config
@@ -138,7 +136,6 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     return $this->config;
   }
 
-  
   /**
    * Retorna el id del registro
    * @return integer
@@ -146,36 +143,31 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
   public function getId() {
     return $this->id;
   }
-  
-  
+
   /**
    * Retorna la descripcion del documento
    * @return varchar
    */
-
   public function getDescripcion() {
     return $this->descripcion;
   }
-  
+
   /**
    * Retorna el tipo de movimiento del documento
    * @return varchar
    */
-
   public function getMovimiento() {
     return $this->movimiento;
   }
-  
+
   /**
    * Retorna el estado del documento
    * @return boolean 
    */
-
   public function getEstado() {
     return $this->estado;
   }
 
-  
   /**
    * 
    * @return date_time
@@ -184,7 +176,6 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     return $this->createdAt;
   }
 
-  
   /**
    * 
    * @return date_time
@@ -193,7 +184,6 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     return $this->updateAt;
   }
 
-  
   /**
    * 
    * @return date_time 
@@ -202,7 +192,6 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     return $this->deletedAt;
   }
 
-  
   /**
    * Fija la configuracion del sistema 
    * @param config $config objeto con configuracion del sistema 
@@ -212,17 +201,14 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     $this->config = $config;
   }
 
-  
-  
- /**
-  * Fija el id del registro del documento
-  * @param integer $id
-  */
+  /**
+   * Fija el id del registro del documento
+   * @param integer $id
+   */
   public function setId($id) {
     $this->id = $id;
   }
 
-  
   /**
    * descripcion del tipo de documento 
    * @param varchar $descripcion 
@@ -231,7 +217,6 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     $this->descripcion = $descripcion;
   }
 
-  
   /**
    * movimiento del documento
    * @param varchar $movimiento
@@ -239,13 +224,11 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
   public function setMovimiento($movimiento) {
     $this->movimiento = $movimiento;
   }
-  
-  
+
   /**
    * estado del documento
    * @param boolean  $estado
    */
-
   public function setEstado($estado) {
     $this->estado = $estado;
   }
@@ -266,7 +249,6 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     $this->updateAt = $updateAt;
   }
 
-  
   /**
    * 
    * @param date_time $deletedAt
@@ -275,6 +257,4 @@ class tipoDocumentoBaseTable extends tipoDocumentoBaseTable {
     $this->deletedAt = $deletedAt;
   }
 
-
 }
-
