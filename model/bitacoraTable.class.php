@@ -35,7 +35,7 @@ class bitacoraTable extends bitacoraBaseTable {
             . 'FROM bda_bitacora '
             . 'AND bit_id = :bit_id';
     $params = array(
-        ':bit_id' => ($id !=null) ? $id : $this->getId()
+        ':bit_id' => ($id !==null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
