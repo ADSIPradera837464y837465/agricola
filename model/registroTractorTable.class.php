@@ -10,7 +10,7 @@ use FStudio\model\base\productoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class registroTractor extends registroTractorBaseTable {
+class registroTractor extends registroTractorTableBase {
   /**
    * Obtiene todos los datos de la tabla
    * @return [stdClass | boolean]
@@ -29,13 +29,13 @@ class registroTractor extends registroTractorBaseTable {
    * @return [stdClass | boolean]
    */
 
-  public function getById($item) {
+  public function getById($item = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT rt_item, csc_id, rt_horaSalida, rt_tractor, rt_observacion, rt_tabla, rt_created_at,rt_ updated_at, rt_deleted_at '
             . 'FROM registroTractor '
             . 'AND rt_item = :rt_item';
     $params = array(
-        ':rt_item' => $item
+        ':rt_item' => ($item !== null) ? $item: $this->getByItem()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -57,7 +57,8 @@ class registroTractor extends registroTractorBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this ->setItem ($conn->lastInsertItem(self::_SEQUENCE));
+    return true;
   }
    /**
    * Actualiza un registro de la tabla

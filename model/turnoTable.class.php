@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\productoBaseTable;
+use FStudio\model\base\productoTableBase;
 
 /**
  * Description of registroTractorTable
@@ -10,7 +10,7 @@ use FStudio\model\base\productoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class Turno extends TurnoBaseTable {
+class turno extends turnoTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -29,13 +29,13 @@ class Turno extends TurnoBaseTable {
    * @param integer $id
    * @return [stdClass | boolean]
    */
-  public function getById($item) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tur_id, tur_descripcion, tur_hora_inicio, tur_hora_fin, tur_estado, tur_tabla, tur_created_at, tur_updated_at, tur_deleted_at '
+    $sql = 'SELECT tur_id, tur_descripcion, tur_horaInicio, tur_horaFin, tur_estado, tur_tabla, tur_created_at, tur_updated_at, tur_deleted_at '
             . 'FROM Turno '
             . 'AND tur_id = :tur_id';
     $params = array(
-        ':tur_id' => $id
+        ':tur_id' => ($id !== null) ? $id : $this->getById()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -48,17 +48,18 @@ class Turno extends TurnoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO Turno (tur_descripcion, tur_hora_inicio, tur_hora_fin, tur_estado,rt_tabla ) VALUES (:rt_horaSalida, :rt_tractor, :rt_observacion, :rt_tabla, )';
+    $sql = 'INSERT INTO Turno (tur_descripcion, tur_horaInicio, tur_horaFin, tur_estado,rt_tabla ) VALUES (:rt_horaSalida, :rt_tractor, :rt_observacion, :rt_tabla, )';
     $params = array(
         ':tur_descripcion' => $this->getDescripcion(),
-        ': tur_hora_inicio' => $this->getHora_inicio(),
-        ':tur_hora_fin' => $this->getHora_fin(),
+        ': tur_horaInicio' => $this->getHora_inicio(),
+        ':tur_horaFin' => $this->getHora_fin(),
         ':tur_estado' => $this->getEstado(),
         ':tur_tabla' => $this->getTabla(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this -> setId ($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**
@@ -67,11 +68,11 @@ class Turno extends TurnoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE Turno SET  = tur_descripcion:tur_descripcion,  = tur_hora_inicio:tur_hora_inicio,  = tur_estado:tur_estado, tur_tabla = :tur_tabla,  WHERE tur_id = :tur_id';
+    $sql = 'UPDATE Turno SET  = tur_descripcion:tur_descripcion,  = tur_horaInicio:tur_horaInicio,tur_horaFin:tur_horaFin,,  = tur_estado:tur_estado, tur_tabla = :tur_tabla,  WHERE tur_id = :tur_id';
     $params = array(
         ':tur_descripcion' => $this->getDescripcion(),
-        ':tur_hora_inicio' => $this->getHora_inicio(),
-        ':tur_hora_fin' => $this->getHora_fin(),
+        ':tur_horaInicio' => $this->getHora_inicio(),
+        ':tur_horaFin' => $this->getHora_fin(),
         ':tur_tabla' => $this->getTabla(),
         ':tur_id' => $this->getId()
     );

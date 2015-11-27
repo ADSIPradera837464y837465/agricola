@@ -14,7 +14,7 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-class registroTractorBaseTable extends model {
+class registroTractorTableBase extends model {
   
 
   /**
