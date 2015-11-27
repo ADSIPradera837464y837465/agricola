@@ -8,7 +8,7 @@
  * @subpackage base
  * @version 1.0.0
  */
-class usuarioBaseTable extends model {
+class usuarioBaseTable extends model{
 
   /**
    * Id de la tabla
