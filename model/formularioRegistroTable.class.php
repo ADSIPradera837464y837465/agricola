@@ -46,7 +46,7 @@ class formularioRegistroTable extends formularioRegistroBaseTable{
     );
         $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastinsertId (self::_SEQUENCE));
   }
 
 
