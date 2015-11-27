@@ -31,13 +31,13 @@ class bitacoraTable extends bitacoraBaseTable {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id) {
+  public function getById($id  = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT bit_id, usr_id, bit_accion, bit_tabla, bit_registro, bit_observacion, bit_fecha '
             . 'FROM bda_bitacora '
             . 'AND bit_id = :bit_id';
     $params = array(
-        ':id' => $id
+        ':id' => ($id !=null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -62,7 +62,8 @@ class bitacoraTable extends bitacoraBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**
@@ -94,21 +95,12 @@ class bitacoraTable extends bitacoraBaseTable {
    * @return boolean
    * @throws PDOException
    */
-  public function delete($deleteLogical = true) {
+  public function delete() {
     $conn = $this->getConnection($this->config);
+    $sql = 'DELETE FROM bda_bitacora WHERE bit_id = :bit_id';
     $params = array(
-        ':bit_id' => $this->getId()
+        ':bit_id'=> $this->getId()
     );
-    switch ($deleteLogical) {
-      case true:
-        $sql = 'UPDATE bda_bitacora SET deleted_at = now() WHERE bit_id = :bit_id';
-        break;
-      case false:
-        $sql = 'DELETE FROM bda_bitacora WHERE bit_id = :bit_id';
-        break;
-      default:
-        throw new PDOException('Por favor indique un dato coherente para el borrado lógico o físico');
-    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
