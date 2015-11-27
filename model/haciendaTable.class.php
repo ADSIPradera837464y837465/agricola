@@ -29,13 +29,13 @@ class haciendaTable extends haciendaBaseTable {
    * @param type $id
    * @return type
    */
-  public function getById($id) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT hac_id, hac_descripcion, hac_ubicacion, hac_representante_legal,  hac_created_at '
             . 'FROM bda_hacienda '
             . 'AND hac_id = :id';
     $params = array(
-        ':id' => $id
+        ':id' => ($id !== null) ? $id: $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -56,9 +56,10 @@ class haciendaTable extends haciendaBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    //return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
-
   /**
    * atualiza un registro de la tabla
    * @return boolean
