@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\aguaSurcoBaseTable;
+use FStudio\model\base\aguaSurcoTableBase;
 /**
  * Description of aguaSurcoTable
  * @author Johanna G <ladyjkaulitz@hotmail.com>
@@ -9,7 +9,7 @@ use FStudio\model\base\aguaSurcoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class aguaSurcoTable extends aguaSurcoBaseTable { 
+class aguaSurcoTable extends aguaSurcoTableBase { 
   
   /**
    * Obtiene todos los datos de la tabla
@@ -38,7 +38,8 @@ class aguaSurcoTable extends aguaSurcoBaseTable {
             . 'FROM aguaSurco '
             . 'AND deaas_id = :deaas_id';
     $params = array(
-        ':deaas_id' => $id
+        ':deaas_id' => ($id !==null)? $id:
+            $this->getById()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -62,7 +63,8 @@ class aguaSurcoTable extends aguaSurcoBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId ($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
   
   /**

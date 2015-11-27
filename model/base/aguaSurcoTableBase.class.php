@@ -7,14 +7,14 @@ use FStudio\myConfig as config;
 
 
 /**
- * Description of aguaSurcoBaseTable
+ * Description of aguaSurcoTableBase
  * @author Johanna G <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
-class aguaSurcoBaseTable extends model {
+class aguaSurcoTableBase extends model {
 
   /**
    * ID de la tabla
