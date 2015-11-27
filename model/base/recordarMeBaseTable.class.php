@@ -50,7 +50,7 @@ class recordarMeBaseTable extends model {
   /**
    * nombre de la tabla
    */
-  const _TABLE = 'recordar_me';
+  const _TABLE = 'bda_recordar_me';
 
   /**
    *

@@ -20,7 +20,7 @@ class recordarMeTableClass extends recordarMeBaseTable {
   public function getAll() {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT rcm_id, usuario_id, rcm_ip_address, rcm_hash_cookie, 
-rcm_created_at FROM recordar_me ORDER BY created_at ASC';
+rcm_created_at FROM bda_recordar_me ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : 
@@ -33,14 +33,13 @@ false;
    * @param integer $id
    *  @return [stdClass | boolean]
    */
-  public function getById($id) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT rcm_id, usuario_id, rcm_ip_address, rcm_hash_cookie, 
 rcm_created_at '
-            . 'FROM recordar_me '
+            . 'FROM bda_recordar_me '
             . 'AND id = :id';
     $params = array(
-        ':id' => $id,
         ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -56,7 +55,7 @@ false;
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO recordar_me (usuario_id, rcm_ip_address, 
+    $sql = 'INSERT INTO bda_recordar_me (usuario_id, rcm_ip_address, 
 rcm_hash_cookie) VALUES (:usuario_id, :ip_address, :hash_cookie)';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
@@ -76,7 +75,7 @@ rcm_hash_cookie) VALUES (:usuario_id, :ip_address, :hash_cookie)';
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE recordar_me SET usuario_id = :usuario_id, rcm_ip_address = 
+    $sql = 'UPDATE bda_recordar_me SET usuario_id = :usuario_id, rcm_ip_address = 
 :ip_address, rcm_hash_cookie = :hash_cookie WHERE rcm_id = :id';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
@@ -98,7 +97,7 @@ rcm_hash_cookie) VALUES (:usuario_id, :ip_address, :hash_cookie)';
    */
   public function delete() {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM recordarMe WHERE id = :id';
+    $sql = 'DELETE FROM bda_recordar_me WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );
