@@ -1,5 +1,7 @@
 <?php
 
+
+use FStudio\model\base\usuarioBaseTable;
 /**
  * Description of usuarioTable
  * @author Magda lucia chaux martinez <lucia_chaux@hotmail.com>
@@ -28,13 +30,13 @@ class usuarioTable extends usuarioBaseTable{
    * @param type $id
    * @return type
    */
-  public function getById($id) {
+  public function getById($id=null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT usr_id, usr_user, usr_password, usr_actived, usr_last_login_at, usr_created_at, updated_at,usr_deleted_at '
             . 'FROM bda_usuario '
             . 'WHERE usr_id = :id';
     $params = array(
-        ':id' => $id
+        ':id' => ($id !== null) ? $id: $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -57,7 +59,10 @@ class usuarioTable extends usuarioBaseTable{
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE); /** esta funcion me trae el id que se acava de registrar   */
+   // return $conn->lastInsertId(self::_SEQUENCE);
+   //  /** esta funcion me trae el id que se acava de registrar   */
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return tuue;
   }
 
   /**
