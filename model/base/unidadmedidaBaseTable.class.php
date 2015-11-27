@@ -4,6 +4,7 @@ namespace FStudio\model\base;
 
 use FStudio\fsModel as model;
 use FStudio\myConfig as config;
+
 /**
  * Description of unidadMedidaBaseTable
  * @author AngelaCardona <angela04cardona@hotmail.com>
@@ -11,14 +12,16 @@ use FStudio\myConfig as config;
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
- 
+
  */
 class unidadMedidaBaseTable {
-   /**
+
+  /**
    * ID de la tabla
    */
   const ID = 'unm_id';
-/**
+
+  /**
    * Descripcion de la unidad de medida
    */
   const DESCRIPCION = 'unm_descripcion';
@@ -27,11 +30,35 @@ class unidadMedidaBaseTable {
    * Logitud de la descripcion
    */
   const DESCRIPCION_LENGTH = 80;
-/**
-   * Secuencia de la identificacion de la tabla 
+
+  /**
+   * Fecha y hora de creación del registro
    */
-  const _SEQUENCE = '';
-const _TABLE = 'bda_unidad_medida';
+  const CREATED_AT = 'unm_created_at';
+
+  /**
+   * Fecha y hora de la ultima actualización del registro
+   */
+  const UPDATED_AT = 'unm_updated_at';
+
+  /**
+   * Fecha y hora para controlar el borrado lógico
+   */
+  /**
+   * Fecha y hora para controlar el borrado lógico
+   */
+  const DELETED_AT = 'unm_deleted_at';
+  
+  /**
+   * Nombre de la secuencia del ID de la tabla
+   */
+  const _SEQUENCE = 'bda_unidad_medida_unm_id_seq';
+
+  /**
+   * Nombre de la tabla
+   */
+  const _TABLE = 'bda_unidad_medida';
+
 
   /**
    * Configuración del sistema
@@ -50,6 +77,7 @@ const _TABLE = 'bda_unidad_medida';
    * @var varchar
    */
   private $descripcion;
+
   /**
    *
    * @var date_time 
@@ -84,6 +112,7 @@ const _TABLE = 'bda_unidad_medida';
     $this->updateAt = $updateAt;
     $this->deletedAt = $deletedAt;
   }
+
   /**
    * Retorna la configuracion
    * @return config
@@ -92,6 +121,7 @@ const _TABLE = 'bda_unidad_medida';
   public function getConfig() {
     return $this->config;
   }
+
   /**
    * Retorna el id del registro
    * @return integer
@@ -107,7 +137,8 @@ const _TABLE = 'bda_unidad_medida';
   public function getDescripcion() {
     return $this->descripcion;
   }
-/**
+
+  /**
    * 
    * @return date_time
    */
@@ -130,7 +161,8 @@ const _TABLE = 'bda_unidad_medida';
   public function getDeletedAt() {
     return $this->deletedAt;
   }
-/**
+
+  /**
    * Fija la configuracion del sistema 
    * @param config $config objeto con configuracion del sistema 
    * @version 1.0.0
@@ -154,7 +186,8 @@ const _TABLE = 'bda_unidad_medida';
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
- /**
+
+  /**
    * 
    * @param date_time $createdAt
    */
@@ -179,6 +212,3 @@ const _TABLE = 'bda_unidad_medida';
   }
 
 }
-
-
-

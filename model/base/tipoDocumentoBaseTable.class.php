@@ -50,7 +50,7 @@ class tipoDocumentoBaseTable extends model {
   /**
    * Secuencia de la identificacion de la tabla 
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_tipo_documento_tip_id_seq';
 
   /**
    * Nombre de la tabla 
