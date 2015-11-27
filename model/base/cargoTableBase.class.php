@@ -196,7 +196,7 @@ class cargoTableBase extends model {
   /**
    * Fija la fecha de actualización del registro
    * @version 1.0.0
-   * @param date_time $createdAt
+   * @param date_time $updatedAt
    */
   public function setUpdatedAt($updatedAt) {
     $this->updatedAt = $updatedAt;
@@ -205,7 +205,7 @@ class cargoTableBase extends model {
   /**
    * Fija la fecha de eliminacion del registro
    * @version 1.0.0
-   * @param date_time $createdAt
+   * @param date_time $deletedAt
    */
   public function setDeletedAt($deletedAt) {
     $this->deletedAt = $deletedAt;
