@@ -88,11 +88,11 @@ class rolUsuarioTable extends rolUsuarioBaseTable {
    */
   public function delete() {
     $conn = $this->getConnection($this->config);
-    $sql ='DELETE FROM rol WHERE id = :id';
+    $sql = 'DELETE FROM rol WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );
-    
+
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
