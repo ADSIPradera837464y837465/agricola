@@ -13,7 +13,7 @@ use FStudio\myConfig as config;
  * @subpackage table
  * @version 1.0.0
  */
-class maquinaTableBase extends model {
+class  maquinaTableBase extends model {
 
   /**
    * ID de la tabla
@@ -178,7 +178,7 @@ class maquinaTableBase extends model {
    * Tiempo en horas de mantenimiento
    * @var BigInt
    */
-  private $tiempoTrabajadoHoras;
+  private $tiempoMantenientoHoras;
 
   /**
    * numero de serie de la maquina
@@ -232,7 +232,7 @@ class maquinaTableBase extends model {
    * @param varchar $numeroChasis
    * @param varchar $tAccesorio
    * @param BigInt $horasTrabajadas
-   * @param BigInt $tiempoTrabajadoHoras
+   * @param BigInt $tiempoMantenientoHoras
    * @param varchar $numeroSerie
    * @param varchar $modelo
    * @param BigInt $horasActividad
@@ -241,7 +241,7 @@ class maquinaTableBase extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  function __construct(config $config, $id = null, $estado= null,  $valor = null,  $fechaCompra = null,  $numeroChasis = null,  $tAccesorio = null,  $horasTrabajadas = null, $tiempoTrabajadoHoras = null,  $numeroSerie = null,  $modelo = null,  $horasActividad = null,  $valorHora = null, $createdAt = null,  $updatedAt = null, $deletedAt = null) {
+  function __construct(config $config, $id = null, $estado= null,  $valor = null,  $fechaCompra = null,  $numeroChasis = null,  $tAccesorio = null,  $horasTrabajadas = null, $tiempoMantenientoHoras = null,  $numeroSerie = null,  $modelo = null,  $horasActividad = null,  $valorHora = null, $createdAt = null,  $updatedAt = null, $deletedAt = null) {
     $this->config = $config;
     $this->id = $id;
     $this->estado = $estado;
@@ -250,7 +250,7 @@ class maquinaTableBase extends model {
     $this->numeroChasis = $numeroChasis;
     $this->tAccesorio = $tAccesorio;
     $this->horasTrabajadas = $horasTrabajadas;
-    $this->tiempoTrabajadoHoras = $tiempoTrabajadoHoras;
+    $this->tiempoMantenientoHoras = $tiempoMantenientoHoras;
     $this->numeroSerie = $numeroSerie;
     $this->modelo = $modelo;
     $this->horasActividad = $horasActividad;
@@ -347,8 +347,8 @@ class maquinaTableBase extends model {
    * @return config
    */
 
-  public function getTiempoTrabajadoHoras() {
-    return $this->tiempoTrabajadoHoras;
+  public function getTiempoMantenientoHoras() {
+    return $this->tiempoMantenientoHoras;
   }
   
   
@@ -500,13 +500,13 @@ class maquinaTableBase extends model {
 
   
     /**
-   * Fija tiempo trabajado en  horas para el registro en la tabla
+   * Fija tiempo del mantenimiento en  horas para el registro en la tabla
    * @version 1.0.0
-  * @param BigInt $tiempoTrabajadoHoras
+  * @param BigInt $tiempoMantenientoHoras
    */
   
-  public function setTiempoTrabajadoHoras(BigInt $tiempoTrabajadoHoras) {
-    $this->tiempoTrabajadoHoras = $tiempoTrabajadoHoras;
+  public function setTiempoMantenientoHoras(BigInt $tiempoMantenientoHoras) {
+    $this->tiempoMantenientoHoras = $tiempoMantenientoHoras;
   }
 
      /**
