@@ -24,7 +24,6 @@ class bitacoraTable extends bitacoraBaseTable {
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
-
   /**
    * Retorna un elemento de la tabla buscado por un ID especifico
    * @version 1.0.0
