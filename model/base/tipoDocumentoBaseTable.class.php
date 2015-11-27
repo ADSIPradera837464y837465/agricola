@@ -13,7 +13,7 @@ use FStudio\myConfig as config;
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
- * Description of tipoDocumentoBaseTable
+ 
  */
 class tipoDocumentoBaseTable extends model {
 
@@ -53,7 +53,7 @@ class tipoDocumentoBaseTable extends model {
   const _SEQUENCE = '';
 
   /**
-   * NOmbre de la tabla 
+   * Nombre de la tabla 
    */
   const _TABLE = 'bda_tipo_documento';
 

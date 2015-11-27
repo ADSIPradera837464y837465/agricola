@@ -96,10 +96,10 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_tipo_documento SET pro_deleted_at = now() WHERE pro_id = :id';
+        $sql = 'UPDATE bda_tipo_documento SET tpd_deleted_at = now() WHERE tip_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_tipo_documento WHERE pro_id = :id';
+        $sql = 'DELETE FROM bda_tipo_documento WHERE tip_id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
