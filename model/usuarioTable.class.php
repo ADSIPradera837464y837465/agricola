@@ -10,7 +10,7 @@ use FStudio\model\base\usuarioBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class usuarioTable extends usuarioBaseTable{
+class usuarioTable extends usuarioBaseTable {
   
   /**
    * obtiene todos los datos de la tabla
