@@ -19,10 +19,12 @@ class recordarMeTableClass extends recordarMeBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT rcm_id, usuario_id, rcm_ip_address, rcm_hash_cookie, rcm_created_at FROM recordar_me ORDER BY created_at ASC';
+    $sql = 'SELECT rcm_id, usuario_id, rcm_ip_address, rcm_hash_cookie, 
+rcm_created_at FROM recordar_me ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
-    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : 
+false;
   }
 
   /**
@@ -33,15 +35,18 @@ class recordarMeTableClass extends recordarMeBaseTable {
    */
   public function getById($id) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT rcm_id, usuario_id, rcm_ip_address, rcm_hash_cookie, rcm_created_at '
+    $sql = 'SELECT rcm_id, usuario_id, rcm_ip_address, rcm_hash_cookie, 
+rcm_created_at '
             . 'FROM recordar_me '
             . 'AND id = :id';
     $params = array(
-        ':id' => $id
+        ':id' => $id,
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : 
+false;
   }
 
   /**
@@ -51,7 +56,8 @@ class recordarMeTableClass extends recordarMeBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO recordar_me (usuario_id, rcm_ip_address, rcm_hash_cookie) VALUES (:usuario_id, :ip_address, :hash_cookie)';
+    $sql = 'INSERT INTO recordar_me (usuario_id, rcm_ip_address, 
+rcm_hash_cookie) VALUES (:usuario_id, :ip_address, :hash_cookie)';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
         ':ip_address' => $this->getIpAddress(),
@@ -59,7 +65,8 @@ class recordarMeTableClass extends recordarMeBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::SEQUENCE));
+    return true;
   }
 
   /**
@@ -69,7 +76,8 @@ class recordarMeTableClass extends recordarMeBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE recordar_me SET usuario_id = :usuario_id, rcm_ip_address = :ip_address, rcm_hash_cookie = :hash_cookie WHERE rcm_id = :id';
+    $sql = 'UPDATE recordar_me SET usuario_id = :usuario_id, rcm_ip_address = 
+:ip_address, rcm_hash_cookie = :hash_cookie WHERE rcm_id = :id';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
         ':ip_address' => $this->getIpAddress(),
@@ -88,22 +96,12 @@ class recordarMeTableClass extends recordarMeBaseTable {
    * @return boolean
    * @throws PDOException
    */
-  public function delete($deleteLogical = true) {
+  public function delete() {
     $conn = $this->getConnection($this->config);
+    $sql = 'DELETE FROM recordarMe WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );
-    switch ($deleteLogical) {
-      case true:
-        $sql = 'UPDATE bda_recordar_me SET rcm_deleted_at = now() WHERE rcm_id = :id';
-        break;
-      case false:
-
-        $sql = 'DELETE FROM bda_recordar_me WHERE rcm_id = :id';
-        break;
-      default:
-        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
-    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
