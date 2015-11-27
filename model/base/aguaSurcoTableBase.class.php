@@ -5,7 +5,6 @@ namespace FStudio\model\base;
 use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
-
 /**
  * Description of aguaSurcoTableBase
  * @author Johanna G <ladyjkaulitz@hotmail.com>
@@ -25,7 +24,7 @@ class aguaSurcoTableBase extends model {
    * Secuencia del identificador de la tabla
    */
   const ITEM = 'deaas_item';
-  
+
   /**
    * Longitud del campo item 
    */
@@ -193,7 +192,6 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija la configuración del sistema
-   * @version 1.0.0
    * @param config $config Objeto con configuración del sistema
    */
   public function setConfig(config $config) {
@@ -202,7 +200,6 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija el id para el registro en la tabla
-   * @version 1.0.0
    * @param integer $id
    */
   public function setId($id) {
@@ -211,7 +208,6 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija el item para el registro en la tabla
-   * @version 1.0.0
    * @param integer $item
    */
   public function setItem($item) {
@@ -220,7 +216,6 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija la cantidad de surco para el registro en la tabla
-   * @version 1.0.0
    * @param integer $cantidadSurco
    */
   public function setCantidadSurco($cantidadSurco) {
@@ -229,7 +224,6 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija el numero de documento para el registro en la tabla
-   * @version 1.0.0
    * @param integer $numDocumento
    */
   public function setNumDocumento($numDocumento) {
@@ -238,8 +232,7 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija la creacion de un nuevo registro en la tabla
-   * @version 1.0.0
-   * @param integer $createdAt
+   * @param date_time $createdAt
    */
   public function setCreatedAt($createdAt) {
     $this->createdAt = $createdAt;
@@ -247,8 +240,7 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija la actualizacion de un registro en la tabla
-   * @version 1.0.0
-   * @param integer $updatedAt
+   * @param date_time $updatedAt
    */
   public function setUpdatedAt($updatedAt) {
     $this->updatedAt = $updatedAt;
@@ -256,8 +248,7 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fija la eliminacion de un registro en la tabla
-   * @version 1.0.0
-   * @param integer $deletedAt
+   * @param date_time $deletedAt
    */
   public function setDeletedAt($deletedAt) {
     $this->deletedAt = $deletedAt;

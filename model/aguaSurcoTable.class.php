@@ -19,7 +19,8 @@ class aguaSurcoTable extends aguaSurcoTableBase {
   
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT deaas_id, deaas_item, deaas_cantidad_surco, fore_num_documento,created_at, updated_at,  deleted_at FROM aguaSurco ORDER BY created_at ASC';
+    $sql = 'SELECT deaas_id, deaas_item, deaas_cantidad_surco, fore_num_documento,created_at, updated_at,  deleted_at FROM aguaSurco '
+            . 'ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -35,10 +36,11 @@ class aguaSurcoTable extends aguaSurcoTableBase {
  public function getById($id) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT deaas_id, deaas_item, deaas_cantidad_surco, fore_num_documento,created_at, updated_at,  deleted_at '
-            . 'FROM aguaSurco '
-            . 'AND deaas_id = :deaas_id';
+            . 'FROM aguaSurco  WHERE deleted_at IS NULL'
+            . 'AND deaas_id = :id';
+  
     $params = array(
-        ':deaas_id' => ($id !==null)? $id:
+        ':deaas_id' => ($id !==null) ? $id:
             $this->getById()
     );
     $answer = $conn->prepare($sql);
@@ -95,14 +97,23 @@ public function update() {
    * @throws PDOException
    */
   
-    public function delete() {
+    public function delete($deleteLogical = true ) {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM aguaSurco WHERE deaas_id = :deaas_id';
     $params = array(
-        ':deaas_id' => $this->getId()
+        ':id' => $this->getId()
     );
+     switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE aguaSurco SET deleted_at = now() WHERE id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM aguaSurco WHERE id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico o físico');
+    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
   }
-  }
+}
