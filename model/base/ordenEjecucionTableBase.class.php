@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of bda_rolUsuario
  * @author WilmerAndresMartinez wilmerelmejor94@hotmail.com
@@ -326,5 +325,4 @@ class ordenEjecucionTableBase extends model {
   public function setOreDeletedAt($oreDeletedAt) {
     $this->oreDeletedAt = $oreDeletedAt;
   }
-
 }
