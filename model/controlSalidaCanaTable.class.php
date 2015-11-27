@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\controlSalidaCanaBaseTable;
+use FStudio\model\base\controlSalidaCanaTableBase;
 
 /**
  * Description of controlSalidaCanaTable
@@ -10,7 +10,7 @@ use FStudio\model\base\controlSalidaCanaBaseTable;
  * @subpackage base
  * @version 1.0.0
  */
-class controlSalidaCanaTable extends controlSalidaCanaBaseTable {
+class controlSalidaCanaTable extends controlSalidaCanaTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -29,11 +29,11 @@ class controlSalidaCanaTable extends controlSalidaCanaBaseTable {
    * @param integer $id
    * @return [stdClass | boolean]
    */
-  public function getById($id) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT csc_id, csc_fecha, csc_total_vagones, csc_notas, csc_total_trenes, tur_id, sue_id, ter_id, created_at, updated_at, deleted_at FROM controlSalidaCana AND id = :id';
     $params = array(
-        ':id' => $id
+        ':id' => ($id !== null) ? $id : $this -> getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -58,7 +58,8 @@ class controlSalidaCanaTable extends controlSalidaCanaBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this -> setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**
