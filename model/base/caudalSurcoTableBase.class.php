@@ -13,7 +13,7 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-class caudalSurcoBaseTable extends model {
+class caudalSurcoTableBase extends model {
 
     /**
      * ID de la tabla
