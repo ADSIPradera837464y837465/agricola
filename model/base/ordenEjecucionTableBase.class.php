@@ -8,7 +8,6 @@
  * @version 1.0.0
  */
 class ordenEjecucionTableBase extends model {
-
   /**
    * ore_Id de la tabla
    * @var integer
@@ -158,7 +157,6 @@ class ordenEjecucionTableBase extends model {
   public function getConfig() {
     return $this->config;
   }
-
   /**
    * Retorna la ore_id del registro
    * @version 1.0.0
