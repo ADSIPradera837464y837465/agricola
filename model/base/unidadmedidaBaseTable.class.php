@@ -12,8 +12,8 @@ use FStudio\myConfig as config;
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
+*/
 
- */
 class unidadMedidaBaseTable {
 
   /**
@@ -32,23 +32,20 @@ class unidadMedidaBaseTable {
   const DESCRIPCION_LENGTH = 80;
 
   /**
-   * Fecha y hora de creación del registro
+   * Fecha y hora de creación de una nueva unidad de medida 
    */
   const CREATED_AT = 'unm_created_at';
 
   /**
-   * Fecha y hora de la ultima actualización del registro
+   * Fecha y hora de la ultima actualización de una unidad de medida
    */
   const UPDATED_AT = 'unm_updated_at';
 
   /**
    * Fecha y hora para controlar el borrado lógico
    */
-  /**
-   * Fecha y hora para controlar el borrado lógico
-   */
   const DELETED_AT = 'unm_deleted_at';
-  
+
   /**
    * Nombre de la secuencia del ID de la tabla
    */
@@ -58,7 +55,6 @@ class unidadMedidaBaseTable {
    * Nombre de la tabla
    */
   const _TABLE = 'bda_unidad_medida';
-
 
   /**
    * Configuración del sistema
@@ -131,7 +127,7 @@ class unidadMedidaBaseTable {
   }
 
   /**
-   * Retorna la descripcion del documento
+   * Retorna la descripcion de la unidad de medida
    * @return varchar
    */
   public function getDescripcion() {
@@ -180,7 +176,7 @@ class unidadMedidaBaseTable {
   }
 
   /**
-   * descripcion del tipo de documento 
+   * descripcion del tipo de la unidad de medida
    * @param varchar $descripcion 
    */
   public function setDescripcion($descripcion) {
