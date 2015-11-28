@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\bitacoraBaseTable;
+use FStudio\model\base\bitacoraTableBase;
 /**
  * Description of bitacoraTable
  * @author Diana Meneses <meneses_d@rocketmail.com>
@@ -9,7 +9,7 @@ use FStudio\model\base\bitacoraBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class bitacoraTable extends bitacoraBaseTable {
+class bitacoraTable extends bitacoraTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -89,7 +89,7 @@ class bitacoraTable extends bitacoraBaseTable {
   /**
    * Borra en forma logica o fisica un registro de la tabla
    * @version 1.0.0
-   * @param boolean $deleteLogical
+   * @param boolean 
    * @return boolean
    * @throws PDOException
    */
