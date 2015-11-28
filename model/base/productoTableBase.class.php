@@ -63,7 +63,8 @@ class productoTableBase extends model {
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = 'bda_producto_pro_id_seq';
+  const _SEQUENCE = '';
+//  const _SEQUENCE = 'bda_producto_pro_id_seq';
 
   /**
    * Nombre de la tabla
