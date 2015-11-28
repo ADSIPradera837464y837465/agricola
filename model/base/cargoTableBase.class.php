@@ -1,7 +1,12 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
- * Description of cargoBaseTable
+ * Description of cargoTableBase
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package 
  * @subpackage model

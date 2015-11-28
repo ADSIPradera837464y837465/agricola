@@ -1,4 +1,5 @@
 <?php
+use FStudio\model\base\cargoTableBase;
 
 /**
  * Description of cargoTable
@@ -25,6 +26,7 @@ class cargoTable extends cargoTableBase {
   /**
    * Retorna un elemento de la tabla buscado por un id especifico
    * @param integer $id
+   * @version 1.0.0
    * @return [stdClass | boolean]
    */
   public function getById($id = null) {
@@ -42,6 +44,7 @@ class cargoTable extends cargoTableBase {
   /**
    * Registra los datos del objeto en la tabla
    * @return integer
+   * @version 1.0.0
    */
   public function save() {
     $conn = $this->getConnection($this->config);
@@ -58,6 +61,7 @@ class cargoTable extends cargoTableBase {
   /**
    * Actualiza un registro de la tabla
    * @return boolean
+   * @version 1.0.0
    */
   public function update() {
     $conn = $this->getConnection($this->config);
@@ -74,6 +78,7 @@ class cargoTable extends cargoTableBase {
    * Borra en forma logica o fisica un registro de la tabla
    * @param boolean $deleteLogical
    * @return boolean
+   * @version 1.0.0
    * @throws PDOException
    */
   public function delete($deleteLogical = true) {
