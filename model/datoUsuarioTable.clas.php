@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\datoUsuarioBaseTable;
+use FStudio\model\base\datoUsuarioTableBase;
 
 /**
  * Description of dba_dato_usuario
@@ -10,7 +10,7 @@ use FStudio\model\base\datoUsuarioBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class datoUsuarioTable extends datoUsuarioBaseTable {
+class datoUsuarioTable extends datoUsuarioTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -31,13 +31,14 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id = null) {
+  //public function getById($id  = null) {
+  public function getById($id) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT dus_id, usr_id, dus_cedula, dus_nombre, dus_apellidos, dus_movil,dus_correo,dus_imagen,dus_sexo,dus_create_at '
             . 'FROM bda_dato_usuario '
             . 'AND dus_id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id : $this->getId()
+        ':id' => $id //($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -98,17 +99,6 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
    * @return boolean
    * @throws PDOException
    */
-//  public function delete() {
-//    $conn = $this->getConnection($this->config);
-//    $sql = 'DELETE FROM bda_dato_usuario WHERE dus_id = :id';
-//    $params = array(
-//        ':id' => $this->getId()
-//    );
-//    $answer = $conn->prepare($sql);
-//    $answer->execute($params);
-//    return true;
-//  }
-
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
