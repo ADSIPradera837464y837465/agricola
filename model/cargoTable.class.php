@@ -1,4 +1,5 @@
 <?php
+
 use FStudio\model\base\cargoTableBase;
 
 /**
