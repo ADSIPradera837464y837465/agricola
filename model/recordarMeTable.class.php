@@ -10,7 +10,7 @@ use FStudio\model\base\recordarMeBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class recordarMeTableClass extends recordarMeBaseTable {
+class recordarMeTable extends recordarMeTable {
 
   /**
    * obtiene todos los datos de la tabla
@@ -36,8 +36,7 @@ false;
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT rcm_id, usuario_id, rcm_ip_address, rcm_hash_cookie, 
-rcm_created_at '
-            . 'FROM bda_recordar_me '
+    rcm_created_at '. 'FROM bda_recordar_me WHERE deleted_at IS NULL '
             . 'AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
