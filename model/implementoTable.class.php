@@ -1,7 +1,7 @@
 
 <?php
 
-use FStudio\model\base\implementoBaseTable;
+use FStudio\model\base\implementoTableBase;
 
 /**
  * clase para manejar la tabla implemento
@@ -11,7 +11,7 @@ use FStudio\model\base\implementoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class implementoTableClass extends implementoBaseTable {
+class implementoTable extends implementoTableBase {
 
   /**
    * obtiene todos los datos de la tabla
@@ -37,7 +37,7 @@ class implementoTableClass extends implementoBaseTable {
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT imp_id, imp_descripcion, imp_created_at, imp_updated_at, imp_deleted_at '
-            . 'FROM bda_implemento'
+            . 'FROM bda_implemento WHERE deleted_at IS NULL '
             . 'AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
@@ -58,7 +58,6 @@ class implementoTableClass extends implementoBaseTable {
     $sql = 'INSERT INTO bda_implemento (imp_descripcion) VALUES (:usuario_id, :ip_address, :hash_cookie)';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
-       
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -76,7 +75,6 @@ class implementoTableClass extends implementoBaseTable {
     $sql = 'UPDATE bda_implemento SET imp_descripcion = :descripcion,
     WHERE imp_id = :id';
     $params = array(
-       
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
