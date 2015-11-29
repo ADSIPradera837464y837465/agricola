@@ -13,7 +13,7 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-class registroLaboresMaquinaEquipoBaseTable extends model {
+class registroLaboresMaquinaEquipoTableBase extends model {
 
   /**
    * numero de registro de labores de maquina equipo
@@ -61,12 +61,22 @@ class registroLaboresMaquinaEquipoBaseTable extends model {
   const RELME_TOTAL_HORAS_TRABAJADAS = 'relme_total_horas_trabajadas';
 
   /**
-   * registro de labores  de maquina de equipo
+   * fecha de creacion de registro 
    */
   const CREATED_AT = 'relme_created_at';
+  /**
+   * fecha de actualizacion de registro 
+   */
+  
   const UPDATED_AT = 'relme_updated_at';
+  /**
+   * fecha de eliminacion del registro 
+   */
   const DELETED_AT = 'relme_deleted_at';
-  const _SEQUENCE = 'registroLaboresMaquinaEquipo_numero_seq';
+  /**
+   * secuencia de la tabla para la llave primaria 
+   */
+  const _SEQUENCE = '';
 
   /**
    * nombre de la tabla
@@ -89,28 +99,28 @@ class registroLaboresMaquinaEquipoBaseTable extends model {
    * id de la hacienda
    * @var integer
    */
-  private $hac_id;
+  private $hacId;
 
   /**
    * id del tercero
    * @var integer
    */
-  private $ter_id;
+  private $terId;
 
   /**
    * tipo documento
    * @var integer
    */
-  private $tpd_id;
+  private $tpdId;
 
   /**
    * id de implemento
    * @var integer
    */
-  private $imp_id;
+  private $impId;
 
   /**
-   * *registro de labores  de maquina de equipo de la fecha
+   * fecha de registro de labores  de maquina y equipo 
    * @var date
    */
   private $fecha;
@@ -131,25 +141,43 @@ class registroLaboresMaquinaEquipoBaseTable extends model {
    * registro de labores  de maquina de equipo del total de horas trabajadas
    * @var integer
    */
-  private $total_horas_trabajadas;
+  private $totalHorasTrabajadas;
 
   /**
    * fecha de creacion del registro
    * @var date_time
    */
-  private $created_at;
+  private $createdAt;
 
   /**
    * fecha de actualizacion del registro
    * @var date_time
    */
-  private $updated_at;
+  private $updatedAt;
 
   /**
    * fecha de eliminacion del registro
    * @var date_time
    */
-  private $deleted_at;
+  private $deletedAt;
+  
+  /**
+   * Constructor de la clase registroLaboresMaquinaEquipoTableBase
+   * @version 1.0.0
+   * @param config $config
+   * @param integer $numero
+   * @param integer $hacId
+   * @param integer $terId
+   * @param integer $tpdId
+   * @param integer $impId
+   * @param date $fecha
+   * @param boolean $estado
+   * @param integer $tiempo
+   * @param integer $totalHorasTrabajadas
+   * @param date_time $createdAt
+   * @param date_time $updatedAt
+   * @param date_time $deletedAt
+   */
 
   function __construct(config $config, $numero = null, $hacId = null, $terId = null, $tpdId = null, $impId = null, $fecha = null, $estado = null, $tiempo = null, $totalHorasTrabajadas = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
     $this->config = $config;
@@ -386,7 +414,6 @@ class registroLaboresMaquinaEquipoBaseTable extends model {
   /**
    * Fija la actualizacion del registro
    * version 1.0.0
-
    * @param date_time $updatedAt
    */
   public function setUpdatedAt($updatedAt) {
