@@ -13,7 +13,7 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-class productoBaseTable extends model {
+class productoTableBase extends model {
 
   /**
    * ID del registro
@@ -63,7 +63,8 @@ class productoBaseTable extends model {
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = 'bda_producto_pro_id_seq';
+  const _SEQUENCE = '';
+//  const _SEQUENCE = 'bda_producto_pro_id_seq';
 
   /**
    * Nombre de la tabla
@@ -125,11 +126,11 @@ class productoBaseTable extends model {
   private $deletedAt;
 
   /**
-   * Constructor de la clase productoBaseTable
+   * Constructor de la clase productoTableBase
    * @version 1.0.0
    * @param config $config
    * @param integer $id [opcional] ID del registro
-   * @param type $descripcion [opcional] Descripción del producto
+   * @param varchar $descripcion [opcional] Descripción del producto
    * @param integer $tipoProductoId [opcional] ID del tipo de producto
    * @param integer $marcaId [opcional] ID de la marca del producto
    * @param integer $unidadMedidaId [opcional] Unidad de medida del producto

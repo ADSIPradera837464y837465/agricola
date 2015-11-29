@@ -14,7 +14,7 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-class controlSalidaCanaBaseTable extends controlSalidaCana {
+class controlSalidaCanaTableBase extends model {
 
   /**
    * ID de la tabla

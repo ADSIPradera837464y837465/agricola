@@ -1,4 +1,3 @@
-
 <?php
 
 namespace FStudio\model\base;
@@ -7,26 +6,24 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of tipoDocumentoBaseTable
+ * Description of tipoProductoBaseTable
  * @author AngelaCardona <angela04cardona@hotmail.com>
  * @package 
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
-*/
-
-
-class tipoDocumentoBaseTable extends model {
+ */
+class tipoProductoBaseTable {
 
   /**
    * ID de la tabla
    */
-  const ID = 'tip_id';
+  const ID = 'tpr_id';
 
   /**
-   * Descripcion del documento
+   * Descripcion del tipo de producto 
    */
-  const DESCRIPCION = 'tpd_descripcion';
+  const DESCRIPCION = 'tpr_descripcion';
 
   /**
    * Logitud de la descripcion
@@ -34,44 +31,29 @@ class tipoDocumentoBaseTable extends model {
   const DESCRIPCION_LENGTH = 80;
 
   /**
-   * Descripcion del tipo de movimiento 
+   * Fecha y hora de creación de la descripcion del tipo producto
    */
-  const TIPO_MOVIMIENTO = 'tpd_tipo_movimiento';
+  const CREATED_AT = 'tpr_created_at';
 
   /**
-   * logitud Tipo de movimiento documento
+   * Fecha y hora de la ultima actualización del tipo producto 
    */
-  const TIPO_MOVIMIENTO_LENGTH = 80;
-
-  /**
-   * Estado documento 
-   */
-  const ESTADO = 'tpd_estado';
-
-  /**
-   * Fecha y hora de creación del documento
-   */
-  const CREATED_AT = 'tpd_created_at';
-
-  /**
-   * Fecha y hora de la ultima actualización del documento
-   */
-  const UPDATED_AT = 'tpd_updated_at';
+  const UPDATED_AT = 'tpr_updated_at';
 
   /**
    * Fecha y hora para controlar el borrado lógico
    */
-  const DELETED_AT = 'tpd_deleted_at';
+  const DELETED_AT = 'tpr_deleted_at';
 
   /**
-   * Secuencia de la identificacion de la tabla 
+   * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = 'bda_tipo_documento_tip_id_seq';
+  const _SEQUENCE = 'bda_tipo_producto_tpr_id_seq';
 
   /**
-   * Nombre de la tabla 
+   * Nombre de la tabla
    */
-  const _TABLE = 'bda_tipo_documento';
+  const _TABLE = 'bda_tipo_producto';
 
   /**
    * Configuración del sistema
@@ -93,18 +75,6 @@ class tipoDocumentoBaseTable extends model {
 
   /**
    *
-   * @var varchar
-   */
-  private $movimiento;
-
-  /**
-   *
-   * @var boolean
-   */
-  private $estado;
-
-  /**
-   *
    * @var date_time 
    */
   private $createdAt;
@@ -122,22 +92,17 @@ class tipoDocumentoBaseTable extends model {
   private $deletedAt;
 
   /**
-   * 
-   * constructor class tipoDocumentoBaseTable
+   * constructor class tipoProductoBaseTable
    * @param integer $id
    * @param varchar $descripcion
-   * @param varchar $movimiento
-   * @param booleano $estado
    * @param date_time $createdAt
    * @param date_time $updateAt
    * @param date_time $deletedAt
    */
-  public function __construct(config $config, $id = null, $descripcion = null, $movimiento = null, $estado = null, $createdAt = null, $updateAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $updateAt = null, $deletedAt = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->movimiento = $movimiento;
-    $this->estado = $estado;
     $this->createdAt = $createdAt;
     $this->updateAt = $updateAt;
     $this->deletedAt = $deletedAt;
@@ -161,27 +126,11 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * Retorna la descripcion del documento
+   * Retorna la descripcion del tipo producto
    * @return varchar
    */
   public function getDescripcion() {
     return $this->descripcion;
-  }
-
-  /**
-   * Retorna el tipo de movimiento del documento
-   * @return varchar
-   */
-  public function getMovimiento() {
-    return $this->movimiento;
-  }
-
-  /**
-   * Retorna el estado del documento
-   * @return boolean 
-   */
-  public function getEstado() {
-    return $this->estado;
   }
 
   /**
@@ -218,7 +167,7 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * Fija el id del registro del documento
+   * Fija el id de la marca
    * @param integer $id
    */
   public function setId($id) {
@@ -226,27 +175,11 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * descripcion del tipo de documento 
+   * descripcion del tipo de producto
    * @param varchar $descripcion 
    */
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
-  }
-
-  /**
-   * movimiento del documento
-   * @param varchar $movimiento
-   */
-  public function setMovimiento($movimiento) {
-    $this->movimiento = $movimiento;
-  }
-
-  /**
-   * estado del documento
-   * @param boolean  $estado
-   */
-  public function setEstado($estado) {
-    $this->estado = $estado;
   }
 
   /**

@@ -4,14 +4,14 @@ use FStudio\model\base\tipoDocumentoBaseTable;
 
 /**
  * clase para manejar la tabla tipoDocumento
- * Description of tipoDocumentoTable
+ * Description of tipoProductoTable
  *  @author Angela Cardona Molina <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
-class tipoDocumentoTable extends tipoDocumentoBaseTable {
+class tipoProductoTable extends tipoDocumentoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -20,7 +20,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tip_id, tpd_descripcion, tpd_tipo_movimiento, tpd_estado, created_at FROM tipo_documento ORDER BY created_at ASC';
+    $sql = 'SELECT tpr_id, tpr_descripcion, created_at FROM tipoProductoTable ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -34,11 +34,11 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tip_id, tpd_descripcion, tpd_tipo_movimiento, tpd_estado, created_at, update_at, deleted_at '
-            . 'FROM tipo_documento '
+    $sql = 'SELECT tpr_id, tpr_descripcion, created_at, update_at, deleted_at '
+            . 'FROM tipoProducto '
             . 'AND id = :id';
     $params = array(
-        ':tip_id' => ($id !== null) ? $id : $this->getId()
+        ':mar_id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -52,11 +52,9 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO tipo_documento (tpd_descripcion, tpd_tipo_movimiento, tpd_estado) VALUES (:tpd_descripcion, :tpd_tipo_movimiento, :tpd_estado)';
+    $sql = 'INSERT INTO tipoProducto (tpr_descripcion) VALUES (:tpr_descripcion)';
     $params = array(
-        ':tipo_descripcion' => $this->getDescripcion(),
-        ':tpd_tipo_movimiento' => $this->getMovimiento(),
-        ':tpd_estado' => $this->getEstado(),
+        ':tpr_descripcion' => $this->getDescripcion(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -71,11 +69,9 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE tipo_documento SET tpd_descripcion =:tpd_descripcion,tpd_tipo_movimiento = :tpd_tipo_movimiento,tpd_estado = :tpd_estado)';
+    $sql = 'UPDATE tipProducto SET tpr_descripcion =:tpr_descripcion)';
     $params = array(
-        ':tpd_descripcion' => $this->getDescripcion(),
-        ':tpd_tipo_movimiento' => $this->getMovimiento(),
-        ':tpd_estado' => $this->getEstado(),
+        ':tpr_descripcion' => $this->getDescripcion(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -92,14 +88,14 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':tpd_id' => $this->getId()
+        ':tpr_id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_tipo_documento SET tpd_deleted_at = now() WHERE tip_id = :id';
+        $sql = 'UPDATE bda_tipo_producto SET tpr_deleted_at = now() WHERE tpr_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_tipo_documento WHERE tip_id = :id';
+        $sql = 'DELETE FROM bda_tipo_producto WHERE tpr_id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');

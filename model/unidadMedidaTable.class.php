@@ -1,5 +1,7 @@
 <?php
+
 use FStudio\model\base\unidadMedidaBaseTable;
+
 /**
  * clase para manejar la tabla unidadMedida
  * Description of unidadMedidaTable
@@ -9,19 +11,21 @@ use FStudio\model\base\unidadMedidaBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class unidadMedidaTable extends unidadMedidaTable {
- /**
+class unidadMedidaTable extends unidadMedidaBaseTable{
+
+  /**
    * Obtiene todos los datos de la tabla
    *  @version 1.0.0
    * @return @return [stdClass | boolean]
    */
-   public function getAll() {
+  public function getAll() {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT unm_id, unm_descripcion, created_at FROM unidad_medida ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
+
   /**
    * Retorna un elemento de la tabla buscado por un ID especifico
    * @version 1.0.0
@@ -34,12 +38,13 @@ class unidadMedidaTable extends unidadMedidaTable {
             . 'FROM unidad_medida '
             . 'AND id = :id';
     $params = array(
-        ':unm_id' => ($id !==null) ? $id : $this->getId()
+        ':unm_id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
+
   /**
    * Registra los datos del objeto en la tabla
    * @version 1.0.0
@@ -50,14 +55,14 @@ class unidadMedidaTable extends unidadMedidaTable {
     $sql = 'INSERT INTO unidad_medida (unm_descripcion) VALUES (:unm_descripcion)';
     $params = array(
         ':unm_descripcion' => $this->getDescripcion(),
-        
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
- /**
+
+  /**
    * Actualiza un registro de la tabla
    * @version 1.0.0
    * @return boolean
@@ -67,12 +72,12 @@ class unidadMedidaTable extends unidadMedidaTable {
     $sql = 'UPDATE unidad_medida SET unm_descripcion =:unm_descripcion)';
     $params = array(
         ':unm_descripcion' => $this->getDescripcion(),
-       
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
   }
+
   /**
    * Borra en forma logica o fisica un registro de la tabla
    * @version 1.0.0
@@ -80,8 +85,7 @@ class unidadMedidaTable extends unidadMedidaTable {
    * @return boolean
    * @throws PDOException
    */
-
- public function delete($deleteLogical = true) {
+  public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
         ':unm_id' => $this->getId()

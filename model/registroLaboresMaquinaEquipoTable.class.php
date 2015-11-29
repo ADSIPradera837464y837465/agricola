@@ -1,7 +1,7 @@
 
 <?php
 
-use FStudio\model\base\registroLaboresMaquinaEquipoBaseTable;
+use FStudio\model\base\registroLaboresMaquinaEquipoTableBase;
 
 /**
  * clase para manejar la tabla registroLaboresMaquinaEquipo
@@ -11,7 +11,7 @@ use FStudio\model\base\registroLaboresMaquinaEquipoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class registroLaboresMaquinaEquipoTableClass extends registroLaboresMaquinaEquipoBaseTable {
+class registroLaboresMaquinaEquipoTable extends registroLaboresMaquinaEquipoTableBase {
 
   /**
    * obtiene todos los datos de la tabla
@@ -21,7 +21,7 @@ class registroLaboresMaquinaEquipoTableClass extends registroLaboresMaquinaEquip
   public function getAll() {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT relme_numero, hac_id, ter_id, tpd_id, imp_id,relme_fecha, relme_estado, relme_tiempo,relme_total_horas_trabajadas, relme_created_at, relme_updated_at, relme_deleted_at
-    FROM bda_registroLaboresMaquinaEquipo ORDER BY created_at ASC';
+    FROM bda_registroLaboresMaquinaEquipo WHERE deleted_at IS NULL ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) :
@@ -29,15 +29,15 @@ class registroLaboresMaquinaEquipoTableClass extends registroLaboresMaquinaEquip
   }
 
   /**
-   * retorna un elemento de la tabla buscado por un id especifico
+   * retorna un elemento de la tabla buscado por un numero especifico
    * @version 1.0.0
-   * @param integer $id
+   * @param integer $numero
    *  @return [stdClass | boolean]
    */
-  public function getById($id = null) {
+  public function getById($numero = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT relme_numero, hac_id, ter_id, tpd_id, imp_id,relme_fecha, relme_estado, relme_tiempo,relme_total_horas_trabajadas, relme_created_at, relme_updated_at, relme_deleted_at '
-            . 'FROM bda_registro_labores_maquina_equipo'
+    $sql = 'SELECT relme_numero, hac_id, ter_id, tpd_id, imp_id,relme_fecha, relme_estado, relme_tiempo,relme_total_horas_trabajadas, relme_created_at, relme_updated_at, relme_deleted_at 
+            FROM bda_registro_labores_maquina_equipo WHERE deleted_at IS NULL '
             . 'AND numero = :numero';
     $params = array(
         ':numero' => ($numero !== null) ? $numero : $this->getNumero()

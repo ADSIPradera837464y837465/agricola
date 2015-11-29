@@ -6,14 +6,14 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of bitacoraBaseTable
+ * Description of bitacoraTableBase
  * @author Diana Meneses <meneses_d@rocketmail.com>
  * @package 
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
  */
-class bitacoraBaseTable extends model {
+class bitacoraTableBase extends model {
 
   /**
    * id de la tabla
@@ -119,20 +119,21 @@ class bitacoraBaseTable extends model {
 
   /**
    * fecha en la que se realiza el registro
-   * @var varchar
+   * @var date
    */
   private $fecha;
 
   /**
    * 
-   * Constructor de la clase bitacoraBaseTable
+   * Constructor de la clase bitacoraTableBase
    * @param integer $id
    * @param string $accion
    * @param integer $usuarioId
    * @param string $observacion
    * @param string $tabla
    * @param integer $registro
-   * @param date_time $fecha
+   * @param date $fecha
+   * @version 1.0.0
    */
   public function __construct(config $config, $id = null, $accion = null, $usuarioId = null, $observacion = null, $tabla = null, $registro = null, $fecha = null) {
     $this->config = $config;
@@ -211,7 +212,7 @@ class bitacoraBaseTable extends model {
   /**
    * retorna fecha de registro
    * @version 1.0.0
-   * @return date_time
+   * @return date
    */
   public function getFecha() {
     return $this->fecha;
