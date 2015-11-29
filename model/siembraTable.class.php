@@ -19,7 +19,7 @@ class siembraTable extends siembraTableBase {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT sie_id, sue_id, sie_dia, sie_presupuesto_empresa, sie_kilos_lote, sie_total_kilos_planta, sie_fecha, sie_fecha_fin_levante, sie_fecha_inicio_ciclo, sie_fecha_fin_ciclo, sie_fecha_poda, sie_fecha_produccion, sie_num_hectarea, sie_num_planta_levante, sie_num_plantas_productivas, sie_plantas_erradica, sie_created_at, sie_updated_at, sie_deleted_at FROM bda_siembra ORDER BY sie_created_at ASC';
+    $sql = 'SELECT sie_id, sue_id, sie_dia, sie_presupuesto_empresa, sie_kilos_lote, sie_total_kilos_planta, sie_fecha, sie_fecha_fin_levante, sie_fecha_inicio_ciclo, sie_fecha_fin_ciclo, sie_fecha_poda, sie_fecha_produccion, sie_num_hectarea, sie_num_planta_levante, sie_num_plantas_productivas, sie_plantas_erradica, sie_created_at, sie_updated_at, sie_deleted_at FROM bda_siembra WHERE sie_deleted_at IS NULL  ORDER BY sie_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -34,7 +34,7 @@ class siembraTable extends siembraTableBase {
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT sie_id, sue_id, sie_dia, sie_presupuesto_empresa, sie_kilos_lote, sie_total_kilos_planta, sie_fecha, sie_fecha_fin_levante, sie_fecha_inicio_ciclo, sie_fecha_fin_ciclo, sie_fecha_poda, sie_fecha_produccion, sie_num_hectarea, sie_num_planta_levante, sie_num_plantas_productivas_ sie_plantas_erradica '
-            . 'FROM bda_siembra '
+            . 'FROM bda_siembra  WHERE sie_deleted_at IS NULL '
             . 'AND sie_id = :sie_id';
     $params = array(
         ':sie_id' => ($id !== null) ? $id : $this->getId()
