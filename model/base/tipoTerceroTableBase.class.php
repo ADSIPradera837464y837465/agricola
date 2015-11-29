@@ -1,9 +1,14 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
- * Description of tipoTerceroBaseTable
+ * Description of tipoTerceroTableBase
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -58,11 +63,13 @@ class terceroTableBase extends model {
 
   /**
    * ID de la tabla
+   * @var integer
    */
   private $id;
 
   /**
    * Descripcion de la tabla
+   * @var string
    */
   private $descripcion;
 
@@ -86,6 +93,7 @@ class terceroTableBase extends model {
 
   /**
    * Constructor de la clase tipoTerceroTableBase
+   * @version 1.0.0
    * @param config $config
    * @param integer $id
    * @param string $descripcion

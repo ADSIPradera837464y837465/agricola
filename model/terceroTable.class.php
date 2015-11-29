@@ -1,5 +1,7 @@
 <?php
 
+use FStudio\model\base\terceroTableBase;
+
 /**
  * Description of terceroTable
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
@@ -12,7 +14,7 @@ class terceroTable extends terceroTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
@@ -25,7 +27,7 @@ class terceroTable extends terceroTableBase {
   /**
    * Retorna un elemento de la tabla buscado por un id especifico
    * @param integer $id
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
@@ -42,7 +44,7 @@ class terceroTable extends terceroTableBase {
 
   /**
    * Registra los datos del objeto en la tabla
-   * @return integer
+   * @return boolean
    */
   public function save() {
     $conn = $this->getConnection($this->config);

@@ -1,9 +1,14 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
- * Description of tipoIdBaseTable
+ * Description of tipoIdTableBase
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -58,11 +63,13 @@ class tipoIdTableBase extends model {
 
   /**
    * ID de la tabla
+   * @var integer 
    */
   private $id;
 
   /**
    * Descripcion de la tabla
+   * @var string 
    */
   private $descripcion;
 

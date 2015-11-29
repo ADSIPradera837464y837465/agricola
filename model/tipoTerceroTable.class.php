@@ -1,9 +1,11 @@
 <?php
 
+use FStudio\model\base\tipoIdTableBase;
+
 /**
  * Description of tipoTerceroTable
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -12,7 +14,7 @@ class tipoTerceroTable extends tipoIdTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
@@ -25,13 +27,13 @@ class tipoTerceroTable extends tipoIdTableBase {
   /**
    * Retorna un elemento de la tabla buscado por un id especifico
    * @param integer $id
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT tit_id, tit_descipcion, created_at, updated_at, deleted_at FROM dba_tipo_tercero WHERE deleted_at IS NULL '
             . 'AND tit_id = :id';
-    $params = array(        
+    $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -41,7 +43,7 @@ class tipoTerceroTable extends tipoIdTableBase {
 
   /**
    * Registra los datos del objeto en la tabla
-   * @return integer
+   * @return boolean
    */
   public function save() {
     $conn = $this->getConnection($this->config);

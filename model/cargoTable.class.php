@@ -5,7 +5,7 @@ use FStudio\model\base\cargoTableBase;
 /**
  * Description of cargoTable
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -14,7 +14,7 @@ class cargoTable extends cargoTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
@@ -28,7 +28,7 @@ class cargoTable extends cargoTableBase {
    * Retorna un elemento de la tabla buscado por un id especifico
    * @param integer $id
    * @version 1.0.0
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
@@ -44,7 +44,7 @@ class cargoTable extends cargoTableBase {
 
   /**
    * Registra los datos del objeto en la tabla
-   * @return integer
+   * @return boolean
    * @version 1.0.0
    */
   public function save() {

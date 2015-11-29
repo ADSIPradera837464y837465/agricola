@@ -1,7 +1,12 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
- * Description of terceroBaseTable
+ * Description of terceroTableBase
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package 
  * @subpackage model
@@ -182,7 +187,9 @@ class terceroTableBase extends model {
    * @var date_time
    */
   private $deletedAt;
+
   /**
+   * Constructor de la tabla tercero
    * @version 1.0.0
    * @param config $config
    * @param integer $id
@@ -198,7 +205,6 @@ class terceroTableBase extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-
   public function __construct(config $config, $id = null, $nombre = null, $apellido = null, $telefono = null, $direccion = null, $correo = null, $tipoTercero = null, $CargoId = null, $tipoId = null, date_time $createdAt = null, date_time $updatedAt = null, date_time $deletedAt = null) {
     $this->config = $config;
     $this->id = $id;

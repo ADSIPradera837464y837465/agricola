@@ -8,7 +8,7 @@ use FStudio\myConfig as config;
 /**
  * Description of cargoTableBase
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -68,6 +68,7 @@ class cargoTableBase extends model {
 
   /**
    * Descripcion de la tabla
+   * @var string
    */
   private $descripcion;
 

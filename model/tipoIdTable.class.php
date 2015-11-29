@@ -1,5 +1,7 @@
 <?php
 
+use FStudio\model\base\tipoIdTableBase;
+
 /**
  * Description of tipoIdTable
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
@@ -12,7 +14,7 @@ class tipoIdTable extends tipoIdTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
@@ -25,13 +27,13 @@ class tipoIdTable extends tipoIdTableBase {
   /**
    * Retorna un elemento de la tabla buscado por un id especifico
    * @param integer $id
-   * @return [stdClass | boolean]
+   * @return mixed [stdClass | boolean]
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT tpi_id, tpi_descipcion, created_at, updated_at, deleted_at FROM dba_tipo_id WHERE deleted_at IS NULL '
             . 'AND tpi_id = :id';
-    $params = array(        
+    $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
