@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\productoBaseTable;
+use FStudio\model\base\productoTableBase;
 
 /**
  * Clase para manejar la tabla producto
@@ -10,7 +10,7 @@ use FStudio\model\base\productoBaseTable;
  * @subpackage table 
  * @version 1.0.0
  */
-class productoTable extends productoBaseTable {
+class productoTable extends productoTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
