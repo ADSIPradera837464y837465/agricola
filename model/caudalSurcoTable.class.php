@@ -1,9 +1,9 @@
 <?php
 
-use FStudio\model\base\productoBaseTable;
+use FStudio\model\base\caudalSurcoTableBase;
 
 /**
- * Description of caudalSurcoBaseTable
+ * Description of caudalSurcoTableBase
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
  * @package 
  * @subpackage model
@@ -19,7 +19,7 @@ class caudalSurcoTable extends caudalSurcoTableBase {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidadSurco, fore_num_documento As numDocumento, decs_created_at As createdAt, decs_updated_at As updatedAt, decs_deleted_at As deletedAt FROM  ORDER BY decs_created_at ASC';
+    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidadSurco, fore_num_documento As numDocumento, decs_created_at As createdAt, decs_updated_at As updatedAt, decs_deleted_at As deletedAt FROM bda_detalle_caudal_surco  WHERE decs_deleted_at IS NULL ORDER BY decs_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -60,6 +60,7 @@ class caudalSurcoTable extends caudalSurcoTableBase {
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**

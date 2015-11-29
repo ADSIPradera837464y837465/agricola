@@ -6,7 +6,7 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of caudalSurcoBaseTable
+ * Description of caudalSurcoTableBase
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
  * @package 
  * @subpackage model
@@ -59,7 +59,7 @@ class caudalSurcoTableBase extends model {
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = 'bda_detalle_caudal_surco_decs_id_seq';
+  const _SEQUENCE = '';
 
   /**
    *  Nombre de la tabla 
@@ -107,6 +107,12 @@ class caudalSurcoTableBase extends model {
    * @var date_time
    */
   private $updatedAt;
+  
+  /**
+   * fecha y hora de la eliminacion de un registro
+   * @var date_time
+   */
+  private $deletedAt;
 
   /**
    * Constructor de la clase caudalSurcoTableBase
@@ -120,7 +126,7 @@ class caudalSurcoTableBase extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  private $deletedAt;
+ 
 
   public function __construct(config $config, $id = null, $item = null, $cantidadSurco = null, $numDocumento = null, date_time $createdAt = null, date_time $updatedAt = null, date_time $deletedAt = null) {
     $this->config = $config;
