@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\marcaBaseTable;
+use FStudio\model\base\marcaTableBase;
 
 /**
  * clase para manejar la tabla marca
@@ -11,7 +11,7 @@ use FStudio\model\base\marcaBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class marcaTable extends marcaBaseTable {
+class marcaTable extends marcaTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -34,12 +34,7 @@ class marcaTable extends marcaBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT mar_id, mar_descripcion, created_at, update_at, deleted_at '
-            . 'FROM marca '
-            . 'AND id = :id';
-    $params = array(
-        ':mar_id' => ($id !== null) ? $id : $this->getId()
-    );
+    $sql = 'SELECT mar_id AS id, mar_descripcion AS descripcion, mar_created_at AS createdAt, mar_updated_at AS updatedAt, mar_deleted_at AS deletedAt FROM bda_marca WHERE mar_deleted_at IS NULL ORDER BY mar_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;

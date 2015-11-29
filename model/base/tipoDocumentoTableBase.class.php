@@ -7,16 +7,14 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of tipoDocumentoBaseTable
+ * Description of tipoDocumentoTableBase
  * @author AngelaCardona <angela04cardona@hotmail.com>
  * @package 
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
-*/
-
-
-class tipoDocumentoBaseTable extends model {
+ */
+class tipoDocumentoTableBase extends model {
 
   /**
    * ID de la tabla
@@ -66,7 +64,7 @@ class tipoDocumentoBaseTable extends model {
   /**
    * Secuencia de la identificacion de la tabla 
    */
-  const _SEQUENCE = 'bda_tipo_documento_tip_id_seq';
+  const _SEQUENCE = '';
 
   /**
    * Nombre de la tabla 
@@ -80,50 +78,51 @@ class tipoDocumentoBaseTable extends model {
   protected $config;
 
   /**
-   *
+   * id del registro del documento
    * @var integer
    */
   private $id;
 
   /**
-   *
+   * muestra la descripcion del documento
    * @var varchar
    */
   private $descripcion;
 
   /**
-   *
+   * muestra el movimiento del documento
    * @var varchar
    */
   private $movimiento;
 
   /**
-   *
+   * mestra el estado del documento
    * @var boolean
    */
   private $estado;
 
   /**
-   *
+   * Fecha y hora de creación del documento
    * @var date_time 
    */
   private $createdAt;
 
   /**
-   *
+   * Fecha y hora de la ultima actualización del documento
    * @var date_time
    */
   private $updateAt;
 
   /**
-   *
+   * Fecha y hora para controlar el borrado lógico
    * @var date_time
    */
   private $deletedAt;
 
   /**
    * 
-   * constructor class tipoDocumentoBaseTable
+   * constructor class tipoDocumentoTableBase
+   * @version 1.0.0
    * @param integer $id
    * @param varchar $descripcion
    * @param varchar $movimiento
@@ -185,7 +184,7 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * 
+   * Retorna la fecha y la hora de creación del documento
    * @return date_time
    */
   public function getCreatedAt() {
@@ -193,7 +192,7 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * 
+   * Retorna la fecha y la hora de la última actualización del documento
    * @return date_time
    */
   public function getUpdateAt() {
@@ -201,7 +200,7 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * 
+   * Retorna la fecha y la hora del borrado lógico del registro
    * @return date_time 
    */
   public function getDeletedAt() {
@@ -250,7 +249,8 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * 
+   * Fija la fecha y la hora de creación del documento
+   * @version 1.0.0
    * @param date_time $createdAt
    */
   public function setCreatedAt($createdAt) {
@@ -258,7 +258,8 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * 
+   * Fija la fecha y la hora de la última actualización del documento
+   * @version 1.0.0
    * @param date_time $updateAt
    */
   public function setUpdateAt($updateAt) {
@@ -266,7 +267,8 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * 
+   * Fija la fecha y la hora del borrado lógico
+   * @version 1.0.0
    * @param date_time $deletedAt
    */
   public function setDeletedAt($deletedAt) {

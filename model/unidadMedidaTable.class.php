@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\unidadMedidaBaseTable;
+use FStudio\model\base\unidadMedidaTableBase;
 
 /**
  * clase para manejar la tabla unidadMedida
@@ -11,7 +11,7 @@ use FStudio\model\base\unidadMedidaBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class unidadMedidaTable extends unidadMedidaBaseTable{
+class unidadMedidaTable extends unidadMedidaTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -34,12 +34,7 @@ class unidadMedidaTable extends unidadMedidaBaseTable{
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT unm_id, unm_descripcion, created_at, update_at, deleted_at '
-            . 'FROM unidad_medida '
-            . 'AND id = :id';
-    $params = array(
-        ':unm_id' => ($id !== null) ? $id : $this->getId()
-    );
+    $sql = 'SELECT unm_id AS id, unm_descripcion AS descripcion, unm_created_at AS createdAt, unm_updated_at AS updatedAt, unm_deleted_at AS deletedAt FROM bda_unidad_medida WHERE unm_deleted_at IS NULL ORDER BY unm_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;

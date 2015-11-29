@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\tipoDocumentoBaseTable;
+use FStudio\model\base\tipoDocumentoTableBase;
 
 /**
  * clase para manejar la tabla tipoDocumento
@@ -11,12 +11,12 @@ use FStudio\model\base\tipoDocumentoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class tipoDocumentoTable extends tipoDocumentoBaseTable {
+class tipoDocumentoTable extends tipoDocumentoTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
    *  @version 1.0.0
-   * @return @return [stdClass | boolean]
+   * @return  [stdClass | boolean]
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
@@ -34,9 +34,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tip_id, tpd_descripcion, tpd_tipo_movimiento, tpd_estado, created_at, update_at, deleted_at '
-            . 'FROM tipo_documento '
-            . 'AND id = :id';
+    $sql = 'SELECT tip_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento As tipo_movimiento, tpd_estado As estado, tpd_created_at AS createdAt, tpd_updated_at AS updatedAt, tpd_deleted_at AS deletedAt FROM bda_tipo_documento WHERE tpd_deleted_at IS NULL ORDER BY tpd_created_at ASC';
     $params = array(
         ':tip_id' => ($id !== null) ? $id : $this->getId()
     );
@@ -61,7 +59,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
-    return true;
+    return boolean;
   }
 
   /**

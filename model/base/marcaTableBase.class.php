@@ -6,14 +6,14 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of marcaBaseTable
+ * Description of marcaTableBase
  * @author AngelaCardona <angela04cardona@hotmail.com>
  * @package 
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
  */
-class marcaBaseTable {
+class marcaTableBase extends model {
 
   /**
    * ID de la tabla
@@ -21,7 +21,7 @@ class marcaBaseTable {
   const ID = 'mar_id';
 
   /**
-   * Descripcion de la unidad de medida
+   * Descripcion de la marca 
    */
   const DESCRIPCION = 'mar_descripcion';
 
@@ -31,12 +31,12 @@ class marcaBaseTable {
   const DESCRIPCION_LENGTH = 80;
 
   /**
-   * Fecha y hora de creación de una nueva unidad de medida 
+   * Fecha y hora de creación de una nueva descripcion de la marca
    */
   const CREATED_AT = 'mar_created_at';
 
   /**
-   * Fecha y hora de la ultima actualización de una unidad de medida
+   * Fecha y hora de la ultima actualización de la descripcion de la marca
    */
   const UPDATED_AT = 'mar_updated_at';
 
@@ -48,7 +48,7 @@ class marcaBaseTable {
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = 'bda_marca_mar_id_seq';
+  const _SEQUENCE = '';
 
   /**
    * Nombre de la tabla
@@ -62,37 +62,38 @@ class marcaBaseTable {
   protected $config;
 
   /**
-   *
+   * ID de la tabla
    * @var integer
    */
   private $id;
 
   /**
-   *
+   * ID de la marca
    * @var varchar
    */
   private $descripcion;
 
   /**
-   *
+   * Fecha y hora de creación de la marca
    * @var date_time 
    */
   private $createdAt;
 
   /**
-   *
+   * Fecha y hora de la ultima actualización de la marca
    * @var date_time
    */
   private $updateAt;
 
   /**
-   *
+   * Fecha y hora para controlar el borrado lógico
    * @var date_time
    */
   private $deletedAt;
 
   /**
-   * constructor class marcaBaseTable
+   * constructor class marcaTableBase
+   * @version 1.0.0
    * @param integer $id
    * @param varchar $descripcion
    * @param date_time $createdAt
@@ -134,7 +135,7 @@ class marcaBaseTable {
   }
 
   /**
-   * 
+   * Fecha y hora de la ultima actualización de la descripcion de la marca
    * @return date_time
    */
   public function getCreatedAt() {
@@ -142,7 +143,7 @@ class marcaBaseTable {
   }
 
   /**
-   * 
+   * Fecha y hora de la ultima actualización de la descripcion de la marca
    * @return date_time
    */
   public function getUpdateAt() {
@@ -150,7 +151,7 @@ class marcaBaseTable {
   }
 
   /**
-   * 
+   * Fecha y hora para controlar el borrado lógico
    * @return date_time 
    */
   public function getDeletedAt() {
@@ -168,6 +169,7 @@ class marcaBaseTable {
 
   /**
    * Fija el id de la marca
+   * @version 1.0.0
    * @param integer $id
    */
   public function setId($id) {
@@ -176,6 +178,7 @@ class marcaBaseTable {
 
   /**
    * descripcion del tipo de marca
+   * @version 1.0.0
    * @param varchar $descripcion 
    */
   public function setDescripcion($descripcion) {
@@ -183,7 +186,8 @@ class marcaBaseTable {
   }
 
   /**
-   * 
+   * Fija la fecha y la hora de creación de la descripcion de la marca
+   * @version 1.0.0
    * @param date_time $createdAt
    */
   public function setCreatedAt($createdAt) {
@@ -191,7 +195,8 @@ class marcaBaseTable {
   }
 
   /**
-   * 
+   * Fija la fecha y la hora de la última actualización de la descripcion de la marca
+   * @version 1.0.0
    * @param date_time $updateAt
    */
   public function setUpdateAt($updateAt) {
@@ -199,7 +204,8 @@ class marcaBaseTable {
   }
 
   /**
-   * 
+   * Fija la fecha y la hora del borrado lógico
+   * @version 1.0.0
    * @param date_time $deletedAt
    */
   public function setDeletedAt($deletedAt) {
