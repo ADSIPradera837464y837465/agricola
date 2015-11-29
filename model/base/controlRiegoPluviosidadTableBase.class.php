@@ -66,6 +66,31 @@ class controlRiegoPluviosidadTableBase extends model {
   const TERCERO_ID = 'ter_id';
 
   /**
+   * Fecha y hora de creación del registro
+   */
+  const CREATED_AT = 'crp_created_at';
+
+  /**
+   * Fecha y hora de la ultima actualización del registro
+   */
+  const UPDATED_AT = 'crp_updated_at';
+
+  /**
+   * Fecha y hora para controlar el borrado lógico
+   */
+  const DELETED_AT = 'crp_deleted_at';
+
+  /**
+   * Nombre de la secuencia del ID de la tabla
+   */
+  const _SEQUENCE = '';
+
+  /**
+   * Nombre de la tabla
+   */
+  const _TABLE = 'bda_control_riego_pluviosidad';
+
+  /**
    * Configuración del sistema
    * @var config
    */
@@ -150,14 +175,13 @@ class controlRiegoPluviosidadTableBase extends model {
   private $deletedAt;
 
   /**
-   * Constructor de la clase controlRiegoPluviosidadBaseTable
+   * Constructor de la clase controlRiegoPluviosidadTableBase
    * @param config $config
    * @param type $id
    * @param date $fecha
    * @param time $horaInicio
    * @param time $horaFin
    * @param time $cantidadM3Hora
-   * @param time $horaInicio
    * @param text $observacion
    * @param type $suerteId
    * @param type $haciendaId
@@ -173,7 +197,6 @@ class controlRiegoPluviosidadTableBase extends model {
     $this->hora_inicio = $hora_inicio;
     $this->hora_fin = $hora_fin;
     $this->cantidad_m3_hora = $cantidad_m3_hora;
-    $this->hora_inicio = $hora_inicio;
     $this->observacion = $observacion;
     $this->suerteId = $suerteId;
     $this->haciendaId = $haciendaId;
