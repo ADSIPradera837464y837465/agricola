@@ -43,8 +43,13 @@ class turnoBaseTable extends model {
   const ESTADO = 'tur_estado';
 
   /**
+   * Secuencia de la identificacion de la tabla
+   */
+  const _SEQUENCE = '';
 
-   * longitud de las observaciones
+  /**
+
+   * Nombre de la tabla
    */
   const TABLE = 'bda_Turno';
 
@@ -237,12 +242,11 @@ class turnoBaseTable extends model {
     $this->id = $id;
   }
 
-/**
+  /**
    * Fija la descripcion para el registro en la tabla
    * @version 1.0.0
    * @param varchar $descripcion
    */
-
   public function setDescripcion(varchar $descripcion) {
     $this->descripcion = $descripcion;
   }
