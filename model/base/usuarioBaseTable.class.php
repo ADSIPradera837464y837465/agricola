@@ -1,5 +1,10 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
  * Description of bda_usuario
  * @author Magda lucia Chaux martinez <lucia_chaux@hotmail.com>
@@ -8,7 +13,7 @@
  * @subpackage base
  * @version 1.0.0
  */
-  class usuarioBaseTable extends model{
+  class usuarioBaseTable extends model {
 
   /**
    * Id de la tabla
@@ -51,6 +56,8 @@
    * Date_Time
    */
   const DELETED_AT = 'usr_deleted_at';
+  
+  const _SEQUENCE = 'bda_usuario_usr_id_seq';
 
   /**
    *

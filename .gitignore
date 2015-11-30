@@ -3,4 +3,4 @@ Thumbs.db
 /web/upload/*
 /web/download/*
 /nbproject/private/
-/config/config.php/
+/config/config.php

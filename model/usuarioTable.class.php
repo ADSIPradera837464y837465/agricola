@@ -1,7 +1,7 @@
 <?php
 
-
 use FStudio\model\base\usuarioBaseTable;
+
 /**
  * Description of usuarioTable
  * @author Magda lucia chaux martinez <lucia_chaux@hotmail.com>
@@ -18,7 +18,7 @@ class usuarioTable extends usuarioBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT usr_id, usr_user, usr_password, usr_actived, usr_last_login_at, usr_created_at, updated_at,usr_deleted_at '
+    $sql = 'SELECT usr_id, usr_user, usr_password, usr_actived, usr_last_login_at, usr_created_at, usr_updated_at, usr_deleted_at '
             . 'FROM bda_usuario ORDER BY usr_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();

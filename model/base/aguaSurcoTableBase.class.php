@@ -44,7 +44,7 @@ class aguaSurcoTableBase extends model {
   /**
    * Secuencia de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_detalle_agua_surco_deaas_id_seq';
 
   /**
    * Tabla 

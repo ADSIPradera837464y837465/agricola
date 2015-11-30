@@ -1,4 +1,3 @@
-
 <?php
 
 namespace FStudio\model\base;

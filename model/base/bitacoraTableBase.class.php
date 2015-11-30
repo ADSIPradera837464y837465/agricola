@@ -68,7 +68,7 @@ class bitacoraTableBase extends model {
   /**
    * Secuencia de la identificacion de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_bitacora_bit_id_seq';
 
   /**
    * Nombre de la tabla
