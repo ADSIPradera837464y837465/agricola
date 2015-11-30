@@ -304,6 +304,281 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="bda_detalle_ejecucion">
+      <TblOpts/>
+      <Pk ClNs="dee_id" nm="pkbda_detalle_ejecucion"/>
+      <Cl au="1" df="" nm="dee_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ore_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ser_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pro_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="dee_cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="dee_precio" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="dee_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="dee_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="dee_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_detalle_ejecucion_bda_orden_ejecucion" prLkCl="ore_id" upAc="1">
+        <PrTb mn="0" nm="bda_orden_ejecucion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_ejecucion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ore_id" prCl="ore_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_ejecucion_bda_producto" prLkCl="pro_id" upAc="1">
+        <PrTb mn="0" nm="bda_producto" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_ejecucion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="pro_id" prCl="pro_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_ejecucion_bda_servicio_maquina" prLkCl="ser_id" upAc="1">
+        <PrTb mn="0" nm="bda_servicio_maquina" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_ejecucion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ser_id" prCl="ser_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_ejecucion_bda_tercero" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_ejecucion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id" prCl="ter_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_detalle_entrada_salida_bodega">
+      <TblOpts/>
+      <Pk ClNs="des_id" nm="pkbda_detalle_entrada_salida_bodega"/>
+      <Cl au="1" df="" nm="des_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="esb_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pro_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="unm_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="des_cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="des_precio" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="des_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="des_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="des_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_detalle_entrada_salida_bodega_bda_entrada_salida_bodega" prLkCl="esb_id" upAc="1">
+        <PrTb mn="0" nm="bda_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="esb_id" prCl="esb_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_entrada_salida_bodega_bda_producto" prLkCl="pro_id" upAc="1">
+        <PrTb mn="0" nm="bda_producto" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="pro_id" prCl="pro_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_entrada_salida_bodega_bda_unidad_medida" prLkCl="unm_id" upAc="1">
+        <PrTb mn="0" nm="bda_unidad_medida" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="unm_id" prCl="unm_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_detalle_orden">
+      <TblOpts/>
+      <Pk ClNs="deo_id" nm="pkbda_detalle_orden"/>
+      <Cl au="1" df="" nm="deo_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ors_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ser_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="deo_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deo_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deo_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_detalle_orden_bda_orden_servicio" prLkCl="ors_id" upAc="1">
+        <PrTb mn="0" nm="bda_orden_servicio" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_orden" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ors_id" prCl="ors_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_orden_bda_servicio_maquina" prLkCl="ser_id" upAc="1">
+        <PrTb mn="0" nm="bda_servicio_maquina" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_orden" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ser_id" prCl="ser_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_detalle_registro">
+      <TblOpts/>
+      <Pk ClNs="der_item" nm="pkbda_detalle_registro"/>
+      <Cl au="1" df="" nm="der_item" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="relme_numero" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lab_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sue_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pro_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="unm_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="der_tiempo_muerto" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="der_total_horas_trabajadas" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="der_hora_inicio" nu="0">
+        <DT arr="0" ds="Time" en="" id="92" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="der_hora_fin" nu="0">
+        <DT arr="0" ds="Time" en="" id="92" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="der_cantidad" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="der_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="der_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="der_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_labor" prLkCl="lab_id" upAc="1">
+        <PrTb mn="0" nm="bda_labor" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="lab_id" prCl="lab_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_maquina" prLkCl="maq_id" upAc="1">
+        <PrTb mn="0" nm="bda_maquina" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="maq_id" prCl="maq_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_producto" prLkCl="pro_id" upAc="1">
+        <PrTb mn="0" nm="bda_producto" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="pro_id" prCl="pro_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_registro_labores_maquina_equipo" prLkCl="relme_numero" upAc="1">
+        <PrTb mn="0" nm="bda_registro_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="relme_numero" prCl="relme_numero"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_suerte" prLkCl="sue_id" upAc="1">
+        <PrTb mn="0" nm="bda_suerte" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="sue_id" prCl="sue_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_tercero" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id" prCl="ter_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_unidad_medida" prLkCl="unm_id" upAc="1">
+        <PrTb mn="0" nm="bda_unidad_medida" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="unm_id" prCl="unm_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_entrada_salida_bodega">
+      <TblOpts/>
+      <Pk ClNs="esb_id" nm="pkbda_entrada_salida_bodega"/>
+      <Cl au="1" df="" nm="esb_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id_elabora" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id_solicita" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tpd_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="esb_fecha" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="esb_observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="esb_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="esb_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="esb_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_entrada_salida_bodega_bda_tercero_elabora" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id_elabora" prCl="ter_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_entrada_salida_bodega_bda_tercero_solicita" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id_solicita" prCl="ter_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_entrada_salida_bodega_bda_tipo_documento" prLkCl="tpd_id" upAc="1">
+        <PrTb mn="0" nm="bda_tipo_documento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tpd_id" prCl="tpd_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="bda_formulario_registro">
       <TblOpts/>
       <Pk ClNs="fore_num_documento" nm="pkbda_formulario_registro"/>
@@ -397,6 +672,138 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="bda_inventario">
+      <TblOpts/>
+      <Pk ClNs="inv_id" nm="pkbda_inventario"/>
+      <Cl au="1" df="" nm="inv_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="des_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pro_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tpd_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="inv_fech" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="inv_cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="inv_movimiento" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="inv_saldo" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="inv_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="inv_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="inv_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_inventario_bda_detalle_entrada_salida_bodega" prLkCl="des_id" upAc="1">
+        <PrTb mn="0" nm="bda_detalle_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_inventario" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="des_id" prCl="des_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_inventario_bda_producto" prLkCl="pro_id" upAc="1">
+        <PrTb mn="0" nm="bda_producto" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_inventario" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="pro_id" prCl="pro_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_inventario_bda_tipo_documento" prLkCl="tpd_id" upAc="1">
+        <PrTb mn="0" nm="bda_tipo_documento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_inventario" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tpd_id" prCl="tpd_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_labor">
+      <TblOpts/>
+      <Pk ClNs="lab_id" nm="pkbda_labor"/>
+      <Cl au="1" df="" nm="lab_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lab_descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="lab_valor" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lab_estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="30" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="lab_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lab_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lab_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_maquina">
+      <TblOpts/>
+      <Pk ClNs="maq_id" nm="pkbda_maquina"/>
+      <Cl au="1" df="" nm="maq_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="30" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="maq_valor" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_fecha_compra" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_numero_chasis" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_t_accesorio" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="maq_horas_trabajadas" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="maq_tiempo_mantenimiento_hora" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_numero_serie" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_modelo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="maq_horas_actividad" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="maq_valor_hora" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="maq_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="bda_marca">
       <TblOpts/>
       <Pk ClNs="mar_id" nm="pkbda_marca"/>
@@ -436,6 +843,110 @@
       <Cl au="0" df="" nm="met_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_orden_ejecucion">
+      <TblOpts/>
+      <Pk ClNs="ore_id" nm="pkbda_orden_ejecucion"/>
+      <Cl au="1" df="" nm="ore_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id_elabora" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ors_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ore_fecha" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ore_observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="ore_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ore_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ore_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_orden_ejecucion_bda_maquina" prLkCl="maq_id" upAc="1">
+        <PrTb mn="0" nm="bda_maquina" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_orden_ejecucion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="maq_id" prCl="maq_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_orden_ejecucion_bda_orden_servicio" prLkCl="ors_id" upAc="1">
+        <PrTb mn="0" nm="bda_orden_servicio" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_orden_ejecucion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ors_id" prCl="ors_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_orden_ejecucion_bda_tercero" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_orden_ejecucion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id_elabora" prCl="ter_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_orden_servicio">
+      <TblOpts/>
+      <Pk ClNs="ors_id" nm="pkbda_orden_servicio"/>
+      <Cl au="1" df="" nm="ors_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maq_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tma_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id_elabora" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id_realiza" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ors_fecha" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ors_observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="ors_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ors_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ors_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_orden_servicio_bda_maquina" prLkCl="maq_id" upAc="1">
+        <PrTb mn="0" nm="bda_maquina" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_orden_servicio" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="maq_id" prCl="maq_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_orden_servicio_bda_tercero_elabora" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_orden_servicio" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id_elabora" prCl="ter_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_orden_servicio_bda_tercero_realiza" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_orden_servicio" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id_realiza" prCl="ter_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_orden_servicio_bda_tipo_mantenimiento" prLkCl="tma_id" upAc="1">
+        <PrTb mn="0" nm="bda_tipo_mantenimiento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_orden_servicio" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tma_id" prCl="tma_id"/>
+      </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
@@ -644,6 +1155,30 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="bda_servicio_maquina">
+      <TblOpts/>
+      <Pk ClNs="ser_id" nm="pkbda_servicio_maquina"/>
+      <Cl au="1" df="" nm="ser_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ser_descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ser_estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="30" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="ser_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ser_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ser_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="bda_siembra">
       <TblOpts/>
       <Pk ClNs="sie_id" nm="pkbda_siembra"/>
@@ -817,13 +1352,13 @@
         <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
         <Cm>t = true | f = false</Cm>
       </Cl>
-      <Cl au="0" df="now()" nm="created_at" nu="0">
+      <Cl au="0" df="now()" nm="tdp_created_at" nu="0">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="updated_at" nu="1">
+      <Cl au="0" df="" nm="tdp_updated_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="deleted_at" nu="1">
+      <Cl au="0" df="" nm="tdp_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <UniqueConstraints/>
@@ -845,6 +1380,27 @@
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tpi_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_tipo_mantenimiento">
+      <TblOpts/>
+      <Pk ClNs="tma_id" nm="pkbda_tipo_mantenimiento"/>
+      <Cl au="1" df="" nm="tma_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tma_descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="tma_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tma_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tma_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <UniqueConstraints/>
@@ -1121,10 +1677,10 @@ $$
       <svg path=""/>
     </DiaProps>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_usuario" x="120" y="229"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_rol" x="655" y="54"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_usuario_rol" x="190" y="426"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_rol" x="646" y="48"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_usuario_rol" x="620" y="211"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_recordar_me" x="76" y="56"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_dato_usuario" x="563" y="215"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_dato_usuario" x="464" y="318"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_bitacora" x="366" y="49"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_cargo" x="989" y="214"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_tercero" x="982" y="71"/>
@@ -1138,17 +1694,29 @@ $$
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_suerte" x="767" y="772"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_suelo" x="773" y="946"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_contro_riego_pluviosidad" x="1192" y="652"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_turno" x="1558" y="1087"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_turno" x="1131" y="1086"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_registro_tractor" x="1118" y="908"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_control_salida_cana" x="1485" y="831"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_documento" x="1653" y="40"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_registro_labores_maquina_equipo" x="1633" y="229"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_implemento" x="2022" y="278"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_siembra" x="1637" y="453"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_control_salida_cana" x="1472" y="875"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_documento" x="1683" y="30"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_registro_labores_maquina_equipo" x="1673" y="207"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_implemento" x="2038" y="205"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_siembra" x="1672" y="519"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_unidad_medida" x="2041" y="457"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_marca" x="2054" y="597"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_producto" x="2058" y="735"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_producto" x="2402" y="574"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_labor" x="2401" y="347"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_registro" x="2873" y="296"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_maquina" x="2861" y="591"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_mantenimiento" x="3378" y="333"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_orden_servicio" x="3385" y="523"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_servicio_maquina" x="3766" y="439"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_orden" x="3787" y="642"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_orden_ejecucion" x="3394" y="858"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_ejecucion" x="3854" y="795"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_entrada_salida_bodega" x="3842" y="998"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_entrada_salida_bodega" x="3386" y="1055"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_inventario" x="2855" y="1019"/>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_bitacora.fk_bda_bitacora_bda_usuario" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
@@ -1179,6 +1747,63 @@ $$
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_caudal_surco.fk_bda_detalle_caudal_surco_bda_formulario_registro" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_ejecucion.fk_bda_detalle_ejecucion_bda_orden_ejecucion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_ejecucion.fk_bda_detalle_ejecucion_bda_producto" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_ejecucion.fk_bda_detalle_ejecucion_bda_servicio_maquina" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_ejecucion.fk_bda_detalle_ejecucion_bda_tercero" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_entrada_salida_bodega.fk_bda_detalle_entrada_salida_bodega_bda_entrada_salida_bodega" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_entrada_salida_bodega.fk_bda_detalle_entrada_salida_bodega_bda_producto" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_entrada_salida_bodega.fk_bda_detalle_entrada_salida_bodega_bda_unidad_medida" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_orden.fk_bda_detalle_orden_bda_orden_servicio" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_orden.fk_bda_detalle_orden_bda_servicio_maquina" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_registro.fk_bda_detalle_registro_bda_labor" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_registro.fk_bda_detalle_registro_bda_maquina" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_registro.fk_bda_detalle_registro_bda_producto" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_registro.fk_bda_detalle_registro_bda_registro_labores_maquina_equipo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_registro.fk_bda_detalle_registro_bda_suerte" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_registro.fk_bda_detalle_registro_bda_tercero" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_detalle_registro.fk_bda_detalle_registro_bda_unidad_medida" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_entrada_salida_bodega.fk_bda_entrada_salida_bodega_bda_tercero_elabora" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_entrada_salida_bodega.fk_bda_entrada_salida_bodega_bda_tercero_solicita" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_entrada_salida_bodega.fk_bda_entrada_salida_bodega_bda_tipo_documento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_formulario_registro.fk_bda_formulario_registro_bda_hacienda" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
@@ -1186,6 +1811,36 @@ $$
       <positionableLines/>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_formulario_registro.fk_bda_formulario_registro_bda_suerte" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_inventario.fk_bda_inventario_bda_detalle_entrada_salida_bodega" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_inventario.fk_bda_inventario_bda_producto" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_inventario.fk_bda_inventario_bda_tipo_documento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_ejecucion.fk_bda_orden_ejecucion_bda_maquina" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_ejecucion.fk_bda_orden_ejecucion_bda_orden_servicio" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_ejecucion.fk_bda_orden_ejecucion_bda_tercero" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_servicio.fk_bda_orden_servicio_bda_maquina" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_servicio.fk_bda_orden_servicio_bda_tercero_elabora" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_servicio.fk_bda_orden_servicio_bda_tercero_realiza" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_servicio.fk_bda_orden_servicio_bda_tipo_mantenimiento" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_producto.fk_bda_producto_bda_marca" parentEdge="" positioner="">
@@ -1239,10 +1894,10 @@ $$
     <Notes/>
     <Zones>
       <Zone bkCl="ffece9d8" h="888" nm="sistema" w="509" x="21" y="20"/>
-      <Zone bkCl="ffd9ecd8" h="614" nm="tercero" w="473" x="952" y="25"/>
+      <Zone bkCl="ffd9ecd8" h="614" nm="tercero" w="473" x="955" y="26"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="159">
+  <RnmMgr NxRnmId="213">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="soho_framework" SupCls="" SupNme="">
       <Rnm id="1" nNm="public" oNm="schemaA"/>
     </RnmCh>
@@ -1697,6 +2352,168 @@ $$
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_producto" SupCls="Schema" SupNme="public">
       <Rnm id="158" nNm="tpr_deleted_at" oNm="deleted_at"/>
     </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labor" SupCls="Schema" SupNme="public">
+      <Rnm id="159" nNm="lab_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_registro" SupCls="Schema" SupNme="public">
+      <Rnm id="160" nNm="der_item" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labor" SupCls="Schema" SupNme="public">
+      <Rnm id="161" nNm="lab_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labor" SupCls="Schema" SupNme="public">
+      <Rnm id="162" nNm="lab_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labor" SupCls="Schema" SupNme="public">
+      <Rnm id="163" nNm="lab_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_registro" SupCls="Schema" SupNme="public">
+      <Rnm id="164" nNm="der_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_registro" SupCls="Schema" SupNme="public">
+      <Rnm id="165" nNm="der_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_registro" SupCls="Schema" SupNme="public">
+      <Rnm id="166" nNm="der_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="167" nNm="maq_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="168" nNm="maq_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="169" nNm="maq_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="170" nNm="maq_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_mantenimiento" SupCls="Schema" SupNme="public">
+      <Rnm id="171" nNm="tma_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_mantenimiento" SupCls="Schema" SupNme="public">
+      <Rnm id="172" nNm="tma_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_mantenimiento" SupCls="Schema" SupNme="public">
+      <Rnm id="173" nNm="tma_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_mantenimiento" SupCls="Schema" SupNme="public">
+      <Rnm id="174" nNm="tma_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_servicio" SupCls="Schema" SupNme="public">
+      <Rnm id="175" nNm="ors_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_servicio" SupCls="Schema" SupNme="public">
+      <Rnm id="176" nNm="ter_id_elabora" oNm="ter_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_servicio" SupCls="Schema" SupNme="public">
+      <Rnm id="177" nNm="ors_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_servicio" SupCls="Schema" SupNme="public">
+      <Rnm id="178" nNm="ors_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_servicio" SupCls="Schema" SupNme="public">
+      <Rnm id="179" nNm="ors_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_servicio_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="180" nNm="ser_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_servicio_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="181" nNm="ser_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_servicio_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="182" nNm="ser_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_servicio_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="183" nNm="ser_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_orden" SupCls="Schema" SupNme="public">
+      <Rnm id="184" nNm="deo_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_orden" SupCls="Schema" SupNme="public">
+      <Rnm id="185" nNm="deo_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_orden" SupCls="Schema" SupNme="public">
+      <Rnm id="186" nNm="deo_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_orden" SupCls="Schema" SupNme="public">
+      <Rnm id="187" nNm="deo_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="188" nNm="ore_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="189" nNm="ore_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="190" nNm="ore_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="191" nNm="ore_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_orden_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="192" nNm="ter_id_elabora" oNm="ter_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="193" nNm="dee_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="194" nNm="dee_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="195" nNm="dee_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_ejecucion" SupCls="Schema" SupNme="public">
+      <Rnm id="196" nNm="dee_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="197" nNm="esb_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="198" nNm="esb_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="199" nNm="esb_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="200" nNm="esb_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="201" nNm="ter_id_elabora" oNm="ter_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="202" nNm="des_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="203" nNm="des_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="204" nNm="des_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_entrada_salida_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="205" nNm="des_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_inventario" SupCls="Schema" SupNme="public">
+      <Rnm id="206" nNm="inv_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_inventario" SupCls="Schema" SupNme="public">
+      <Rnm id="207" nNm="inv_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_inventario" SupCls="Schema" SupNme="public">
+      <Rnm id="208" nNm="inv_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_inventario" SupCls="Schema" SupNme="public">
+      <Rnm id="209" nNm="inv_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_documento" SupCls="Schema" SupNme="public">
+      <Rnm id="210" nNm="tdp_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_documento" SupCls="Schema" SupNme="public">
+      <Rnm id="211" nNm="tdp_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_documento" SupCls="Schema" SupNme="public">
+      <Rnm id="212" nNm="tdp_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
     <BasicOptionMgr>
@@ -1720,10 +2537,9 @@ $$
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/public</TreePath>
-    <TreePath>/Schemas (1)/public/Tables (29)</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (41)</TreePath>
     <TreePath>/Schemas (1)/public/Views (0)</TreePath>
     <TreePath>/Schemas (1)/public/Procedures (3)</TreePath>
-    <TreePath>/Schemas (1)/public/Sequences (0)</TreePath>
     <TreePath>/Diagrams (1)</TreePath>
     <TreePath>/Diagrams (1)/public</TreePath>
     <TreePath>/Diagrams (1)/public/Notes (0)</TreePath>
