@@ -49,7 +49,7 @@ class aguaSurcoBaseTable extends model {
   /**
    * Tabla 
    */
-  const _TABLE = 'bda_aguaSurco';
+  const _TABLE = 'bda_detalle_agua_surco';
 
   /**
    * Configuración del sistema
