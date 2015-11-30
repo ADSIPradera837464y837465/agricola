@@ -18,7 +18,7 @@ class tipoDocumentoBaseTable extends model {
   /**
    * ID de la tabla
    */
-  const ID = 'tip_id';
+  const ID = 'tpd_id';
 
   /**
    * Descripcion del documento
