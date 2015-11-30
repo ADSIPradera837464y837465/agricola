@@ -39,7 +39,7 @@ class aguaSurcoTable extends maquinaTableBase {
     $sql = 'SELECT maq_id, maq_estado, maq_valor, maq_fecha_compra,maq_numero_chasis,maq_t_asesorio,maq_horas_trabajadas,'
             . 'maq_tiempo_mantenimiento_horas'
             . ',maq_numero_serie,maq_modelo,maq_horas_actividad,maq_valor_hora,maq_created_at, maq_updated_at,  maq_deleted_at'
-            . 'FROM maquina '
+            . 'FROM maquina WHERE deleted_at IS NULL '
             . 'AND maq_id = :maq_id';
     $params = array(
         ':maq_id' => ($id !== null) ? $id :
@@ -122,12 +122,21 @@ class aguaSurcoTable extends maquinaTableBase {
    * @return boolean
    * @throws PDOException
    */
-  public function delete() {
+  public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM maquina WHERE maq_id = :maq_id';
     $params = array(
-        ':maq_id' => $this->getId()
+        ':id' => $this->getId()
     );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE maquina SET deleted_at = now() WHERE id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM maquina WHERE id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico o físico');
+    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;

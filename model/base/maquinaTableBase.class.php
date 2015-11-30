@@ -13,7 +13,7 @@ use FStudio\myConfig as config;
  * @subpackage table
  * @version 1.0.0
  */
-class  maquinaTableBase extends model {
+class maquinaTableBase extends model {
 
   /**
    * ID de la tabla
@@ -224,6 +224,7 @@ class  maquinaTableBase extends model {
 
   /**
    * Constructor de la tabla Maquina
+   * @version 1.0.0
    * @param config $config
    * @param BigInt $id
    * @param Varchar $estado
@@ -241,7 +242,7 @@ class  maquinaTableBase extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  function __construct(config $config, $id = null, $estado= null,  $valor = null,  $fechaCompra = null,  $numeroChasis = null,  $tAccesorio = null,  $horasTrabajadas = null, $tiempoMantenientoHoras = null,  $numeroSerie = null,  $modelo = null,  $horasActividad = null,  $valorHora = null, $createdAt = null,  $updatedAt = null, $deletedAt = null) {
+  function __construct(config $config, $id = null, $estado = null, $valor = null, $fechaCompra = null, $numeroChasis = null, $tAccesorio = null, $horasTrabajadas = null, $tiempoMantenientoHoras = null, $numeroSerie = null, $modelo = null, $horasActividad = null, $valorHora = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
     $this->config = $config;
     $this->id = $id;
     $this->estado = $estado;
@@ -260,152 +261,120 @@ class  maquinaTableBase extends model {
     $this->deletedAt = $deletedAt;
   }
 
-  
-   /**
+  /**
    * Retorna la configuracion del sistema
-   * @version 1.0.0
    * @return config
    */
   public function getConfig() {
     return $this->config;
   }
 
-   /**
+  /**
    * Retorna el Id de la tabla maquina
-   * @version 1.0.0
    * @return config
    */
   public function getId() {
     return $this->id;
   }
 
-  
-   /**
+  /**
    * Retorna el estado de la tabla maquina
-   * @version 1.0.0
    * @return config
    */
   public function getEstado() {
     return $this->estado;
   }
 
-  
-   /**
+  /**
    * Retorna el valor de la tabla maquina
-   * @version 1.0.0
    * @return config
    */
   public function getValor() {
     return $this->valor;
   }
 
-  
-   /**
+  /**
    * Retorna la fehca de la compra en la tabla maquina
-   * @version 1.0.0
    * @return config
    */
   public function getFechaCompra() {
     return $this->fechaCompra;
   }
 
-  
-   /**
+  /**
    * Retorna el numero del chasis de la maquina
-   * @version 1.0.0
    * @return config
    */
   public function getNumeroChasis() {
     return $this->numeroChasis;
   }
 
-  
-   /**
+  /**
    * Retorna el tipo de accesorio de la maquina
-   * @version 1.0.0
    * @return config
    */
   public function getTAccesorio() {
     return $this->tAccesorio;
   }
 
-  
-  
-   /**
+  /**
    * Retorna las horas trabajadas de la tabla maquina
-   * @version 1.0.0
    * @return config
    */
   public function getHorasTrabajadas() {
     return $this->horasTrabajadas;
   }
-  
-  
-   /**
+
+  /**
    * Retorna el tiempo en el que se trabajo en la tabla maquina
-   * @version 1.0.0
    * @return config
    */
-
   public function getTiempoMantenientoHoras() {
     return $this->tiempoMantenientoHoras;
   }
-  
-  
-   /**
+
+  /**
    * Retorna el numero de serie de la  maquina
-   * @version 1.0.0
    * @return config
    */
-
   public function getNumeroSerie() {
     return $this->numeroSerie;
   }
-  
-  
-   /**
+
+  /**
    * Retorna el modelo de la tabla maquina
-   * @version 1.0.0
    * @return config
    */
-
   public function getModelo() {
     return $this->modelo;
   }
 
-  
-   /**
+  /**
    * Retorna las horas de actividad de la tabla maquina
-   * @version 1.0.0
    * @return config
    */
   public function getHorasActividad() {
     return $this->horasActividad;
   }
 
-  
-   /**
+  /**
    * Retorna el valor de las horas de la tabla maquina
-   * @version 1.0.0
    * @return config
    */
   public function getValorHora() {
     return $this->valorHora;
   }
 
-  
-   /**
+  /**
    * Retorna la fecha de creación del registro
-   * @version 1.0.0
    * @return date_time
    */
   public function getCreatedAt() {
     return $this->createdAt;
   }
 
-   /**
+  /**
    * Retorna la fecha de actualización del registro
-   * @version 1.0.0
    * @return date_time
    */
   public function getUpdatedAt() {
@@ -414,165 +383,138 @@ class  maquinaTableBase extends model {
 
   /**
    * Retorna la fecha de eliminacion del registro
-   * @version 1.0.0
    * @return date_time
    */
   public function getDeletedAt() {
     return $this->deletedAt;
   }
-  
+
   /**
    * Fija la configuración del sistema
-   * @version 1.0.0
    * @param config $config Objeto con configuración del sistema
    */
-
   public function setConfig(config $config) {
     $this->config = $config;
   }
 
-    /**
-   * Fija el id para el registro en la tabla
-   * @version 1.0.0
+  /**
+   * Fija el id para el registro en la tabl
    * @param integer $id
    */
   public function setId(BigInt $id) {
     $this->id = $id;
   }
+
   /**
    * Fija el estado para el registro en la tabla
-   * @version 1.0.0
-  * @param Varchar $estado
+   * @param Varchar $estado
    */
   public function setEstado(Varchar $estado) {
     $this->estado = $estado;
   }
 
-   /**
+  /**
    * Fija el valor para el registro en la tabla
-   * @version 1.0.0
-  * @param BigInt $valor
+   * @param BigInt $valor
    */
   public function setValor(BigInt $valor) {
     $this->valor = $valor;
   }
-  
-   /**
-   * Fija la fecha de la compra para el registro en la tabla
-   * @version 1.0.0
-  * @param date $fechaCompra
-   */
 
+  /**
+   * Fija la fecha de la compra para el registro en la tabla
+   * @param date $fechaCompra
+   */
   public function setFechaCompra(date $fechaCompra) {
     $this->fechaCompra = $fechaCompra;
   }
 
-   /**
-   * Fija numero de el chasis para el registro en la tabla
-   * @version 1.0.0
-  * @param varchar $numeroChasis
+  /**
+   * Fija numero de el chasis para el registro en la tabl
+   * @param varchar $numeroChasis
    */
-  
   public function setNumeroChasis(varchar $numeroChasis) {
     $this->numeroChasis = $numeroChasis;
   }
-  
-   /**
+
+  /**
    * Fija tipo de accesorio para el registro en la tabla
-   * @version 1.0.0
-  * @param varchar $tAccesorio
+   * @param varchar $tAccesorio
    */
-  
   public function setTAccesorio(varchar $tAccesorio) {
     $this->tAccesorio = $tAccesorio;
   }
-  
-    /**
-   * Fija el numero de horas trabajadas  para el registro en la tabla
-   * @version 1.0.0
-  * @param BigInt $horasTrabajadas
-   */
-  
 
+  /**
+   * Fija el numero de horas trabajadas  para el registro en la tabla
+   * @param BigInt $horasTrabajadas
+   */
   public function setHorasTrabajadas(BigInt $horasTrabajadas) {
     $this->horasTrabajadas = $horasTrabajadas;
   }
 
-  
-    /**
+  /**
    * Fija tiempo del mantenimiento en  horas para el registro en la tabla
-   * @version 1.0.0
-  * @param BigInt $tiempoMantenientoHoras
+   * @param BigInt $tiempoMantenientoHoras
    */
-  
   public function setTiempoMantenientoHoras(BigInt $tiempoMantenientoHoras) {
     $this->tiempoMantenientoHoras = $tiempoMantenientoHoras;
   }
 
-     /**
+  /**
    * Fija el numero de serie para el registro en la tabla
-   * @version 1.0.0
-  * @param varchar $numeroSerie
+   * @param varchar $numeroSerie
    */
   public function setNumeroSerie(varchar $numeroSerie) {
     $this->numeroSerie = $numeroSerie;
   }
 
-     /**
+  /**
    * Fija el modelo para el registro en la tabla
-   * @version 1.0.0
-  * @param varchar $modelo
+   * @param varchar $modelo
    */
   public function setModelo(varchar $modelo) {
     $this->modelo = $modelo;
   }
 
-     /**
+  /**
    * Fija la hora de actividad para el registro en la tabla
-   * @version 1.0.0
-  * @param BigInt $horasActividad
+   * @param BigInt $horasActividad
    */
   public function setHorasActividad(BigInt $horasActividad) {
     $this->horasActividad = $horasActividad;
   }
 
-     /**
+  /**
    * Fija el valor en  horas para el registro en la tabla
-   * @version 1.0.0
-  * @param BigInt $valorHora
+   * @param BigInt $valorHora
    */
   public function setValorHora(BigInt $valorHora) {
     $this->valorHora = $valorHora;
   }
 
-   /**
+  /**
    * Fija la fecha de creacion del registro
-   * @version 1.0.0
    * @param date_time $createdAt
    */
   public function setCreatedAt(date_time $createdAt) {
     $this->createdAt = $createdAt;
   }
 
-    /**
+  /**
    * Fija la fecha de actualización del registro
-   * @version 1.0.0
    * @param date_time $updatedAt
    */
   public function setUpdatedAt(date_time $updatedAt) {
     $this->updatedAt = $updatedAt;
   }
 
-     /**
+  /**
    * Fija la fecha de eliminacion del registro
-   * @version 1.0.0
    * @param date_time $deletedAt
    */
   public function setDeletedAt(date_time $deletedAt) {
     $this->deletedAt = $deletedAt;
   }
 
-
-  
-  
 }

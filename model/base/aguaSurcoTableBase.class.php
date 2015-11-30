@@ -90,20 +90,20 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Fecha y hora de la  actualizacion de un registro 
-   * date_time
-   * @var 
+   * 
+   * @var date_time 
    */
   private $updatedAt;
 
   /**
    * Fecha y hora de la eliminacion de un registro 
-   * date_time
-   * @var 
+   * 
+   * @var  date_time
    */
   private $deletedAt;
 
   /**
-   * Constructor de la clase aguaSurcoBaseTable
+   * Constructor de la clase aguaSurcoTableBase
    * @version 1.0.0
    * @param config $config
    * @param integer $id
@@ -127,7 +127,6 @@ class aguaSurcoTableBase extends model {
 
   /**
    * Retorna la configuración del sistema
-   * @version 1.0.0
    * @return config
    */
   public function getConfig() {
