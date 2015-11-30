@@ -1,25 +1,26 @@
 <?php
 
-use FStudio\model\base\productoTableBase;
+use FStudio\model\base\unidadMedidaTableBase;
 
 /**
- * Clase para manejar la tabla producto
- * @author Julian Andrés Lasso Figueroa <ingeniero.julianlasso@gmail.com>
+ * clase para manejar la tabla unidadMedida
+ * Description of unidadMedidaTable
+ *  @author Angela Cardona Molina <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
- * @subpackage table 
+ * @subpackage table
  * @version 1.0.0
  */
-class productoTable extends productoTableBase {
+class unidadMedidaTable extends unidadMedidaTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
-   * @version 1.0.0
-   * @return mixed [stdClass | boolean]
+   *  @version 1.0.0
+   * @return @return [stdClass | boolean]
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipoProductoId, mar_id AS marcaId, unm_id AS unidadMedidaId, pro_created_at AS createdAt, pro_updated_at AS updatedAt, pro_deleted_at AS deletedAt FROM bda_producto WHERE pro_deleted_at IS NULL ORDER BY pro_created_at ASC';
+    $sql = 'SELECT unm_id, unm_descripcion, created_at FROM unidad_medida ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,14 +32,9 @@ class productoTable extends productoTableBase {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipoProductoId, mar_id AS marcaId, unm_id AS unidadMedidaId, pro_created_at AS createdAt, pro_updated_at AS updatedAt, pro_deleted_at AS deletedAt '
-            . 'FROM bda_producto WHERE pro_deleted_at IS NULL '
-            . 'AND pro_id = :id';
-    $params = array(
-        ':id' => $id
-    );
+    $sql = 'SELECT unm_id AS id, unm_descripcion AS descripcion, unm_created_at AS createdAt, unm_updated_at AS updatedAt, unm_deleted_at AS deletedAt FROM bda_unidad_medida WHERE unm_deleted_at IS NULL ORDER BY unm_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -51,16 +47,14 @@ class productoTable extends productoTableBase {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_producto (pro_descripcion, tpr_id, mar_id, unm_id) VALUES (:descripcion, :tipo_producto, :marca, :unidad_medida)';
+    $sql = 'INSERT INTO unidad_medida (unm_descripcion) VALUES (:unm_descripcion)';
     $params = array(
-        ':descripcion' => $this->getDescripcion(),
-        ':tipo_producto' => $this->getTipoProductoId(),
-        ':marca' => $this->getMarcaId(),
-        ':unidad_medida' => $this->getUnidadMedidaId()
+        ':unm_descripcion' => $this->getDescripcion(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**
@@ -70,13 +64,9 @@ class productoTable extends productoTableBase {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_producto SET pro_descripcion = :descripcion, tpr_id = :tipo_producto, mar_id = :marca, unm_id = :unidad_medida WHERE pro_id = :id';
+    $sql = 'UPDATE unidad_medida SET unm_descripcion =:unm_descripcion)';
     $params = array(
-        ':descripcion' => $this->getDescripcion(),
-        ':tipo_producto' => $this->getTipoProductoId(),
-        ':marca' => $this->getMarcaId(),
-        ':unidad_medida' => $this->getUnidadMedidaId(),
-        ':id' => $this->getId()
+        ':unm_descripcion' => $this->getDescripcion(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -93,14 +83,14 @@ class productoTable extends productoTableBase {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':id' => $this->getId()
+        ':unm_id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_producto SET pro_deleted_at = now() WHERE pro_id = :id';
+        $sql = 'UPDATE bda_unidad_medida SET unm_deleted_at = now() WHERE unm_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_producto WHERE pro_id = :id';
+        $sql = 'DELETE FROM bda_unidad_medida WHERE unm_id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');

@@ -1,16 +1,16 @@
 <?php
 
-use FStudio\model\base\productoTableBase;
+use FStudio\model\base\caudalSurcoTableBase;
 
 /**
- * Clase para manejar la tabla producto
- * @author Julian Andrés Lasso Figueroa <ingeniero.julianlasso@gmail.com>
- * @package FStudio
+ * Description of caudalSurcoTableBase
+ * @author Itiani Moreno Rosero <itiani2811@gmail.com>
+ * @package 
  * @subpackage model
- * @subpackage table 
+ * @subpackage table
  * @version 1.0.0
  */
-class productoTable extends productoTableBase {
+class caudalSurcoTable extends caudalSurcoTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -19,7 +19,7 @@ class productoTable extends productoTableBase {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipoProductoId, mar_id AS marcaId, unm_id AS unidadMedidaId, pro_created_at AS createdAt, pro_updated_at AS updatedAt, pro_deleted_at AS deletedAt FROM bda_producto WHERE pro_deleted_at IS NULL ORDER BY pro_created_at ASC';
+    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidadSurco, fore_num_documento As numDocumento, decs_created_at As createdAt, decs_updated_at As updatedAt, decs_deleted_at As deletedAt FROM bda_detalle_caudal_surco  WHERE decs_deleted_at IS NULL ORDER BY decs_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,13 +31,13 @@ class productoTable extends productoTableBase {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipoProductoId, mar_id AS marcaId, unm_id AS unidadMedidaId, pro_created_at AS createdAt, pro_updated_at AS updatedAt, pro_deleted_at AS deletedAt '
-            . 'FROM bda_producto WHERE pro_deleted_at IS NULL '
-            . 'AND pro_id = :id';
+    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidadSurco, fore_num_documento As numDocumento, decs_created_at As createdAt, decs_updated_at As updatedAt, decs_deleted_at As deletedAt '
+            . 'FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL '
+            . 'AND decs_id = :id';
     $params = array(
-        ':id' => $id
+        ':id' => ($id !== null) ? $id : $this->getById()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -51,16 +51,16 @@ class productoTable extends productoTableBase {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_producto (pro_descripcion, tpr_id, mar_id, unm_id) VALUES (:descripcion, :tipo_producto, :marca, :unidad_medida)';
+    $sql = 'INSERT INTO bda_detalle_caudal_surco (decs_item, decs_cantidad_surco, fore_num_documento) VALUES (:decs_item, :decs_cantidad_surco, :fore_num_documento)';
     $params = array(
-        ':descripcion' => $this->getDescripcion(),
-        ':tipo_producto' => $this->getTipoProductoId(),
-        ':marca' => $this->getMarcaId(),
-        ':unidad_medida' => $this->getUnidadMedidaId()
+        ':decs_item' => $this->getItem(),
+        ':decs_cantidad_surco' => $this->getCantidadSurco(),
+        ':fore_num_documento' => $this->getNumeroDocumento(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**
@@ -70,13 +70,11 @@ class productoTable extends productoTableBase {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_producto SET pro_descripcion = :descripcion, tpr_id = :tipo_producto, mar_id = :marca, unm_id = :unidad_medida WHERE pro_id = :id';
+    $sql = 'UPDATE bda_detalle_caudal_surco SET decs_item = :decs_item, decs_cantidad_surco = :decs_cantidad_surco, fore_num_documento = :fore_num_documento WHERE id = :id';
     $params = array(
-        ':descripcion' => $this->getDescripcion(),
-        ':tipo_producto' => $this->getTipoProductoId(),
-        ':marca' => $this->getMarcaId(),
-        ':unidad_medida' => $this->getUnidadMedidaId(),
-        ':id' => $this->getId()
+        ':decs_item' => $this->getItem(),
+        ':decs_cantidad_surco' => $this->getCantidadSurco(),
+        ':fore_num_documento' => $this->getNumeroDocumento(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -97,10 +95,10 @@ class productoTable extends productoTableBase {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_producto SET pro_deleted_at = now() WHERE pro_id = :id';
+        $sql = 'UPDATE bda_detalle_caudal_surco SET decs_deleted_at = now() WHERE decs_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_producto WHERE pro_id = :id';
+        $sql = 'DELETE FROM bda_detalle_caudal_surco WHERE decs_id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
