@@ -49,7 +49,18 @@ class registroTractorBaseTable extends model {
    * longitud de las observaciones
    */
   const OBSERVACION_LENGTH = 'rt_observacion';
+  
+  /**
+   * Secuencia de la identificacion de la tabla
+   */
+  const _SEQUENCE = '';
+  
+   /**
+
+   * Nombre de la tabla
+   */
   const TABLE = 'bda_registroTractor';
+  
 
   /**
    * Configuración del sistema
