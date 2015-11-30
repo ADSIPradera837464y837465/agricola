@@ -5,9 +5,9 @@
   <DocFolder>/Users/julianlasso/Documents</DocFolder>
   <Sch Cm="Sistema de Información Agricola" nm="public">
     <Tbl UsSo="1" nm="bda_bitacora">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="bit_id" nm="pkbda_bitacora"/>
-      <Cl au="1" df="" nm="bit_id" nu="0">
+      <Cl au="1" df="nextval('bda_bitacora_bit_id_seq'::regclass)" nm="bit_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="usr_id" nu="0">
@@ -45,9 +45,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_cargo">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="car_id" nm="pkbda_cargo"/>
-      <Cl au="1" df="" nm="car_id" nu="0">
+      <Cl au="1" df="nextval('bda_cargo_car_id_seq'::regclass)" nm="car_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="car_descripcion" nu="0">
@@ -66,9 +66,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_contro_riego_pluviosidad">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="crp_id" nm="pkbda_contro_riego_pluviosidad"/>
-      <Cl au="1" df="" nm="crp_id" nu="0">
+      <Cl au="1" df="nextval('bda_contro_riego_pluviosidad_crp_id_seq'::regclass)" nm="crp_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="crp_fecha" nu="0">
@@ -123,9 +123,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_control_salida_cana">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="csc_id" nm="pkbda_control_salida_cana"/>
-      <Cl au="1" df="" nm="csc_id" nu="0">
+      <Cl au="1" df="nextval('bda_control_salida_cana_csc_id_seq'::regclass)" nm="csc_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="csc_fecha" nu="0">
@@ -177,9 +177,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_dato_usuario">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="dus_id" nm="pkbda_dato_usuario"/>
-      <Cl au="1" df="" nm="dus_id" nu="0">
+      <Cl au="1" df="nextval('bda_dato_usuario_dus_id_seq'::regclass)" nm="dus_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="usr_id" nu="0">
@@ -241,9 +241,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_detalle_agua_surco">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="deaas_id" nm="pkbda_detalle_agua_surco"/>
-      <Cl au="1" df="" nm="deaas_id" nu="0">
+      <Cl au="1" df="nextval('bda_detalle_agua_surco_deaas_id_seq'::regclass)" nm="deaas_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="deaas_item" nu="0">
@@ -273,9 +273,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_detalle_caudal_surco">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="decs_id" nm="pkbda_detalle_caudal_surco"/>
-      <Cl au="1" df="" nm="decs_id" nu="0">
+      <Cl au="1" df="nextval('bda_detalle_caudal_surco_decs_id_seq'::regclass)" nm="decs_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="decs_item" nu="0">
@@ -305,9 +305,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_detalle_ejecucion">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="dee_id" nm="pkbda_detalle_ejecucion"/>
-      <Cl au="1" df="" nm="dee_id" nu="0">
+      <Cl au="1" df="nextval('bda_detalle_ejecucion_dee_id_seq'::regclass)" nm="dee_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ore_id" nu="0">
@@ -361,9 +361,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_detalle_entrada_salida_bodega">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="des_id" nm="pkbda_detalle_entrada_salida_bodega"/>
-      <Cl au="1" df="" nm="des_id" nu="0">
+      <Cl au="1" df="nextval('bda_detalle_entrada_salida_bodega_des_id_seq'::regclass)" nm="des_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="esb_id" nu="0">
@@ -409,9 +409,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_detalle_orden">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="deo_id" nm="pkbda_detalle_orden"/>
-      <Cl au="1" df="" nm="deo_id" nu="0">
+      <Cl au="1" df="nextval('bda_detalle_orden_deo_id_seq'::regclass)" nm="deo_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ors_id" nu="0">
@@ -443,9 +443,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_detalle_registro">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="der_item" nm="pkbda_detalle_registro"/>
-      <Cl au="1" df="" nm="der_item" nu="0">
+      <Cl au="1" df="nextval('bda_detalle_registro_der_item_seq'::regclass)" nm="der_item" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="relme_numero" nu="0">
@@ -532,9 +532,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_entrada_salida_bodega">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="esb_id" nm="pkbda_entrada_salida_bodega"/>
-      <Cl au="1" df="" nm="esb_id" nu="0">
+      <Cl au="1" df="nextval('bda_entrada_salida_bodega_esb_id_seq'::regclass)" nm="esb_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ter_id_elabora" nu="0">
@@ -580,9 +580,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_formulario_registro">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="fore_num_documento" nm="pkbda_formulario_registro"/>
-      <Cl au="1" df="" nm="fore_num_documento" nu="0">
+      <Cl au="1" df="nextval('bda_formulario_registro_fore_num_documento_seq'::regclass)" nm="fore_num_documento" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="fore_fecha" nu="0">
@@ -625,9 +625,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_hacienda">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="hac_id" nm="pkbda_hacienda"/>
-      <Cl au="1" df="" nm="hac_id" nu="0">
+      <Cl au="1" df="nextval('bda_hacienda_hac_id_seq'::regclass)" nm="hac_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="hac_descripcion" nu="0">
@@ -652,9 +652,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_implemento">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="imp_id" nm="pkbda_implemento"/>
-      <Cl au="1" df="" nm="imp_id" nu="0">
+      <Cl au="1" df="nextval('bda_implemento_imp_id_seq'::regclass)" nm="imp_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="imp_descripcion" nu="0">
@@ -673,9 +673,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_inventario">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="inv_id" nm="pkbda_inventario"/>
-      <Cl au="1" df="" nm="inv_id" nu="0">
+      <Cl au="1" df="nextval('bda_inventario_inv_id_seq'::regclass)" nm="inv_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="des_id" nu="0">
@@ -727,9 +727,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_labor">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="lab_id" nm="pkbda_labor"/>
-      <Cl au="1" df="" nm="lab_id" nu="0">
+      <Cl au="1" df="nextval('bda_labor_lab_id_seq'::regclass)" nm="lab_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="lab_descripcion" nu="0">
@@ -754,9 +754,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_maquina">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="maq_id" nm="pkbda_maquina"/>
-      <Cl au="1" df="" nm="maq_id" nu="0">
+      <Cl au="1" df="nextval('bda_maquina_maq_id_seq'::regclass)" nm="maq_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="maq_estado" nu="0">
@@ -805,9 +805,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_marca">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="mar_id" nm="pkbda_marca"/>
-      <Cl au="1" df="" nm="mar_id" nu="0">
+      <Cl au="1" df="nextval('bda_marca_mar_id_seq'::regclass)" nm="mar_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="mar_descripcion" nu="0">
@@ -826,9 +826,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_metodo_riego">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="met_rie_id" nm="pkbda_metodo_riego"/>
-      <Cl au="1" df="" nm="met_rie_id" nu="0">
+      <Cl au="1" df="nextval('bda_metodo_riego_met_rie_id_seq'::regclass)" nm="met_rie_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="met_rie_descripcion" nu="0">
@@ -847,9 +847,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_orden_ejecucion">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="ore_id" nm="pkbda_orden_ejecucion"/>
-      <Cl au="1" df="" nm="ore_id" nu="0">
+      <Cl au="1" df="nextval('bda_orden_ejecucion_ore_id_seq'::regclass)" nm="ore_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ter_id_elabora" nu="0">
@@ -895,9 +895,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_orden_servicio">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="ors_id" nm="pkbda_orden_servicio"/>
-      <Cl au="1" df="" nm="ors_id" nu="0">
+      <Cl au="1" df="nextval('bda_orden_servicio_ors_id_seq'::regclass)" nm="ors_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="maq_id" nu="0">
@@ -951,9 +951,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_producto">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="pro_id" nm="pkbda_producto"/>
-      <Cl au="1" df="" nm="pro_id" nu="0">
+      <Cl au="1" df="nextval('bda_producto_pro_id_seq'::regclass)" nm="pro_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="pro_descripcion" nu="0">
@@ -996,9 +996,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_recordar_me">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="rcm_id" nm="pkbda_recordar_me"/>
-      <Cl au="1" df="" nm="rcm_id" nu="0">
+      <Cl au="1" df="nextval('bda_recordar_me_rcm_id_seq'::regclass)" nm="rcm_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="usuario_id" nu="0">
@@ -1030,9 +1030,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_registro_labores_maquina_equipo">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="relme_numero" nm="pkbda_registro_labores_maquina_equipo"/>
-      <Cl au="1" df="" nm="relme_numero" nu="0">
+      <Cl au="1" df="nextval('bda_registro_labores_maquina_equipo_relme_numero_seq'::regclass)" nm="relme_numero" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="hac_id" nu="0">
@@ -1093,9 +1093,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_registro_tractor">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="rt_item" nm="pkbda_registro_tractor"/>
-      <Cl au="1" df="" nm="rt_item" nu="0">
+      <Cl au="1" df="nextval('bda_registro_tractor_rt_item_seq'::regclass)" nm="rt_item" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="csc_id" nu="0">
@@ -1130,7 +1130,7 @@
     <Tbl UsSo="1" nm="bda_rol">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="rol_id" nm="pkbda_rol"/>
-      <Cl au="1" df="" nm="rol_id" nu="0">
+      <Cl au="1" df="nextval('bda_rol_rol_id_seq'::regclass)" nm="rol_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="rol_nombre" nu="0">
@@ -1156,9 +1156,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_servicio_maquina">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="ser_id" nm="pkbda_servicio_maquina"/>
-      <Cl au="1" df="" nm="ser_id" nu="0">
+      <Cl au="1" df="nextval('bda_servicio_maquina_ser_id_seq'::regclass)" nm="ser_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ser_descripcion" nu="0">
@@ -1180,9 +1180,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_siembra">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="sie_id" nm="pkbda_siembra"/>
-      <Cl au="1" df="" nm="sie_id" nu="0">
+      <Cl au="1" df="nextval('bda_siembra_sie_id_seq'::regclass)" nm="sie_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="sue_id" nu="0">
@@ -1248,9 +1248,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_suerte">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="sue_id" nm="pkbda_suerte"/>
-      <Cl au="1" df="" nm="sue_id" nu="0">
+      <Cl au="1" df="nextval('bda_suerte_sue_id_seq'::regclass)" nm="sue_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="sue_descripcion" nu="0">
@@ -1280,9 +1280,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_tercero">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="ter_id" nm="pkbda_tercero"/>
-      <Cl au="1" df="" nm="ter_id" nu="0">
+      <Cl au="1" df="nextval('bda_tercero_ter_id_seq'::regclass)" nm="ter_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ter_nombre" nu="0">
@@ -1337,9 +1337,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_tipo_documento">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="tpd_id" nm="pkbda_tipo_documento"/>
-      <Cl au="1" df="" nm="tpd_id" nu="0">
+      <Cl au="1" df="nextval('bda_tipo_documento_tpd_id_seq'::regclass)" nm="tpd_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tpd_descripcion" nu="0">
@@ -1365,9 +1365,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_tipo_id">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="tpi_id" nm="pkbda_tipo_id"/>
-      <Cl au="1" df="" nm="tpi_id" nu="0">
+      <Cl au="1" df="nextval('bda_tipo_id_tpi_id_seq'::regclass)" nm="tpi_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tpi_descripcion" nu="0">
@@ -1386,9 +1386,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_tipo_mantenimiento">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="tma_id" nm="pkbda_tipo_mantenimiento"/>
-      <Cl au="1" df="" nm="tma_id" nu="0">
+      <Cl au="1" df="nextval('bda_tipo_mantenimiento_tma_id_seq'::regclass)" nm="tma_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tma_descripcion" nu="0">
@@ -1407,9 +1407,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_tipo_producto">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="tpr_id" nm="pkbda_tipo_producto"/>
-      <Cl au="1" df="" nm="tpr_id" nu="0">
+      <Cl au="1" df="nextval('bda_tipo_producto_tpr_id_seq'::regclass)" nm="tpr_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tpr_descripcion" nu="0">
@@ -1428,9 +1428,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_tipo_suelo">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="tis_id" nm="pkbda_tipo_suelo"/>
-      <Cl au="1" df="" nm="tis_id" nu="0">
+      <Cl au="1" df="nextval('bda_tipo_suelo_tis_id_seq'::regclass)" nm="tis_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tis_descripcion" nu="0">
@@ -1449,9 +1449,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_tipo_tercero">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="tit_id" nm="pkbda_tipo_tercero"/>
-      <Cl au="1" df="" nm="tit_id" nu="0">
+      <Cl au="1" df="nextval('bda_tipo_tercero_tit_id_seq'::regclass)" nm="tit_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tit_descripcion" nu="0">
@@ -1470,9 +1470,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_turno">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="tur_id" nm="pkbda_turno"/>
-      <Cl au="1" df="" nm="tur_id" nu="0">
+      <Cl au="1" df="nextval('bda_turno_tur_id_seq'::regclass)" nm="tur_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tur_descripcion" nu="0">
@@ -1500,9 +1500,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_unidad_medida">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="unm_id" nm="pkbda_unidad_medida"/>
-      <Cl au="1" df="" nm="unm_id" nu="0">
+      <Cl au="1" df="nextval('bda_unidad_medida_unm_id_seq'::regclass)" nm="unm_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="unm_descripcion" nu="0">
@@ -1521,9 +1521,9 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="bda_usuario">
-      <TblOpts/>
+      <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="usr_id" nm="pkbda_usuario"/>
-      <Cl au="1" df="" nm="usr_id" nu="0">
+      <Cl au="1" df="nextval('bda_usuario_usr_id_seq'::regclass)" nm="usr_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="usr_user" nu="0">
@@ -1573,7 +1573,7 @@
     <Tbl UsSo="1" nm="bda_usuario_rol">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="url_id" nm="pkbda_usuario_rol"/>
-      <Cl au="1" df="" nm="url_id" nu="0">
+      <Cl au="1" df="nextval('bda_usuario_rol_url_id_seq'::regclass)" nm="url_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="usr_usuario_id" nu="0">
@@ -1597,7 +1597,7 @@
       </Fk>
       <Idx clu="0" ftx="0" nm="bda_rol_usuario_rol_id_Idx" spa="0" unq="0">
         <ClNs>rol_id</ClNs>
-        <OptTx/>
+        <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="bda_rol_usuario_usr_usuario_id_Idx" spa="0" unq="0">
         <ClNs>usr_usuario_id</ClNs>
@@ -1652,6 +1652,129 @@ $$
   LANGUAGE plpgsql VOLATILE 
   COST 100;</src>
     </Proc>
+    <Seq incr="1" nm="bda_bitacora_bit_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_cargo_car_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_contro_riego_pluviosidad_crp_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_control_salida_cana_csc_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_dato_usuario_dus_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_detalle_agua_surco_deaas_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_detalle_caudal_surco_decs_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_detalle_ejecucion_dee_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_detalle_entrada_salida_bodega_des_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_detalle_orden_deo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_detalle_registro_der_item_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_entrada_salida_bodega_esb_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_formulario_registro_fore_num_documento_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_hacienda_hac_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_implemento_imp_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_inventario_inv_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_labor_lab_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_maquina_maq_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_marca_mar_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_metodo_riego_met_rie_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_orden_ejecucion_ore_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_orden_servicio_ors_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_producto_pro_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_recordar_me_rcm_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_registro_labores_maquina_equipo_relme_numero_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_registro_tractor_rt_item_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_rol_rol_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_servicio_maquina_ser_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_siembra_sie_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_suerte_sue_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tercero_ter_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tipo_documento_tpd_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tipo_id_tpi_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tipo_mantenimiento_tma_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tipo_producto_tpr_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tipo_suelo_tis_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tipo_tercero_tit_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_turno_tur_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_unidad_medida_unm_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_usuario_rol_url_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_usuario_usr_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
     <CustomTypes/>
   </Sch>
   <Dgm nm="public">
@@ -1683,7 +1806,7 @@ $$
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_dato_usuario" x="464" y="318"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_bitacora" x="366" y="49"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_cargo" x="989" y="214"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_tercero" x="982" y="71"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_tercero" x="981" y="71"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_id" x="986" y="376"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tercero" x="1295" y="165"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_caudal_surco" x="48" y="715"/>
@@ -1705,16 +1828,16 @@ $$
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_marca" x="2054" y="597"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_producto" x="2058" y="735"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_producto" x="2402" y="574"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_labor" x="2401" y="347"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_labor" x="2431" y="350"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_registro" x="2873" y="296"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_maquina" x="2861" y="591"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_mantenimiento" x="3378" y="333"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_mantenimiento" x="3395" y="344"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_orden_servicio" x="3385" y="523"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_servicio_maquina" x="3766" y="439"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_orden" x="3787" y="642"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_orden_ejecucion" x="3394" y="858"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_ejecucion" x="3854" y="795"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_entrada_salida_bodega" x="3842" y="998"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_servicio_maquina" x="3791" y="561"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_orden" x="3795" y="376"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_orden_ejecucion" x="3386" y="832"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_ejecucion" x="3800" y="748"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_entrada_salida_bodega" x="3797" y="987"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_entrada_salida_bodega" x="3386" y="1055"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_inventario" x="2855" y="1019"/>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_bitacora.fk_bda_bitacora_bda_usuario" parentEdge="" positioner="">
