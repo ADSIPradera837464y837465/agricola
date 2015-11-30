@@ -17,6 +17,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    * Obtiene todos los datos de la tabla
    *  @version 1.0.0
    * @return  [stdClass | boolean]
+   
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
