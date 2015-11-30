@@ -1,7 +1,7 @@
 
 <?php
 
-use FStudio\model\base\implementoTableBase;
+use FStudio\model\base\implementoBaseTable;
 
 /**
  * clase para manejar la tabla implemento
@@ -11,7 +11,7 @@ use FStudio\model\base\implementoTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class implementoTable extends implementoTableBase {
+class implementoTable extends implementoBaseTable {
 
   /**
    * obtiene todos los datos de la tabla

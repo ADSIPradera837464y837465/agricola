@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\unidadMedidaTableBase;
+use FStudio\model\base\unidadMedidaBaseTable;
 
 /**
  * clase para manejar la tabla unidadMedida
@@ -11,7 +11,7 @@ use FStudio\model\base\unidadMedidaTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class unidadMedidaTable extends unidadMedidaTableBase {
+class unidadMedidaTable extends unidadMedidaBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

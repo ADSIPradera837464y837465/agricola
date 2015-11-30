@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\cargoTableBase;
+use FStudio\model\base\cargoBaseTable;
 
 /**
  * Description of cargoTable
@@ -10,7 +10,7 @@ use FStudio\model\base\cargoTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class cargoTable extends cargoTableBase {
+class cargoTable extends cargoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

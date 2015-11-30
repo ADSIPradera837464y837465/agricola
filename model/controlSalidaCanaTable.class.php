@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\controlSalidaCanaTableBase;
+use FStudio\model\base\controlSalidaCanaBaseTable;
 
 /**
  * Description of controlSalidaCanaTable
@@ -10,7 +10,7 @@ use FStudio\model\base\controlSalidaCanaTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class controlSalidaCanaTable extends controlSalidaCanaTableBase {
+class controlSalidaCanaTable extends controlSalidaCanaBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

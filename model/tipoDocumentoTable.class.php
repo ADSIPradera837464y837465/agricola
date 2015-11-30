@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\tipoDocumentoTableBase;
+use FStudio\model\base\tipoDocumentoBaseTable;
 
 /**
  * clase para manejar la tabla tipoDocumento
@@ -11,7 +11,7 @@ use FStudio\model\base\tipoDocumentoTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class tipoDocumentoTable extends tipoDocumentoTableBase {
+class tipoDocumentoTable extends tipoDocumentoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

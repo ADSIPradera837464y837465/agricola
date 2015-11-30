@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\tipoSueloTableBase;
+use FStudio\model\base\tipoSueloBaseTable;
 
 
 /**
@@ -11,7 +11,7 @@ use FStudio\model\base\tipoSueloTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class tipoSueloTable extends tipoSueloTableBase {
+class tipoSueloTable extends tipoSueloBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

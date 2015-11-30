@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\productoTableBase;
+use FStudio\model\base\productoBaseTable;
 
 /**
  * Description of registroTractorTable
@@ -10,7 +10,7 @@ use FStudio\model\base\productoTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class turno extends turnoTableBase {
+class turno extends turnoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

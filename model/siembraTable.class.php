@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\siembraTableBase;
+use FStudio\model\base\siembraBaseTable;
 
 /**
  * Description of siembraTable
@@ -10,7 +10,7 @@ use FStudio\model\base\siembraTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class siembraTable extends siembraTableBase {
+class siembraTable extends siembraBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

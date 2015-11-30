@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\tipoProductoTableBase;
+use FStudio\model\base\tipoProductoBaseTable;
 
 /**
  * clase para manejar la tabla tipoProducto
@@ -11,7 +11,7 @@ use FStudio\model\base\tipoProductoTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class tipoProductoTable extends tipoProductoTableBase {
+class tipoProductoTable extends tipoProductoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

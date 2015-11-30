@@ -8,7 +8,7 @@
  * @subpackage table
  * @version 1.0.0
  */
-class tipoMantenimientoTable extends tipoMantenimientoTableBase {
+class tipoMantenimientoTable extends tipoMantenimientoBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);

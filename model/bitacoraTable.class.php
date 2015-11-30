@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\bitacoraTableBase;
+use FStudio\model\base\bitacoraBaseTable;
 /**
  * Description of bitacoraTable
  * @author Diana Meneses <meneses_d@rocketmail.com>
@@ -9,7 +9,7 @@ use FStudio\model\base\bitacoraTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class bitacoraTable extends bitacoraTableBase {
+class bitacoraTable extends bitacoraBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

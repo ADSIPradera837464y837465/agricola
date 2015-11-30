@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\maquinaTableBase;
+use FStudio\model\base\maquinaBaseTable;
 
 /**
  * Description ofmaquinaTable
@@ -10,7 +10,7 @@ use FStudio\model\base\maquinaTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class aguaSurcoTable extends maquinaTableBase {
+class aguaSurcoTable extends maquinaBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

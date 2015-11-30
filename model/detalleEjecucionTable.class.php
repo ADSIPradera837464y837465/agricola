@@ -8,7 +8,7 @@
  * @subpackage table
  * @version 1.0.0
  */
-class detalleEjecucionTable extends detalleEjecucionTableBase {
+class detalleEjecucionTable extends detalleEjecucionBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

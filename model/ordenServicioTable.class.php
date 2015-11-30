@@ -8,7 +8,7 @@
  * @subpackage base
  * @version 1.0.0
  */
-class ordenServicioTable extends ordenServicioTableBase {
+class ordenServicioTable extends ordenServicioBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);

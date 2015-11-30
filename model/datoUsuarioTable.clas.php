@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\datoUsuarioTableBase;
+use FStudio\model\base\datoUsuarioBaseTable;
 
 /**
  * Description of dba_dato_usuario
@@ -10,7 +10,7 @@ use FStudio\model\base\datoUsuarioTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class datoUsuarioTable extends datoUsuarioTableBase {
+class datoUsuarioTable extends datoUsuarioBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

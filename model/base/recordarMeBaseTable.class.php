@@ -44,8 +44,16 @@ class recordarMeBaseTable extends model {
    * longitud del valor hash del usuario
    */
   const HASH_COOKIE_LENGTH = 32;
+
+  /**
+   * fecha de creacion del registro
+   */
   const CREATED_AT = 'rcm_created_at';
-  const _SEQUENCE = 'recordar_me_id_seq';
+
+  /**
+   * secuencia de la tabla para la llave foranea
+   */
+  const _SEQUENCE = '';
 
   /**
    * nombre de la tabla
@@ -53,48 +61,59 @@ class recordarMeBaseTable extends model {
   const _TABLE = 'bda_recordar_me';
 
   /**
-   *
-   * @var integer
-   */
-  private $id;
-
-  /**
-   *
-   * @var integer
-   */
-  private $usuario_id;
-
-  /**
-   *
-   * @var varchar
-   */
-  private $ip_address;
-
-  /**
-   *
-   * @var varchar
-   */
-  private $hash_cookie;
-
-  /**
-   *
-   * @var date
-   */
-  private $created_at;
-
-  /**
    * Configuración del sistema
    * @var config
    */
   protected $config;
 
-  function __construct(config $config, $id = null, $usuario_id = null, $ip_address = null, $hash_cookie = null, $created_at = null) {
+  /**
+   * ID de la tabla
+   * @var integer
+   */
+  private $id;
+
+  /**
+   * identificacion del usuario
+   * @var integer
+   */
+  private $usuario_id;
+
+  /**
+   * direccion ip del usuario
+   * @var string
+   * 
+   */
+  private $ip_address;
+
+  /**
+   * valor hash del usuario
+   * @var string
+   */
+  private $hash_cookie;
+
+  /**
+   * fecha de creacion del registro
+   * @var date
+   */
+  private $created_at;
+
+  /**
+   * Constructor de la clase recordarMeBaseTable
+   * @version 1.0.0
+   * @param config $config
+   * @param integer $id
+   * @param integer $usuarioId
+   * @param string $ipAddress
+   * @param string $hashCookie
+   * @param date_time $createdAt
+   */
+  public function __construct(config $config, $id = null, $usuarioId = null, $ipAddress = null, $hashCookie = null, $createdAt = null) {
     $this->config = $config;
     $this->id = $id;
-    $this->usuarioId = $usuario_id;
-    $this->ipAddress = $ip_address;
-    $this->hashCookie = $hash_cookie;
-    $this->createdAt = $created_at;
+    $this->usuarioId = $usuarioId;
+    $this->ipAddress = $ipAddress;
+    $this->hashCookie = $hashCookie;
+    $this->createdAt = $createdAt;
   }
 
   /**
@@ -108,6 +127,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna el id del registro
+   * @version 1.0.0
    * @return integer
    */
   public function getId() {
@@ -116,6 +136,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna id del usuario
+   * @version 1.0.0
    * @return integer
    */
   public function getUsuarioId() {
@@ -124,7 +145,8 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna direccion ip
-   * @return varchar
+   ** @version 1.0.0 
+   * @return string
    */
   public function getIpAddress() {
     return $this->ip_address;
@@ -132,7 +154,8 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna el hash de usuario
-   * @varchar
+   * @version 1.0.0 
+   * @return string
    */
   public function getHashCookie() {
     return $this->hash_cookie;
@@ -140,6 +163,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna la fecha de la creacion
+   * @version 1.0.0 
    * @return date
    */
   public function getCreatedAt() {
@@ -149,7 +173,7 @@ class recordarMeBaseTable extends model {
   /**
    * Fija la configuracion del sistema
    * version 1.0.0
-   * config $config configuracion del sistema
+   * config $config objeto con configuracion del sistema
    */
   public function setConfig(config $config) {
     $this->config = $config;
@@ -157,6 +181,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * Fija el id para el registro de la tabla
+   *version 1.0.0 
    * @param integer $id
    */
   public function setId($id) {
@@ -165,6 +190,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * fijar el id del usuario
+   * version 1.0.0
    * @param integer $usuario_id
    */
   public function setUsuarioId($usuario_id) {
@@ -173,7 +199,8 @@ class recordarMeBaseTable extends model {
 
   /**
    * fijar la direccion ip del usuario
-   * @param varchar $ip_address
+   * version 1.0.0
+   * @param string $ip_address
    */
   public function setIpAddress($ip_address) {
     $this->ip_address = $ip_address;
@@ -181,14 +208,16 @@ class recordarMeBaseTable extends model {
 
   /**
    * fijar el valor hash del usuario
-   * @param varchar $hash_cookie
+   * version 1.0.0
+   * @param string $hash_cookie
    */
   public function setHashCookie($hash_cookie) {
     $this->hash_cookie = $hash_cookie;
   }
 
   /**
-   * 
+   * fijar la fecha de creacion del registro
+   * version 1.0.0
    * @param date_time $created_at
    */
   public function setCreatedAt($created_at) {

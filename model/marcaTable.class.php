@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\marcaTableBase;
+use FStudio\model\base\marcaBaseTable;
 
 /**
  * clase para manejar la tabla marca
@@ -11,7 +11,7 @@ use FStudio\model\base\marcaTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class marcaTable extends marcaTableBase {
+class marcaTable extends marcaBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

@@ -8,7 +8,7 @@
  * @subpackage table
  * @version 1.0.0
  */
-class controlRiegoPluviosidadTable extends controlRiegoPluviosidadTableBase {
+class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

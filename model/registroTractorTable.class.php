@@ -10,7 +10,7 @@ use FStudio\model\base\productoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class registroTractor extends registroTractorTableBase {
+class registroTractor extends registroTractorBaseTable {
   /**
    * Obtiene todos los datos de la tabla
    * @return [stdClass | boolean]

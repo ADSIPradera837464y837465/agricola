@@ -1,16 +1,16 @@
 <?php
 
-use FStudio\model\base\caudalSurcoTableBase;
+use FStudio\model\base\caudalSurcoBaseTable;
 
 /**
- * Description of caudalSurcoTableBase
+ * Description of caudalSurcoBaseTable
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
  * @package 
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
-class caudalSurcoTable extends caudalSurcoTableBase {
+class caudalSurcoTable extends caudalSurcoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

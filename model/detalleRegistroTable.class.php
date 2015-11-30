@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\detalleRegistroTableBase;
+use FStudio\model\base\detalleRegistroBaseTable;
 
 /**
  * Description of detalleRegistroTable
@@ -10,7 +10,7 @@ use FStudio\model\base\detalleRegistroTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class detalleRegistroTable extends detalleRegistroTableBase {
+class detalleRegistroTable extends detalleRegistroBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

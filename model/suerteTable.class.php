@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\suerteTableBase;
+use FStudio\model\base\suerteBaseTable;
 
 
 /**
@@ -11,7 +11,7 @@ use FStudio\model\base\suerteTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class suerteTable extends suerteTableBase {
+class suerteTable extends suerteBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\entradaSalidaBodegaTableBase;
+use FStudio\model\base\entradaSalidaBodegaBaseTable;
 
 /**
  * Description of entradaSalidaBodegaTable
@@ -10,7 +10,7 @@ use FStudio\model\base\entradaSalidaBodegaTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class entradaSalidaBodegaTable extends entradaSalidaBodegaTableBase {
+class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

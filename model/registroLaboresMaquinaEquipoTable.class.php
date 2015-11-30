@@ -1,7 +1,7 @@
 
 <?php
 
-use FStudio\model\base\registroLaboresMaquinaEquipoTableBase;
+use FStudio\model\base\registroLaboresMaquinaEquipoBaseTable;
 
 /**
  * clase para manejar la tabla registroLaboresMaquinaEquipo
@@ -11,7 +11,7 @@ use FStudio\model\base\registroLaboresMaquinaEquipoTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class registroLaboresMaquinaEquipoTable extends registroLaboresMaquinaEquipoTableBase {
+class registroLaboresMaquinaEquipoTable extends registroLaboresMaquinaEquipoBaseTable {
 
   /**
    * obtiene todos los datos de la tabla

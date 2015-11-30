@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\terceroTableBase;
+use FStudio\model\base\terceroBaseTable;
 
 /**
  * Description of terceroTable
@@ -10,7 +10,7 @@ use FStudio\model\base\terceroTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class terceroTable extends terceroTableBase {
+class terceroTable extends terceroBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

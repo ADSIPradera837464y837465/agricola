@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\aguaSurcoTableBase;
+use FStudio\model\base\aguaSurcoBaseTable;
 
 /**
  * Description of aguaSurcoTable
@@ -10,7 +10,7 @@ use FStudio\model\base\aguaSurcoTableBase;
  * @subpackage table
  * @version 1.0.0
  */
-class aguaSurcoTable extends aguaSurcoTableBase {
+class aguaSurcoTable extends aguaSurcoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

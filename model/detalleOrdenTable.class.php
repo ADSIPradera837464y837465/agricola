@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\detalleOrdenTableBase;
+use FStudio\model\base\detalleOrdenBaseTable;
 
 /**
  * Description of detalleOrdenTable
@@ -10,7 +10,7 @@ use FStudio\model\base\detalleOrdenTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class detalleOrdenTable extends detalleOrdenTableBase {
+class detalleOrdenTable extends detalleOrdenBaseTable {
 
     /**
      * Obtiene todos los datos de la tabla

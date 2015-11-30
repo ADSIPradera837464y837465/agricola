@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\laborTableBase;
+use FStudio\model\base\laborBaseTable;
 
 /**
  * Clase para manejar la tabla labor
@@ -10,7 +10,7 @@ use FStudio\model\base\laborTableBase;
  * @subpackage table 
  * @version 1.0.0
  */
-class laborTable extends laborTableBase {
+class laborTable extends laborBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla

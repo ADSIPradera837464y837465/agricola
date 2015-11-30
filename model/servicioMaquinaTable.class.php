@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\servicioMaquinaTableBase;
+use FStudio\model\base\servicioMaquinaBaseTable;
 
 /**
  * Description of servicioMaquinaTable
@@ -10,7 +10,7 @@ use FStudio\model\base\servicioMaquinaTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class servicioMaquinaTable extends servicioMaquinaTableBase {
+class servicioMaquinaTable extends servicioMaquinaBaseTable {
 
     /**
      * Obtiene todos los datos de la tabla

@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\tipoIdTableBase;
+use FStudio\model\base\tipoIdBaseTable;
 
 /**
  * Description of tipoIdTable
@@ -10,7 +10,7 @@ use FStudio\model\base\tipoIdTableBase;
  * @subpackage base
  * @version 1.0.0
  */
-class tipoIdTable extends tipoIdTableBase {
+class tipoIdTable extends tipoIdBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla
