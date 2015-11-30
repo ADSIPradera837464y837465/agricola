@@ -1,23 +1,26 @@
 <?php
 
+use FStudio\model\base\suerteTableBase;
+
+
 /**
- * Description of tipoSueloTable
+ * Description of suerteTable
  * @author Jordan Marles <jordanmarles@hotmail.es>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
  */
-class tipoSueloTable extends tipoSueloTableBase {
+class suerteTable extends suerteTableBase {
 
   /**
    * Obtiene todos los datos de la tabla
    * @version 1.0.0
    * @return [stdClass | boolean]
    */
-  static public function getAll() {
-    $conn = getConexion($this->config);
-    $sql = 'SELECT tis_id, tis_descripcion, created_at, updated_at, deleted_at FROM dba_tipo_suelo WHERE deleted_at IS NULL ORDER BY created_at ASC';
+  public function getAll() {
+    $conn = $this->getConexion($this->config);
+    $sql = 'SELECT sue_id, sue_descripcion, sue_area, created_at, updated_at, deleted_at, tis_id FROM bda_suerte WHERE deleted_at IS NULL ORDER BY created_at ASC';
     $respuesta = $conn->prepare($sql);
     $respuesta->execute();
     return ($respuesta->rowCount() > 0 ) ? $respuesta->fetchAll(PDO::FETCH_OBJ) : false;
@@ -29,11 +32,11 @@ class tipoSueloTable extends tipoSueloTableBase {
    * @param integer $id
    * @return [stdClass | boolean]
    */
-  static public function getById($id) {
-    $conn = getConexion($this->config);
-    $sql = 'SELECT tis_id, tis_descripcion, created_at, updated_at, deleted_at FROM dba_tipo_suelo WHERE deleted_at IS NULL AND tis_id = :id';
+  public function getById($id = null) {
+    $conn = $this->getConnection($this->config);
+    $sql = 'SELECT sue_id, sue_descripcion, sue_area, created_at, updated_at, deleted_at, tis_id FROM bda_suerte WHERE deleted_at IS NULL';
     $params = array(
-        ':tis_id' => $id
+        ':sue_id' => ($id !== null) ? $id : $this->getId()
     );
     $respuesta = $conn->prepare($sql);
     $respuesta->execute($params);
@@ -46,15 +49,18 @@ class tipoSueloTable extends tipoSueloTableBase {
    * @return integer
    */
   public function save() {
-    $conn = getConexion($this->config);
-    $sql = 'INSERT INTO dba_tipo_suelo (tis_descripcion) VALUES'
-            . '(:tis_descripcion)';
+    $conn = $this->getConnection($this->config);
+    $sql = 'INSERT INTO bda_suerte (sue_descripcion, sue_area, tis_id) VALUES'
+            . '(:sue_descripcion, :sue_area, :tis_id)';
     $params = array(
-        ':tis_descripcion' => $this->getDescripcion(),
+        ':sue_descripcion' => $this->getDescripcion(),
+        ':sue_area' => $this->getArea(),
+        ':tis_id' => $this->getTipoSueloId()
     );
     $respuesta = $conn->prepare($sql);
     $respuesta->execute($params);
-    return $conn->lastInsertId(self::SECUENCIA);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**
@@ -63,10 +69,12 @@ class tipoSueloTable extends tipoSueloTableBase {
    * @return boolean
    */
   public function update() {
-    $conn = getConexion($this->config);
-    $sql = 'UPDATE dba_tipo_suelo SET tis_descripcion = :tis_descripcion WHERE tis_id = :tis_id';
+    $conn = $this->getConnection($this->config);
+    $sql = 'UPDATE bda_suerte SET sue_descripcion = :sue_descripcion, sue_area = :sue_area, tis_id = :tis_id WHERE sue_id = :sue_id';
     $params = array(
-        ':tis_descripcion' => $this->getDescripcion(),
+        ':sue_descripcion' => $this->getDescripcion(),
+        ':sue_area' => $this->getArea(),
+        ':tis_id' => $this->getTipoSueloId()
     );
     $respuesta = $conn->prepare($sql);
     $respuesta->execute($params);
@@ -81,22 +89,23 @@ class tipoSueloTable extends tipoSueloTableBase {
    * @throws PDOException
    */
   public function delete($deleteLogical = true) {
-    $conn = getConexion($this->config);
+    $conn = $this->getConnection($this->config);
+    $params = array(
+        ':sue_id' => $this->getId()
+    );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE dba_tipo_suelo SET deleted_at = now() WHERE tis_id = :tis_id';
-        $params = array (
-        ':tis_id' => $this->getId()
-        );
+        $sql = 'UPDATE bda_suerte SET deleted_at = now() WHERE sue_id = :sue_id';
         break;
       case false:
-        $sql = 'DELETE FROM dba_suerte WHERE id = :sue_id';
+        $sql = 'DELETE FROM bda_suerte WHERE sue_id = :sue_id';
         break;
       default:
         throw new PDOException('Por favor borre de verdad, no sea mañoso');
     }
     $respuesta = $conn->prepare($sql);
     $respuesta->execute($params);
+    return true;
   }
 
 }
