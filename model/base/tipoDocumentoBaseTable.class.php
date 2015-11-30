@@ -11,14 +11,14 @@ use FStudio\myConfig as config;
  * @package 
  * @subpackage model
  * @subpackage base
- * @version 1.0.0
+ * @version 1.0.0  
  */
 class tipoDocumentoBaseTable extends model {
 
   /**
    * ID de la tabla
    */
-  const ID = 'tip_id';
+  const ID = 'tpd_id';
 
   /**
    * Descripcion del documento
