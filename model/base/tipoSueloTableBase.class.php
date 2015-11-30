@@ -93,16 +93,14 @@ class tipoSueloTableBase extends model {
   private $deletedAt;
   
   /**
-   * Constructor de la clase bitacoraBaseTable
+   * Constructor de la clase tipoSueloTableBase
    * @version 1.0.0
    * @param config $config
    * @param integer $id
    * @param string $descripcion
-   * @param integer $area
    * @param date_time $createdAt
    * @param date_time $upDatedAt
    * @param date_time $deletedAt
-   * @param integer $tipoSueloId
    */
   
   public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $upDatedAt = null, $deletedAt = null) {

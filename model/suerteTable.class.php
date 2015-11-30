@@ -72,6 +72,7 @@ class suerteTable extends suerteTableBase {
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE bda_suerte SET sue_descripcion = :sue_descripcion, sue_area = :sue_area, tis_id = :tis_id WHERE sue_id = :sue_id';
     $params = array(
+        ':sue_id' => $this->getId(),
         ':sue_descripcion' => $this->getDescripcion(),
         ':sue_area' => $this->getArea(),
         ':tis_id' => $this->getTipoSueloId()

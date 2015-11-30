@@ -70,7 +70,8 @@ class tipoSueloTable extends tipoSueloTableBase {
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE dba_tipo_suelo SET tis_descripcion = :tis_descripcion WHERE tis_id = :tis_id';
     $params = array(
-        ':tis_descripcion' => $this->getDescripcion(),
+        ':tis_id' => $this->getId(),
+        ':tis_descripcion' => $this->getDescripcion()
     );
     $respuesta = $conn->prepare($sql);
     $respuesta->execute($params);
@@ -94,7 +95,7 @@ class tipoSueloTable extends tipoSueloTableBase {
         $sql = 'UPDATE dba_tipo_suelo SET deleted_at = now() WHERE tis_id = :tis_id';
         break;
       case false:
-        $sql = 'DELETE FROM dba_tipo_suelo WHERE id = :tis_id';
+        $sql = 'DELETE FROM dba_tipo_suelo WHERE tis_id = :tis_id';
         break;
       default:
         throw new PDOException('Por favor borre de verdad, no sea mañoso');

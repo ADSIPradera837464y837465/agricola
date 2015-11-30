@@ -135,16 +135,19 @@ class entradaSalidaBodegaTableBase extends model {
   private $esbDeletedAt;
 
   /**
-   * Constructor de la clase cargoTableBase
-   * @version 1.0.0
+   * Constructor de la clase entradaSalidaBodegTableBase
    * @param config $config
-   * @param integer $id
-   * @param string $descripcion
-   * @param date_time $createdAt
-   * @param date_time $updatedAt
-   * @param date_time $deletedAt
+   * @param type $id
+   * @param type $terIdElabora
+   * @param type $terIdSolicita
+   * @param type $tpdId
+   * @param \FStudio\model\base\date $esbFecha
+   * @param type $esbObservacion
+   * @param \FStudio\model\base\date_time $esbCreatedAt
+   * @param \FStudio\model\base\date_time $esbUpdatedAt
+   * @param \FStudio\model\base\date $esbDeletedAt
    */
-  public function __construct(config $config = null, $id = null, $terIdElabora = null, $terIdSolicita = null, $tpdId = null, date $esbFecha = null, $esbObservacion, date_time $esbCreatedAt = null, date_time $esbUpdatedAt = null, date $esbDeletedAt = null) {
+  public function __construct(config $config, $id = null, $terIdElabora = null, $terIdSolicita = null, $tpdId = null, date $esbFecha = null, $esbObservacion = null, date_time $esbCreatedAt = null, date_time $esbUpdatedAt = null, date $esbDeletedAt = null) {
     $this->config = $config;
     $this->id = $id;
     $this->terIdElabora = $terIdElabora;

@@ -115,7 +115,7 @@ class suerteTableBase extends model {
   private $tipoSueloId;
   
   /**
-   * Constructor de la clase bitacoraBaseTable
+   * Constructor de la clase suerteTableBase
    * @version 1.0.0
    * @param config $config
    * @param integer $id

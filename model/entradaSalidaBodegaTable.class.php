@@ -72,7 +72,12 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaTableBase {
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE bda_entrada_salida_bodega SET ter_id_elabora = :ter_id_elabora, ter_id_solicita = :ter_id_solicita, tpd_id = :tpd_id, esb_fecha = :esb_fecha, esb_observacion = :esb_observacion WHERE esb_id = :esb_id';
     $params = array(
-        ':esb_id' => $this->getId()
+        ':esb_id' => $this->getId(),
+        ':ter_id_elabora' => $this->getTerIdElabora(),
+        ':ter_id_solicita' => $this->getTerIdSolicita(),
+        ':tpd_id' => $this->getTpdId(),
+        ':esb_fecha' => $this->getEsbFecha(),
+        ':esb_observacion' => $this->getEsbObservacion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
