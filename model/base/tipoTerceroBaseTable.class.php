@@ -13,7 +13,7 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-class terceroBaseTable extends model {
+class tipoTerceroBaseTable extends model {
 
   /**
    * ID de la tabla

@@ -8,7 +8,7 @@ use FStudio\myConfig as config;
 /**
  * Description of terceroBaseTable
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
