@@ -9,11 +9,18 @@
       <thead>
         <tr>
           <th><input type="checkbox" id="" name=""></th>
-          <th>Usuario</th>
-          <th>Ultimo ingreso</th>
-          <th>Creado en</th>
-          <th>Activo</th>
-          <th>Acciones</th>
+          <th>Numero</th>
+          <th>ter_id</th>
+          <th>lab_id</th>
+          <th>sue_id</th>
+          <th>pro_id</th>
+          <th>unm_id</th>
+          <th>maq_id</th>
+          <th>der_tiempo_muerto</th>
+          <th>der_total_horas_trabajadas</th>
+          <th>der_hora_inicio</th>
+          <th>der_hora_fin</th>
+          <th>der_created_at</th>
         </tr>
       </thead>
       <tbody>

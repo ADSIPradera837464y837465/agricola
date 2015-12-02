@@ -19,8 +19,8 @@ class detalleRegistro extends controller implements action {
 
     public function execute() {
       $config = $this->getConfig();
-      $detalleRegistro = new usuarioTable($config);
-      $this->objUsuario = $detalleRegistro->getAll();
+      $detalleRegistro = new detalleRegistro($config);
+      $this->objdetalleRegistro = $detalleRegistro->getAll();
       // así declaramos la vista a usar
       $this->defineView('detalleRegistro', 'detalleRegistro', 'html');
     }
