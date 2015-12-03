@@ -37,7 +37,7 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
             . 'FROM bda_detalle_entrada_salida_bodega WHERE des_deleted_at IS NULL '
             . 'AND des_id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id : $this->getById()
+        ':des_id' => ($id !== null) ? $id : $this->getById()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -53,9 +53,9 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
     $conn = $this->getConnection($this->config);
     $sql = 'INSERT INTO bda_detalle_entrada_salida_bodega (esb_id , pro_id , unm_id  , des_cantidad ,des_precio) VALUES (:esb_id , :pro_id , :unm_id  , :des_cantidad ,:des_precio)';
     $params = array(
-        ':esb_id'=> $this->getId(), 
-        ':pro_id' => $this->getId(),
-        ':unm_id' => $this->getId(),
+        ':esb_id'=> $this->getEsbId(), 
+        ':pro_id' => $this->getProId(),
+        ':unm_id' => $this->getUmnId(),
         ':des_cantidad'=> $this->getCantidad(),
         ':des_precio'=> $this->getPrecio(),
     );
@@ -74,9 +74,9 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE bda_detalle_entrada_salida_bodega SET esb_id = :esb_id, pro_id = :pro_id , unm_id = :unm_id ,des_cantidad = :des_cantidad, des_precio = :des_precio WHERE id = :id';
     $params = array(
-        ':esb_id'=> $this->getId(), 
-        ':pro_id' => $this->getId(),
-        ':unm_id' => $this->getId(),
+        ':esb_id'=> $this->getEsbId(), 
+        ':pro_id' => $this->getProId(),
+        ':unm_id' => $this->getUmnId(),
         ':des_cantidad'=> $this->getCantidad(),
         ':des_precio'=> $this->getPrecio(),
     );
@@ -95,14 +95,14 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':id' => $this->getId()
+        ':des_id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_detalle_entrada_salida_bodega SET des_deleted_at = now() WHERE des_id = :id';
+        $sql = 'UPDATE bda_detalle_entrada_salida_bodega SET des_deleted_at = now() WHERE des_id = :des_id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_detalle_entrada_salida_bodega WHERE des_id = :id';
+        $sql = 'DELETE FROM bda_detalle_entrada_salida_bodega WHERE des_id = :des_id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');

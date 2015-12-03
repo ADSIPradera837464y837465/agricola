@@ -1,5 +1,4 @@
 <?php
-
 require_once '../model/base/usuarioBaseTable.class.php';
 require_once '../model/usuarioTable.class.php';
 

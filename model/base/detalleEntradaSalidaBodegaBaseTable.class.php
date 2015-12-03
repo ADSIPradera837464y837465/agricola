@@ -26,7 +26,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   const ID3 = 'pro_id';
 
   /**
-   *IDUNM de la tabla 
+   * IDUNM de la tabla 
    */
   const ID4 = 'unm_id';
 
@@ -74,22 +74,22 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   /**
    * ID de la tabla
    */
-  private $id;
+  private $desId;
 
   /**
    * IDESB de la tabla
    */
-  private $id2;
+  private $esbId;
 
   /**
    * IDPRO de la tabla
    */
-  private $id3;
+  private $proId;
 
   /**
    * IDUNM de la tabla 
    */
-  private $id4;
+  private $umnId;
 
   /**
    * Descripcion cantidad de la tabla
@@ -118,27 +118,27 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @var date_time
    */
   private $deletedAt;
-  
+
   /**
    * Constructor de la clase detalleEntradaSalidaBodegaBaseTable
    * @version 1.0.0
    * @param config $config
-   * @param integer $id
-   * @param integer $id2
-   * @param integer $id3
-   * @param integer $id4
+   * @param integer $desId
+   * @param integer $esbId
+   * @param integer $proId
+   * @param integer $umnId
    * @param integer $cantidad
    * @param integer $precio
    * @param date_time $createdAt
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  public function __construct(config $config, $id = null, $id2 = null, $id3 = null, $id4 = null, $cantidad = null, $precio = null, date_time $createdAt = null, date_time $updatedAt = null, date_time $deletedAt = null) {
+  public function __construct(config $config, $desId = null, $esbId = null, $proId = null, $umnId = null, $cantidad = null, $precio, $createdAt = null, $updatedAt = null, $deletedAt = null) {
     $this->config = $config;
-    $this->id = $id;
-    $this->id2 = $id2;
-    $this->id3 = $id3;
-    $this->id4 = $id4;
+    $this->desId = $desId;
+    $this->esbId = $esbId;
+    $this->proId = $proId;
+    $this->umnId = $umnId;
     $this->cantidad = $cantidad;
     $this->precio = $precio;
     $this->createdAt = $createdAt;
@@ -160,8 +160,8 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return config
    */
-  public function getId() {
-    return $this->id;
+  public function getDesId() {
+    return $this->desId;
   }
 
   /**
@@ -169,8 +169,8 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return config
    */
-  public function getId2() {
-    return $this->id2;
+  public function getEsbId() {
+    return $this->esbId;
   }
 
   /**
@@ -178,8 +178,8 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return config
    */
-  public function getId3() {
-    return $this->id3;
+  public function getProId() {
+    return $this->proId;
   }
 
   /**
@@ -187,8 +187,8 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return config
    */
-  public function getId4() {
-    return $this->id4;
+  public function getUmnId() {
+    return $this->umnId;
   }
 
   /**
@@ -248,37 +248,37 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   /**
    * Fija el id para el registro en la tabla
    * @version 1.0.0
-   * @param integer $id
+   * @param integer $desId
    */
-  public function setId($id) {
-    $this->id = $id;
+  public function setDesId($desId) {
+    $this->desId = $desId;
   }
 
   /**
    * Fija el id2 para el registro en la tabla
    * @version 1.0.0
-   * @param integer $id2
+   * @param integer $esbId
    */
-  public function setId2($id2) {
-    $this->id2 = $id2;
+  public function setEsbId($esbId) {
+    $this->esbId = $esbId;
   }
 
   /**
    * Fija el id3 para el registro en la tabla
    * @version 1.0.0
-   * @param integer $id3
+   * @param integer $proId
    */
-  public function setId3($id3) {
-    $this->id3 = $id3;
+  public function setProId($proId) {
+    $this->proId = $proId;
   }
 
   /**
    * Fija el id4 para el registro en la tabla
    * @version 1.0.0
-   * @param integer $id4
+   * @param integer $umnId
    */
-  public function setId4($id4) {
-    $this->id4 = $id4;
+  public function setUmnId($umnId) {
+    $this->umnId = $umnId;
   }
 
   /**
