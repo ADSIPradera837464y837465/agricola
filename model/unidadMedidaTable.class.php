@@ -16,7 +16,7 @@ class unidadMedidaTable extends unidadMedidaBaseTable {
   /**
    * Obtiene todos los datos de la tabla
    *  @version 1.0.0
-   * @return @return [stdClass | boolean]
+   * @return  [stdClass | boolean]
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
@@ -34,7 +34,13 @@ class unidadMedidaTable extends unidadMedidaBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT unm_id AS id, unm_descripcion AS descripcion, unm_created_at AS createdAt, unm_updated_at AS updatedAt, unm_deleted_at AS deletedAt FROM bda_unidad_medida WHERE unm_deleted_at IS NULL ORDER BY unm_created_at ASC';
+   
+     $sql = 'SELECT unm_id, unm_descripcion'
+             . 'FROM bda_unidad_medida  WHERE unm_deleted_at IS NULL '
+            . 'AND unm_id = :unm_id';
+    $params = array(
+        ':unm_id' => ($id !== null) ? $id : $this->getId()
+    );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
