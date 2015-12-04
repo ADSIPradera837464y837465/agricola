@@ -23,37 +23,37 @@ class cargoBaseTable extends model {
   /**
    * Descripcion de la tabla
    */
-  const DESCRIPCION = 'car_descipcion';
+  const DESCRIPCION = 'car_descripcion';
 
   /**
    * Longitud del campo descripcion
    */
-  const DESCIPCION_LENGTH = 80;
+  const DESCRIPCION_LENGTH = 80;
 
   /**
    * Fecha de creacion del registro
    */
-  const CREATED_AT = 'created_at';
+  const CREATED_AT = 'car_created_at';
 
   /**
    * Fecha de actualizacion del registro
    */
-  const UPDATED_AT = 'created_at';
+  const UPDATED_AT = 'car_updated_at';
 
   /**
    * Fecha de eliminacion del registro
    */
-  const DELETED_AT = 'deleted_at';
+  const DELETED_AT = 'car_deleted_at';
 
   /**
    * Secuencia de la tabla para la llave primaria
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_cargo_car_id_seq';
 
   /**
    * Nombre de la tabla
    */
-  const _TABLE = 'dba_cargo';
+  const _TABLE = 'bda_cargo';
 
   /**
    * Configuración del sistema
@@ -76,19 +76,19 @@ class cargoBaseTable extends model {
    * Fecha de creacion del registro
    * @var date_time
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha de actualizacion del registro
    * @var date_time
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha de eliminacion del registro
    * @var date_time
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la clase cargoBaseTable
@@ -96,26 +96,17 @@ class cargoBaseTable extends model {
    * @param config $config
    * @param integer $id
    * @param string $descripcion
-   * @param date_time $createdAt
-   * @param date_time $updatedAt
-   * @param date_time $deletedAt
+   * @param date_time $created_at
+   * @param date_time $updated_at
+   * @param date_time $deleted_at
    */
-  public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Retorna la configuracion del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -142,7 +133,7 @@ class cargoBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -151,7 +142,7 @@ class cargoBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -160,16 +151,7 @@ class cargoBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -195,8 +177,8 @@ class cargoBaseTable extends model {
    * @version 1.0.0
    * @param date_time $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -204,8 +186,8 @@ class cargoBaseTable extends model {
    * @version 1.0.0
    * @param date_time $updatedAt
    */
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -213,8 +195,8 @@ class cargoBaseTable extends model {
    * @version 1.0.0
    * @param date_time $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

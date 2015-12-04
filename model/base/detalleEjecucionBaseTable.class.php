@@ -6,216 +6,208 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of bitacoraBaseTable
- * @author linaVanessaMontaño <linamontano-1995@hotmail.es>
- * @package estudio
+ * Description of detalleEjecucionBaseTable
+ *
+ * @author nombre completo <su@correo.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
  */
 class detalleEjecucionBaseTable extends model {
 
-    /**
-     * ID de la tabla detalleEjecucion
-     * @ var integer
-     */
-    const ID = 'dee_id';
+  /**
+   * ID de la tabla detalleEjecucion
+   * @ var integer
+   */
+  const ID = 'dee_id';
 
-    /**
-     * ID de la tabla ordenEjecucion
-     * @ var integer
-     */
-    const ID = 'ore_id';
+  /**
+   * ID de la tabla ordenEjecucion
+   * @ var integer
+   */
+  const ORDEN_EJECUCION_ID = 'ore_id';
+  const TERCERO_ID = 'ter_id';
+  const SERVICIO_MAQUINA_ID = 'ser_id';
+  const PRODUCTO_ID = 'pro_id';
+  const CANTIDAD = 'dee_cantidad';
+  const PRECIO = 'dee_precio';
+  const CREATED_AT = 'dee_created_at';
+  const UPDATED_AT = 'dee_updated_at';
+  const DELETED_AT = 'dee_deleted_at';
+  const _SEQUENCE = 'bda_detalle_ejecucion_dee_id_seq';
+  const _TABLE = 'bda_detalle_ejecucion';
 
-    /**
-     * ID de la tabla tercero
-     *@ var integer
-     */
-    const ID = 'ter_id';
+  /**
+   * ID de la tabla servicioMaquina
+   * @ var integer
+   */
+  const ID = 'ser_id';
 
-    /**
-     * ID de la tabla servicioMaquina
-     *@ var integer
-     */
-    const ID = 'ser_id';
+  /**
+   * ID de la tabla producto
+   * @ var integer
+   */
+  const ID = 'pro_id';
 
-    /**
-     * ID de la tabla producto
-     * @ var integer
-     */
-    const ID = 'pro_id';
+  /**
+   * cantidad de la tabla detalleEjecucion
+   * @ var integer
+   */
+  const ID = 'dee_cantidad';
 
-    /**
-     * cantidad de la tabla detalleEjecucion
-     * @ var integer
-     */
-    const ID = 'dee_cantidad';
+  /**
+   * precio de la tabla detalleEjecucion
+   * @ var integer
+   */
+  const precio = 'dee_precio';
 
-    /**
-     * precio de la tabla detalleEjecucion
-     * @ var integer
-     */
-    const precio = 'dee_precio';
-
-   /**
+  /**
    * Configuración del sistema
    * @var config
    */
   protected $config;
-  
- /**
+
+  /**
    * ID de la tabla detalleEjecucion
    * @var integer
    */
-  private $deeId; 
-  
+  private $id;
+
   /**
    * ID de la tabla ordenEjecucion
    * @var integer
    */
-  private $oreId; 
-  
+  private $orden_ejecucion_id;
+
   /**
    * ID de la tabla tercero
    * @var integer
    */
-  private $terId; 
-  
+  private $tercero_id;
+
   /**
    * ID de la tabla servicioMaquina
    * @var integer
    */
-  private $serId; 
-  
-   /**
+  private $servicio_maquina_id;
+
+  /**
    * ID de la tabla producto
    * @var integer
    */
-  private $proId; 
-  
+  private $producto_id;
+
   /**
    * ID de la tabla detalleEjecucion
    * @var integer
    */
   private $cantidad;
-  
-   /**
+
+  /**
    * ID de la tabla detalleEjecucion
    * @var integer
    */
   private $precio;
-  
-   /**
+
+  /**
    * ID de la tabla 
    * @var  date_time
    */
-  private $createdAt;
-   /**
+  private $created_at;
+
+  /**
    * ID de la tabla
    * @var  date_time
    */
-  private $updatedAt;
-  
-    /**
+  private $updated_at;
+
+  /**
    * ID de la tabla
    * @var  date_time
    */
-  private $deletedAt;
-  
+  private $deleted_at;
+
   /**
    * 
    * @param config $config
-   * @param type $deeId
-   * @param type $oreId
-   * @param type $terId
-   * @param type $serId
-   * @param type $proId
+   * @param type $id
+   * @param type $orden_ejecucion_id
+   * @param type $tercero_id
+   * @param type $servicio_maquina_id
+   * @param type $producto_id
    * @param type $cantidad
    * @param type $precio
-   * @param \FStudio\model\base\date_time $createdAt
-   * @param \FStudio\model\base\date_time $updatedAt
-   * @param \FStudio\model\base\date_time $deletedAt
+   * @param type $created_at
+   * @param type $updated_at
+   * @param type $deleted_at
    */
-  
-  public function __construct(config $config, $deeId, $oreId, $terId, $serId, $proId, $cantidad, $precio, date_time $createdAt, date_time $updatedAt, date_time $deletedAt) {
-      $this->config = $config;
-      $this->deeId = $deeId;
-      $this->oreId = $oreId;
-      $this->terId = $terId;
-      $this->serId = $serId;
-      $this->proId = $proId;
-      $this->cantidad = $cantidad;
-      $this->precio = $precio;
-      $this->createdAt = $createdAt;
-      $this->updatedAt = $updatedAt;
-      $this->deletedAt = $deletedAt;
+  public function __construct(config $config, $id = null, $orden_ejecucion_id = null, $tercero_id = null, $servicio_maquina_id = null, $producto_id = null, $cantidad = null, $precio = null, $created_at = null, $updated_at = null, $deleted_at = null) {
+    $this->config = $config;
+    $this->id = $id;
+    $this->orden_ejecucion_id = $orden_ejecucion_id;
+    $this->tercero_id = $tercero_id;
+    $this->servicio_maquina_id = $servicio_maquina_id;
+    $this->producto_id = $producto_id;
+    $this->cantidad = $cantidad;
+    $this->precio = $precio;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
-  
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-  public function getDeeId() {
-      return $this->deeId;
+  public function getId() {
+    return $this->id;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
-  public function getOreId() {
-      return $this->oreId;
+  public function getOrdenEjecucionId() {
+    return $this->orden_ejecucion_id;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
-  public function getTerId() {
-      return $this->terId;
+  public function getTerceroId() {
+    return $this->tercero_id;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
-  public function getSerId() {
-      return $this->serId;
+  public function getServicioMaquinaId() {
+    return $this->servicio_maquina_id;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
-  public function getProId() {
-      return $this->proId;
+  public function getProductoId() {
+    return $this->producto_id;
   }
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
   public function getCantidad() {
-      return $this->cantidad;
+    return $this->cantidad;
   }
 
   /**
@@ -224,57 +216,34 @@ class detalleEjecucionBaseTable extends model {
    * @return integer
    */
   public function getPrecio() {
-      return $this->precio;
+    return $this->precio;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
   public function getCreatedAt() {
-      return $this->createdAt;
+    return $this->created_at;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
   public function getUpdatedAt() {
-      return $this->updatedAt;
+    return $this->updated_at;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
    */
-
   public function getDeletedAt() {
-      return $this->deletedAt;
-  }
-  
- /**
-   * fija la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-
-  public function setDeeId($deeId) {
-      $this->deeId = $deeId;
-  }
-  
- /**
-   * fija la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-
-  public function setOreId($oreId) {
-      $this->oreId = $oreId;
+    return $this->deleted_at;
   }
 
   /**
@@ -282,84 +251,84 @@ class detalleEjecucionBaseTable extends model {
    * @version 1.0.0
    * @return config
    */
-  public function setTerId($terId) {
-      $this->terId = $terId;
+  public function setId($id) {
+    $this->id = $id;
   }
-  
+
   /**
    * fija la configuración del sistema
    * @version 1.0.0
    * @return config
    */
-
-  public function setSerId($serId) {
-      $this->serId = $serId;
+  public function setOrdenEjecucionId($orden_ejecucion_id) {
+    $this->orden_ejecucion_id = $orden_ejecucion_id;
   }
-  
+
   /**
    * fija la configuración del sistema
    * @version 1.0.0
    * @return config
    */
-
-  public function setProId($proId) {
-      $this->proId = $proId;
+  public function setTerceroId($tercero_id) {
+    $this->tercero_id = $tercero_id;
   }
-  
+
+  public function setServicioMaquinaId($servicio_maquina_id) {
+    $this->servicio_maquina_id = $servicio_maquina_id;
+  }
+
   /**
    * fija la configuración del sistema
    * @version 1.0.0
    * @return config
    */
+  public function setProductoId($producto_id) {
+    $this->producto_id = $producto_id;
+  }
 
+  /**
+   * fija la configuración del sistema
+   * @version 1.0.0
+   * @return config
+   */
   public function setCantidad($cantidad) {
-      $this->cantidad = $cantidad;
+    $this->cantidad = $cantidad;
   }
-  
+
   /**
    * fija la configuración del sistema
    * @version 1.0.0
    * @return config
    */
-
   public function setPrecio($precio) {
-      $this->precio = $precio;
+    $this->precio = $precio;
   }
-  
+
   /**
    * fija la configuración del sistema
    * @version 1.0.0
    * @return config
    */
-
-  public function setCreatedAt(date_time $createdAt) {
-      $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
-  
+
   /**
    * fija la configuración del sistema
    * @version 1.0.0
    * @return config
    */
-
-  public function setUpdatedAt(date_time $updatedAt) {
-      $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
-  
+
   /**
    * fija la configuración del sistema
    * @version 1.0.0
    * @return config
    */
-
-  public function setDeletedAt(date_time $deletedAt) {
-      $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
-
-  }
-  
-  
-  
-  
-
+}

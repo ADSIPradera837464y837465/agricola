@@ -1,9 +1,12 @@
 <?php
 
+use FStudio\model\base\controlRiegoPluviosidadBaseTable;
+
 /**
- * Description of bitacoraTable
- * @author linaVanessaMontaño <linamontano-1995@hotmail.es>
- * @package
+ * Description of controlRiegoPluviosidadTable
+ *
+ * @author nombre completo <su@correo.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -16,7 +19,7 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT crp_id, crp_fecha, crp_hora_inicio, crp_hora_fin, crp_cantidad_m3_hora, crp_observacion, sue_id,hac_id, ter_id, crp_created_at, crp_updated_at, crp_deleted_at FROM controlRiegoPluviosidad WHERE deleted_at IS NULL ORDER BY created_at ASC';
+    $sql = 'SELECT crp_id AS id, crp_fecha AS fecha, crp_hora_inicio AS hora_inicio, crp_hora_fin AS hora_fin, crp_cantidad_m3_hora AS cantidad_m3_hora, crp_observacion AS observacion, sue_id AS suerte_id, hac_id AS hacienda_id, ter_id AS tercero_id, crp_created_at AS created_at, crp_updated_at AS updated_at, crp_deleted_at AS deleted_at FROM bda_control_riego_pluviosidad WHERE crp_deleted_at IS NULL ORDER BY crp_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -29,7 +32,7 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT crp_id, crp_fecha, crp_hora_inicio, crp_hora_fin, crp_cantidad_m3_hora, crp_observacion, sue_id, hac_id, ter_id FROM bitacora AND id = :id';
+    $sql = 'SELECT crp_id AS id, crp_fecha AS fecha, crp_hora_inicio AS hora_inicio, crp_hora_fin AS hora_fin, crp_cantidad_m3_hora AS cantidad_m3_hora, crp_observacion AS observacion, sue_id AS suerte_id, hac_id AS hacienda_id, ter_id AS tercero_id, crp_created_at AS created_at, crp_updated_at AS updated_at, crp_deleted_at AS deleted_at FROM bda_control_riego_pluviosidad WHERE crp_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -44,16 +47,16 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO controlRiegoPLuviosidad (fecha, hora_inicio, hora_fin, cantidad_m3_hora, observacion, sue_id, hac_id, ter_id) VALUES (:fecha, :hora_inicio, :hora_fin, :cantidad_m3_hora, :observacion, :sue_id, :hac_id, :ter_id)';
+    $sql = 'INSERT INTO bda_control_riego_pluviosidad (crp_fecha, crp_hora_inicio, crp_hora_fin, crp_cantidad_m3_hora, crp_observacion, sue_id, hac_id, ter_id) VALUES (:fecha, :hora_inicio, :hora_fin, :cantidad_m3_hora, :observacion, :suerte_id, :hacienda_id, :tercero_id)';
     $params = array(
-        ':fecha' => $this->get(),
-        ':hora_inicio' => $this->gethora_inicio(),
-        ':hora_fin' => $this->gethoraFin(),
-        ':cantidad_m3_hora' => $this->getcantidad_m3_hora(),
-        ':observacion' => $this->getobservacion(),
-        ':sue_id' => $this->getsueId(),
-        ':hac_id' => $this->gethacId(),
-        ':ter_id' => $this->getterId(),
+        ':fecha' => $this->getFecha(),
+        ':hora_inicio' => $this->getHoraInicio(),
+        ':hora_fin' => $this->getHoraFin(),
+        ':cantidad_m3_hora' => $this->getCantidadM3Hora(),
+        ':observacion' => $this->getObservacion(),
+        ':suerte_id' => $this->getSuerteId(),
+        ':hacienda_id' => $this->getHaciendaId(),
+        ':tercero_id' => $this->getTerceroId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -67,16 +70,17 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE controlRiegoPluviosidad SET fecha = :fecha, hora_inicio = :hora_inicio, hora_fin = :hora_fin, cantidad_m3_hora = :cantidad_m3_hora, observacion = :observacion, sue_id :sue_id, hac_id :hac_id, :ter_id, ter_id WHERE id = :id';
+    $sql = 'UPDATE bda_control_riego_pluviosidad SET crp_fecha = :fecha, crp_hora_inicio = :hora_inicio, crp_hora_fin = :hora_fin, crp_cantidad_m3_hora = :cantidad_m3_hora, crp_observacion = :observacion, sue_id = :suerte_id, hac_id = :hacienda_id, ter_id = :tercero_id WHERE crp_id = :id';
     $params = array(
-        ':fecha' => $this->getfecha(),
-        ':hora_inicio' => $this->gethoraInicio(),
-        ':hora_fin' => $this->gethoraFin(),
-        ':cantidad_m3_hora' => $this->getcantidadM3Hora(),
-        ':observacion' => $this->getobservacion(),
-        ':sue_id' => $this->getsueId(),
-        ':hac_id' => $this->gethacId(),
-        ':ter_id' => $this->getterId()
+         ':fecha' => $this->getFecha(),
+        ':hora_inicio' => $this->getHoraInicio(),
+        ':hora_fin' => $this->getHoraFin(),
+        ':cantidad_m3_hora' => $this->getCantidadM3Hora(),
+        ':observacion' => $this->getObservacion(),
+        ':suerte_id' => $this->getSuerteId(),
+        ':hacienda_id' => $this->getHaciendaId(),
+        ':tercero_id' => $this->getTerceroId(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -89,12 +93,22 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
    * @return boolean
    * @throws PDOException
    */
-  public function delete() {
+   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $sql = 'DELETE FROM controlRiegoPluviosidad WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_control_riego_pluviosidad SET crp_deleted_at = now() WHERE crp_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_control_riego_pluviosidad WHERE crp_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;

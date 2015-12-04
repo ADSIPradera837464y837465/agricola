@@ -10,7 +10,7 @@ use FStudio\myConfig as config;
  * @author Johanna G <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
- * @subpackage table
+ * @subpackage base
  * @version 1.0.0
  */
 class detalleAguaSurcoBaseTable extends model {
@@ -37,11 +37,27 @@ class detalleAguaSurcoBaseTable extends model {
   const CANTIDAD_SURCO = 'deaas_cantidad_surco';
 
   /**
-   * Numero del documento
+   * control del riego de la tabla
    */
-  const NUM_DOCUMENTO = 'fore_num_documento';
-
+  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'fore_num_documento';
   /**
+   * creacion de la tabla
+   */
+  
+   const CREATED_AT = 'deaas_created_at';
+   
+   /**
+   * modificacion de la tabla
+   */
+  
+   const UPDATED_AT = 'deaas_updated_at';
+   
+    /**
+   * eliminando un elemento de la tabla
+   */
+  
+   const DELETED_AT = 'deaas_deleted_at';
+   /**
    * Secuencia de la tabla
    */
   const _SEQUENCE = 'bda_detalle_agua_surco_deaas_id_seq';
@@ -73,65 +89,47 @@ class detalleAguaSurcoBaseTable extends model {
    * Cantidad del surco 
    * @var integer
    */
-  private $cantidadSurco;
+  private $cantidad_surco;
 
   /**
    * Numero del documento 
    * @var integer
    */
-  private $numDocumento;
+  private $control_administrativo_riego_id;
 
   /**
    * Fecha y hora de la creacion de un nuevo registro 
    * 
    * @var date_time
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha y hora de la  actualizacion de un registro 
    * 
    * @var date_time 
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha y hora de la eliminacion de un registro 
    * 
    * @var  date_time
    */
-  private $deletedAt;
+  private $deleted_at;
 
-  /**
-   * Constructor de la clase  detalleAguaSurcoBaseTable
-   * @version 1.0.0
-   * @param config $config
-   * @param integer $id
-   * @param integer $item
-   * @param integer $cantidadSurco
-   * @param integer $numDocumento
-   * @param date_time $createdAt
-   * @param date_time $updatedAt
-   * @param date_time $deletedAt
-   */
-  public function __construct(config $config, $id = null, $item = null, $cantidadSurco = null, $numDocumento = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $item = null, $cantidad_surco = null, $control_administrativo_riego_id = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->item = $item;
-    $this->cantidadSurco = $cantidadSurco;
-    $this->numDocumento = $numDocumento;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->cantidad_surco = $cantidad_surco;
+    $this->control_administrativo_riego_id = $control_administrativo_riego_id;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
-  /**
-   * Retorna la configuración del sistema
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
+ 
 
   /**
    * Retorna el id del registro
@@ -154,15 +152,15 @@ class detalleAguaSurcoBaseTable extends model {
    * @return integer
    */
   public function getCantidadSurco() {
-    return $this->cantidadSurco;
+    return $this->cantidad_surco;
   }
 
   /**
    * Retorna el numero del registro
    * @return integer
    */
-  public function getNumDocumento() {
-    return $this->numDocumento;
+  public function getControlAdministrativoRiegoId() {
+    return $this->control_administrativo_riego_id;
   }
 
   /**
@@ -170,7 +168,7 @@ class detalleAguaSurcoBaseTable extends model {
    * @return integer
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -178,7 +176,7 @@ class detalleAguaSurcoBaseTable extends model {
    * @return integer
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -186,16 +184,9 @@ class detalleAguaSurcoBaseTable extends model {
    * @return integer
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
-  /**
-   * Fija la configuración del sistema
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
-  }
 
   /**
    * Fija el id para el registro en la tabla
@@ -217,40 +208,40 @@ class detalleAguaSurcoBaseTable extends model {
    * Fija la cantidad de surco para el registro en la tabla
    * @param integer $cantidadSurco
    */
-  public function setCantidadSurco($cantidadSurco) {
-    $this->cantidadSurco = $cantidadSurco;
+  public function setCantidadSurco($cantidad_surco) {
+    $this->cantidad_surco = $cantidad_surco;
   }
 
   /**
-   * Fija el numero de documento para el registro en la tabla
+   * Fija el control del riego para el registro en la tabla
    * @param integer $numDocumento
    */
-  public function setNumDocumento($numDocumento) {
-    $this->numDocumento = $numDocumento;
+  public function setControlAdministrativoRiegoId($control_administrativo_riego_id) {
+    $this->control_administrativo_riego_id = $control_administrativo_riego_id;
   }
 
   /**
    * Fija la creacion de un nuevo registro en la tabla
    * @param date_time $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+   public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
    * Fija la actualizacion de un registro en la tabla
    * @param date_time $updatedAt
    */
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
    * Fija la eliminacion de un registro en la tabla
    * @param date_time $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

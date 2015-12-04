@@ -23,37 +23,37 @@ class tipoIdBaseTable extends model {
   /**
    * Descripcion de la tabla
    */
-  const DESCRIPCION = 'tpi_descipcion';
+  const DESCRIPCION = 'tpi_descripcion';
 
   /**
    * Longitud del campo descripcion
    */
-  const DESCIPCION_LENGTH = 80;
+  const DESCRIPCION_LENGTH = 80;
 
   /**
    * Fecha de creacion del registro
    */
-  const CREATED_AT = 'created_at';
+  const CREATED_AT = 'tpi_created_at';
 
   /**
    * Fecha de actualizacion del registro
    */
-  const UPDATED_AT = 'created_at';
+  const UPDATED_AT = 'tpi_updated_at';
 
   /**
    * Fecha de eliminacion del registro
    */
-  const DELETED_AT = 'deleted_at';
+  const DELETED_AT = 'tpi_deleted_at';
 
   /**
    * Secuencia de la tabla para la llave primaria
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_tipo_id_tpi_id_seq';
 
   /**
    * Nombre de la tabla
    */
-  const _TABLE = 'dba_tipo_id';
+  const _TABLE = 'bda_tipo_id';
 
   /**
    * Configuración del sistema
@@ -77,19 +77,19 @@ class tipoIdBaseTable extends model {
    * Fecha de creacion del registro
    * @var date_time
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha de actualizacion del registro
    * @var date_time
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha de eliminacion del registro
    * @var date_time
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la clase tipoIdBaseTable
@@ -101,22 +101,13 @@ class tipoIdBaseTable extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Retorna la configuracion del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -143,7 +134,7 @@ class tipoIdBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -152,7 +143,7 @@ class tipoIdBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -161,7 +152,7 @@ class tipoIdBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
   /**
@@ -194,28 +185,28 @@ class tipoIdBaseTable extends model {
   /**
    * Fija la fecha de creacion del registro
    * @version 1.0.0
-   * @param date_time $createdAt
+   * @param date_time $created_at
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
    * Fija la fecha de actualización del registro
    * @version 1.0.0
-   * @param date_time $createdAt
+   * @param date_time $updated_at
    */
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
    * Fija la fecha de eliminacion del registro
    * @version 1.0.0
-   * @param date_time $createdAt
+   * @param date_time $deleted_at
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

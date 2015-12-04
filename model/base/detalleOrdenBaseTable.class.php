@@ -23,12 +23,17 @@ class detalleOrdenBaseTable extends model {
     /**
      * Foranea de la tabla orden servicio
      */
-    const ORDEN_SERVIVIO_ID = 'ors_id';
+    const ORDEN_SERVICIO_ID = 'ors_id';
 
     /**
      * Foranea de la tabla servicio maquina
      */
-    const SERVICIO_MAQUINA_ID = 'ser_id';
+    const SERVICIO_ID = 'ser_id';
+    
+    /**
+     * Estado del registro
+     */
+    const ESTADO = 'deo_estado';
 
     /**
      * Fecha y hora de creación del registro
@@ -48,7 +53,7 @@ class detalleOrdenBaseTable extends model {
     /**
      * Nombre de la secuencia del ID de la tabla
      */
-    const _SEQUENCE = '';
+    const _SEQUENCE = 'bda_detalle_orden_deo_id_seq';
 
     /**
      * Nombre de la tabla
@@ -71,50 +76,58 @@ class detalleOrdenBaseTable extends model {
      * Foranea de la tabla orden servicio
      * @var integer 
      */
-    private $orsId;
+    private $orden_servicio_id;
 
     /**
      * Foranea de la tabla servicio maquina
      * @var integer 
      */
-    private $serId;
+    private $servicio_id;
+    
+    /**
+     * Estado del registro
+     * @var boolean
+     */
+    private $estado;
 
     /**
      * Crea los registros de la tabla
      * @var date_time 
      */
-    private $createdAt;
+    private $created_at;
 
     /**
      * Actualiza registros de la tabla
      * @var date_time 
      */
-    private $updatedAt;
+    private $updated_at;
 
     /**
      * Elimina registros de la tabla
      * @var date_time 
      */
-    private $deletedAt;
+    private $deleted_at;
 
     /**
      * Constructor de la clase detalleOrdenBaseTable
      * @param config $config
      * @param type $id
-     * @param type $orsId
-     * @param type $serId
-     * @param \FStudio\model\base\date_time $createdAt
-     * @param \FStudio\model\base\date_time $updatedAt
-     * @param \FStudio\model\base\date_time $deletedAt
+     * @param type $orden_servicio_id
+     * @param type $servicio_id
+     * @param type $estado
+     * @param \FStudio\model\base\date_time $created_at
+     * @param \FStudio\model\base\date_time $updated_at
+     * @param \FStudio\model\base\date_time $deleted_at
      */
-    public function __construct(config $config, $id, $orsId, $serId, date_time $createdAt, date_time $updatedAt, date_time $deletedAt) {
+  public function __construct(config $config, $id = null, $orden_servicio_id = null, $servicio_id = null, $estado = null, $created_at = null, $updated_at = null, $deleted_at = null) {
         $this->config = $config;
         $this->id = $id;
-        $this->orsId = $orsId;
-        $this->serId = $serId;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->deletedAt = $deletedAt;
+    $this->orden_servicio_id = $orden_servicio_id;
+    $this->servicio_id = $servicio_id;
+    $this->estado = $estado;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
     }
 
     /**
@@ -140,8 +153,8 @@ class detalleOrdenBaseTable extends model {
      * @version 1.0.0
      * @return integer
      */
-    public function getOrsId() {
-        return $this->orsId;
+    public function getOrdenServicioId() {
+    return $this->orden_servicio_id;
     }
 
     /**
@@ -149,17 +162,26 @@ class detalleOrdenBaseTable extends model {
      * @version 1.0.0
      * @return integer
      */
-    public function getSerId() {
-        return $this->serId;
+    public function getServicioId() {
+    return $this->servicio_id;
     }
-
+    
+    /**
+     * Retorna el estado del registro
+     * @version 1.0.0
+     * @return boolean
+     */
+    public function getEstado() {
+    return $this->estado;
+  }
+  
     /**
      * Retorna los datos creados en la tabla
      * @version 1.0.0
      * @return date_time
      */
     public function getCreatedAt() {
-        return $this->createdAt;
+    return $this->created_at;
     }
 
     /**
@@ -168,7 +190,7 @@ class detalleOrdenBaseTable extends model {
      * @return date_time
      */
     public function getUpdatedAt() {
-        return $this->updatedAt;
+    return $this->updated_at;
     }
 
     /**
@@ -177,7 +199,7 @@ class detalleOrdenBaseTable extends model {
      * @return date_time
      */
     public function getDeletedAt() {
-        return $this->deletedAt;
+    return $this->deleted_at;
     }
 
     /**
@@ -201,45 +223,54 @@ class detalleOrdenBaseTable extends model {
     /**
    * Fija el id de la tabla orden servicio
    * @version 1.0.0
-   * @param integer $orsId
+   * @param integer $orden_servicio_id
    */
-    public function setOrsId($orsId) {
-        $this->orsId = $orsId;
+    public function setOrdenServicioId($orden_servicio_id) {
+    $this->orden_servicio_id = $orden_servicio_id;
     }
 
     /**
    * Fija el id de la tabla servicio maquina
    * @version 1.0.0
-   * @param integer $serId
+   * @param integer $servicio_id
    */
-    public function setSerId($serId) {
-        $this->serId = $serId;
+    public function setServicioId($servicio_id) {
+    $this->servicio_id = $servicio_id;
     }
+    
+    /**
+   * Fija el id de la tabla servicio maquina
+   * @version 1.0.0
+   * @param boolean $estado
+   */
+    public function setEstado($estado) {
+    $this->estado = $estado;
+  }
 
     /**
    * Fija los datos creados que se hayan hecho en la tabla
    * @version 1.0.0
-   * @param integer $createdAt
+   * @param integer $created_at
    */
-    public function setCreatedAt(date_time $createdAt) {
-        $this->createdAt = $createdAt;
+    public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
     }
 /**
    * Fija las actualizaciones que se hayan hecho en la tabla
    * @version 1.0.0
-   * @param integer $updatedAt
+   * @param integer $updated_at
    */
-    public function setUpdatedAt(date_time $updatedAt) {
-        $this->updatedAt = $updatedAt;
+    public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
     }
 
     /**
    * Fija las datos eliminados que se hayan hecho en la tabla
    * @version 1.0.0
-   * @param integer $deletedAt
+   * @param integer $deleted_at
    */
-    public function setDeletedAt(date_time $deletedAt) {
-        $this->deletedAt = $deletedAt;
+    public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
     }
 
 }

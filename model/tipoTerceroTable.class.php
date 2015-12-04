@@ -18,7 +18,7 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tit_id, tit_descripcion, tit_created_at, tit_updated_at, tit_deleted_at FROM bda_tipo_tercero WHERE tit_deleted_at IS NULL ORDER BY tit_created_at ASC';
+    $sql = 'SELECT tit_id AS id, tit_descripcion AS descripcion, tit_created_at AS created_at, tit_updated_at AS updated_at, tit_deleted_at AS deleted_at FROM bda_tipo_tercero WHERE tit_deleted_at IS NULL ORDER BY tit_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,8 +31,7 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tit_id, tit_descripcion, tit_created_at, tit_updated_at, tit_deleted_at FROM bda_tipo_tercero WHERE tit_deleted_at IS NULL '
-            . 'AND tit_id = :id';
+    $sql = 'SELECT tit_id AS id, tit_descripcion AS descripcion, tit_created_at AS created_at, tit_updated_at AS updated_at, tit_deleted_at AS deleted_at FROM bda_tipo_tercero WHERE tit_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -47,9 +46,9 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_tipo_tercero (tit_descripcion) VALUES (:tit_descripcion)';
+    $sql = 'INSERT INTO bda_tipo_tercero (tit_descripcion) VALUES (:descripcion)';
     $params = array(
-        ':tit_descripcion' => $this->getDescripcion()
+        ':descripcion' => $this->getDescripcion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -63,9 +62,10 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_tipo_tercero SET tit_descipcion = :tit_descripcion WHERE tit_id = :tit_id';
+    $sql = 'UPDATE bda_tipo_tercero SET tit_descripcion = :descripcion WHERE tit_id = :id';
     $params = array(
-        ':tit_id' => $this->getId()
+        ':descripcion' => $this->getDescripcion(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -85,13 +85,13 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_tipo_tercero SET deleted_at = now() WHERE id = :id';
+        $sql = 'UPDATE bda_tipo_tercero SET tit_deleted_at = now() WHERE tit_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_tipo_tercero WHERE id = :id';
+        $sql = 'DELETE FROM bda_tipo_tercero WHERE tit_id = :id';
         break;
       default:
-        throw new PDOException('Por favor indique un dato coherente para el borrado lógico o físico');
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
     }
     $answer = $conn->prepare($sql);
     $answer->execute($params);

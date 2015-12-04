@@ -64,22 +64,22 @@ class controlSalidaCanaBaseTable extends model {
    /**
    * Fecha y hora de creación del registro
    */
-  const CREATED_AT = 'pro_created_at';
+  const CREATED_AT = 'csc_created_at';
 
   /**
    * Fecha y hora de la ultima actualización del registro
    */
-  const UPDATED_AT = 'pro_updated_at';
+  const UPDATED_AT = 'csc_updated_at';
 
   /**
    * Fecha y hora para controlar el borrado lógico
    */
-  const DELETED_AT = 'pro_deleted_at';
+  const DELETED_AT = 'csc_deleted_at';
 
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_control_salida_cana_csc_id_seq';
 
   /**
    * Nombre de la tabla
@@ -109,7 +109,7 @@ class controlSalidaCanaBaseTable extends model {
    * Total de vagones de la tabla
    * @var integer 
    */
-  private $totalVagones;
+  private $total_vagones;
 
   /**
    * Notas de la tabla
@@ -121,72 +121,72 @@ class controlSalidaCanaBaseTable extends model {
    * Total de trenes de la tabla
    * @var integer 
    */
-  private $totalTrenes;
+  private $total_trenes;
 
   /**
    * Foranea de la tabla turno
    * @var integer 
    */
-  private $turnoId;
+  private $turno_id;
 
   /**
    * Foranea de la tabla suerte
    * @var integer 
    */
-  private $suerteId;
+  private $suerte_id;
 
   /**
    * Foranea de la tabla tercero
    * @var integer 
    */
-  private $terceroId;
+  private $tercero_id;
 
   /**
    * Crea los registros de la tabla
    * @var date_time 
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Actualiza registros de la tabla
    * @var date_time 
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Elimina registros de la tabla
    * @var date_time 
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la clase controlSalidaCanaBaseTable
    * @param config $config
    * @param type $id
    * @param date $fecha
-   * @param type $totalVagones
+   * @param type $total_vagones
    * @param text $notas
-   * @param type $totalTrenes
-   * @param type $turnoId
-   * @param type $suerteId
-   * @param type $terceroId
-   * @param date_time $createdAt
-   * @param date_time $updatedAt
-   * @param date_time $deletedAt
+   * @param type $total_trenes
+   * @param type $turno_id
+   * @param type $suerte_id
+   * @param type $tercero_id
+   * @param date_time $created_at
+   * @param date_time $updated_at
+   * @param date_time $deleted_at
    */
-  public function __construct(config $config, $id = null, date $fecha = null, $totalVagones = null, text $notas = null, $totalTrenes = null, $turnoId = null, $suerteId = null, $terceroId = null, date_time $createdAt = null, date_time $updatedAt = null, date_time $deletedAt = null) {
+  public function __construct(config $config, $id = null, $fecha = null, $total_vagones = null, $notas = null, $total_trenes = null, $turno_id = null, $suerte_id = null, $tercero_id = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->fecha = $fecha;
-    $this->totalVagones = $totalVagones;
+    $this->total_vagones = $total_vagones;
     $this->notas = $notas;
-    $this->totalTrenes = $totalTrenes;
-    $this->turnoId = $turnoId;
-    $this->suerteId = $suerteId;
-    $this->terceroId = $terceroId;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->total_trenes = $total_trenes;
+    $this->turno_id = $turno_id;
+    $this->suerte_id = $suerte_id;
+    $this->tercero_id = $tercero_id;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -222,7 +222,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return integer
    */
   public function getTotalVagones() {
-    return $this->totalVagones;
+    return $this->total_vagones;
   }
 
   /**
@@ -240,7 +240,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return integer
    */
   public function getTotalTrenes() {
-    return $this->totalTrenes;
+    return $this->total_trenes;
   }
 
   /**
@@ -249,7 +249,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return integer
    */
   public function getTurnoId() {
-    return $this->turnoId;
+    return $this->turno_id;
   }
 
   /**
@@ -258,7 +258,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return integer
    */
   public function getSuerteId() {
-    return $this->suerteId;
+    return $this->suerte_id;
   }
 
   /**
@@ -267,7 +267,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return integer
    */
   public function getTerceroId() {
-    return $this->terceroId;
+    return $this->tercero_id;
   }
 
   /**
@@ -276,7 +276,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -285,7 +285,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -294,7 +294,7 @@ class controlSalidaCanaBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
   /**
@@ -320,17 +320,17 @@ class controlSalidaCanaBaseTable extends model {
    * @version 1.0.0
    * @param date $fecha
    */
-  public function setFecha(date $fecha) {
+  public function setFecha($fecha) {
     $this->fecha = $fecha;
   }
 
   /**
    * Fija el total de vagones que se obtengan para el registro en la tabla
    * @version 1.0.0
-   * @param integer $totalVagones
+   * @param integer $total_vagones
    */
-  public function setTotalVagones($totalVagones) {
-    $this->totalVagones = $totalVagones;
+  public function setTotalVagones($total_vagones) {
+    $this->total_vagones = $total_vagones;
   }
 
   /**
@@ -338,71 +338,71 @@ class controlSalidaCanaBaseTable extends model {
    * @version 1.0.0
    * @param text $notas
    */
-  public function setNotas(text $notas) {
+  public function setNotas($notas) {
     $this->notas = $notas;
   }
 
   /**
    * Fija el total de trenes que se obtengan para el registro en la tabla
    * @version 1.0.0
-   * @param integer $totalTrenes
+   * @param integer $total_trenes
    */
-  public function setTotalTrenes($totalTrenes) {
-    $this->totalTrenes = $totalTrenes;
+  public function setTotalTrenes($total_trenes) {
+    $this->total_trenes = $total_trenes;
   }
 
   /**
    * Fija el id de la tabla turno
    * @version 1.0.0
-   * @param integer $turnoId
+   * @param integer $turno_id
    */
-  public function setTurnoId($turnoId) {
-    $this->turnoId = $turnoId;
+  public function setTurnoId($turno_id) {
+    $this->turno_id = $turno_id;
   }
 
   /**
    * Fija el id de la tabla suerte
    * @version 1.0.0
-   * @param integer $suerteId
+   * @param integer $suerte_id
    */
-  public function setSuerteId($suerteId) {
-    $this->suerteId = $suerteId;
+  public function setSuerteId($suerte_id) {
+    $this->suerte_id = $suerte_id;
   }
 
   /**
    * Fija el id de la tabla tercero
    * @version 1.0.0
-   * @param integer $terceroId
+   * @param integer $tercero_id
    */
-  public function setTerceroId($terceroId) {
-    $this->terceroId = $terceroId;
+  public function setTerceroId($tercero_id) {
+    $this->tercero_id = $tercero_id;
   }
 
   /**
    * Fija los datos creados que se hayan hecho en la tabla
    * @version 1.0.0
-   * @param integer $createdAt
+   * @param integer $created_at
    */
-  public function setCreatedAt(date_time $createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
    * Fija las actualizaciones que se hayan hecho en la tabla
    * @version 1.0.0
-   * @param integer $updatedAt
+   * @param integer $updated_at
    */
-  public function setUpdatedAt(date_time $updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
    * Fija las datos eliminados que se hayan hecho en la tabla
    * @version 1.0.0
-   * @param integer $deletedAt
+   * @param integer $deleted_at
    */
-  public function setDeletedAt(date_time $deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

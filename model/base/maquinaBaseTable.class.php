@@ -10,7 +10,7 @@ use FStudio\myConfig as config;
  * @author Johanna G <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
- * @subpackage table
+ * @subpackage base
  * @version 1.0.0
  */
 class maquinaBaseTable extends model {
@@ -54,12 +54,12 @@ class maquinaBaseTable extends model {
   /**
    * accesorio de la maquina
    */
-  const T_ACCESORIO = 'maq_t_asesorio';
+  const TIPO_ACCESORIO = 'maq_tipo_accesorio';
 
   /**
    * Longitud del campo accesorio 
    */
-  const T_ACCESORIO_LENGTH = 80;
+  const TIPO_ACCESORIO_LENGTH = 80;
 
   /**
    * horas trabajadas de la maquina 
@@ -69,7 +69,7 @@ class maquinaBaseTable extends model {
   /**
    * tiempo del mantenimiento de la maquina
    */
-  const TIEMPO_MANTENIMIENTO_HORAS = 'maq_tiempo_mantenimiento_horas';
+  const TIEMPO_MANTENIMIENTO_HORA = 'maq_tiempo_mantenimiento_hora';
 
   /**
    * serie de la maquina
@@ -109,7 +109,7 @@ class maquinaBaseTable extends model {
   /**
    * Fecha de actualizacion del registro
    */
-  const UPDATED_AT = 'maq_created_at';
+  const UPDATED_AT = 'maq_updated_at';
 
   /**
    * Fecha de eliminacion del registro
@@ -154,37 +154,37 @@ class maquinaBaseTable extends model {
    * fecha de la compra de la maquina 
    * @var date
    */
-  private $fechaCompra;
+  private $fecha_compra;
 
   /**
    * numero del chasis de la maquina
    * @var varchar
    */
-  private $numeroChasis;
+  private $numero_chasis;
 
   /**
    * Tipo de accesorio de la maquina
    * @var varchar
    */
-  private $tAccesorio;
+  private $tipo_accesorio;
 
   /**
    * Horas de trabajo de la maquina
    * @var BigInt
    */
-  private $horasTrabajadas;
+  private $horas_trabajadas;
 
   /**
    * Tiempo en horas de mantenimiento
    * @var BigInt
    */
-  private $tiempoMantenientoHoras;
+  private $tiempo_mantenimiento_hora;
 
   /**
    * numero de serie de la maquina
    * @var varchar
    */
-  private $numeroSerie;
+  private $numero_serie;
 
   /**
    * Modelo de la maquina
@@ -196,31 +196,31 @@ class maquinaBaseTable extends model {
    * Horas de actividad de la maquina
    * @var BigInt
    */
-  private $horasActividad;
+  private $horas_actividad;
 
   /**
    * valor por hora
    * @var BigInt
    */
-  private $valorHora;
+  private $valor_hora;
 
   /**
    * Fecha de creacion del registro
    * @var date_time
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha de actualizacion del registro
    * @var date_time
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha de eliminacion del registro
    * @var date_time
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la tabla Maquina
@@ -242,32 +242,26 @@ class maquinaBaseTable extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  function __construct(config $config, $id = null, $estado = null, $valor = null, $fechaCompra = null, $numeroChasis = null, $tAccesorio = null, $horasTrabajadas = null, $tiempoMantenientoHoras = null, $numeroSerie = null, $modelo = null, $horasActividad = null, $valorHora = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $estado = null, $valor = null, $fecha_compra = null, $numero_chasis = null, $tipo_accesorio = null, $horas_trabajadas = null, $tiempo_mantenimiento_hora = null, $numero_serie = null, $modelo = null, $horas_actividad = null, $valor_hora = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->estado = $estado;
     $this->valor = $valor;
-    $this->fechaCompra = $fechaCompra;
-    $this->numeroChasis = $numeroChasis;
-    $this->tAccesorio = $tAccesorio;
-    $this->horasTrabajadas = $horasTrabajadas;
-    $this->tiempoMantenientoHoras = $tiempoMantenientoHoras;
-    $this->numeroSerie = $numeroSerie;
+    $this->fecha_compra = $fecha_compra;
+    $this->numero_chasis = $numero_chasis;
+    $this->tipo_accesorio = $tipo_accesorio;
+    $this->horas_trabajadas = $horas_trabajadas;
+    $this->tiempo_mantenimiento_hora = $tiempo_mantenimiento_hora;
+    $this->numero_serie = $numero_serie;
     $this->modelo = $modelo;
-    $this->horasActividad = $horasActividad;
-    $this->valorHora = $valorHora;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->horas_actividad = $horas_actividad;
+    $this->valor_hora = $valor_hora;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
-  /**
-   * Retorna la configuracion del sistema
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
+  
 
   /**
    * Retorna el Id de la tabla maquina
@@ -298,7 +292,7 @@ class maquinaBaseTable extends model {
    * @return config
    */
   public function getFechaCompra() {
-    return $this->fechaCompra;
+    return $this->fecha_compra;
   }
 
   /**
@@ -306,15 +300,15 @@ class maquinaBaseTable extends model {
    * @return config
    */
   public function getNumeroChasis() {
-    return $this->numeroChasis;
+    return $this->numero_chasis;
   }
 
   /**
    * Retorna el tipo de accesorio de la maquina
    * @return config
    */
-  public function getTAccesorio() {
-    return $this->tAccesorio;
+  public function getTipoAccesorio() {
+    return $this->tipo_accesorio;
   }
 
   /**
@@ -322,15 +316,15 @@ class maquinaBaseTable extends model {
    * @return config
    */
   public function getHorasTrabajadas() {
-    return $this->horasTrabajadas;
+    return $this->horas_trabajadas;
   }
 
   /**
    * Retorna el tiempo en el que se trabajo en la tabla maquina
    * @return config
    */
-  public function getTiempoMantenientoHoras() {
-    return $this->tiempoMantenientoHoras;
+    public function getTiempoMantenimientoHora() {
+    return $this->tiempo_mantenimiento_hora;
   }
 
   /**
@@ -338,7 +332,7 @@ class maquinaBaseTable extends model {
    * @return config
    */
   public function getNumeroSerie() {
-    return $this->numeroSerie;
+    return $this->numero_serie;
   }
 
   /**
@@ -354,7 +348,7 @@ class maquinaBaseTable extends model {
    * @return config
    */
   public function getHorasActividad() {
-    return $this->horasActividad;
+    return $this->horas_actividad;
   }
 
   /**
@@ -362,7 +356,7 @@ class maquinaBaseTable extends model {
    * @return config
    */
   public function getValorHora() {
-    return $this->valorHora;
+    return $this->valor_hora;
   }
 
   /**
@@ -370,7 +364,7 @@ class maquinaBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -378,7 +372,7 @@ class maquinaBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -386,22 +380,15 @@ class maquinaBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
-  /**
-   * Fija la configuración del sistema
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
-  }
 
   /**
    * Fija el id para el registro en la tabl
    * @param integer $id
    */
-  public function setId(BigInt $id) {
+  public function setId($id) {
     $this->id = $id;
   }
 
@@ -409,7 +396,7 @@ class maquinaBaseTable extends model {
    * Fija el estado para el registro en la tabla
    * @param Varchar $estado
    */
-  public function setEstado(Varchar $estado) {
+  public function setEstado($estado) {
     $this->estado = $estado;
   }
 
@@ -417,7 +404,7 @@ class maquinaBaseTable extends model {
    * Fija el valor para el registro en la tabla
    * @param BigInt $valor
    */
-  public function setValor(BigInt $valor) {
+  public function setValor($valor) {
     $this->valor = $valor;
   }
 
@@ -425,55 +412,56 @@ class maquinaBaseTable extends model {
    * Fija la fecha de la compra para el registro en la tabla
    * @param date $fechaCompra
    */
-  public function setFechaCompra(date $fechaCompra) {
-    $this->fechaCompra = $fechaCompra;
+  public function setFechaCompra($fecha_compra) {
+    $this->fecha_compra = $fecha_compra;
   }
 
   /**
    * Fija numero de el chasis para el registro en la tabl
    * @param varchar $numeroChasis
    */
-  public function setNumeroChasis(varchar $numeroChasis) {
-    $this->numeroChasis = $numeroChasis;
+  public function setNumeroChasis($numero_chasis) {
+    $this->numero_chasis = $numero_chasis;
   }
 
   /**
    * Fija tipo de accesorio para el registro en la tabla
    * @param varchar $tAccesorio
    */
-  public function setTAccesorio(varchar $tAccesorio) {
-    $this->tAccesorio = $tAccesorio;
+  public function setTipoAccesorio($tipo_accesorio) {
+    $this->tipo_accesorio = $tipo_accesorio;
   }
 
   /**
    * Fija el numero de horas trabajadas  para el registro en la tabla
    * @param BigInt $horasTrabajadas
    */
-  public function setHorasTrabajadas(BigInt $horasTrabajadas) {
-    $this->horasTrabajadas = $horasTrabajadas;
+  public function setHorasTrabajadas($horas_trabajadas) {
+    $this->horas_trabajadas = $horas_trabajadas;
   }
 
   /**
    * Fija tiempo del mantenimiento en  horas para el registro en la tabla
    * @param BigInt $tiempoMantenientoHoras
    */
-  public function setTiempoMantenientoHoras(BigInt $tiempoMantenientoHoras) {
-    $this->tiempoMantenientoHoras = $tiempoMantenientoHoras;
+  public function setTiempoMantenimientoHora($tiempo_mantenimiento_hora) {
+    $this->tiempo_mantenimiento_hora = $tiempo_mantenimiento_hora;
   }
+
 
   /**
    * Fija el numero de serie para el registro en la tabla
    * @param varchar $numeroSerie
    */
-  public function setNumeroSerie(varchar $numeroSerie) {
-    $this->numeroSerie = $numeroSerie;
+  public function setNumeroSerie($numero_serie) {
+    $this->numero_serie = $numero_serie;
   }
 
   /**
    * Fija el modelo para el registro en la tabla
    * @param varchar $modelo
    */
-  public function setModelo(varchar $modelo) {
+  public function setModelo($modelo) {
     $this->modelo = $modelo;
   }
 
@@ -481,40 +469,40 @@ class maquinaBaseTable extends model {
    * Fija la hora de actividad para el registro en la tabla
    * @param BigInt $horasActividad
    */
-  public function setHorasActividad(BigInt $horasActividad) {
-    $this->horasActividad = $horasActividad;
+  public function setHorasActividad($horas_actividad) {
+    $this->horas_actividad = $horas_actividad;
   }
 
   /**
    * Fija el valor en  horas para el registro en la tabla
    * @param BigInt $valorHora
    */
-  public function setValorHora(BigInt $valorHora) {
-    $this->valorHora = $valorHora;
+  public function setValorHora($valor_hora) {
+    $this->valor_hora = $valor_hora;
   }
 
   /**
    * Fija la fecha de creacion del registro
    * @param date_time $createdAt
    */
-  public function setCreatedAt(date_time $createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
    * Fija la fecha de actualización del registro
    * @param date_time $updatedAt
    */
-  public function setUpdatedAt(date_time $updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
    * Fija la fecha de eliminacion del registro
    * @param date_time $deletedAt
    */
-  public function setDeletedAt(date_time $deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
