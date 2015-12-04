@@ -1,0 +1,33 @@
+bda_siembra:
+  name:                         siembra
+  columns:
+    sie_id:                     { name: id, constraint: PK, sequence: bda_siembra_sie_id_seq }
+    sue_id:                     { name: suerte_id }
+    tic_id:                     { name: tipo_cana_id }
+    sie_dia:                    { name: dia }
+    sie_presupuesto_empresa:    { name: presupuesto_empresa }
+    sie_kilos_lote:             { name: kilos_lote }
+    sie_total_kilos_planta:     { name: total_kilos_planta }
+    sie_fecha:                  { name: fecha }
+    sie_fecha_fin_levante:      { name: fecha_fin_levante }
+    sie_fecha_inicio_ciclo:     { name: fecha_inicio_ciclo }
+    sie_fecha_fin_ciclo:        { name: fecha_fin_ciclo }
+    sie_fecha_poda:             { name: fecha_poda }
+    sie_fecha_produccion:       { name: fecha_produccion }
+    sie_num_hectarea:           { name: num_hectarea }
+    sie_num_planta_levante:     { name: num_planta_levante }
+    sie_num_planta_productivas: { name: num_planta_productiva }
+    sie_num_planta_erradica:    { name: num_planta_erradica }
+    sie_created_at:             { name: created_at, behavior: created }
+    sie_updated_at:             { name: updated_at, behavior: updated }
+    sie_deleted_at:             { name: deleted_at, behavior: deleted }
+    
+bda_servicio_maquina:
+  name:                         servicio_maquina
+  column:
+    ser_id:                     { name: id, constraint: PK, sequence: bda_servicio_maquina_seq}
+    ser_descripcion:            { name: descripcion, length: 80 }
+    ser_estado:                 { name: estado, length: 30 }
+    ser_created_at:             { name: created_at, behavior: created }
+    ser_updated_at:             { name: updated_at, behavior: updated }
+    ser_deleted_at:             { name: deleted_at, behavior: deleted }

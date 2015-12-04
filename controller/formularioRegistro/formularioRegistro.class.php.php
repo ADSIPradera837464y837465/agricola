@@ -20,7 +20,7 @@ class formularioRegistro extends controller implements action {
     public function execute() {
       $config = $this->getConfig();
       $formulario = new formularioRegistro($config);
-      $this->objUsuario = $formulario->getAll();
+      $this->objFormulario = $formulario->getAll();
       
       $this->defineView('formularioRegistro', 'index', 'html');
     }

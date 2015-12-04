@@ -1,0 +1,37 @@
+bda_dato_usuario:
+  name:                     dato_usuario
+  columns:
+    dus_id:                 { name: id, constraint: PK, secuence: bda_dato_usuario_dus_id_seq }
+    usr_id:                 { name: usuario_id }
+    dus_cedula:             { name: cedula, lenght: 20 }
+    dus_nombre:             { name: nombre, lenght: 80 }
+    dus_apellidos:          { name: apellidos, lenght: 80 }
+    dus_movil:              { name: movil, lenght: 12 }
+    dus_correo:             { name: correo, lenght: 120 }
+    dus_imagen:             { name: imagen, lenght: 36 }
+    dus_sexo:               { name: sexo }
+    dus_created_at:         { name: created_at, behavior: created }
+    dus_updated_at:         { name: updated_at, behavior: updated }
+    dus_deleted_at:         { name: deleted_at, behavior: deleted }
+
+bda_detalle_agua_surco:
+  name:                     detalle_agua_surco
+  columns:
+    deaas_id:               { name: id, constraint: PK, secuence: bda_detalle_agua_surco_deaas_id_seq }
+    deaas_item:             { name: item, lenght: 80 }
+    deaas_cantidad_surco:   { name: cantidad_surco }
+    fore_num_documento:     { name: control_administrativo_riego_id }
+    deaas_created_at:       { name: created_at, behavior: created }
+    deaas_updated_at:       { name: updated_at, behavior: updated }
+    deaas_deleted_at:       { name: deleted_at, behavior: deleted }
+
+bda_detalle_caudal_surco:
+  name:                     detalle_caudal_surco
+  columns:
+    decs_id:                { name: id, constraint: PK, secuence: bda_detalle_caudal_surco_decs_id_seq }
+    decs_item:              { name: item, lenght: 80 }
+    decs_cantidad_surco:    { name: cantidad_surco }
+    fore_num_documento:     { name: num_documento }
+    decs_created_at:        { name: created_at, behavior: created }
+    decs_updated_at:        { name: updated_at, behavior: updated }
+    decs_deleted_at:        { name: deleted_at, behavior: deleted }
