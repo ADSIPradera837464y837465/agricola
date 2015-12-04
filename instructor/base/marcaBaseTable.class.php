@@ -22,6 +22,7 @@ class marcaBaseTable extends model {
   const CREATED_AT = 'mar_created_at';
   const UPDATED_AT = 'mar_updated_at';
   const DELETED_AT = 'mar_deleted_at';
+  const _SEQUENCE = 'bda_marca_mar_id_seq';
   const _TABLE = 'bda_marca';
 
   /**

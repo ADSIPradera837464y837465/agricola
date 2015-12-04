@@ -36,6 +36,7 @@ class maquinaBaseTable extends model {
   const CREATED_AT = 'maq_created_at';
   const UPDATED_AT = 'maq_updated_at';
   const DELETED_AT = 'maq_deleted_at';
+  const _SEQUENCE = 'bda_maquina_maq_id_seq';
   const _TABLE = 'bda_maquina';
 
   /**
