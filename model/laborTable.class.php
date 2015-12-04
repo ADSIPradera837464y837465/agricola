@@ -31,13 +31,11 @@ class laborTable extends laborBaseTable {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id) {
+public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT lab_id AS id, lab_descripcion AS descripcion, lab_valor AS valor, lab_estado AS estado,lab_created_at AS createdAt,lab_updated_at'
-            . 'FROM bda_labor WHERE lab_deleted_at IS NULL '
-            . 'AND lab_id = :id';
+    $sql = 'SELECT lab_id AS id, lab_descripcion AS descripcion, lab_valor AS valor, lab_estado AS estado, lab_created_at AS created_at, lab_updated_at AS updated_at, lab_deleted_at AS deleted_at FROM bda_labor WHERE lab_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':id' => $id
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -54,12 +52,13 @@ class laborTable extends laborBaseTable {
     $sql = 'INSERT INTO bda_labor (lab_descripcion, lab_valor, lab_estado) VALUES (:descripcion, :valor, :estado)';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
-        ':tipo_producto' => $this->getValor(),
-        ':marca' => $this->getEstado()        
+        ':valor' => $this->getValor(),
+        ':estado' => $this->getEstado()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**

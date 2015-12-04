@@ -19,26 +19,17 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT dus_id, usr_id, dus_cedula, dus_nombre, dus_apellidos, dus_movil,dus_correo,dus_imagen,dus_sexo,dus_create_at FROM bda_dato_usuario ORDER BY created_at ASC';
+    $sql = 'SELECT dus_id AS id, usr_id AS usuario_id, dus_cedula AS cedula, dus_nombre AS nombre, dus_apellidos AS apellidos, dus_movil AS movil, dus_correo AS correo, dus_imagen AS imagen, dus_sexo AS sexo, dus_created_at AS created_at, dus_updated_at AS updated_at, dus_deleted_at AS deleted_at FROM bda_dato_usuario WHERE dus_deleted_at IS NULL ORDER BY dus_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
-  /**
-   * Retorna un elemento de la tabla buscado por un ID especifico
-   * @version 1.0.0
-   * @param integer $id ID a buscar
-   * @return mixed [stdClass | boolean]
-   */
-  //public function getById($id  = null) {
-  public function getById($id) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT dus_id, usr_id, dus_cedula, dus_nombre, dus_apellidos, dus_movil,dus_correo,dus_imagen,dus_sexo,dus_create_at '
-            . 'FROM bda_dato_usuario '
-            . 'AND dus_id = :id';
+    $sql = 'SELECT dus_id AS id, usr_id AS usuario_id, dus_cedula AS cedula, dus_nombre AS nombre, dus_apellidos AS apellidos, dus_movil AS movil, dus_correo AS correo, dus_imagen AS imagen, dus_sexo AS sexo, dus_created_at AS created_at, dus_updated_at AS updated_at, dus_deleted_at AS deleted_at FROM bda_dato_usuario WHERE dus_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':id' => $id //($id !== null) ? $id : $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -54,18 +45,18 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
     $conn = $this->getConnection($this->config);
     $sql = 'INSERT INTO bda_dato_usuario (usr_id, dus_cedula, dus_nombre, dus_apellidos, dus_movil,dus_correo,dus_imagen,dus_sexo) VALUES (:usr_id, :dus_cedula, :dus_nombre, :dus_apellidos, :dus_movil,:dus_correo,:dus_imagen,:dus_sexo)';
     $params = array(
-        ':usr_id' => $this->getUsuario(),
-        ':dus_cedula' => $this->getCedula(),
-        ':dus_nombre' => $this->getNombre(),
-        ':dus_apellidos' => $this->getApellido(),
-        ':dus_movil' => $this->getMovil(),
-        ':dus_correo' => $this->getCorreo(),
-        ':dus_imagen' => $this->getImagen(),
-        ':dus_sexo' => $this->getSexo()
+        ':usuario_id' => $this->getUsuarioId(),
+        ':cedula' => $this->getCedula(),
+        ':nombre' => $this->getNombre(),
+        ':apellidos' => $this->getApellidos(),
+        ':movil' => $this->getMovil(),
+        ':correo' => $this->getCorreo(),
+        ':imagen' => $this->getImagen(),
+        ':sexo' => $this->getSexo()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this->setId($conn->lastInsertId(self::SEQUENSE));
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
 
@@ -76,16 +67,17 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_dato_usuario SET usr_id = :usr_id, dus_cedula = :dus_cedula, dus_nombre = :dus_nombre, dus_apellidos = :dus_apellidos, dus_movil = :dus_movil,dus_correo = :dus_correo,dus_imagen = :dus_imagen, dus_sexo = :dus_sexo WHERE dus_id = :id';
+    $sql = 'UPDATE bda_dato_usuario SET usr_id = :usuario_id, dus_cedula = :cedula, dus_nombre = :nombre, dus_apellidos = :apellidos, dus_movil = :movil, dus_correo = :correo, dus_imagen = :imagen, dus_sexo = :sexo WHERE dus_id = :id';
     $params = array(
-        ':usr_id' => $this->getUsuario(),
-        ':dus_cedula' => $this->getCedula(),
-        ':dus_nombre' => $this->getNombre(),
-        ':dus_apellidos' => $this->getApellido(),
-        ':dus_movil' => $this->getMovil(),
-        ':dus_correo' => $this->getCorreo(),
-        ':dus_imagen' => $this->getImagen(),
-        ':dus_sexo' => $this->getSexo()
+        ':usuario_id' => $this->getUsuarioId(),
+        ':cedula' => $this->getCedula(),
+        ':nombre' => $this->getNombre(),
+        ':apellidos' => $this->getApellidos(),
+        ':movil' => $this->getMovil(),
+        ':correo' => $this->getCorreo(),
+        ':imagen' => $this->getImagen(),
+        ':sexo' => $this->getSexo(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -106,7 +98,7 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_dato_usuario SET pro_deleted_at = now() WHERE pro_id = :id';
+        $sql = 'UPDATE bda_dato_usuario SET dus_deleted_at = now() WHERE dus_id = :id';
         break;
       case false:
         $sql = 'DELETE FROM bda_dato_usuario WHERE dus_id = :id';
@@ -118,4 +110,5 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
     $answer->execute($params);
     return true;
   }
+
 }
