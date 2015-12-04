@@ -1,0 +1,38 @@
+bda_implemento:
+  name:               implemento
+  columns:
+    imp_id:           { name: id, constraint: PK, sequence: bda_implemento_imp_id_seq }
+    imp_descripcion:  { name: descripcion, length: 80 }
+    imp_created_at:   { name: created_at, behavior: created }
+    imp_updated_at:   { name: updated_at, behavior: updated }
+    imp_deleted_at:   { name: deleted_at, behavior: deleted }
+
+bda_inventario:
+  name:               inventario
+  columns:
+    inv_id:           { name: id, constraint: PK, sequence: bda_inventario_inv_id_seq }
+    pro_id:           { name: producto_id }
+    tpd_id:           { name: tipo_documento_id }
+    inv_num_doc:      { name: num_doc, }
+    inv_fech:         { name: fecha }
+    inv_cantidad:     { name: cantidad }
+    inv_movimiento:   { name: movimiento, length: 80 }
+    inv_saldo:        { name: saldo }
+    inv_descripcion:  { name: descripcion, length: 80 }
+    inv_created_at:   { name: created_at, behavior: created }
+    inv_updated_at:   { name: updated_at, behavior: updated }
+    inv_deleted_at:   { name: deleted_at, behavior: deleted }
+
+bda_labor:
+  name:               labor
+  columns:
+    lab_id:           { name: id, constraint: PK, sequence: bda_labor_lab_id_seq }
+    lab_descripcion:  { name: descripcion, length: 80 }
+    lab_valor:        { name: valor }
+    lab_estado:       { name: estado, length: 30 }
+    lab_descripcion:  { name: descripcion, length: 80 }
+    lab_created_at:   { name: created_at, behavior: created }
+    lab_updated_at:   { name: updated_at, behavior: updated }
+    lab_deleted_at:   { name: deleted_at, behavior: deleted }
+
+
