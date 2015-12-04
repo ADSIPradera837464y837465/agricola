@@ -8,9 +8,23 @@ use FStudio\interfaces\fsAction as action;
 
 /**
  * Description of index
- *
- * @author xubuntu
+ * @author Daniela Barona Mosquera <mo_naok@hotmail.com>
+ * @package 
+ * @subpackage model
+ * @subpackage base
+ * @version 1.0.0
  */
-class index {
-  //put your code here
+class index extends controller {
+
+  public function execute() {
+    $objControlRiegoPluviosidad = controlRiegoPluviosidadTable::getAll();
+    
+    $variables = array(
+        'objControlRiegoPluviosidad' => $objControlRiegoPluviosidad
+    );
+    
+    view::defineView('controlRiegoPluviosidad', 'index', $variables, 'html');
+  }
+
+  
 }
