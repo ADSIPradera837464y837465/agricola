@@ -44,15 +44,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * observacion de la tabla
    */
   const OBSERVACION = 'crp_observacion';
-
-  /*   * longitud de observaciones
-   * 
-   */
-  const OBSERVACIONES_LENGT = 2048;
-
-  /*
-   * foranea de la tabla suerte
-   */
+  const OBSERVACION_LENGTH = 2048;
   const SUERTE_ID = 'sue_id';
 
   /*
@@ -83,7 +75,7 @@ class controlRiegoPluviosidadBaseTable extends model {
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_contro_riego_pluviosidad_crp_id_seq';
 
   /**
    * Nombre de la tabla
@@ -112,25 +104,19 @@ class controlRiegoPluviosidadBaseTable extends model {
    * hora_inicio de la tabla
    * @var time
    */
-  private $horaInicio;
+  private $hora_inicio;
 
   /**
    * hora_fin de la tabla
    * @var time
    */
-  private $horaFin;
+  private $hora_fin;
 
   /**
    * cantidad_m3_hora de la tabla
    * @var time
    */
-  private $cantidadM3Hora;
-
-  /**
-   * hora_inicio de la tabla
-   * @var time
-   */
-  private $horaInicio;
+  private $cantidad_m3_hora;
 
   /**
    * observacion de la tabla
@@ -142,37 +128,37 @@ class controlRiegoPluviosidadBaseTable extends model {
    * sue_id de la tabla
    * @var integer
    */
-  private $suerteId;
+  private $suerte_id;
 
   /**
    * hac_id de la tabla
    * @var integer
    */
-  private $haciendaId;
+  private $hacienda_id;
 
   /**
    * ter_id de la tabla
    * @var integer
    */
-  private $terceroId;
+  private $tercero_id;
 
   /**
    * creacion de los registros d la tabla
    * @var dame_time
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * actualiza de la tabla
    * @var date_time
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * eliminar de la tabla
    * @var text
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la clase controlRiegoPluviosidadBaseTable
@@ -190,7 +176,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @param date_time $updatedAt
    * @param text $deletedAt
    */
-  public function __construct(config $config, $id = null, date $fecha = null, time $hora_inicio = null, time $hora_fin = null, time $cantidad_m3_hora = null, time $hora_inicio = null, text $observacion = null, $suerteId = null, $haciendaId = null, $terceroId = null, dame_time $createdAt = null, date_time $updatedAt = null, text $deletedAt = null) {
+  public function __construct(config $config, $id = null, $fecha = null, $hora_inicio = null, $hora_fin = null, $cantidad_m3_hora = null, $observacion = null, $suerte_id = null, $hacienda_id = null, $tercero_id = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->fecha = $fecha;
@@ -198,21 +184,12 @@ class controlRiegoPluviosidadBaseTable extends model {
     $this->hora_fin = $hora_fin;
     $this->cantidad_m3_hora = $cantidad_m3_hora;
     $this->observacion = $observacion;
-    $this->suerteId = $suerteId;
-    $this->haciendaId = $haciendaId;
-    $this->terceroId = $terceroId;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->suerte_id = $suerte_id;
+    $this->hacienda_id = $hacienda_id;
+    $this->tercero_id = $tercero_id;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -238,7 +215,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return time
    */
-  public function getHora_inicio() {
+  public function getHoraInicio() {
     return $this->hora_inicio;
   }
 
@@ -247,7 +224,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return time
    */
-  public function getHora_fin() {
+  public function getHoraFin() {
     return $this->hora_fin;
   }
 
@@ -256,7 +233,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function getCantidad_m3_hora() {
+  public function getCantidadM3Hora() {
     return $this->cantidad_m3_hora;
   }
 
@@ -275,7 +252,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @return integer
    */
   public function getSuerteId() {
-    return $this->suerteId;
+    return $this->suerte_id;
   }
 
   /**
@@ -284,7 +261,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @return integer
    */
   public function getHaciendaId() {
-    return $this->haciendaId;
+    return $this->hacienda_id;
   }
 
   /**
@@ -293,7 +270,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @return integer
    */
   public function getTerceroId() {
-    return $this->terceroId;
+    return $this->tercero_id;
   }
 
   /**
@@ -302,7 +279,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -311,7 +288,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -320,7 +297,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
   /**
@@ -346,7 +323,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date
    */
-  public function setFecha(date $fecha) {
+   public function setFecha($fecha) {
     $this->fecha = $fecha;
   }
 
@@ -355,7 +332,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return time
    */
-  public function setHora_inicio(time $hora_inicio) {
+    public function setHoraInicio($hora_inicio) {
     $this->hora_inicio = $hora_inicio;
   }
 
@@ -364,7 +341,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return time
    */
-  public function setHora_fin(time $hora_fin) {
+    public function setHoraFin($hora_fin) {
     $this->hora_fin = $hora_fin;
   }
 
@@ -373,7 +350,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function setCantidad_m3_hora(time $cantidad_m3_hora) {
+   public function setCantidadM3Hora($cantidad_m3_hora) {
     $this->cantidad_m3_hora = $cantidad_m3_hora;
   }
 
@@ -382,7 +359,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return text
    */
-  public function setObservacion(text $observacion) {
+
+   public function setObservacion($observacion) {
     $this->observacion = $observacion;
   }
 
@@ -391,8 +369,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function setSuerteId($suerteId) {
-    $this->suerteId = $suerteId;
+  public function setSuerteId($suerte_id) {
+    $this->suerte_id = $suerte_id;
   }
 
   /**
@@ -400,8 +378,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function setHaciendaId($haciendaId) {
-    $this->haciendaId = $haciendaId;
+    public function setHaciendaId($hacienda_id) {
+    $this->hacienda_id = $hacienda_id;
   }
 
   /**
@@ -409,8 +387,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function setTerceroId($terceroId) {
-    $this->terceroId = $terceroId;
+   public function setTerceroId($tercero_id) {
+    $this->tercero_id = $tercero_id;
   }
 
   /**
@@ -418,8 +396,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function setCreatedAt(dame_time $createdAt) {
-    $this->createdAt = $createdAt;
+ public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -427,8 +405,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function setUpdatedAt(date_time $updatedAt) {
-    $this->updatedAt = $updatedAt;
+   public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -436,8 +414,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function setDeletedAt(text $deletedAt) {
-    $this->deletedAt = $deletedAt;
+   public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
