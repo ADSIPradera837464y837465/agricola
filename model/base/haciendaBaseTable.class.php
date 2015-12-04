@@ -159,3 +159,6 @@ class haciendaBaseTable extends model {
   }
 
 }
+
+
+//tt
