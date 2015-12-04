@@ -34,6 +34,7 @@ class datoUsuarioBaseTable extends model {
   const CREATED_AT = 'dus_created_at';
   const UPDATED_AT = 'dus_updated_at';
   const DELETED_AT = 'dus_deleted_at';
+  const _SEQUENCE = 'bda_dato_usuario_dus_id_seq';
   const _TABLE = 'bda_dato_usuario';
 
   /**
