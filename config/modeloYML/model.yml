@@ -330,7 +330,7 @@ schema:
       ter_id_solicita:            { name: tercero_id_solicita }
       tpd_id:                     { name: tipo_documento_id }
       esb_fecha:                  { name: fecha }
-      esb_observacion:            { name: observacion }
+      esb_observacion:            { name: observacion, length: 1024 }
       esb_created_at:             { name: created_at, behavier: created }
       esb_updated_at:             { name: updated_at, behavier: updated }
       esb_deleted_at:             { name: deleted_at, behavier: deleted }

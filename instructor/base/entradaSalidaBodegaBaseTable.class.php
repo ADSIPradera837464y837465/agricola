@@ -22,6 +22,7 @@ class entradaSalidaBodegaBaseTable extends model {
   const TIPO_DOCUMENTO_ID = 'tpd_id';
   const FECHA = 'esb_fecha';
   const OBSERVACION = 'esb_observacion';
+  const OBSERVACION_LENGTH = 1024;
   const CREATED_AT = 'esb_created_at';
   const UPDATED_AT = 'esb_updated_at';
   const DELETED_AT = 'esb_deleted_at';
