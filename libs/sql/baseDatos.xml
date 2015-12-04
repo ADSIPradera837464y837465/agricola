@@ -1672,7 +1672,7 @@
       <Cl au="1" df="nextval('bda_usuario_rol_url_id_seq'::regclass)" nm="url_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="usr_usuario_id" nu="0">
+      <Cl au="0" df="" nm="usr_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="rol_id" nu="0">
@@ -1689,18 +1689,18 @@
       <Fk deAc="1" nm="fk_bda_rol_usuario_bda_usuario" prLkCl="usr_id" upAc="1">
         <PrTb mn="0" nm="bda_usuario" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_usuario_rol" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="usr_usuario_id" prCl="usr_id"/>
+        <ClPr cdCl="usr_id" prCl="usr_id"/>
       </Fk>
       <Idx clu="0" ftx="0" nm="bda_rol_usuario_rol_id_Idx" spa="0" unq="0">
         <ClNs>rol_id</ClNs>
         <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="bda_rol_usuario_usr_usuario_id_Idx" spa="0" unq="0">
-        <ClNs>usr_usuario_id</ClNs>
+        <ClNs>usr_id</ClNs>
         <OptTx>USING btree</OptTx>
       </Idx>
       <Idx clu="0" ftx="0" nm="bda_rol_usuario_usr_usuario_id_rol_id_Idx" spa="0" unq="1">
-        <ClNs>usr_usuario_id, rol_id</ClNs>
+        <ClNs>usr_id, rol_id</ClNs>
         <OptTx>USING btree</OptTx>
       </Idx>
       <UniqueConstraints/>
@@ -2127,7 +2127,7 @@ $$
       <Zone bkCl="ffd9ecd8" h="614" nm="tercero" w="473" x="955" y="26"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="247">
+  <RnmMgr NxRnmId="248">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="soho_framework" SupCls="" SupNme="">
       <Rnm id="1" nNm="public" oNm="schemaA"/>
     </RnmCh>
@@ -2191,6 +2191,7 @@ $$
       <Rnm id="21" nNm="rol_id" oNm="credencial_id"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_usuario_rol" SupCls="Schema" SupNme="public">
+      <Rnm id="247" nNm="usr_id" oNm="usr_usuario_id"/>
       <Rnm id="22" nNm="usr_usuario_id" oNm="usuario_id"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_usuario_rol" SupCls="Schema" SupNme="public">

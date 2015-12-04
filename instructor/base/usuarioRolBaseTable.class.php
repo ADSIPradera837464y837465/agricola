@@ -17,7 +17,7 @@ use FStudio\myConfig as config;
 class usuarioRolBaseTable extends model {
 
   const ID = 'url_id';
-  const USUARIO_ID = 'usr_usuario_id';
+  const USUARIO_ID = 'usr_id';
   const ROL_ID = 'rol_id';
   const CREATED_AT = 'url_created_at';
   const _SEQUENCE = 'bda_unidad_medida_unm_id_seq';

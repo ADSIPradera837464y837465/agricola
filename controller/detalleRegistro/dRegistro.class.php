@@ -15,12 +15,12 @@ use FStudio\interfaces\fsAction as action;
  * @version 1.0.0
  */
 
-class detalleRegistro extends controller implements action {
+class dRegistro extends controller implements action {
 
     public function execute() {
       $config = $this->getConfig();
-      $detalleRegistro = new detalleRegistro($config);
-      $this->objdetalleRegistro = $detalleRegistro->getAll();
+      $dRegistro = new detalleRegistroTable($config);
+      $this->objdetalleRegistro = $dRegistro->getAll();
       // así declaramos la vista a usar
       $this->defineView('detalleRegistro', 'detalleRegistro', 'html');
     }

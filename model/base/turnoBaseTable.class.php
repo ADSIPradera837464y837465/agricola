@@ -6,9 +6,10 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of registroTractorBaseTable
- * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com>
- * @package 
+ * Description of turnoBaseTable
+ *
+ * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -24,28 +25,58 @@ class turnoBaseTable extends model {
    * descripcion de la tabla turno
    */
   const DESCRIPCION = 'tur_descripcion';
+  
+    /**
+   * descripcion de loggitud de la tabla turno
+   */
+  const DESCRIPCION_LENGTH = 80;
 
   /**
 
    * hora de de inicio de la tabla turno
    */
-  const Hora_Inicio = 'tur_hora_inicio';
+  const HORA_INICIO = 'tur_hora_inicio';
 
   /**
    * Hora fin fe la tabla turno
    */
-  const Hora_Fin = 'tur_hora_fin';
+  const HORA_FIN = 'tur_hora_fin';
 
   /**
 
    * turno de la tabla estado
    */
   const ESTADO = 'tur_estado';
+   /**
+
+   * estado de longitud de la tabla turno
+   */
+  const ESTADO_LENGTH = 80;
+
+  /**
+   * crea los datos de la  tabla turno
+   */
+  const CREATED_AT = 'tur_created_at';
+
+  /**
+   * actualiza los datos de la tabla turno
+   */
+  const UPDATED_AT = 'tur_updated_at';
+
+  /**
+   * elimina los datos dela tabla turno
+   */
+  const DELETED_AT = 'tur_deleted_at';
 
   /**
    * Secuencia de la identificacion de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_turno_tur_id_seq';
+
+  /**
+   * nombre de la tabla
+   */
+  const _TABLE = 'bda_turno';
 
   /**
 
@@ -88,50 +119,35 @@ class turnoBaseTable extends model {
    * @var varchar
    */
   private $estado;
-  private $tabla;
 
   /**
    * crea la tabla
    * @var time_stamp
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * actualiza la tabla
    * @var time_stamp
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * elimina la tabla
    * @var time_stamp
    */
-  private $deletedAt;
+  private $deleted_at;
 
-  /**
-   * 
-   * @param config $config
-   * @param type $id
-   * @param varchar $descripcion
-   * @param time $hora_inicio
-   * @param time $hora_fin
-   * @param varchar $estado
-   * @param type $tabla
-   * @param time_stamp $createdAt
-   * @param time_stamp $updatedAt
-   * @param time_stamp $deletedAt
-   */
-  public function __construct(config $config, $id, varchar $descripcion, time $hora_inicio, time $hora_fin, varchar $estado, $tabla, time_stamp $createdAt, time_stamp $updatedAt, time_stamp $deletedAt) {
+  public function __construct(config $config, $id = null, $descripcion = null, $hora_inicio = null, $hora_fin = null, $estado = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
     $this->hora_inicio = $hora_inicio;
     $this->hora_fin = $hora_fin;
     $this->estado = $estado;
-    $this->tabla = $tabla;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -161,21 +177,11 @@ class turnoBaseTable extends model {
     return $this->descripcion;
   }
 
-  /**
-   * Retorna la hora-inicio del registro
-   * version 1.0.o
-   * @return time_date
-   */
-  public function getHora_inicio() {
+  public function getHoraInicio() {
     return $this->hora_inicio;
   }
 
-  /**
-   * Retorna la hora_fin del registro
-   * version 1.0.o
-   * @return time_date
-   */
-  public function getHora_fin() {
+  public function getHoraFin() {
     return $this->hora_fin;
   }
 
@@ -203,7 +209,7 @@ class turnoBaseTable extends model {
    * @return time_stamp
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -212,7 +218,7 @@ class turnoBaseTable extends model {
    * @return time_stamp
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -221,7 +227,7 @@ class turnoBaseTable extends model {
    * @return time_stamp
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
   /**
@@ -242,76 +248,33 @@ class turnoBaseTable extends model {
     $this->id = $id;
   }
 
-  /**
-   * Fija la descripcion para el registro en la tabla
-   * @version 1.0.0
-   * @param varchar $descripcion
-   */
-  public function setDescripcion(varchar $descripcion) {
+  public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
 
-  /**
-   * Fija la Hora_inicio para el registro en la tabla
-   * @version 1.0.0
-   * @param date_time $Hora_inicio
-   */
-  public function setHora_inicio(time $hora_inicio) {
+  public function setHoraInicio($hora_inicio) {
     $this->hora_inicio = $hora_inicio;
   }
 
-  /**
-   * Fija la Hora_fin para el registro en la tabla
-   * @version 1.0.0
-   * @param date_time $Hora_fin
-   */
-  public function setHora_fin(time $hora_fin) {
+  public function setHoraFin($hora_fin) {
     $this->hora_fin = $hora_fin;
   }
 
-  /**
-   * Fija el estado para el registro en la tabla
-   * @version 1.0.0
-   * @param varchar $estado
-   */
-  public function setEstado(varchar $estado) {
+  public function setEstado($estado) {
     $this->estado = $estado;
   }
 
-  /**
-   * Fija el registro en la tabla
-   * @version 1.0.0
-   * @param integer $tabla
-   */
-  public function setTabla($tabla) {
-    $this->tabla = $tabla;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
-  /**
-   * Fija los datos creados en la tabla
-   * @version 1.0.0
-   * @return time_stamp
-   */
-  public function setCreatedAt(time_stamp $createdAt) {
-    $this->createdAt = $createdAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
-  /**
-   * Fija las actualizaciones que se hayan hecho en la tabla
-   * @version 1.0.0
-   * @return time_stamp
-   */
-  public function setUpdatedAt(time_stamp $updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
-
-  /**
-   * Fijalos datos eliminados de la tabla
-   * @version 1.0.0
-   * @return time_stamp
-   */
-  public function setDeletedAt(time_stamp $deletedAt) {
-    $this->deletedAt = $deletedAt;
-  }
-
 }
+
+ 
