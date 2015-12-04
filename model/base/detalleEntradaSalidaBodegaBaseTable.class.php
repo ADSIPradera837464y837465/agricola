@@ -1,5 +1,10 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
  * Description of detalleEntradaSalidaBodegaBaseTable
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
@@ -16,22 +21,22 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   const ID = 'des_id';
 
   /**
-   * IDESB de la tabla
+   * ID de la tabla entrada salida bodega 
    */
-  const ID2 = 'esb_id';
+  const ENTRADA_SALIDA_BODEGA_ID = 'esb_id';
 
   /**
-   * IDPRO de la tabla
+   * ID de la tabla producto
    */
-  const ID3 = 'pro_id';
+  const PRODUCTO_ID = 'pro_id';
 
   /**
-   * IDUNM de la tabla 
+   * ID de la tabla unidad de medida
    */
-  const ID4 = 'unm_id';
+  const UNIDAD_MEDIDA_ID = 'unm_id';
 
   /**
-   * Descripcion cantidad de la tabla
+   * Descripcion de la cantidad  de la tabla
    */
   const CANTIDAD = 'des_cantidad';
 
@@ -46,9 +51,9 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   const CREATED_AT = 'des_created_at';
 
   /**
-   * Fecha y hora de la ultima modificacion  de un registro
+   * Fecha y hora de la ultima actualización del registro
    */
-  const UPDATED_AT = 'des_created_at';
+  const UPDATED_AT = 'des_updated_at';
 
   /**
    * Fecha y hora para controlar el borrado lógico
@@ -56,12 +61,12 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   const DELETED_AT = 'des_deleted_at';
 
   /**
-   * Secuencia de la tabla 
+   * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_detalle_entrada_salida_bodega_des_id_seq';
 
   /**
-   * Nombre de la tabla
+   *  Nombre de la tabla 
    */
   const _TABLE = 'bda_detalle_entrada_salida_bodega';
 
@@ -73,117 +78,123 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
 
   /**
    * ID de la tabla
+   * @var integer
    */
-  private $desId;
+  private $id;
 
   /**
-   * IDESB de la tabla
+   * ID de la tabla entrada salida bodega 
+   * @var integer 
    */
-  private $esbId;
+  private $entrada_salida_bodega_id;
 
   /**
-   * IDPRO de la tabla
+   * ID de la tabla producto
+   * @var integer
    */
-  private $proId;
+  private $producto_id;
 
   /**
-   * IDUNM de la tabla 
+   * ID de la tabla unidad de medida
+   * @var integer
    */
-  private $umnId;
+  private $unidad_medida_id;
 
   /**
-   * Descripcion cantidad de la tabla
+   * Descripcion de la cantidad  de la tabla
+   * @var integer 
    */
   private $cantidad;
 
   /**
    * Descripcion precio de la tabla
+   * @var integer
    */
   private $precio;
 
   /**
-   * Fecha y hora de creacion del registro
-   * @var date_time
+   * Fecha y hora  de creacion del registro
+   * @var date_tame
    */
-  private $createdAt;
+  private $created_at;
 
   /**
-   * Fecha y hora de la ultima modificacion de un registro
-   * @var date_time
+   * Fecha y hora de la ultima actualización del registro
+   * @var date_tame
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado lógico
-   * @var date_time
+   * @var date_tame
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
+   * 
    * Constructor de la clase detalleEntradaSalidaBodegaBaseTable
-   * @version 1.0.0
-   * @param config $config
-   * @param integer $desId
-   * @param integer $esbId
-   * @param integer $proId
-   * @param integer $umnId
+   * @param integer $id
+   * @param integer $entrada_salida_bodega_id
+   * @param integer $producto_id
+   * @param integer $unidad_medida_id
    * @param integer $cantidad
    * @param integer $precio
-   * @param date_time $createdAt
-   * @param date_time $updatedAt
-   * @param date_time $deletedAt
+   * @param date_time $created_at
+   * @param date_time $updated_at
+   * @param date_time $deleted_at
+   * @version 1.0.0
    */
-  public function __construct(config $config, $desId = null, $esbId = null, $proId = null, $umnId = null, $cantidad = null, $precio, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $entrada_salida_bodega_id = null, $producto_id = null, $unidad_medida_id = null, $cantidad = null, $precio = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
-    $this->desId = $desId;
-    $this->esbId = $esbId;
-    $this->proId = $proId;
-    $this->umnId = $umnId;
+    $this->id = $id;
+    $this->entrada_salida_bodega_id = $entrada_salida_bodega_id;
+    $this->producto_id = $producto_id;
+    $this->unidad_medida_id = $unidad_medida_id;
     $this->cantidad = $cantidad;
     $this->precio = $precio;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Retorna la configuracion del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
    * Retorna el id del registro
    * @version 1.0.0
-   * @return config
+   * @return integer
    */
-  public function getDesId() {
-    return $this->desId;
+  public function getId() {
+    return $this->id;
   }
 
   /**
-   * Retorna el id2 del registro
+   * Retorna el  Id Entrada Salida Bodega del registro
    * @version 1.0.0
-   * @return config
+   * @return integer
    */
-  public function getEsbId() {
-    return $this->esbId;
+  public function getEntradaSalidaBodegaId() {
+    return $this->entrada_salida_bodega_id;
   }
 
   /**
-   * Retorna el id3 del registro
+   * Retorna el id de producto del registro
    * @version 1.0.0
-   * @return config
+   * @return integer
    */
-  public function getProId() {
-    return $this->proId;
+  public function getProductoId() {
+    return $this->producto_id;
   }
 
   /**
-   * Retorna el id4 del registro
+   * Retorna el id unidad de medida del registro
+   * @version 1.0.0
+   * @return integer
+   */
+  public function getUnidadMedidaId() {
+    return $this->unidad_medida_id;
+  }
+
+  /**
+   * Retorna el id de umn del registro
    * @version 1.0.0
    * @return config
    */
@@ -215,7 +226,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -224,7 +235,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -233,49 +244,49 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
    * Fija el id para el registro en la tabla
    * @version 1.0.0
-   * @param integer $desId
+   * @param integer $id
    */
-  public function setDesId($desId) {
-    $this->desId = $desId;
+  public function setId($id) {
+    $this->id = $id;
   }
 
   /**
-   * Fija el id2 para el registro en la tabla
+   * Fija el id para el registro en la tabla
    * @version 1.0.0
-   * @param integer $esbId
+   * @param integer $id
    */
-  public function setEsbId($esbId) {
-    $this->esbId = $esbId;
+  public function setEntradaSalidaBodegaId($entrada_salida_bodega_id) {
+    $this->entrada_salida_bodega_id = $entrada_salida_bodega_id;
   }
 
   /**
-   * Fija el id3 para el registro en la tabla
+   * Fija el id para el registro en la tabla
    * @version 1.0.0
-   * @param integer $proId
+   * @param integer $id
    */
-  public function setProId($proId) {
-    $this->proId = $proId;
+  public function setProductoId($producto_id) {
+    $this->producto_id = $producto_id;
   }
 
   /**
-   * Fija el id4 para el registro en la tabla
+   * Fija el id para el registro en la tabla
    * @version 1.0.0
-   * @param integer $umnId
+   * @param integer $id
+   */
+  public function setUnidadMedidaId($unidad_medida_id) {
+    $this->unidad_medida_id = $unidad_medida_id;
+  }
+
+  /**
+   * Fija el id para el registro en la tabla
+   * @version 1.0.0
+   * @param integer $id
    */
   public function setUmnId($umnId) {
     $this->umnId = $umnId;
@@ -300,30 +311,30 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   }
 
   /**
-   * Fija la fecha y hora  de creacion del registro
+   * Fija fecha y hora de cuando se creo  un registro
    * @version 1.0.0
    * @param date_time $createdAt
    */
-  public function setCreatedAt(date_time $createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
-   * Fija la fecha y hora de la ultima modificacion de un registro
+   * Fija fecha y hora de cuando se modifico el ultimo registro
    * @version 1.0.0
    * @param date_time $updatedAt
    */
-  public function setUpdatedAt(date_time $updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
-   * Fija la fecha y hora de la eliminacion del registro
+   * Fija fecha y hora del borrado logico
    * @version 1.0.0
    * @param date_time $deletedAt
    */
-  public function setDeletedAt(date_time $deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
