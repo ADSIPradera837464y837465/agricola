@@ -5,7 +5,7 @@ use FStudio\model\base\haciendaBaseTable;
 /**
  * Description of haciendaTable
  * @author Victoria Cortes  <victoriacortes2014@hotmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -18,7 +18,7 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT hac_id, hac_descripcion, hac_ubicacion, hac_representante_legal, hac_created_at FROM bda_hacienda ORDER BY hac_created_at ASC';
+    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda ORDER BY  ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,11 +31,9 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT hac_id, hac_descripcion, hac_ubicacion, hac_representante_legal,  hac_created_at '
-            . 'FROM bda_hacienda '
-            . 'AND hac_id = :id';
+    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda AND id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id: $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -48,15 +46,17 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_hacienda (hac_descripcion, hac_ubicacion, hac_representante_legal) VALUES (:descripcion, :ubicacion, :representante_legal)';
+    $sql = 'INSERT INTO bda_hacienda (hac_descripcion, hac_ubicacion, hac_representante_legal, hac_created_at, hac_updated_at, hac_deleted_at) VALUES (:descripcion, :ubicacion, :representante_legal, :created_at, :updated_at, :deleted_at)';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
         ':ubicacion' => $this->getUbicacion(),
-        ':representante_legal' => $this->getRepresentante_legal(),
+        ':representante_legal' => $this->getRepresentanteLegal(),
+        ':created_at' => $this->getCreatedAt(),
+        ':updated_at' => $this->getUpdatedAt(),
+        ':deleted_at' => $this->getDeletedAt()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    //return $conn->lastInsertId(self::_SEQUENCE);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
@@ -66,30 +66,21 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_hacienda SET hac_descripcion = :descripcion, hac_ubicacion = :ubicacion, hac_representante_legal = :representante_legal, WHERE hac_id = :id';
+    $sql = 'UPDATE bda_hacienda SET hac_descripcion = :descripcion, hac_ubicacion = :ubicacion, hac_representante_legal = :representante_legal, hac_created_at = :created_at, hac_updated_at = :updated_at, hac_deleted_at = :deleted_at WHERE hac_id = :id';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
         ':ubicacion' => $this->getUbicacion(),
-        ':representante_legal' => $this->getRepresentante_legal(),
-    );
-    $answer = $conn->prepare($sql);
-    $answer->execute($params);
-    return true;
-  }
-
-  /**
-   * borra de forma logica o fisica un registro de una tabla
-   * @return boolean
-   */
-  public function delete() {
-    $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM bda_hacienda WHERE hac_id = :id';
-    $params = array(
+        ':representante_legal' => $this->getRepresentanteLegal(),
+        ':created_at' => $this->getCreatedAt(),
+        ':updated_at' => $this->getUpdatedAt(),
+        ':deleted_at' => $this->getDeletedAt(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
   }
+
+
 
 }
