@@ -4,6 +4,35 @@
   <DefTblOpts/>
   <DocFolder>/Users/julianlasso/Documents</DocFolder>
   <Sch Cm="Sistema de Información Agricola" nm="public">
+    <Tbl UsSo="1" nm="bda_avance_agua_surco">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="aas_item" nm="pkbda_avance_agua_surco"/>
+      <Cl au="1" df="nextval('bda_avance_agua_surco_aas_item_seq'::regclass)" nm="aas_item" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_num_documento" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="aas_surco_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="aas_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="aas_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="aas_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_avance_agua_surco_bda_control_administrativo_riego" prLkCl="car_num_documento" upAc="1">
+        <PrTb mn="0" nm="bda_control_administrativo_riego" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_avance_agua_surco" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="car_num_documento" prCl="car_num_documento"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="bda_bitacora">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="bit_id" nm="pkbda_bitacora"/>
@@ -118,6 +147,90 @@
         <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_contro_riego_pluviosidad" oe="1" sch="public" zr="0"/>
         <ClPr cdCl="ter_id" prCl="ter_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_control_administrativo_riego">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="car_num_documento" nm="pkbda_control_administrativo_riego"/>
+      <Cl au="1" df="nextval('bda_control_administrativo_riego_car_num_documento_seq'::regclass)" nm="car_num_documento" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_fecha" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="met_rie_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="hac_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sue_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="car_caudal_riego" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_tiempo_riego" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="5" sc="null" sg="1" un="0"/>
+        <Cm>hh:mm</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="car_tiempo_total_suspension" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="5" sc="null" sg="1" un="0"/>
+        <Cm>hh:mm</Cm>
+      </Cl>
+      <Cl au="0" df="0" nm="car_longitud_surco" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>metros</Cm>
+      </Cl>
+      <Cl au="0" df="0" nm="car_espacio_surco" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="car_num_surco_regados" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_estado_humedad" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_suelo_grieta" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = si | false = no</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="car_facil_avance_agua" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = si | false = no</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="car_pendiente_dir_surco" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_agua_costado" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = si | false = no</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="car_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="car_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bda_formulario_registro_bda_hacienda" prLkCl="hac_id" upAc="1">
+        <PrTb mn="0" nm="bda_hacienda" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_control_administrativo_riego" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="hac_id" prCl="hac_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_formulario_registro_bda_metodo_riego" prLkCl="met_rie_id" upAc="1">
+        <PrTb mn="0" nm="bda_metodo_riego" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_control_administrativo_riego" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="met_rie_id" prCl="met_rie_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bda_formulario_registro_bda_suerte" prLkCl="sue_id" upAc="1">
+        <PrTb mn="0" nm="bda_suerte" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_control_administrativo_riego" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="sue_id" prCl="sue_id"/>
       </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -264,10 +377,10 @@
       <Cl au="0" df="" nm="deaas_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="1" nm="fk_bda_detalle_agua_surco_bda_formulario_registro" prLkCl="fore_num_documento" upAc="1">
-        <PrTb mn="0" nm="bda_formulario_registro" oe="1" sch="public" zr="0"/>
+      <Fk deAc="1" nm="fk_bda_detalle_agua_surco_bda_formulario_registro" prLkCl="car_num_documento" upAc="1">
+        <PrTb mn="0" nm="bda_control_administrativo_riego" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_detalle_agua_surco" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="fore_num_documento" prCl="fore_num_documento"/>
+        <ClPr cdCl="fore_num_documento" prCl="car_num_documento"/>
       </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -296,10 +409,10 @@
       <Cl au="0" df="" nm="decs_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="1" nm="fk_bda_detalle_caudal_surco_bda_formulario_registro" prLkCl="fore_num_documento" upAc="1">
-        <PrTb mn="0" nm="bda_formulario_registro" oe="1" sch="public" zr="0"/>
+      <Fk deAc="1" nm="fk_bda_detalle_caudal_surco_bda_formulario_registro" prLkCl="car_num_documento" upAc="1">
+        <PrTb mn="0" nm="bda_control_administrativo_riego" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_detalle_caudal_surco" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="fore_num_documento" prCl="fore_num_documento"/>
+        <ClPr cdCl="fore_num_documento" prCl="car_num_documento"/>
       </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -429,6 +542,10 @@
       <Cl au="0" df="" nm="deo_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="deo_estado" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = realizado | false = no realizado</Cm>
+      </Cl>
       <Fk deAc="1" nm="fk_bda_detalle_orden_bda_orden_servicio" prLkCl="ors_id" upAc="1">
         <PrTb mn="0" nm="bda_orden_servicio" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_detalle_orden" oe="1" sch="public" zr="0"/>
@@ -508,10 +625,10 @@
         <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
         <ClPr cdCl="pro_id" prCl="pro_id"/>
       </Fk>
-      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_registro_labores_maquina_equipo" prLkCl="relme_numero" upAc="1">
-        <PrTb mn="0" nm="bda_registro_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
+      <Fk deAc="1" nm="fk_bda_detalle_registro_bda_registro_labores_maquina_equipo" prLkCl="lme_numero" upAc="1">
+        <PrTb mn="0" nm="bda_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_detalle_registro" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="relme_numero" prCl="relme_numero"/>
+        <ClPr cdCl="relme_numero" prCl="lme_numero"/>
       </Fk>
       <Fk deAc="1" nm="fk_bda_detalle_registro_bda_suerte" prLkCl="sue_id" upAc="1">
         <PrTb mn="0" nm="bda_suerte" oe="1" sch="public" zr="0"/>
@@ -579,51 +696,6 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="bda_formulario_registro">
-      <TblOpts>WITHOUT OIDS</TblOpts>
-      <Pk ClNs="fore_num_documento" nm="pkbda_formulario_registro"/>
-      <Cl au="1" df="nextval('bda_formulario_registro_fore_num_documento_seq'::regclass)" nm="fore_num_documento" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="fore_fecha" nu="0">
-        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="met_rie_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="hac_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="sue_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="now()" nm="fore_created_at" nu="0">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="fore_updated_at" nu="1">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="fore_deleted_at" nu="1">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Fk deAc="1" nm="fk_bda_formulario_registro_bda_hacienda" prLkCl="hac_id" upAc="1">
-        <PrTb mn="0" nm="bda_hacienda" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_formulario_registro" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="hac_id" prCl="hac_id"/>
-      </Fk>
-      <Fk deAc="1" nm="fk_bda_formulario_registro_bda_metodo_riego" prLkCl="met_rie_id" upAc="1">
-        <PrTb mn="0" nm="bda_metodo_riego" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_formulario_registro" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="met_rie_id" prCl="met_rie_id"/>
-      </Fk>
-      <Fk deAc="1" nm="fk_bda_formulario_registro_bda_suerte" prLkCl="sue_id" upAc="1">
-        <PrTb mn="0" nm="bda_suerte" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_formulario_registro" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="sue_id" prCl="sue_id"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
     <Tbl UsSo="1" nm="bda_hacienda">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="hac_id" nm="pkbda_hacienda"/>
@@ -678,14 +750,14 @@
       <Cl au="1" df="nextval('bda_inventario_inv_id_seq'::regclass)" nm="inv_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="des_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
       <Cl au="0" df="" nm="pro_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="tpd_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="inv_num_doc" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="inv_fech" nu="0">
         <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
@@ -708,11 +780,6 @@
       <Cl au="0" df="" nm="inv_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="1" nm="fk_bda_inventario_bda_detalle_entrada_salida_bodega" prLkCl="des_id" upAc="1">
-        <PrTb mn="0" nm="bda_detalle_entrada_salida_bodega" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_inventario" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="des_id" prCl="des_id"/>
-      </Fk>
       <Fk deAc="1" nm="fk_bda_inventario_bda_producto" prLkCl="pro_id" upAc="1">
         <PrTb mn="0" nm="bda_producto" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_inventario" oe="1" sch="public" zr="0"/>
@@ -753,6 +820,69 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="bda_labores_maquina_equipo">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="lme_numero" nm="pkbda_labores_maquina_equipo"/>
+      <Cl au="1" df="nextval('bda_labores_maquina_equipo_lme_numero_seq'::regclass)" nm="lme_numero" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="hac_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ter_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tpd_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="imp_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lme_fecha" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="t" nm="lme_estado" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>t = true | f = false</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="lme_tiempo" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lme_total_horas_trabajadas" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="lme_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lme_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lme_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_hacienda" prLkCl="hac_id" upAc="1">
+        <PrTb mn="0" nm="bda_hacienda" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="hac_id" prCl="hac_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_implemento" prLkCl="imp_id" upAc="1">
+        <PrTb mn="0" nm="bda_implemento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="imp_id" prCl="imp_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_tercero" prLkCl="ter_id" upAc="1">
+        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ter_id" prCl="ter_id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_tipo_documento" prLkCl="tpd_id" upAc="1">
+        <PrTb mn="0" nm="bda_tipo_documento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tpd_id" prCl="tpd_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="bda_maquina">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="maq_id" nm="pkbda_maquina"/>
@@ -771,7 +901,7 @@
       <Cl au="0" df="" nm="maq_numero_chasis" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="maq_t_accesorio" nu="0">
+      <Cl au="0" df="" nm="maq_tipo_accesorio" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="0" nm="maq_horas_trabajadas" nu="0">
@@ -1029,69 +1159,6 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="bda_registro_labores_maquina_equipo">
-      <TblOpts>WITHOUT OIDS</TblOpts>
-      <Pk ClNs="relme_numero" nm="pkbda_registro_labores_maquina_equipo"/>
-      <Cl au="1" df="nextval('bda_registro_labores_maquina_equipo_relme_numero_seq'::regclass)" nm="relme_numero" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="hac_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="ter_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="tpd_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="imp_id" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="relme_fecha" nu="0">
-        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="t" nm="relme_estado" nu="0">
-        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>t = true | f = false</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="relme_tiempo" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="relme_total_horas_trabajadas" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="now()" nm="relme_created_at" nu="0">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="relme_updated_at" nu="1">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="relme_deleted_at" nu="1">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_hacienda" prLkCl="hac_id" upAc="1">
-        <PrTb mn="0" nm="bda_hacienda" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_registro_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="hac_id" prCl="hac_id"/>
-      </Fk>
-      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_implemento" prLkCl="imp_id" upAc="1">
-        <PrTb mn="0" nm="bda_implemento" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_registro_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="imp_id" prCl="imp_id"/>
-      </Fk>
-      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_tercero" prLkCl="ter_id" upAc="1">
-        <PrTb mn="0" nm="bda_tercero" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_registro_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="ter_id" prCl="ter_id"/>
-      </Fk>
-      <Fk deAc="1" nm="fk_dba_registro_labores_maquina_equipo_bda_tipo_documento" prLkCl="tpd_id" upAc="1">
-        <PrTb mn="0" nm="bda_tipo_documento" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="bda_registro_labores_maquina_equipo" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="tpd_id" prCl="tpd_id"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
     <Tbl UsSo="1" nm="bda_registro_tractor">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Pk ClNs="rt_item" nm="pkbda_registro_tractor"/>
@@ -1188,6 +1255,9 @@
       <Cl au="0" df="" nm="sue_id" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="tic_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
       <Cl au="0" df="" nm="sie_dia" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
@@ -1239,6 +1309,11 @@
       <Cl au="0" df="" nm="sie_deleted_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <Fk deAc="1" nm="fk_bda_siembra_bda_tipo_cana" prLkCl="tic_id" upAc="1">
+        <PrTb mn="0" nm="bda_tipo_cana" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bda_siembra" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tic_id" prCl="tic_id"/>
+      </Fk>
       <Fk deAc="1" nm="fk_dba_siembra_bda_suerte" prLkCl="sue_id" upAc="1">
         <PrTb mn="0" nm="bda_suerte" oe="1" sch="public" zr="0"/>
         <CdTb mn="1" nm="bda_siembra" oe="1" sch="public" zr="0"/>
@@ -1333,6 +1408,27 @@
         <CdTb mn="1" nm="bda_tercero" oe="1" sch="public" zr="0"/>
         <ClPr cdCl="car_id" prCl="car_id"/>
       </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bda_tipo_cana">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="tic_id" nm="pkbda_tipo_cana"/>
+      <Cl au="1" df="nextval('bda_tipo_cana_tic_id_seq'::regclass)" nm="tic_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tic_descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="tic_created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tic_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tic_deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
@@ -1652,6 +1748,9 @@ $$
   LANGUAGE plpgsql VOLATILE 
   COST 100;</src>
     </Proc>
+    <Seq incr="1" nm="bda_avance_agua_surco_aas_item_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
     <Seq incr="1" nm="bda_bitacora_bit_id_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
@@ -1659,6 +1758,9 @@ $$
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
     <Seq incr="1" nm="bda_contro_riego_pluviosidad_crp_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_control_administrativo_riego_car_num_documento_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
     <Seq incr="1" nm="bda_control_salida_cana_csc_id_seq">
@@ -1688,9 +1790,6 @@ $$
     <Seq incr="1" nm="bda_entrada_salida_bodega_esb_id_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
-    <Seq incr="1" nm="bda_formulario_registro_fore_num_documento_seq">
-      <Cm>DbWrench Autogenerated Sequence.</Cm>
-    </Seq>
     <Seq incr="1" nm="bda_hacienda_hac_id_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
@@ -1701,6 +1800,9 @@ $$
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
     <Seq incr="1" nm="bda_labor_lab_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_labores_maquina_equipo_lme_numero_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
     <Seq incr="1" nm="bda_maquina_maq_id_seq">
@@ -1724,9 +1826,6 @@ $$
     <Seq incr="1" nm="bda_recordar_me_rcm_id_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
-    <Seq incr="1" nm="bda_registro_labores_maquina_equipo_relme_numero_seq">
-      <Cm>DbWrench Autogenerated Sequence.</Cm>
-    </Seq>
     <Seq incr="1" nm="bda_registro_tractor_rt_item_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
@@ -1743,6 +1842,9 @@ $$
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
     <Seq incr="1" nm="bda_tercero_ter_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bda_tipo_cana_tic_id_seq">
       <Cm>DbWrench Autogenerated Sequence.</Cm>
     </Seq>
     <Seq incr="1" nm="bda_tipo_documento_tpd_id_seq">
@@ -1799,7 +1901,7 @@ $$
       <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
       <svg path=""/>
     </DiaProps>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_usuario" x="120" y="229"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_usuario" x="121" y="229"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_rol" x="646" y="48"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_usuario_rol" x="620" y="211"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_recordar_me" x="76" y="56"/>
@@ -1809,24 +1911,24 @@ $$
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_tercero" x="981" y="71"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_id" x="986" y="376"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tercero" x="1295" y="165"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_caudal_surco" x="48" y="715"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_metodo_riego" x="377" y="560"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_caudal_surco" x="48" y="727"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_metodo_riego" x="377" y="547"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_agua_surco" x="41" y="550"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_formulario_registro" x="375" y="693"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_control_administrativo_riego" x="375" y="693"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_hacienda" x="748" y="617"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_suerte" x="767" y="772"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_suelo" x="773" y="946"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_contro_riego_pluviosidad" x="1192" y="652"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_turno" x="1131" y="1086"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_registro_tractor" x="1118" y="908"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_registro_tractor" x="1118" y="909"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_control_salida_cana" x="1472" y="875"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_documento" x="1683" y="30"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_registro_labores_maquina_equipo" x="1673" y="207"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_labores_maquina_equipo" x="1673" y="207"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_implemento" x="2038" y="205"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_siembra" x="1672" y="519"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_unidad_medida" x="2041" y="457"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_marca" x="2054" y="597"/>
-    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_producto" x="2058" y="735"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_producto" x="2057" y="735"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_producto" x="2402" y="574"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_labor" x="2431" y="350"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_registro" x="2873" y="296"/>
@@ -1840,6 +1942,11 @@ $$
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_entrada_salida_bodega" x="3797" y="987"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_detalle_entrada_salida_bodega" x="3386" y="1055"/>
     <TbGl bkCl="ff6666ff" sch="public" tbl="bda_inventario" x="2855" y="1019"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_avance_agua_surco" x="52" y="880"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bda_tipo_cana" x="1774" y="881"/>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_avance_agua_surco.fk_bda_avance_agua_surco_bda_control_administrativo_riego" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_bitacora.fk_bda_bitacora_bda_usuario" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
@@ -1850,6 +1957,15 @@ $$
       <positionableLines/>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_contro_riego_pluviosidad.fk_bda_contro_riego_pluviosidad_bda_tercero" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_control_administrativo_riego.fk_bda_formulario_registro_bda_hacienda" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_control_administrativo_riego.fk_bda_formulario_registro_bda_metodo_riego" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_control_administrativo_riego.fk_bda_formulario_registro_bda_suerte" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_control_salida_cana.fk_bda_control_salida_cana_bda_suerte" parentEdge="" positioner="">
@@ -1927,22 +2043,22 @@ $$
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_entrada_salida_bodega.fk_bda_entrada_salida_bodega_bda_tipo_documento" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_formulario_registro.fk_bda_formulario_registro_bda_hacienda" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_formulario_registro.fk_bda_formulario_registro_bda_metodo_riego" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_formulario_registro.fk_bda_formulario_registro_bda_suerte" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_inventario.fk_bda_inventario_bda_detalle_entrada_salida_bodega" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_inventario.fk_bda_inventario_bda_producto" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_inventario.fk_bda_inventario_bda_tipo_documento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_hacienda" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_implemento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_tercero" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_tipo_documento" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_orden_ejecucion.fk_bda_orden_ejecucion_bda_maquina" parentEdge="" positioner="">
@@ -1978,19 +2094,10 @@ $$
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_recordar_me.fk_bda_recordar_me_bda_usuario" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_registro_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_hacienda" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_registro_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_implemento" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_registro_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_tercero" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_registro_labores_maquina_equipo.fk_dba_registro_labores_maquina_equipo_bda_tipo_documento" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_registro_tractor.fk_bda_registro_tractor_bda_control_salida_cana" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bda_siembra.fk_bda_siembra_bda_tipo_cana" parentEdge="" positioner="">
       <positionableLines/>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="" nm="public.bda_siembra.fk_dba_siembra_bda_suerte" parentEdge="" positioner="">
@@ -2020,7 +2127,7 @@ $$
       <Zone bkCl="ffd9ecd8" h="614" nm="tercero" w="473" x="955" y="26"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="213">
+  <RnmMgr NxRnmId="239">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="soho_framework" SupCls="" SupNme="">
       <Rnm id="1" nNm="public" oNm="schemaA"/>
     </RnmCh>
@@ -2186,7 +2293,8 @@ $$
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_agua_surco" SupCls="Schema" SupNme="public">
       <Rnm id="57" nNm="deaas_id" oNm="id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_formulario_registro" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_control_administrativo_riego" SupCls="Schema" SupNme="public">
+      <Rnm id="214" nNm="car_num_documento" oNm="fore_num_documento"/>
       <Rnm id="59" nNm="fore_num_documento" oNm="fore_id"/>
       <Rnm id="58" nNm="fore_id" oNm="id"/>
     </RnmCh>
@@ -2222,7 +2330,8 @@ $$
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tercero" SupCls="Schema" SupNme="public">
       <Rnm id="71" nNm="tpi_id" oNm="tip_id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_registro_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="230" nNm="lme_numero" oNm="relme_numero"/>
       <Rnm id="74" nNm="relme_numero" oNm="relme_id"/>
       <Rnm id="73" nNm="relme_id" oNm="id"/>
     </RnmCh>
@@ -2248,6 +2357,7 @@ $$
       <Rnm id="81" nNm="bda_siembra" oNm="dba_siembra"/>
     </RnmCh>
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="229" nNm="bda_labores_maquina_equipo" oNm="bda_registro_labores_maquina_equipo"/>
       <Rnm id="82" nNm="bda_registro_labores_maquina_equipo" oNm="dba_registro_labores_maquina_equipo"/>
     </RnmCh>
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
@@ -2313,13 +2423,16 @@ $$
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_detalle_caudal_surco" SupCls="Schema" SupNme="public">
       <Rnm id="104" nNm="decs_deleted_at" oNm="deleted_at"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_formulario_registro" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_control_administrativo_riego" SupCls="Schema" SupNme="public">
+      <Rnm id="216" nNm="car_created_at" oNm="fore_created_at"/>
       <Rnm id="105" nNm="fore_created_at" oNm="created_at"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_formulario_registro" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_control_administrativo_riego" SupCls="Schema" SupNme="public">
+      <Rnm id="217" nNm="car_updated_at" oNm="fore_updated_at"/>
       <Rnm id="106" nNm="fore_updated_at" oNm="updated_at"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_formulario_registro" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_control_administrativo_riego" SupCls="Schema" SupNme="public">
+      <Rnm id="218" nNm="car_deleted_at" oNm="fore_deleted_at"/>
       <Rnm id="107" nNm="fore_deleted_at" oNm="deleted_at"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_tercero" SupCls="Schema" SupNme="public">
@@ -2430,13 +2543,16 @@ $$
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_siembra" SupCls="Schema" SupNme="public">
       <Rnm id="143" nNm="sie_deleted_at" oNm="deleted_at"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_registro_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="236" nNm="lme_created_at" oNm="relme_created_at"/>
       <Rnm id="144" nNm="relme_created_at" oNm="created_at"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_registro_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="237" nNm="lme_updated_at" oNm="relme_updated_at"/>
       <Rnm id="145" nNm="relme_updated_at" oNm="updated_at"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_registro_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="238" nNm="lme_deleted_at" oNm="relme_deleted_at"/>
       <Rnm id="146" nNm="relme_deleted_at" oNm="deleted_at"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_implemento" SupCls="Schema" SupNme="public">
@@ -2637,6 +2753,55 @@ $$
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_documento" SupCls="Schema" SupNme="public">
       <Rnm id="212" nNm="tdp_deleted_at" oNm="deleted_at"/>
     </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="213" nNm="bda_control_administrativo_riego" oNm="bda_formulario_registro"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_control_administrativo_riego" SupCls="Schema" SupNme="public">
+      <Rnm id="215" nNm="car_fecha" oNm="fore_fecha"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_control_administrativo_riego" SupCls="Schema" SupNme="public">
+      <Rnm id="219" nNm="car_tiempo_total_suspension" oNm="car_tiempo_suspension"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_avance_agua_surco" SupCls="Schema" SupNme="public">
+      <Rnm id="220" nNm="aas_item" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_avance_agua_surco" SupCls="Schema" SupNme="public">
+      <Rnm id="221" nNm="aas_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_avance_agua_surco" SupCls="Schema" SupNme="public">
+      <Rnm id="222" nNm="aas_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_avance_agua_surco" SupCls="Schema" SupNme="public">
+      <Rnm id="223" nNm="aas_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="224" nNm="maq_tipo_accesorio" oNm="maq_t_accesorio"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_cana" SupCls="Schema" SupNme="public">
+      <Rnm id="225" nNm="tic_id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_cana" SupCls="Schema" SupNme="public">
+      <Rnm id="226" nNm="tic_created_at" oNm="created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_cana" SupCls="Schema" SupNme="public">
+      <Rnm id="227" nNm="tic_updated_at" oNm="updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_tipo_cana" SupCls="Schema" SupNme="public">
+      <Rnm id="228" nNm="tic_deleted_at" oNm="deleted_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="232" nNm="lme_fecha" oNm="lme__fecha"/>
+      <Rnm id="231" nNm="lme__fecha" oNm="relme_fecha"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="233" nNm="lme_estado" oNm="relme_estado"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="234" nNm="lme_tiempo" oNm="relme_tiempo"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bda_labores_maquina_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="235" nNm="lme_total_horas_trabajadas" oNm="relme_total_horas_trabajadas"/>
+    </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
     <BasicOptionMgr>
@@ -2660,9 +2825,10 @@ $$
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/public</TreePath>
-    <TreePath>/Schemas (1)/public/Tables (41)</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (43)</TreePath>
     <TreePath>/Schemas (1)/public/Views (0)</TreePath>
     <TreePath>/Schemas (1)/public/Procedures (3)</TreePath>
+    <TreePath>/Schemas (1)/public/Sequences (43)</TreePath>
     <TreePath>/Diagrams (1)</TreePath>
     <TreePath>/Diagrams (1)/public</TreePath>
     <TreePath>/Diagrams (1)/public/Notes (0)</TreePath>
