@@ -1,8 +1,9 @@
 bda_rol:
   name:           rol
-  rol_id:         { name: id, constraint: PK, sequence: bda_rol_rol_id_seq }
-  rol_nombre:     { name: nombre, length: 80 }
-  ror_created_at: { name: created_at, behavior: created }
-  ror_created_at: { name: updated_at, behavior: updated }
-  ror_created_at: { name: deleted_at, behavior: deleted }
+  columns:
+    rol_id:         { name: id, constraint: PK, sequence: bda_rol_rol_id_seq }
+    rol_nombre:     { name: nombre, length: 80 }
+    ror_created_at: { name: created_at, behavior: created }
+    ror_created_at: { name: updated_at, behavior: updated }
+    ror_created_at: { name: deleted_at, behavior: deleted }
   
