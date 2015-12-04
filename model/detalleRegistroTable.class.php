@@ -18,8 +18,8 @@ class detalleRegistroTable extends detalleRegistroBaseTable {
    * @return [stdClass | boolean]
    */
   public function getAll() {
-    $conn = $this->getConexion($this->config);
-    $sql = 'SELECT der_item, relme_numero, ter_id, lab_id, sue_id, pro_id, unm_id, maq_id, der_tiempo_muerto, der_total_horas_trabajadas, der_hora_inicio, der_hora_fin, der_cantidad, der_created_at, der_updated_at, der_deleted_at FROM bda_detalle_registro WHERE der_deleted_at IS NULL ORDER BY created_at ASC';
+    $conn = $this->getConnection($this->config);
+    $sql = 'SELECT der_item, relme_numero, ter_id, lab_id, sue_id, pro_id, unm_id, maq_id, der_tiempo_muerto, der_total_horas_trabajadas, der_hora_inicio, der_hora_fin, der_cantidad, der_created_at, der_updated_at, der_deleted_at FROM bda_detalle_registro WHERE der_deleted_at IS NULL ORDER BY der_created_at ASC';
     $respuesta = $conn->prepare($sql);
     $respuesta->execute();
     return ($respuesta->rowCount() > 0 ) ? $respuesta->fetchAll(PDO::FETCH_OBJ) : false;

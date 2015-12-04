@@ -10,17 +10,17 @@
         <tr>
           <th><input type="checkbox" id="" name=""></th>
           <th>Numero</th>
-          <th>ter_id</th>
-          <th>lab_id</th>
-          <th>sue_id</th>
-          <th>pro_id</th>
-          <th>unm_id</th>
-          <th>maq_id</th>
-          <th>der_tiempo_muerto</th>
-          <th>der_total_horas_trabajadas</th>
-          <th>der_hora_inicio</th>
-          <th>der_hora_fin</th>
-          <th>der_created_at</th>
+          <th>identificacion de empleado</th>
+          <th>numero de labor</th>
+          <th>numero de suerte</th>
+          <th>numero de producto</th>
+          <th>unidad de medida</th>
+          <th>identificacion de la maquina</th>
+          <th>tiempo muerto</th>
+          <th>total horas trabajadas</th>
+          <th>hora de inicio</th>
+          <th>hora fin</th>
+          <th>fecha de creacion</th>
         </tr>
       </thead>
       <tbody>
