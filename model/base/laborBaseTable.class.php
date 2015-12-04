@@ -279,3 +279,5 @@ class laborBaseTable extends model {
   }
 
 }
+
+//gnu

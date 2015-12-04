@@ -306,3 +306,5 @@ class productoBaseTable extends model {
   }
 
 }
+
+//gnu

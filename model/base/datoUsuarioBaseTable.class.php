@@ -454,3 +454,5 @@ class datoUsuarioBaseTable extends model {
   }
 
 }
+
+//gnu

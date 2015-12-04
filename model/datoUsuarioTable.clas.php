@@ -112,3 +112,5 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
   }
 
 }
+
+//gnu
