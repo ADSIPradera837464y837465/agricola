@@ -21,12 +21,12 @@ class entradaSalidaBodegaBaseTable extends model {
   const ID = 'esb_id';
 
   /**
-   * Foranea de la tabla bda_tercero 
+   * Foranea de la tabla bda_tercero
    */
   const TERCERO_ID_ELABORA = 'ter_id_elabora';
 
   /**
-   * Foranea de la tabla bda_tercero 
+   * Foranea de la tabla bda_tercero
    */
   const TERCERO_ID_SOLICITA = 'ter_id_solicita';
 
@@ -88,37 +88,37 @@ class entradaSalidaBodegaBaseTable extends model {
 
   /**
    * Foranea de la tabla bda_tercero
-   * @var integer 
+   * @var integer
    */
   private $tercero_id_elabora;
 
   /**
    * Foranea de la tabla bda_tercero
-   * @var integer 
+   * @var integer
    */
   private $tercero_id_solicita;
 
   /**
    * Foranea de la tabla bda_tipo_documento
-   * @var integer 
+   * @var integer
    */
   private $tipo_documento_id;
 
   /**
    * Fecha de la tabla
-   * @var date 
+   * @var date
    */
   private $fecha;
 
   /**
    * Observación de la tabla
-   * @var string 
+   * @var string
    */
   private $observacion;
 
   /**
    * Fecha de creación del registro
-   * @var date_time 
+   * @var date_time
    */
   private $created_at;
 
