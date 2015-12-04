@@ -48,7 +48,7 @@ class turno extends turnoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO Turno (tur_descripcion, tur_horaInicio, tur_horaFin, tur_estado,rt_tabla ) VALUES (:rt_horaSalida, :rt_tractor, :rt_observacion, :rt_tabla, )';
+    $sql = 'INSERT INTO turno (tur_descripcion, tur_horaInicio, tur_horaFin, tur_estado,rt_tabla ) VALUES (:rt_horaSalida, :rt_horaFin, :rt_tractor, :rt_observacion, :rt_tabla, )';
     $params = array(
         ':tur_descripcion' => $this->getDescripcion(),
         ': tur_horaInicio' => $this->getHora_inicio(),
@@ -68,7 +68,7 @@ class turno extends turnoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE Turno SET  = tur_descripcion:tur_descripcion,  = tur_horaInicio:tur_horaInicio,tur_horaFin:tur_horaFin,,  = tur_estado:tur_estado, tur_tabla = :tur_tabla,  WHERE tur_id = :tur_id';
+    $sql = 'UPDATE turno SET  = tur_descripcion:tur_descripcion,  = tur_horaInicio:tur_horaInicio, tur_horaFin:, tur_horaFin,,  = tur_estado:tur_estado, tur_tabla = :tur_tabla,  WHERE tur_id = :tur_id';
     $params = array(
         ':tur_descripcion' => $this->getDescripcion(),
         ':tur_horaInicio' => $this->getHora_inicio(),
@@ -89,7 +89,7 @@ class turno extends turnoBaseTable {
    */
   public function delete() {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM registroTractor WHERE tur_id = :tur_id';
+    $sql = 'DELETE FROM turno WHERE tur_id = :tur_id';
     $params = array(
         ':tur_id' => $this->getId()
     );
