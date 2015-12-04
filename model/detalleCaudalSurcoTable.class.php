@@ -1,16 +1,16 @@
 <?php
 
-use FStudio\model\base\caudalSurcoBaseTable;
+use FStudio\model\base\detalleCaudalSurcoBaseTable;
 
 /**
- * Description of caudalSurcoBaseTable
+ * Description of detallecaudalSurcoBaseTable
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
  * @package 
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
-class caudalSurcoTable extends caudalSurcoBaseTable {
+class detalleCaudalSurcoTable extends detalleCaudalSurcoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -19,7 +19,7 @@ class caudalSurcoTable extends caudalSurcoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidadSurco, fore_num_documento As numDocumento, decs_created_at As createdAt, decs_updated_at As updatedAt, decs_deleted_at As deletedAt FROM bda_detalle_caudal_surco  WHERE decs_deleted_at IS NULL ORDER BY decs_created_at ASC';
+    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidad_surco, fore_num_documento AS control_administrativo_riego_id, decs_created_at AS created_at, decs_updated_at AS updated_at, decs_deleted_at AS deleted_at FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL ORDER BY decs_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -33,11 +33,9 @@ class caudalSurcoTable extends caudalSurcoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidadSurco, fore_num_documento As numDocumento, decs_created_at As createdAt, decs_updated_at As updatedAt, decs_deleted_at As deletedAt '
-            . 'FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL '
-            . 'AND decs_id = :id';
+    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidad_surco, fore_num_documento AS control_administrativo_riego_id, decs_created_at AS created_at, decs_updated_at AS updated_at, decs_deleted_at AS deleted_at FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id : $this->getById()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -51,11 +49,11 @@ class caudalSurcoTable extends caudalSurcoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_detalle_caudal_surco (decs_item, decs_cantidad_surco, fore_num_documento) VALUES (:decs_item, :decs_cantidad_surco, :fore_num_documento)';
+    $sql = 'INSERT INTO bda_detalle_caudal_surco (decs_item, decs_cantidad_surco, fore_num_documento) VALUES (:item, :cantidad_surco, :control_administrativo_riego_id)';
     $params = array(
-        ':decs_item' => $this->getItem(),
-        ':decs_cantidad_surco' => $this->getCantidadSurco(),
-        ':fore_num_documento' => $this->getNumeroDocumento(),
+        ':item' => $this->getItem(),
+        ':cantidad_surco' => $this->getCantidadSurco(),
+        ':control_administrativo_riego_id' => $this->getControlAdministrativoRiegoId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -72,9 +70,10 @@ class caudalSurcoTable extends caudalSurcoBaseTable {
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE bda_detalle_caudal_surco SET decs_item = :decs_item, decs_cantidad_surco = :decs_cantidad_surco, fore_num_documento = :fore_num_documento WHERE id = :id';
     $params = array(
-        ':decs_item' => $this->getItem(),
-        ':decs_cantidad_surco' => $this->getCantidadSurco(),
-        ':fore_num_documento' => $this->getNumeroDocumento(),
+        ':item' => $this->getItem(),
+        ':cantidad_surco' => $this->getCantidadSurco(),
+        ':control_administrativo_riego_id' => $this->getControlAdministrativoRiegoId(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);

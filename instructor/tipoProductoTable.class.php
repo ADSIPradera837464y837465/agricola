@@ -15,7 +15,7 @@ class tipoProductoTable extends tipoProductoBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpr_id AS id, tpr_descripcion AS descripcion, tpr_created_at AS created_at, tpr_updated AS updated_at, tpr_deleted AS deleted_at FROM bda_tipo_producto WHERE tpr_deleted IS NULL ORDER BY tpr_created_at ASC';
+    $sql = 'SELECT tpr_id AS id, tpr_descripcion AS descripcion, tpr_created_at AS created_at, tpr_updated_at AS updated_at, tpr_deleted_at AS deleted_at FROM bda_tipo_producto WHERE tpr_deleted_at IS NULL ORDER BY tpr_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class tipoProductoTable extends tipoProductoBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpr_id AS id, tpr_descripcion AS descripcion, tpr_created_at AS created_at, tpr_updated AS updated_at, tpr_deleted AS deleted_at FROM bda_tipo_producto WHERE tpr_deleted IS NULL AND id = :id';
+    $sql = 'SELECT tpr_id AS id, tpr_descripcion AS descripcion, tpr_created_at AS created_at, tpr_updated_at AS updated_at, tpr_deleted_at AS deleted_at FROM bda_tipo_producto WHERE tpr_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -63,7 +63,7 @@ class tipoProductoTable extends tipoProductoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_tipo_producto SET tpr_deleted = now() WHERE tpr_id = :id';
+        $sql = 'UPDATE bda_tipo_producto SET tpr_deleted_at = now() WHERE tpr_id = :id';
         break;
       case false:
         $sql = 'DELETE FROM bda_tipo_producto WHERE tpr_id = :id';
