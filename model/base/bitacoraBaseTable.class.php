@@ -97,7 +97,7 @@ class bitacoraBaseTable extends model {
    * primaria de usuario
    * @var integer 
    */
-  private $usuarioId;
+  private $usuario_id;
 
   /**
    * descripcion realizada

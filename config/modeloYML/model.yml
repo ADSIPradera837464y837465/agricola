@@ -1,0 +1,528 @@
+schema:
+  bda_control_riego_pluviosidad:
+    name:                          control_riego_pluviosidad
+    columns:
+      crp_id:                      { name: id, constraint: PK,sequence: bda_contro_riego_pluviosidad_crp_id_seq }
+      crp_fecha:                   { name: fecha }
+      crp_hora_inicio:             { name: hora_inicio }
+      crp_hora_fin:                { name: hora_fin }
+      crp_cantidad_m3_hora:        { name: cantidad_m3_hora }
+      crp_observacion:             { name: observacion, length: 2048 }
+      sue_id:                      { name: suerte_id }
+      hac_id:                      { name: hacienda_id }
+      ter_id:                      { name: tercero_id }
+      crp_created_at:              { name: created_at, behavior: created }
+      crp_updated:at:              { name: updated_at, behavior: updated }
+      crp_deleted_at:              { name: deleted_at, behavior: deleted }
+
+  bda_control_administrativo_riego:
+    name:                          control_administrativo_riego
+    columns:
+      car_num_documento:           { name: id, constraint: PK,sequence: bda_control_administrativo_riego_car_num_documento_seq }
+      car_fecha:                   { name: fecha }
+      met_rie_id:                  { name: metodo_riego_id }
+      hac_id:                      { name: hacienda_id }
+      sue_id:                      { name: suerte_id }
+      car_caudal_riego:            { name: caudal_riego }
+      car_tiempo_riego:            { name: tiempo_riego, length: 5 }
+      car_tiempo_total_suspension: { name: tiempo_total_suspension, length: 5 }
+      car_longitud_surco:          { name: longitud_surco }
+      car_espacio_surco:           { name: espacio_surco }
+      car_num_surco_regados:       { name: num_surco_regados }
+      car_estado_humedad:          { name: estado_humedad, length: 80 }
+      car_suelo_grieta:            { name: suelo_grieta }
+      car_facil_avance_agua:       { name: facil_avance_agua }
+      car_pendiente_dir_surco:     { name: pendiente_dir_surco }
+      car_agua_costado:            { name: agua_costado }
+      car_created_at:              { name: created_at, behavior: created }
+      car_updated:at:              { name: updated_at, behavior: updated }
+      car_deleted_at:              { name: deleted_at, behavior: deleted }
+
+  bda_control_salida_cana:
+    name:                          control_salida_cana
+    columns:
+      csc_id:                      { name: id, constraint: PK,sequence: bda_control_salida_cana_csc_id_seq }
+      csc_fecha:                   { name: fecha }
+      csc_total_vagones:           { name: total_vagones }
+      csc_notas:                   { name: notas, length: 2048 }
+      csc_total_trenes:            { name: total_trenes }
+      tur_id:                      { name: turno_id }
+      sue_id:                      { name: suerte_id }
+      ter_id:                      { name: tercero_id }
+      csc_created_at:              { name: created_at, behavior: created }
+      csc_updated:at:              { name: updated_at, behavior: updated }
+      csc_deleted_at:              { name: deleted_at, behavior: deleted }
+
+  bda_tipo_documento:
+    name:                   tipo_documento
+    columns:
+      tpd_id:               { name: id, constraint: PK, sequence: bda_tipo_documento_tpd_id_seq }
+      tpd_descripcion:      { name: descripcion, length: 80 }
+      tpd_tipo_movimiento:  { name: tipo_movimiento, length: 80 }
+      tpd_estado:           { name: estado }
+      tpd_created_at:       { name: created_at, behavior: created }
+      tpd_updated_at:       { name: updated_at, behavior: updated }
+      tpd_deleted_at:       { name: deleted_at, behavior: deleted }
+
+  bda_tipo_id:
+    name:                   tipo_id
+    columns:
+      tpi_id:               { name: id, constraint: PK, sequence: bda_tipo_id_tpi_id_seq }
+      tpi_descripcion:      { name: descripcion, length: 80 }
+      tpi_created_at:       { name: created_at, behavior: created }
+      tpi_updated_at:       { name: updated_at, behavior: updated }
+      tpi_deleted_at:       { name: deleted_at, behavior: deleted }
+
+  bda_tipo_mantenimiento:
+    name:                   tipo_mantenimiento
+    columns:
+      tma_id:               { name: id, constraint: PK, sequence: bda_tipo_mantenimiento_tma_id_seq }
+      tma_descripcion:      { name: descripcion, length: 80 }
+      tma_created_at:       { name: created_at, behavior: created }
+      tma_updated_at:       { name: updated_at, behavior: updated }
+      tma_deleted_at:       { name: deleted_at, behavior: deleted }
+
+  bda_dato_usuario:
+    name:                     dato_usuario
+    columns:
+      dus_id:                 { name: id, constraint: PK, secuence: bda_dato_usuario_dus_id_seq }
+      usr_id:                 { name: usuario_id }
+      dus_cedula:             { name: cedula, length: 20 }
+      dus_nombre:             { name: nombre, length: 80 }
+      dus_apellidos:          { name: apellidos, length: 80 }
+      dus_movil:              { name: movil, length: 12 }
+      dus_correo:             { name: correo, length: 120 }
+      dus_imagen:             { name: imagen, length: 36 }
+      dus_sexo:               { name: sexo }
+      dus_created_at:         { name: created_at, behavior: created }
+      dus_updated_at:         { name: updated_at, behavior: updated }
+      dus_deleted_at:         { name: deleted_at, behavior: deleted }
+
+  bda_detalle_agua_surco:
+    name:                     detalle_agua_surco
+    columns:
+      deaas_id:               { name: id, constraint: PK, secuence: bda_detalle_agua_surco_deaas_id_seq }
+      deaas_item:             { name: item, length: 80 }
+      deaas_cantidad_surco:   { name: cantidad_surco }
+      fore_num_documento:     { name: control_administrativo_riego_id }
+      deaas_created_at:       { name: created_at, behavior: created }
+      deaas_updated_at:       { name: updated_at, behavior: updated }
+      deaas_deleted_at:       { name: deleted_at, behavior: deleted }
+
+  bda_detalle_caudal_surco:
+    name:                     detalle_caudal_surco
+    columns:
+      decs_id:                { name: id, constraint: PK, secuence: bda_detalle_caudal_surco_decs_id_seq }
+      decs_item:              { name: item, length: 80 }
+      decs_cantidad_surco:    { name: cantidad_surco }
+      fore_num_documento:     { name: control_administrativo_riego_id }
+      decs_created_at:        { name: created_at, behavior: created }
+      decs_updated_at:        { name: updated_at, behavior: updated }
+      decs_deleted_at:        { name: deleted_at, behavior: deleted }
+
+  bda_rol:
+    name:             rol
+    columns:
+      rol_id:         { name: id, constraint: PK, sequence: bda_rol_rol_id_seq }
+      rol_nombre:     { name: nombre, length: 80 }
+      ror_created_at: { name: created_at, behavior: created }
+      ror_created_at: { name: updated_at, behavior: updated }
+      ror_created_at: { name: deleted_at, behavior: deleted }
+
+  bda_detalle_ejecucion:
+    name:              detalle_ejecucion
+    columns:
+      dee_id:          { name: id, constraint: PK, sequence: bda_detalle_ejecucion_dee_id_seq }
+      ore_id:          { name: orden_ejecucion_id }
+      ter_id:          { name: tercero_id }
+      ser_id:          { name: servicio_maquina_id }
+      pro_id:          { name: producto_id }
+      dee_cantidad:    { name: cantidad }
+      dee_precio:      { name: precio }
+      dee_created_at:  { name: created_at, behavior: created }
+      dee_updated_at:  { name: updated_at, behavion: updated }
+      dee_deleted_at:  { name: deleted_at, behavion: deleted }
+
+  bda_detalle_entrada_salida_bodega:
+    name:              detalle_entrada_salida_bodega
+    columns:
+      des_id:          { name: id, constraint: PK, sequence: bda_detalle_entrada_salida_bodega_des_id_seq }
+      esb_id:          { name: entrada_salida_bodega_id }
+      pro_id:          { name: producto_id }
+      unm_id:          { name: unidad_medida_id }
+      des_cantidad:    { name: cantidad }
+      des_precio:      { name: precio }
+      des_created_at:  { name: created_at, behavior: created }
+      des_updated_at:  { name: updated_at, behavion: updated }
+      des_deleted_at:  { name: deleted_at, behavion: deleted }
+
+  bda_detalle_orden:
+    name:              detalle_orden
+    columns:
+      deo_id:          { name: id, constraint: PK, sequence: bda_detalle_orden_deo_id_seq }
+      ors_id:          { name: orden_servicio_id }
+      ser_id:          { name: servicio_id }
+      deo_estado:      { name: estado }
+      deo_created_at:  { name: created_at, behavior: created }
+      deo_updated_at:  { name: updated_at, behavion: updated }
+      deo_deleted_at:  { name: deleted_at, behavion: deleted }
+
+  bda_metodo_riego:
+    name:                   metodo_riego
+    columns:
+      met_rie_id:           { name: id, constraint: PK, sequence: bda_metodo_riego_met_rie_id_seq }
+      met_rie_descripcion:  { name: descripcion, length: 80 }
+      met_created_at:       { name: created_at, behavior: created }
+      met_updated_at:       { name: updated_at, behavior: updated }
+      met_deleted_at:       { name: deleted_at, behavior: deleted }
+
+  bda_orden_ejecucion:
+    name:                   orden_ejecucion
+    columns:
+      ore_id:               { name: id, constraint: PK, sequence: bda_orden_ejecucion_ore_id_seq }
+      ter_id_elabora:       { name: tercero_id_elabora }
+      ors_id:               { name: orden_salida_id }
+      maq_id:               { name: maquina_id }
+      ore_fecha:            { name: fecha }
+      ore_observacion:      { name: observacion, length: 1024 }
+      ore_created_at:       { name: created_at, behavior: created }
+      ore_updated_at:       { name: updated_at, behavior: updated }
+      ore_deleted_at:       { name: deleted_at, behavior: deleted }
+
+  bda_orden_servicio:
+    name:                   orden_servicio
+    columns:
+      ors_id:               { name: id, constraint: PK, sequence: bda_orden_servicio_ors_id_seq }
+      maq_id:               { name: maquina_id }
+      tma_id:               { name: tipo_mantenimiento_id }
+      ter_id_elabora:       { name: tercero_id_elabora }
+      ter_id_realiza:       { name: tercero_id_realiza }
+      ors_fecha:            { name: fecha }
+      ors_observacion:      { name: observacion, length: 1024 }
+      ors_created_at:       { name: created_at, behavior: created }
+      ors_updated_at:       { name: updated_at, behavior: updated }
+      ors_deleted_at:       { name: deleted_at, behavior: deleted }
+
+  bda_producto:
+    name:                producto
+    columns:
+      pro_id:            { name: id, constraint: PK, sequence: bda_producto_pro_id_seq }
+      pro_descripcion:   { name: descripcion, length: 80 }
+      tpr_id:            { name: tipo_producto_id }
+      mar_id:            { name: marca_id }
+      unm_id:            { name: unidad_medida_id }
+      pro_created_at:    { name: created_at, behavior: created }
+      pro_updated_at:    { name: updated_at, behavior: updated }
+      pro_deleted_at_at: { name: deleted_at, behavior: deleted }
+
+  bda_recordar_me:
+    name:                recordar_me
+    columns:
+      rcm_id:            { name: id, constraint: PK, sequence: bda_recordar_me_rcm_id_seq }
+      usuario_id:        { name: usuario_id }
+      rcm_ip_address:    { name: ip_address, length: 50 }
+      rcm_hash_cookie:   { name: hash_cookie, length: 32 }
+      rcm_created_at:    { name: created_at, behavior: created }
+
+  bda_registro_tractor:
+    name:                registro_tractor
+    columns:
+      rtr_item:          { name: item, constraint: PK, sequence: bda_registro_tractor_rt_item_seq }
+      csc_id:            { name: control_salida_cana }
+      rtr_hora_salida:   { name: hora_salida }
+      rtr_created_at:    { name: created_at, behavior: created }
+      rtr_updated_at:    { name: updated_at, behavior: updated }
+      rtr_deleted_at:    { name: deleted_at, behavior: deleted }
+
+  bda_turno:
+    name:               turno
+    columns:
+      tur_id:           { name: id, constraint: PK, sequence: bda_turno_tur_id_seq }
+      tur_descripcion:  { name: descripcion, length: 80 }
+      tur_hora_inicio:  { name: hora_inicio }
+      tur_hora_fin:     { name: hora_fin }
+      tur_estado:       { name: estado, length: 80 }
+      tur_created_at:   { name: created_at, behavior: created }
+      tur_updated_at:   { name: updated_at, behavior: updated }
+      tur_deleted_at:   { name: deleted_at, behavior: deleted }
+
+  bda_unidad_medida:
+    name:               unidad_medida
+    columns:
+      unm_id:           { name: id, constraint: PK, sequence: bda_unidad_medida_unm_id_seq }
+      unm_descripcion:  { name: descripcion, length: 80 }
+      unm_created_at:   { name: created_at, behavior: created }
+      unm_updated_at:   { name: updated_at, behavior: updated }
+      unm_deleted_at:   { name: deleted_at, behavior: deleted }
+
+  bda_usuario_rol:
+    name:               usuario_rol
+    columns:
+      url_id:           { name: id, constraint: PK, sequence: bda_unidad_medida_unm_id_seq }
+      usr_usuario_id:   { name: usuario_id }
+      rol_id:           { name: rol_id }
+      url_created_at:   { name: created_at, behavior: created }
+
+  bda_usuario:
+    name: usuario
+    columns:
+      usr_id:             { name: id, constraint: PK, sequence: bda_usuario_usr_id_seq }
+      usr_user:           { name: user, length: 80 }
+      usr_password:       { name: password, encrypted: md5 }
+      usr_actived:        { name: actived }
+      usr_last_login_at:  { name: last_login_at }
+      usr_created_at:     { name: created_at, behavior: created }
+      usr_updated_at:     { name: updated_at, behavior: updated }
+      usr_deleted_at:     { name: deleted_at, behavior: deleted }
+
+  bda_tipo_producto:
+    name:                 tipo_producto
+    columns:
+      tpr_id:             { name: id, constraint: PK, sequence: bda_tipo_producto_tpr_id_seq }
+      tpr_descripcion:    { name: descripcion, length: 80 }
+      tpr_created_at:     { name: created_at, behavior: created }
+      tpr_updated:        { name: updated_at, behavior: updated }
+      tpr_deleted:        { name: deleted_at, behavior: deleted }
+
+  bda_tipo_suelo:
+    name:                 tipo_suelo
+    columns:
+      tis_id:             { name: id, constraint: PK, sequence: bda_tipo_suelo_tis_id_seq }
+      tis_descripcion:    { name: descripcion, length: 80 }
+      tis_created_at:     { name: created_at, behavior: created }
+      tis_updated_at:     { name: updated_at, behavior: updated }
+      tis_deleted_at:     { name: deleted_at, behavior: deleted }
+
+  bda_tipo_tercero:
+    name:                 tipo_tercero
+    columns:
+      tit_id:             { name: id, constraint: PK, sequence: bda_tipo_tercero_tit_id_seq }
+      tit_observacion:    { name: descripcion, legth: 80 }
+      tit_created_at:     { name: created_at, behavior: created }
+      tit_updated_at:     { name: updated_at, behavior: updated }
+      tit_deleted_at:     { name: deleted_at, behavior: deleted }
+
+  bda_detalle_registro:
+    name:                         detalle_registro
+    columns:
+      der_item:                   { name: item, constraint: PK, sequence: bda_detalle_registro_der_item_seq }
+      relme_numero:               { name: realme_numero }
+      ter_id:                     { name: tercero_id }
+      lab_id:                     { name: labor_id }
+      sue_id:                     { name: suerte_id }
+      pro_id:                     { name: producto_id }
+      unm_id:                     { name: unidad_de_medida_id }
+      maq_id:                     { name: maquina_id }
+      der_tiempo_muerto:          { name: tiempo_muerto }
+      der_total_horas_trabajadas: { name: total_horas_trabajadas }
+      der_hora_inicio:            { name: hora_inicio }
+      der_hora_fin:               { name: hora_fin }
+      der_cantidad:               { name: cantidad }
+      der_created_at:             { name: created_at, behavier: created }
+      der_updated_at:             { name: updated_at, behavier: updated }
+      der_deleted_at:             { name: deleted_at, behavier: deleted }
+
+  bda_entrada_salida_bodega:
+    name:                         entrada_salida_bodega
+    columns:
+      esb_id:                     { name: id, constraint: PK, sequence: bda_entrada_salida_bodega_esb_id_seq }
+      ter_id_elabora:             { name: tercero_id_elabora }
+      ter_id_solicita:            { name: tercero_id_solicita }
+      tpd_id:                     { name: tipo_documento_id }
+      esb_fecha:                  { name: fecha }
+      esb_observacion:            { name: observacion }
+      esb_created_at:             { name: created_at, behavier: created }
+      esb_updated_at:             { name: updated_at, behavier: update  }
+      esb_deleted_at:             { name: deleted_at, behavier: deleted }
+
+  bda_hacienda:
+    name:                         hacienda
+    columns:
+      hac_id:                     { name: id, constraint: PK, sequence: bda_hacienda_hac_id_seq }
+      hac_descripcion:            { name: descripcion, length: 80 }
+      hac_ubicacion:              { name: ubicacion, length: 100 }
+      hac_representante_legal:    { name: representante_legal, length: 100 }
+      hac_created_at:             { name: created_at, behavier: created }
+      hac_updated_at:             { name: updated_at, behavier: update  }
+      hac_deleted_at:             { name: deleted_at, behavier: deleted }
+
+  bda_labores_maqina_equipo:
+    name:                            labores_maquina_equipo
+    columns:
+      lme_numero:                    { name: id, constraint: PK, secuence: bda_labores_maquina_equipo_lme_numero_seq}
+      hac_id:                        { name: hacienda_id }
+      ter_id:                        { name: tercero_id }
+      tpd_id:                        { name: tipo_documento_id }
+      imp_id:                        { name: implemento_id }
+      lme_fecha:                     { name: fecha }
+      lme_estado:                    { name: estado }
+      lme_tiempo:                    { name: tiempo }
+      lme_total_horas_trabajadas:    { name: total_horas_trabajadas }
+      lme_created_at:                { name: created_at, behavior: created }
+      lme_updated_at:                { name: updated_at, behavior: updated }
+      lme_deleted_at:                { name: deleted_at, behavior: deleted }
+
+  bda_maquina:
+    name:                            maquina
+    columns:
+      maq_id:                        { name: id, constraint: PK, secuence: bda_maquina_maq_id_seq }
+      maq_estado:                    { name: estado, length: 30 }
+      maq_valor:                     { name: valor }
+      maq_fecha_compra:              { name: fecha_compra }
+      maq_numero_chasis:             { name: numero_chasis, length: 80 }
+      maq_tipo_accesorio:            { name: tipo_accesorio,  length: 80 }
+      maq_horas_trabajadas:          { name: horas_trabajadas }
+      maq_tiempo_mantenimiento_hora: { name: tiempo_mantenimiento_hora }
+      maq_numero_serie:              { name: numero_serie, length: 80 }
+      maq_modelo:                    { name: modelo, length: 80 }
+      maq_horas_actividad:           { name: horas_actividad }
+      maq_valor_hora:                { name: valor_hora }
+      maq_created_at:                { name: created_at, behavior: created }
+      maq_updated_at:                { name: updated_at, behavior: updated }
+      maq_deleted_at:                { name: deleted_at, behavior: deleted }
+
+  bda_marca:
+    name:                            marca
+    columns:
+      mar_id:                        { name: id, constraint: PK, secuence: bda_marca_mar_id_seq }
+      mar_descripcion:               { name: descripcion, length: 80 }
+      mar_created_at:                { name: created_at, behavior: created }
+      mar_updated_at:                { name: updated_at, behavior: updated }
+      mar_deleted_at:                { name: deleted_at, behavior: deleted }
+
+  bda_avance_agua_surco:
+    name:                 avance_agua_surco
+    columns:
+      aas_item:           { name: id, constraint: PK, sequence: bda_avance_agua_surco_aas_item_seq }
+      car_num_documento:  { name: control_administrativo_riego_id }
+      aas_surco_id:       { name: surco_id }
+      aas_created_at:     { name: created_at, behavior: created }
+      aas_updated_at:     { name: updated_at, behavior: updated }
+      aas_deleted_at:     { name: deleted_at, behavior: deleted }
+
+  bda_bitacora:
+    name:                 bitacora
+    columns:
+      bit_id:             { name: id, constraint: PK, sequence: bda_bitacora_bit_id_seq }
+      usr_id:             { name: usuario_id }
+      bit_accion:         { name: accion, length: 80 }
+      bit_tabla:          { name: tabla, length: 80 }
+      bit_registro:       { name: registro }
+      bit_observacion:    { name: observacion, length: 1024 }
+      bit_fecha:          { name: fecha, behavior: created }
+
+  bda_cargo:
+    name:                 cargo
+    columns:
+      car_id:             { name: id, constraint: PK, sequence: bda_cargo_car_id_seq }
+      car_descripcion:    { name: descripcion, length: 80 }
+      car_created_at:     { name: created_at, behavior: created }
+      car_updated_at:     { name: updated_at, behavior: updated }
+      car_deleted_at:     { name: deleted_at, behavior: deleted }
+
+  bda_implemento:
+    name:               implemento
+    columns:
+      imp_id:           { name: id, constraint: PK, sequence: bda_implemento_imp_id_seq }
+      imp_descripcion:  { name: descripcion, length: 80 }
+      imp_created_at:   { name: created_at, behavior: created }
+      imp_updated_at:   { name: updated_at, behavior: updated }
+      imp_deleted_at:   { name: deleted_at, behavior: deleted }
+
+  bda_inventario:
+    name:               inventario
+    columns:
+      inv_id:           { name: id, constraint: PK, sequence: bda_inventario_inv_id_seq }
+      pro_id:           { name: producto_id }
+      tpd_id:           { name: tipo_documento_id }
+      inv_num_doc:      { name: num_doc, }
+      inv_fecha:        { name: fecha }
+      inv_cantidad:     { name: cantidad }
+      inv_movimiento:   { name: movimiento, length: 80 }
+      inv_saldo:        { name: saldo }
+      inv_descripcion:  { name: descripcion, length: 80 }
+      inv_created_at:   { name: created_at, behavior: created }
+      inv_updated_at:   { name: updated_at, behavior: updated }
+      inv_deleted_at:   { name: deleted_at, behavior: deleted }
+
+  bda_labor:
+    name:               labor
+    columns:
+      lab_id:           { name: id, constraint: PK, sequence: bda_labor_lab_id_seq }
+      lab_descripcion:  { name: descripcion, length: 80 }
+      lab_valor:        { name: valor }
+      lab_estado:       { name: estado, length: 30 }
+      lab_descripcion:  { name: descripcion, length: 80 }
+      lab_created_at:   { name: created_at, behavior: created }
+      lab_updated_at:   { name: updated_at, behavior: updated }
+      lab_deleted_at:   { name: deleted_at, behavior: deleted }
+
+  bda_siembra:
+    name:                         siembra
+    columns:
+      sie_id:                     { name: id, constraint: PK, sequence: bda_siembra_sie_id_seq }
+      sue_id:                     { name: suerte_id }
+      tic_id:                     { name: tipo_cana_id }
+      sie_dia:                    { name: dia }
+      sie_presupuesto_empresa:    { name: presupuesto_empresa }
+      sie_kilos_lote:             { name: kilos_lote }
+      sie_total_kilos_planta:     { name: total_kilos_planta }
+      sie_fecha:                  { name: fecha }
+      sie_fecha_fin_levante:      { name: fecha_fin_levante }
+      sie_fecha_inicio_ciclo:     { name: fecha_inicio_ciclo }
+      sie_fecha_fin_ciclo:        { name: fecha_fin_ciclo }
+      sie_fecha_poda:             { name: fecha_poda }
+      sie_fecha_produccion:       { name: fecha_produccion }
+      sie_num_hectarea:           { name: num_hectarea }
+      sie_num_planta_levante:     { name: num_planta_levante }
+      sie_num_planta_productivas: { name: num_planta_productiva }
+      sie_num_planta_erradica:    { name: num_planta_erradica }
+      sie_created_at:             { name: created_at, behavior: created }
+      sie_updated_at:             { name: updated_at, behavior: updated }
+      sie_deleted_at:             { name: deleted_at, behavior: deleted }
+
+  bda_servicio_maquina:
+    name:                         servicio_maquina
+    columns:
+      ser_id:                     { name: id, constraint: PK, sequence: bda_servicio_maquina_seq}
+      ser_descripcion:            { name: descripcion, length: 80 }
+      ser_estado:                 { name: estado, length: 30 }
+      ser_created_at:             { name: created_at, behavior: created }
+      ser_updated_at:             { name: updated_at, behavior: updated }
+      ser_deleted_at:             { name: deleted_at, behavior: deleted }
+
+  bda_suerte:
+    name:               suerte
+    columns:
+      sue_id:           { name: id, constraint: PK, sequence: bda_suerte_sue_id_seq }
+      sue_descripcion:  { name: descripcion, length: 80 }
+      sue_area:         { name: area }
+      tis_id:           { name: tipo_suelo_id }
+      sue_created_at:   { name: created_at, behavior: created }
+      sue_updated_at:   { name: updated_at, behavior: updated }
+      sue_deleted_at:   { name: deleted_at, behavior: deleted }
+
+  bda_tipo_cana:
+    name:               tipo_cana
+    columns:
+      tic_id:           { name: id, constraint: PK, sequence: bda_tipo_cana_tic_id_seq }
+      tic_descripcion:  { name: descripcion, length: 80 }
+      tic_created_at:   { name: created_at, behavior: created }
+      tic_updated_at:   { name: updated_at, behavior: updated }
+      tic_deleted_at:   { name: deleted_at, behavior: deleted }
+
+  bda_tercero:
+    name:               tercero
+    columns:
+      ter_id:           { name: id, constraint: PK, sequence: bda_tercero_ter_id_seq }
+      ter_nombre:       { name: nombre, length: 80 }
+      ter_apellido:     { name: apellido, length: 80 }
+      ter_telefono:     { name: telefono, length: 20 }
+      ter_direccion:    { name: direccion, length: 100 }
+      ter_correo:       { name: correo, length: 100 }
+      car_id:           { name: cargo_id }
+      tpi_id:           { name: tipo_id }
+      tit_id:           { name: tipo_tercero_id }
+      ter_created_at:   { name: created_at, behavior: created }
+      ter_updated_at:   { name: updated_at, behavior: updated }
+      ter_deleted_at:   { name: deleted_at, behavior: deleted }

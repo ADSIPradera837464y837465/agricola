@@ -1,6 +1,7 @@
 <?php
 
 use FStudio\model\base\bitacoraBaseTable;
+
 /**
  * Description of bitacoraTable
  * @author Diana Meneses <meneses_d@rocketmail.com>
@@ -18,7 +19,7 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT bit_id, usr_id, bit_accion, bit_tabla, bit_registro, bit_observacion, bit_fecha FROM bitacora ORDER BY bit_fecha ASC';
+    $sql = 'SELECT bit_id AS id, usr_id AS usuario_id, bit_accion AS accion, bit_tabla AS tabla, bit_registro AS registro, bit_observacion AS observaciones, bit_fecha AS fecha FROM bda_bitacora ORDER BY  ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,11 +32,9 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function getById($id  = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT bit_id, usr_id, bit_accion, bit_tabla, bit_registro, bit_observacion, bit_fecha '
-            . 'FROM bda_bitacora '
-            . 'AND bit_id = :bit_id';
+    $sql = 'SELECT bit_id AS id, usr_id AS usuario_id, bit_accion AS accion, bit_tabla AS tabla, bit_registro AS registro, bit_observacion AS observaciones, bit_fecha AS fecha FROM bda_bitacora AND id = :id';
     $params = array(
-        ':bit_id' => ($id !==null) ? $id : $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -49,14 +48,14 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_bitacora (bit_accion, usr_id, bit_observacion, bit_tabla, bit_registro,bit_fecha) VALUES (:bit_accion, :usr_id, :bit_observacion, :bit_tabla, :bit_registro, :bit_fecha)';
+    $sql = 'INSERT INTO bda_bitacora (usr_id, bit_accion, bit_tabla, bit_registro, bit_observacion, bit_fecha) VALUES (:usuario_id, :accion, :tabla, :registro, :observaciones, :fecha)';
     $params = array(
-        ':bit_accion' => $this->getAccion(),
-        ':usr_id' => $this->getUsuarioId(),
-        ':bit_observacion' => $this->getObservacion(),
-        ':bit_tabla' => $this->getTabla(),
-        ':bit_registro' => $this->getRegistro(),
-        ':bit_fecha' => $this->getFecha()
+        ':usuario_id' => $this->getUsuarioId(),
+        ':accion' => $this->getAccion(),
+        ':tabla' => $this->getTabla(),
+        ':registro' => $this->getRegistro(),
+        ':observaciones' => $this->getObservaciones(),
+        ':fecha' => $this->getFecha()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -71,15 +70,15 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_bitacora SET bit_accion = :bit_accion, usr_id = :usr_id, bit_observacion = :bit_observacion, bit_tabla = :bit_tabla, bit_registro = :bit_registro, bit_fecha = :bit_fecha WHERE bit_id = :bit_id';
+    $sql = 'UPDATE bda_bitacora SET usr_id = :usuario_id, bit_accion = :accion, bit_tabla = :tabla, bit_registro = :registro, bit_observacion = :observaciones, bit_fecha = :fecha WHERE bit_id = :id';
     $params = array(
-        ':bit_accion' => $this->getAccion(),
-        ':usr_id' => $this->getUsuarioId(),
-        ':bit_observacion' => $this->getObservacion(),
-        ':bit_tabla' => $this->getTabla(),
-        ':bit_registro' => $this->getRegistro(),
-        ':bit_id' => $this->getId(),
-        ':bit_fecha' => $this->getFecha()
+        ':usuario_id' => $this->getUsuarioId(),
+        ':accion' => $this->getAccion(),
+        ':tabla' => $this->getTabla(),
+        ':registro' => $this->getRegistro(),
+        ':observaciones' => $this->getObservaciones(),
+        ':fecha' => $this->getFecha(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
