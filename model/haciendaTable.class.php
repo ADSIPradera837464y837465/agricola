@@ -46,14 +46,11 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_hacienda (hac_descripcion, hac_ubicacion, hac_representante_legal, hac_created_at, hac_updated_at, hac_deleted_at) VALUES (:descripcion, :ubicacion, :representante_legal, :created_at, :updated_at, :deleted_at)';
+    $sql = 'INSERT INTO bda_hacienda (hac_descripcion, hac_ubicacion, hac_representante_legal) VALUES (:descripcion, :ubicacion, :representante_legal)';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
         ':ubicacion' => $this->getUbicacion(),
-        ':representante_legal' => $this->getRepresentanteLegal(),
-        ':created_at' => $this->getCreatedAt(),
-        ':updated_at' => $this->getUpdatedAt(),
-        ':deleted_at' => $this->getDeletedAt()
+        ':representante_legal' => $this->getRepresentanteLegal()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -66,14 +63,11 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_hacienda SET hac_descripcion = :descripcion, hac_ubicacion = :ubicacion, hac_representante_legal = :representante_legal, hac_created_at = :created_at, hac_updated_at = :updated_at, hac_deleted_at = :deleted_at WHERE hac_id = :id';
+    $sql = 'UPDATE bda_hacienda SET hac_descripcion = :descripcion, hac_ubicacion = :ubicacion, hac_representante_legal = :representante_legal WHERE hac_id = :id';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
         ':ubicacion' => $this->getUbicacion(),
         ':representante_legal' => $this->getRepresentanteLegal(),
-        ':created_at' => $this->getCreatedAt(),
-        ':updated_at' => $this->getUpdatedAt(),
-        ':deleted_at' => $this->getDeletedAt(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -81,8 +75,24 @@ class haciendaTable extends haciendaBaseTable {
     return true;
   }
 
-
+  public function delete($deleteLogical = true) {
+    $conn = $this->getConnection($this->config);
+    $params = array(
+        ':id' => $this->getId()
+    );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_hacienda SET hac_deleted_at = now() WHERE hac_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_hacienda WHERE hac_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
+    return true;
+  }
 
 }
-
-//gnu
