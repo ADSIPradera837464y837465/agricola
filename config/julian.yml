@@ -1,0 +1,11 @@
+bda_usuario:
+  name: usuario
+  columns:
+    usr_id:             { name: id, constraint: PK, sequence: bda_usuario_usr_id_seq }
+    usr_user:           { name: user, length: 80 }
+    usr_password:       { name: password, encrypted: md5 }
+    usr_actived:        { name: actived }
+    usr_last_login_at:  { name: last_login_at }
+    usr_created_at:     { name: created_at, behavior: created }
+    usr_updated_at:     { name: updated_at, behavior: updated }
+    usr_deleted_at:     { name: deleted_at, behavior: deleted }
