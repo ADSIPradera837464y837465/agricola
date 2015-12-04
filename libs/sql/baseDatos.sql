@@ -1061,7 +1061,7 @@ CREATE INDEX "bda_usuario_usr_user_usr_password_Idx" ON public.bda_usuario USING
 CREATE TABLE public.bda_usuario_rol
 (
 	url_id BIGINT DEFAULT nextval('public.bda_usuario_rol_url_id_seq'::regclass) NOT NULL,
-	usr_usuario_id BIGINT NOT NULL,
+	usr_id BIGINT NOT NULL,
 	rol_id BIGINT NOT NULL,
 	url_created_at TIMESTAMP DEFAULT now() NOT NULL
 ) WITHOUT OIDS;
@@ -1073,9 +1073,9 @@ ALTER TABLE public.bda_usuario_rol ADD CONSTRAINT pkbda_usuario_rol
 /* Add Indexes */
 CREATE INDEX "bda_rol_usuario_rol_id_Idx" ON public.bda_usuario_rol USING btree (rol_id);
 
-CREATE INDEX "bda_rol_usuario_usr_usuario_id_Idx" ON public.bda_usuario_rol USING btree (usr_usuario_id);
+CREATE INDEX "bda_rol_usuario_usr_id_Idx" ON public.bda_usuario_rol USING btree (usr_id);
 
-CREATE UNIQUE INDEX "bda_rol_usuario_usr_usuario_id_rol_id_Idx" ON public.bda_usuario_rol USING btree (usr_usuario_id, rol_id);
+CREATE UNIQUE INDEX "bda_rol_usuario_usr_id_rol_id_Idx" ON public.bda_usuario_rol USING btree (usr_id, rol_id);
 
 
 
@@ -1441,5 +1441,5 @@ ALTER TABLE public.bda_usuario_rol ADD CONSTRAINT fk_bda_rol_usuario_bda_rol
 
 /* Add Foreign Key: fk_bda_rol_usuario_bda_usuario */
 ALTER TABLE public.bda_usuario_rol ADD CONSTRAINT fk_bda_rol_usuario_bda_usuario
-	FOREIGN KEY (usr_usuario_id) REFERENCES public.bda_usuario (usr_id)
+	FOREIGN KEY (usr_id) REFERENCES public.bda_usuario (usr_id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
