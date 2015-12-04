@@ -1,7 +1,5 @@
 <?php
-/**
- * 
- */
+
 namespace FStudio\model\base;
 
 use FStudio\fsModel as model;
@@ -10,7 +8,7 @@ use FStudio\myConfig as config;
 /**
  * Description of haciendaBaseTable
  *
- * @author nombre completo <victoriacortes2014@hotmail.com>
+ * @author victoria cortes <victoriacortes2014@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -27,15 +25,51 @@ class haciendaBaseTable extends model {
    * Longitud del campo acción
    */
   const DESCRIPCION = 'hac_descripcion';
+
+  /**
+   * longitud del campo descripcion
+   */
   const DESCRIPCION_LENGTH = 80;
+
+  /**
+   * Longitud del campo varchar
+   */
   const UBICACION = 'hac_ubicacion';
+
+  /**
+   * Longitud del campo ubicacion
+   */
   const UBICACION_LENGTH = 100;
+
+  /**
+   * Longitud del campo varchar
+   */
   const REPRESENTANTE_LEGAL = 'hac_representante_legal';
+
+  /**
+   * Longitud del campo de representante_legal
+   */
   const REPRESENTANTE_LEGAL_LENGTH = 100;
+
+  /**
+   * Longitud del campo varchar
+   */
   const CREATED_AT = 'hac_created_at';
+  /**
+   * Longitud del campo hac_created_at
+   */
   const UPDATED_AT = 'hac_updated_at';
+  /**
+   * Longitud del campo hac_updated_at
+   */
   const DELETED_AT = 'hac_deleted_at';
+  /**
+   * Longitud del campo hac_deleted_at
+   */
   const _SEQUENCE = 'bda_hacienda_hac_id_seq';
+  /**
+   * Longitud del campo bda_hacienda_hac_id_seq
+   */
   const _TABLE = 'bda_hacienda';
 
   /**
@@ -45,35 +79,52 @@ class haciendaBaseTable extends model {
   protected $config;
 
   /**
-   * ID de la tabla
-   * @var integer
+   * config de la tabla
    */
   private $id;
 
   /**
-   *
-   * @var string
+   * ID de la tabla
+   * @var integer
    */
   private $descripcion;
 
   /**
-   *
+   * descripcion de la tabla
    * @var string
-
    */
   private $ubicacion;
 
   /**
-   *
+   * ubicacion de la tabla
    * @var string
    */
   private $representante_legal;
+  
+  /**
+   * representante_legal de la tabla
+   * @var string
+   */
   private $created_at;
+  
+  /**
+   * created_at de la tabla
+   * @var string
+   */
   private $updated_at;
+  
+  /**
+   * updated_at de la tabla
+   * @var string
+   */
   private $deleted_at;
+  /**
+   * deleted_at de la tabla
+   * @var string
+   */
 
   /**
-   * Constructor de la clase haciendaBaseTable 
+   * Constructor de la clase haciendaBaseTable
    * @param config $config
    * @param integer $id
    * @param string $descripcion
@@ -86,12 +137,47 @@ class haciendaBaseTable extends model {
   public function __construct(config $config, $id = null, $descripcion = null, $ubicacion = null, $representante_legal = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
+   
+  /**
+   * Retorna el id del la configuracion
+   * @return integer
+   */
     $this->descripcion = $descripcion;
+    
+  /**
+   * Retorna la descripcion de la cofiguracion
+   * @return integer
+   */
     $this->ubicacion = $ubicacion;
+    
+  /**
+   * Retorna la ubicacion de la configuracion
+   * @return integer
+   */
     $this->representante_legal = $representante_legal;
+    
+  /**
+   * Retorna representante_legal de la configuracion
+   * @return integer
+   */
     $this->created_at = $created_at;
+    
+  /**
+   * Retorna el created_at de la configuracion
+   * @return integer
+   */
     $this->updated_at = $updated_at;
+    
+  /**
+   * Retorna el updated_at de la configuracion
+   * @return integer
+   */
     $this->deleted_at = $deleted_at;
+    
+  /**
+   * Retorna el deleted_at de la configuracion
+   * @return integer
+   */
   }
 
   /**
@@ -102,18 +188,34 @@ class haciendaBaseTable extends model {
     return $this->id;
   }
 
+  /**
+   * Retorna el id del registro
+   * @return integer
+   */
   public function getDescripcion() {
     return $this->descripcion;
   }
 
+  /**
+   * Retorna la descripcion del registro
+   * @return integer
+   */
   public function getUbicacion() {
     return $this->ubicacion;
   }
 
+  /**
+   * Retorna la ubicacion del registro
+   * @return integer
+   */
   public function getRepresentanteLegal() {
     return $this->representante_legal;
   }
 
+  /**
+   * Retorna el representante_legal del registro
+   * @return integer
+   */
   public function getCreatedAt() {
     return $this->created_at;
   }
@@ -134,31 +236,56 @@ class haciendaBaseTable extends model {
     $this->id = $id;
   }
 
+  /**
+   * Retorna el id del registro
+   * @return integer
+   */
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
 
+  /**
+   * Retorna la descripcion del registro
+   * @return integer
+   */
   public function setUbicacion($ubicacion) {
     $this->ubicacion = $ubicacion;
   }
 
+  /**
+   * Retorna la ubicacion del registro
+   * @return integer
+   */
   public function setRepresentanteLegal($representante_legal) {
     $this->representante_legal = $representante_legal;
   }
 
+  /**
+   * Retorna el representante_legal del registro
+   * @return integer
+   */
   public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
+  /**
+   * created_atdel registro
+   * @return integer
+   */
 
   public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
   }
+  /**
+   * updated_at del registro
+   * @return integer
+   */
 
   public function setDeletedAt($deleted_at) {
     $this->deleted_at = $deleted_at;
   }
+  /**
+   * deleted_at del registro
+   * @return integer
+   */
 
 }
-
-
-//tt
