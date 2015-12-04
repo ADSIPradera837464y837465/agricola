@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\productoBaseTable;
+use FStudio\model\base\turnoBaseTable;
 
 /**
  * Description of registroTractorTable
@@ -10,7 +10,7 @@ use FStudio\model\base\productoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class turno extends turnoBaseTable {
+class turnoTable extends turnoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -18,7 +18,7 @@ class turno extends turnoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tur_id, tur_descripcion, tur_hora_inicio, tur_hora_fin, tur_estado, tur_tabla, tur_created_at, tur_update_at, tur_deleted_at FROM Turno ORDER BY tur_created_at, tur_updated_at, tur_deleted_at ASC';
+    $sql = 'SELECT tur_id AS id, tur_descripcion AS descripcion, tur_hora_inicio AS hora_inicio, tur_hora_fin AS hora_fin, tur_estado AS estado, tur_created_at AS created_at, tur_updated_at AS updated_at, tur_deleted_at AS deleted_at FROM bda_turno WHERE tur_deleted_at IS NULL ORDER BY tur_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,11 +31,9 @@ class turno extends turnoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tur_id, tur_descripcion, tur_horaInicio, tur_horaFin, tur_estado, tur_tabla, tur_created_at, tur_updated_at, tur_deleted_at '
-            . 'FROM Turno '
-            . 'AND tur_id = :tur_id';
+    $sql = 'SELECT tur_id AS id, tur_descripcion AS descripcion, tur_hora_inicio AS hora_inicio, tur_hora_fin AS hora_fin, tur_estado AS estado, tur_created_at AS created_at, tur_updated_at AS updated_at, tur_deleted_at AS deleted_at FROM bda_turno WHERE tur_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':tur_id' => ($id !== null) ? $id : $this->getById()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -48,17 +46,16 @@ class turno extends turnoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO turno (tur_descripcion, tur_horaInicio, tur_horaFin, tur_estado,rt_tabla ) VALUES (:rt_horaSalida, :rt_horaFin, :rt_tractor, :rt_observacion, :rt_tabla, )';
+    $sql = 'INSERT INTO bda_turno (tur_descripcion, tur_hora_inicio, tur_hora_fin, tur_estado) VALUES (:descripcion, :hora_inicio, :hora_fin, :estado)';
     $params = array(
-        ':tur_descripcion' => $this->getDescripcion(),
-        ': tur_horaInicio' => $this->getHora_inicio(),
-        ':tur_horaFin' => $this->getHora_fin(),
-        ':tur_estado' => $this->getEstado(),
-        ':tur_tabla' => $this->getTabla(),
+        ':descripcion' => $this->getDescripcion(),
+        ':hora_inicio' => $this->getHoraInicio(),
+        ':hora_fin' => $this->getHoraFin(),
+        ':estado' => $this->getEstado()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this -> setId ($conn->lastInsertId(self::_SEQUENCE));
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
 
@@ -68,13 +65,13 @@ class turno extends turnoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE turno SET  = tur_descripcion:tur_descripcion,  = tur_horaInicio:tur_horaInicio, tur_horaFin:, tur_horaFin,,  = tur_estado:tur_estado, tur_tabla = :tur_tabla,  WHERE tur_id = :tur_id';
+    $sql = 'UPDATE bda_turno SET tur_descripcion = :descripcion, tur_hora_inicio = :hora_inicio, tur_hora_fin = :hora_fin, tur_estado = :estado WHERE tur_id = :id';
     $params = array(
-        ':tur_descripcion' => $this->getDescripcion(),
-        ':tur_horaInicio' => $this->getHora_inicio(),
-        ':tur_horaFin' => $this->getHora_fin(),
-        ':tur_tabla' => $this->getTabla(),
-        ':tur_id' => $this->getId()
+        ':descripcion' => $this->getDescripcion(),
+        ':hora_inicio' => $this->getHoraInicio(),
+        ':hora_fin' => $this->getHoraFin(),
+        ':estado' => $this->getEstado(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -87,12 +84,21 @@ class turno extends turnoBaseTable {
    * @return boolean
    * @throws PDOException
    */
-  public function delete() {
+  public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM turno WHERE tur_id = :tur_id';
     $params = array(
-        ':tur_id' => $this->getId()
+        ':id' => $this->getId()
     );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_turno SET tur_deleted_at = now() WHERE tur_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_turno WHERE tur_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
