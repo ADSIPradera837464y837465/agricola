@@ -20,7 +20,7 @@ class unidadMedidaTable extends unidadMedidaBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT unm_id, unm_descripcion, created_at FROM unidad_medida ORDER BY created_at ASC';
+    $sql = 'SELECT unm_id AS id, unm_descripcion AS descripcion, unm_created_at AS created_at, unm_updated_at AS updated_at, unm_deleted_at AS deleted_at FROM bda_unidad_medida WHERE unm_deleted_at IS NULL ORDER BY unm_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -34,12 +34,9 @@ class unidadMedidaTable extends unidadMedidaBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-   
-     $sql = 'SELECT unm_id, unm_descripcion'
-             . 'FROM bda_unidad_medida  WHERE unm_deleted_at IS NULL '
-            . 'AND unm_id = :unm_id';
+    $sql = 'SELECT unm_id AS id, unm_descripcion AS descripcion, unm_created_at AS created_at, unm_updated_at AS updated_at, unm_deleted_at AS deleted_at FROM bda_unidad_medida WHERE unm_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':unm_id' => ($id !== null) ? $id : $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -53,9 +50,9 @@ class unidadMedidaTable extends unidadMedidaBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO unidad_medida (unm_descripcion) VALUES (:unm_descripcion)';
+    $sql = 'INSERT INTO bda_unidad_medida (unm_descripcion) VALUES (:descripcion)';
     $params = array(
-        ':unm_descripcion' => $this->getDescripcion(),
+        ':descripcion' => $this->getDescripcion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -70,9 +67,10 @@ class unidadMedidaTable extends unidadMedidaBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE unidad_medida SET unm_descripcion =:unm_descripcion)';
+    $sql = 'UPDATE bda_unidad_medida SET unm_descripcion = :descripcion WHERE unm_id = :id';
     $params = array(
-        ':unm_descripcion' => $this->getDescripcion(),
+        ':descripcion' => $this->getDescripcion(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -89,7 +87,7 @@ class unidadMedidaTable extends unidadMedidaBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':unm_id' => $this->getId()
+        ':id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:

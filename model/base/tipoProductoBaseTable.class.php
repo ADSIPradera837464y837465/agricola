@@ -8,7 +8,7 @@ use FStudio\myConfig as config;
 /**
  * Description of tipoProductoBaseTable
  * @author AngelaCardona <angela04cardona@hotmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -44,14 +44,12 @@ class tipoProductoBaseTable extends model {
    * Fecha y hora para controlar el borrado lógico
    */
   const DELETED_AT = 'tpr_deleted_at';
-
-  /**
+   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = '';
-
-  /**
-   * Nombre de la tabla
+  const _SEQUENCE = 'bda_tipo_producto_tpr_id_seq';
+  /*
+   * nombre de la tabla
    */
   const _TABLE = 'bda_tipo_producto';
 
@@ -77,21 +75,21 @@ class tipoProductoBaseTable extends model {
    * Fecha y hora de creación del tipo producto
    * @var date_time 
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha y hora de la ultima actualización del tipo producto
    * @var date_time
    */
-  private $updateAt;
+  private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var date_time
    */
-  private $deletedAt;
-
-  /**
+  private $deleted_at;
+  
+/**
    * constructor class tipoProductoBaseTable
    * @version 1.0.0
    * @param integer $id
@@ -100,28 +98,16 @@ class tipoProductoBaseTable extends model {
    * @param date_time $updateAt
    * @param date_time $deletedAt
    */
-  public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $updateAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->createdAt = $createdAt;
-    $this->updateAt = $updateAt;
-    $this->deletedAt = $deletedAt;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
-  /**
-   * Retorna la configuracion
-   * @return config
-   * @version 1.0.0
-   */
-  public function getConfig() {
-    return $this->config;
-  }
-
-  /**
-   * Retorna el id del registro
-   * @return integer
-   */
+ 
   public function getId() {
     return $this->id;
   }
@@ -139,15 +125,15 @@ class tipoProductoBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
    * Fecha y hora de la ultima actualización de la descripcion del tipo producto
    * @return date_time
    */
-  public function getUpdateAt() {
-    return $this->updateAt;
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   /**
@@ -155,18 +141,10 @@ class tipoProductoBaseTable extends model {
    * @return date_time 
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
-  /**
-   * Fija la configuracion del sistema 
-   * @param config $config objeto con configuracion del sistema 
-   * @version 1.0.0
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
-  }
-
+  
   /**
    * Fija el id del tipo producto
    * @param integer $id
@@ -184,32 +162,30 @@ class tipoProductoBaseTable extends model {
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
-
-  /**
+/**
    * Fija la fecha y la hora de creación de la descripcion del tipo producto
    * @version 1.0.0
    * @param date_time $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
-
-  /**
+/**
    * Fija la fecha y la hora de la última actualización de la descripcion del tipo producto
    * @version 1.0.0
    * @param date_time $updateAt
    */
-  public function setUpdateAt($updateAt) {
-    $this->updateAt = $updateAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
-
-  /**
+  
+ /**
    * Fija la fecha y la hora del borrado lógico
    * @version 1.0.0
    * @param date_time $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
