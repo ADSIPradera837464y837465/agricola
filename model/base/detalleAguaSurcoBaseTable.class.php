@@ -6,14 +6,14 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of aguaSurcoBaseTable
+ * Description of  detalleAguaSurcoBaseTable
  * @author Johanna G <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
-class aguaSurcoBaseTable extends model {
+class detalleAguaSurcoBaseTable extends model {
 
   /**
    * ID de la tabla
@@ -49,7 +49,7 @@ class aguaSurcoBaseTable extends model {
   /**
    * Tabla 
    */
-  const _TABLE = 'bda_aguaSurco';
+  const _TABLE = 'bda_detalle_agua_surco';
 
   /**
    * Configuración del sistema
@@ -103,7 +103,7 @@ class aguaSurcoBaseTable extends model {
   private $deletedAt;
 
   /**
-   * Constructor de la clase aguaSurcoBaseTable
+   * Constructor de la clase  detalleAguaSurcoBaseTable
    * @version 1.0.0
    * @param config $config
    * @param integer $id

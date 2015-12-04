@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\aguaSurcoBaseTable;
+use FStudio\model\base\detalleAguaSurcoBaseTable;
 
 /**
  * Description of aguaSurcoTable
@@ -10,7 +10,7 @@ use FStudio\model\base\aguaSurcoBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class aguaSurcoTable extends aguaSurcoBaseTable {
+class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
 
   /**
    * Obtiene todos los datos de la tabla
@@ -19,7 +19,7 @@ class aguaSurcoTable extends aguaSurcoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT deaas_id, deaas_item, deaas_cantidad_surco, fore_num_documento,created_at, updated_at,  deleted_at FROM aguaSurco '
+    $sql = 'SELECT deaas_id, deaas_item, deaas_cantidad_surco, fore_num_documento,created_at, updated_at,  deleted_at FROM bda_detalle_agua_surco '
             . 'ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
@@ -35,7 +35,7 @@ class aguaSurcoTable extends aguaSurcoBaseTable {
   public function getById($id) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT deaas_id, deaas_item, deaas_cantidad_surco, fore_num_documento,created_at, updated_at,  deleted_at '
-            . 'FROM aguaSurco  WHERE deleted_at IS NULL'
+            . 'FROM bda_detalle_agua_surco  WHERE deleted_at IS NULL'
             . 'AND deaas_id = :id';
 
     $params = array(
@@ -54,7 +54,7 @@ class aguaSurcoTable extends aguaSurcoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO aguaSurco (deaas_item, deaas_cantidad_surco,fore_num_documento) VALUES (:deaas_item, :deaas_cantidad_surco, :fore_num_documento)';
+    $sql = 'INSERT INTO bda_detalle_agua_surco (deaas_item, deaas_cantidad_surco,fore_num_documento) VALUES (:deaas_item, :deaas_cantidad_surco, :fore_num_documento)';
     $params = array(
         ':deaas_item' => $this->getItem(),
         ':deaas_cantidad_surco' => $this->getCantidadSurco(),
@@ -99,10 +99,10 @@ class aguaSurcoTable extends aguaSurcoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE aguaSurco SET deleted_at = now() WHERE id = :id';
+        $sql = 'UPDATE bda_detalle_agua_surco SET deleted_at = now() WHERE id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM aguaSurco WHERE id = :id';
+        $sql = 'DELETE FROM bda_detalle_agua_surco WHERE id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico o físico');

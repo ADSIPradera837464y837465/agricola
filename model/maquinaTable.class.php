@@ -22,7 +22,7 @@ class aguaSurcoTable extends maquinaBaseTable {
     $sql = 'SELECT maq_id, maq_estado, maq_valor, maq_fecha_compra,maq_numero_chasis,maq_t_asesorio,maq_horas_trabajadas,'
             . 'maq_tiempo_mantenimiento_horas'
             . ',maq_numero_serie,maq_modelo,maq_horas_actividad,maq_valor_hora,maq_created_at, maq_updated_at,  maq_deleted_at '
-            . 'FROM maquina ORDER BY maq_created_at ASC';
+            . 'FROM bda_maquina ORDER BY maq_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -39,7 +39,7 @@ class aguaSurcoTable extends maquinaBaseTable {
     $sql = 'SELECT maq_id, maq_estado, maq_valor, maq_fecha_compra,maq_numero_chasis,maq_t_asesorio,maq_horas_trabajadas,'
             . 'maq_tiempo_mantenimiento_horas'
             . ',maq_numero_serie,maq_modelo,maq_horas_actividad,maq_valor_hora,maq_created_at, maq_updated_at,  maq_deleted_at'
-            . 'FROM maquina WHERE deleted_at IS NULL '
+            . 'FROM bda_maquina WHERE deleted_at IS NULL '
             . 'AND maq_id = :maq_id';
     $params = array(
         ':maq_id' => ($id !== null) ? $id :
@@ -129,10 +129,10 @@ class aguaSurcoTable extends maquinaBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE maquina SET deleted_at = now() WHERE id = :id';
+        $sql = 'UPDATE bda_maquina SET deleted_at = now() WHERE id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM maquina WHERE id = :id';
+        $sql = 'DELETE FROM bda_maquina WHERE id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico o físico');

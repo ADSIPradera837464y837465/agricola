@@ -1,6 +1,7 @@
 <?php
-require_once '../model/base/usuarioBaseTable.class.php';
-require_once '../model/usuarioTable.class.php';
+
+require_once '../model/base/cargoBaseTable.class.php';
+require_once '../model/cargoTable.class.php';
 
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
@@ -8,7 +9,7 @@ use FStudio\interfaces\fsAction as action;
 /**
  * Description of index.class.php
  *
- * @author Julian AndrÃ©s Lasso Figueroa <ingeniero.julianlasso@gmail.com>
+ * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage controller
  * @subpackage index.class.php
@@ -18,9 +19,9 @@ class index extends controller implements action {
 
     public function execute() {
       $config = $this->getConfig();
-      $usuario = new usuarioTable($config);
-      $this->objUsuario = $usuario->getAll();
+      $cargo = new cargoTable($config);
+      $this->objCargo = $cargo->getAll();
       // así declaramos la vista a usar
-      $this->defineView('usuario', 'index', 'html');
+      $this->defineView('cargo', 'index', 'html');
     }
 }
