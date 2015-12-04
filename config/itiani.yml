@@ -1,0 +1,35 @@
+bda_metodo_riego:
+  name:                   metodo_riego
+  columns:
+    met_rie_id:           { name: id, constraint: PK, sequence: bda_metodo_riego_met_rie_id_seq }
+    met_rie_descripcion:  { name: descripcion, length: 80 }
+    met_created_at:       { name: created_at, behavior: created }
+    met_updated_at:       { name: updated_at, behavior: updated }
+    met_deleted_at:       { name: deleted_at, behavior: deleted }
+    
+bda_orden_ejecucion:
+  name:                   orden_ejecucion
+  columns:
+    ore_id:               { name: id, constraint: PK, sequence: bda_orden_ejecucion_ore_id_seq }
+    ter_id_elabora:       { name: tercero_id_elabora }
+    ors_id:               { name: orden_salida_id }
+    maq_id:               { name: maquina_id }
+    ore_fecha:            { name: fecha }
+    ore_observacion:      { name: observacion, length: 1024 }
+    ore_created_at:       { name: created_at, behavior: created }
+    ore_updated_at:       { name: updated_at, behavior: updated }
+    ore_deleted_at:       { name: deleted_at, behavior: deleted }
+    
+bda_orden_servicio:
+  name:                   orden_servicio
+  columns:
+    ors_id:               { name: id, constraint: PK, sequence: bda_orden_servicio_ors_id_seq }
+    maq_id:               { name: maquina_id }
+    tma_id:               { name: tipo_mantenimiento_id }
+    ter_id_elabora:       { name: tercero_id_elabora }
+    ter_id_realiza:       { name: tercero_id_realiza }
+    ors_fecha:            { name: fecha }
+    ors_observacion:      { name: observacion, length: 1024 }
+    ors_created_at:       { name: created_at, behavior: created }
+    ors_updated_at:       { name: updated_at, behavior: updated }
+    ors_deleted_at:       { name: deleted_at, behavior: deleted }

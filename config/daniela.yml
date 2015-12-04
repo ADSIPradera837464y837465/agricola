@@ -1,0 +1,28 @@
+bda_tipo_documento:
+  name:                   tipo_documento
+  columns:
+    tpd_id:               { name: id, constraint: PK, sequence: bda_tipo_documento_tpd_id_seq }
+    tpd_descripcion:      { name: descripcion, length: 80 }
+    tpd_tipo_movimiento:  { name: tipo_movimiento, length: 80 }
+    tpd_estado:           { name: estado }
+    tpd_created_at:       { name: created_at, behavior: created }
+    tpd_updated_at:       { name: updated_at, behavior: updated } 
+    tpd_deleted_at:       { name: deleted_at, behavior: deleted } 
+
+bda_tipo_id:
+  name:                   tipo_id
+  columns:
+    tpi_id:               { name: id, constraint: PK, sequence: bda_tipo_id_tpi_id_seq }
+    tpi_descripcion:      { name: descripcion, length: 80 }
+    tpi_created_at:       { name: created_at, behavior: created }
+    tpi_updated_at:       { name: updated_at, behavior: updated } 
+    tpi_deleted_at:       { name: deleted_at, behavior: deleted } 
+    
+bda_tipo_mantenimiento:
+  name:                   tipo_mantenimiento
+  columns:
+    tma_id:               { name: id, constraint: PK, sequence: bda_tipo_mantenimiento_tma_id_seq }
+    tma_descripcion:      { name: descripcion, length: 80 }
+    tma_created_at:       { name: created_at, behavior: created }
+    tma_updated_at:       { name: updated_at, behavior: updated } 
+    tma_deleted_at:       { name: deleted_at, behavior: deleted } 

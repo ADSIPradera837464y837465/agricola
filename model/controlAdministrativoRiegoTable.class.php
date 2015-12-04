@@ -1,7 +1,8 @@
 <?php
 
+use FStudio\model\base\controlRiegoPluviosidadBaseTable;
 /**
- * Description of metodoRiegoTable
+ * Description of controlRiego
  * @author mariam montaño <nichesitap@hotmail.com>
  * @package
  * @subpackage model

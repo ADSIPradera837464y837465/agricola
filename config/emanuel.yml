@@ -1,0 +1,40 @@
+bda_detalle_ejecucion:
+  name:              detalle_ejecucion
+  columns:
+    dee_id:          { name: id, constaint: PK, sequence: bda_detalle_ejecucion_dee_id_seq }
+    ore_id:          { name: orden_ejecucion_id }
+    ter_id:          { name: tercero_id }
+    ser_id:          { name: servicio_maquina_id }
+    pro_id:          { name: producto_id }
+    dee_cantidad:    { name: cantidad }
+    dee_precio:      { name: precio }
+    dee_created_at:  { name: created_at, behavior: created }
+    dee_updated_at:  { name: updated_at, behavion: updated }
+    dee_deleted_at:  { name: deleted_at, behavion: deleted }
+    
+    
+bda_detalle_entrada_salida_bodega:
+  name:              detalle_entrada_salida_bodega
+  columns:
+    des_id:          { name: id, constaint: PK, sequence: bda_detalle_entrada_salida_bodega_des_id_seq }
+    esb_id:          { name: entrada_salida_bodega_id }
+    pro_id:          { name: producto_id }
+    unm_id:          { name: unidad_medida_id }
+    des_cantidad:    { name: cantidad }
+    des_precio:      { name: precio }    
+    des_created_at:  { name: created_at, behavior: created }
+    des_updated_at:  { name: updated_at, behavion: updated }
+    des_deleted_at:  { name: deleted_at, behavion: deleted }  
+    
+bda_detalle_orden:
+  name:             detalle_orden
+  columns:
+    deo_id:          { name: id, constaint: PK, sequence: bda_detalle_orden_deo_id_seq }
+    ors_id:          { name: orden_servicio_id }
+    ser_id:          { name: servicio_id }       
+    deo_created_at:  { name: created_at, behavior: created }
+    deo_updated_at:  { name: updated_at, behavion: updated }
+    deo_deleted_at:  { name: deleted_at, behavion: deleted }      
+    deo_estado:      { name: estado }      
+    
+

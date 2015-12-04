@@ -1,0 +1,62 @@
+bda_control_riego_pluviosidad:
+  name:                          control_riego_pluviosidad
+  columns:
+    crp_id:                      { name: id, contrains: PK,sequence: bda_contro_riego_pluviosidad_crp_id_seq }
+    crp_fecha:                   { name: fecha }
+    crp_hora_inicio:             { name: hora_inicio }
+    crp_hora_fin:                { name: hora_fin }
+    crp_cantidad_m3_hora:        { name: cantidad_m3_hora }
+    crp_observacion:             { name: observacion, length: 2048 }
+    sue_id:                      { name: suerte_id }
+    hac_id:                      { name: hacienda_id }
+    ter_id:                      { name: tercero_id }
+    crp_created_at:              { name: created_at, behavior: created }
+    crp_updated:at:              { name: updated_at, behavior: updated }
+    crp_deleted_at:              { name: deleted_at, behavior: deleted }
+
+bda_control_administrativo_riego:
+  name:                          control_administrativo_riego
+  columns:
+    car_num_documento:           { name: id, contrains: PK,sequence: bda_control_administrativo_riego_car_num_documento_seq }
+    car_fecha:                   { name: fecha }
+    met_rie_id:                  { name: metodo_riego_id }
+    hac_id:                      { name: hacienda_id }
+    sue_id:                      { name: suerte_id }
+    car_caudal_riego:            { name: caudal_riego }
+    car_tiempo_riego:            { name: tiempo_riego, length: 5 }
+    car_tiempo_total_suspension: { name: tiempo_total_suspension, length: 5 }
+    car_longitud_surco:          { name: longitud_surco }
+    car_espacio_surco:           { name: espacio_surco }
+    car_num_surco_regados:       { name: num_surco_regados }
+    car_estado_humedad:          { name: estado_humedad, length: 80 }
+    car_suelo_grieta:            { name: suelo_grieta }
+    car_facil_avance_agua:       { name: facil_avance_agua }
+    car_pendiente_dir_surco:     { name: pendiente_dir_surco }
+    car_agua_costado:            { name: agua_costado }
+    car_created_at:              { name: created_at, behavior: created }
+    car_updated:at:              { name: updated_at, behavior: updated }
+    car_deleted_at:              { name: deleted_at, behavior: deleted }
+
+
+bda_control_salida_cana:
+  name:                          control_salida_cana
+  columns:
+    csc_id:                      { name: id, contrains: PK,sequence: bda_control_salida_cana_csc_id_seq }
+    csc_fecha:                   { name: fecha }
+    csc_total_vagones:           { name: total_vagones }
+    csc_notas:                   { name: notas, length: 2048 }
+    csc_total_trenes:            { name: total_trenes }
+    tur_id:                      { name: turno_id }
+    sue_id:                      { name: suerte_id }
+    ter_id:                      { name: tercero_id }
+    csc_created_at:              { name: created_at, behavior: created }
+    csc_updated:at:              { name: updated_at, behavior: updated }
+    csc_deleted_at:              { name: deleted_at, behavior: deleted }
+
+
+
+
+
+
+
+

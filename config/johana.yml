@@ -1,0 +1,36 @@
+bda_producto: 
+  name:                producto
+  columnas: 
+    pro_id:            { name: id, constraint: PK, sequence: bda_producto_pro_id_seq }
+    pro_descripcion:   { name: descripcion, length: 80 }
+    tpr_id:            { name: tipo_producto_id }
+    mar_id:            { name: marca_id }
+    unm_id:            { name: unidad_medida_id }
+    pro_created_at:    { name: created_at, behavior: created }
+    pro_updated_at:    { name: updated_at, behavior: updated }
+    pro_deleted_at_at: { name: deleted_at, behavior: deleted }
+    
+bda_recordar_me: 
+  name:              recordar_me
+  columnas: 
+    rcm_id:          { name: id, constraint: PK, sequence: bda_recordar_me_rcm_id_seq }
+    usuario_id:      { name: usuario_id }
+    rcm_ip_address:  { name: ip_address, length: 50 }
+    rcm_hash_cookie: { name: hash_cookie, length: 32 }
+    rcm_created_at:  { name: created_at, behavior: created }
+    
+bda_registro_tractor: 
+  name:             registro_tractor
+  columnas: 
+    rt_item:        { name: item, constraint: PK, sequence: bda_registro_tractor_rt_item_seq }
+    csc_id:         { name: control_salida_cana }
+    rt_hora_salida: { name: hora_salida }
+    rt_created_at:  { name: created_at, behavior: created }
+    rt_updated_at:  { name: updated_at, behavior: updated }
+    rt_deleted_at:  { name: deleted_at, behavior: deleted }
+    
+    
+    
+    
+
+    
