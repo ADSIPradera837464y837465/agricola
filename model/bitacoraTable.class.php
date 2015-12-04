@@ -4,8 +4,8 @@ use FStudio\model\base\bitacoraBaseTable;
 
 /**
  * Description of bitacoraTable
- * @author Diana Meneses <meneses_d@rocketmail.com>
- * @package
+  * @author Diana Meneses <meneses_d@rocketmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -30,7 +30,7 @@ class bitacoraTable extends bitacoraBaseTable {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id  = null) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT bit_id AS id, usr_id AS usuario_id, bit_accion AS accion, bit_tabla AS tabla, bit_registro AS registro, bit_observacion AS observaciones, bit_fecha AS fecha FROM bda_bitacora AND id = :id';
     $params = array(
@@ -48,14 +48,13 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_bitacora (usr_id, bit_accion, bit_tabla, bit_registro, bit_observacion, bit_fecha) VALUES (:usuario_id, :accion, :tabla, :registro, :observaciones, :fecha)';
+    $sql = 'INSERT INTO bda_bitacora (usr_id, bit_accion, bit_tabla, bit_registro, bit_observacion) VALUES (:usuario_id, :accion, :tabla, :registro, :observacion)';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
         ':accion' => $this->getAccion(),
         ':tabla' => $this->getTabla(),
         ':registro' => $this->getRegistro(),
-        ':observaciones' => $this->getObservaciones(),
-        ':fecha' => $this->getFecha()
+        ':observacion' => $this->getObservacion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -70,14 +69,13 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_bitacora SET usr_id = :usuario_id, bit_accion = :accion, bit_tabla = :tabla, bit_registro = :registro, bit_observacion = :observaciones, bit_fecha = :fecha WHERE bit_id = :id';
+    $sql = 'UPDATE bda_bitacora SET usr_id = :usuario_id, bit_accion = :accion, bit_tabla = :tabla, bit_registro = :registro, bit_observacion = :observacion WHERE bit_id = :id';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
         ':accion' => $this->getAccion(),
         ':tabla' => $this->getTabla(),
         ':registro' => $this->getRegistro(),
-        ':observaciones' => $this->getObservaciones(),
-        ':fecha' => $this->getFecha(),
+        ':observacion' => $this->getObservacion(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -94,9 +92,9 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function delete() {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM bda_bitacora WHERE bit_id = :bit_id';
+    $sql = 'DELETE FROM bda_bitacora WHERE bit_id = :id';
     $params = array(
-        ':bit_id'=> $this->getId()
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);

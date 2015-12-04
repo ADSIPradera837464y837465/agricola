@@ -15,7 +15,7 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega ORDER BY  ASC';
+    $sql = 'SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE esb_deleted_at IS NULL ORDER BY esb_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega AND id = :id';
+    $sql = 'SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE esb_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -34,16 +34,13 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
 
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_entrada_salida_bodega (ter_id_elabora, ter_id_solicita, tpd_id, esb_fecha, esb_observacion, esb_created_at, esb_updated_at, esb_deleted_at) VALUES (:tercero_id_elabora, :tercero_id_solicita, :tipo_documento_id, :fecha, :observacion, :created_at, :updated_at, :deleted_at)';
+    $sql = 'INSERT INTO bda_entrada_salida_bodega (ter_id_elabora, ter_id_solicita, tpd_id, esb_fecha, esb_observacion) VALUES (:tercero_id_elabora, :tercero_id_solicita, :tipo_documento_id, :fecha, :observacion)';
     $params = array(
         ':tercero_id_elabora' => $this->getTerceroIdElabora(),
         ':tercero_id_solicita' => $this->getTerceroIdSolicita(),
         ':tipo_documento_id' => $this->getTipoDocumentoId(),
         ':fecha' => $this->getFecha(),
-        ':observacion' => $this->getObservacion(),
-        ':created_at' => $this->getCreatedAt(),
-        ':updated_at' => $this->getUpdatedAt(),
-        ':deleted_at' => $this->getDeletedAt()
+        ':observacion' => $this->getObservacion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -53,16 +50,13 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
 
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_entrada_salida_bodega SET ter_id_elabora = :tercero_id_elabora, ter_id_solicita = :tercero_id_solicita, tpd_id = :tipo_documento_id, esb_fecha = :fecha, esb_observacion = :observacion, esb_created_at = :created_at, esb_updated_at = :updated_at, esb_deleted_at = :deleted_at WHERE esb_id = :id';
+    $sql = 'UPDATE bda_entrada_salida_bodega SET ter_id_elabora = :tercero_id_elabora, ter_id_solicita = :tercero_id_solicita, tpd_id = :tipo_documento_id, esb_fecha = :fecha, esb_observacion = :observacion WHERE esb_id = :id';
     $params = array(
         ':tercero_id_elabora' => $this->getTerceroIdElabora(),
         ':tercero_id_solicita' => $this->getTerceroIdSolicita(),
         ':tipo_documento_id' => $this->getTipoDocumentoId(),
         ':fecha' => $this->getFecha(),
         ':observacion' => $this->getObservacion(),
-        ':created_at' => $this->getCreatedAt(),
-        ':updated_at' => $this->getUpdatedAt(),
-        ':deleted_at' => $this->getDeletedAt(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -70,6 +64,24 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
     return true;
   }
 
-
+  public function delete($deleteLogical = true) {
+    $conn = $this->getConnection($this->config);
+    $params = array(
+        ':id' => $this->getId()
+    );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_entrada_salida_bodega SET esb_deleted_at = now() WHERE esb_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_entrada_salida_bodega WHERE esb_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
+    return true;
+  }
 
 }

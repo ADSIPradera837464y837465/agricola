@@ -26,7 +26,7 @@ class controlSalidaCanaBaseTable extends model {
   const SUERTE_ID = 'sue_id';
   const TERCERO_ID = 'ter_id';
   const CREATED_AT = 'csc_created_at';
-  const UPDATED_AT = 'csc_updated:at';
+  const UPDATED_AT = 'csc_updated_at';
   const DELETED_AT = 'csc_deleted_at';
   const _SEQUENCE = 'bda_control_salida_cana_csc_id_seq';
   const _TABLE = 'bda_control_salida_cana';

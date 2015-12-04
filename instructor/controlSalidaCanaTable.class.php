@@ -15,7 +15,7 @@ class controlSalidaCanaTable extends controlSalidaCanaBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT csc_id AS id, csc_fecha AS fecha, csc_total_vagones AS total_vagones, csc_notas AS notas, csc_total_trenes AS total_trenes, tur_id AS turno_id, sue_id AS suerte_id, ter_id AS tercero_id, csc_created_at AS created_at, csc_updated:at AS updated_at, csc_deleted_at AS deleted_at FROM bda_control_salida_cana WHERE csc_deleted_at IS NULL ORDER BY csc_created_at ASC';
+    $sql = 'SELECT csc_id AS id, csc_fecha AS fecha, csc_total_vagones AS total_vagones, csc_notas AS notas, csc_total_trenes AS total_trenes, tur_id AS turno_id, sue_id AS suerte_id, ter_id AS tercero_id, csc_created_at AS created_at, csc_updated_at AS updated_at, csc_deleted_at AS deleted_at FROM bda_control_salida_cana WHERE csc_deleted_at IS NULL ORDER BY csc_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class controlSalidaCanaTable extends controlSalidaCanaBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT csc_id AS id, csc_fecha AS fecha, csc_total_vagones AS total_vagones, csc_notas AS notas, csc_total_trenes AS total_trenes, tur_id AS turno_id, sue_id AS suerte_id, ter_id AS tercero_id, csc_created_at AS created_at, csc_updated:at AS updated_at, csc_deleted_at AS deleted_at FROM bda_control_salida_cana WHERE csc_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT csc_id AS id, csc_fecha AS fecha, csc_total_vagones AS total_vagones, csc_notas AS notas, csc_total_trenes AS total_trenes, tur_id AS turno_id, sue_id AS suerte_id, ter_id AS tercero_id, csc_created_at AS created_at, csc_updated_at AS updated_at, csc_deleted_at AS deleted_at FROM bda_control_salida_cana WHERE csc_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

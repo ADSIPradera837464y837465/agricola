@@ -19,7 +19,9 @@ class rolBaseTable extends model {
   const ID = 'rol_id';
   const NOMBRE = 'rol_nombre';
   const NOMBRE_LENGTH = 80;
-  const DELETED_AT = 'ror_created_at';
+  const CREATED_AT = 'rol_created_at';
+  const UPDATED_AT = 'rol_updated_at';
+  const DELETED_AT = 'rol_deleted_at';
   const _SEQUENCE = 'bda_rol_rol_id_seq';
   const _TABLE = 'bda_rol';
 
@@ -30,12 +32,16 @@ class rolBaseTable extends model {
   protected $config;
   private $id;
   private $nombre;
+  private $created_at;
+  private $updated_at;
   private $deleted_at;
 
-  public function __construct(config $config, $id = null, $nombre = null, $deleted_at = null) {
+  public function __construct(config $config, $id = null, $nombre = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->nombre = $nombre;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
   }
 
@@ -45,6 +51,14 @@ class rolBaseTable extends model {
 
   public function getNombre() {
     return $this->nombre;
+  }
+
+  public function getCreatedAt() {
+    return $this->created_at;
+  }
+
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   public function getDeletedAt() {
@@ -57,6 +71,14 @@ class rolBaseTable extends model {
 
   public function setNombre($nombre) {
     $this->nombre = $nombre;
+  }
+
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
+  }
+
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   public function setDeletedAt($deleted_at) {

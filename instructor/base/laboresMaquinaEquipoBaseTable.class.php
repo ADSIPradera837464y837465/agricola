@@ -28,6 +28,7 @@ class laboresMaquinaEquipoBaseTable extends model {
   const CREATED_AT = 'lme_created_at';
   const UPDATED_AT = 'lme_updated_at';
   const DELETED_AT = 'lme_deleted_at';
+  const _SEQUENCE = 'bda_labores_maquina_equipo_lme_numero_seq';
   const _TABLE = 'bda_labores_maqina_equipo';
 
   /**

@@ -9,8 +9,9 @@ use FStudio\myConfig as config;
 
 /**
  * Description of haciendaBaseTable
- * @author Victoria Cortes <victoriacortes2014@hotmail.com>
- * @package 
+ *
+ * @author nombre completo <victoriacortes2014@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -23,25 +24,19 @@ class haciendaBaseTable extends model {
   const ID = 'hac_id';
 
   /**
-   * Foranea de la tabla usuario
-   */
-  const USUARIO_ID = 'usr_id';
-
-  /**
-   * Acción en la hacienda<br>
-   * Ejemplo: borrar, insertar
-   */
-  const ACCION = 'bit_accion';
-
-  /**
    * Longitud del campo acción
    */
   const DESCRIPCION = 'hac_descripcion';
+  const DESCRIPCION_LENGTH = 80;
   const UBICACION = 'hac_ubicacion';
-  const REPRESENTANTE_LEGAL = 'hac_represen_legal';
+  const UBICACION_LENGTH = 100;
+  const REPRESENTANTE_LEGAL = 'hac_representante_legal';
+  const REPRESENTANTE_LEGAL_LENGTH = 100;
   const CREATED_AT = 'hac_created_at';
   const UPDATED_AT = 'hac_updated_at';
-  const DELECTED_AT = 'hac_delected_at';
+  const DELETED_AT = 'hac_deleted_at';
+  const _SEQUENCE = 'bda_hacienda_hac_id_seq';
+  const _TABLE = 'bda_hacienda';
 
   /**
    * Configuración del sistema
@@ -73,14 +68,9 @@ class haciendaBaseTable extends model {
    * @var string
    */
   private $representante_legal;
-
-  /**
-   *
-   * @var string
-   */
-  private $createdAt;
-  private $updatedAt;
-  private $deletedAt;
+  private $created_at;
+  private $updated_at;
+  private $deleted_at;
 
   /**
    * Constructor de la clase haciendaBaseTable 
@@ -93,24 +83,15 @@ class haciendaBaseTable extends model {
    * @param date $updatedAt
    * @param date $deletedAt
    */
-  public function __construct(config $config, $id = null, $descripcion = null, $ubicacion = null, $representante_legal = null, $createdAt = null, $updatedAt = null, $deletedAt) {
+  public function __construct(config $config, $id = null, $descripcion = null, $ubicacion = null, $representante_legal = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
     $this->ubicacion = $ubicacion;
     $this->representante_legal = $representante_legal;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -129,29 +110,20 @@ class haciendaBaseTable extends model {
     return $this->ubicacion;
   }
 
-  public function getRepresentante_legal() {
+  public function getRepresentanteLegal() {
     return $this->representante_legal;
   }
 
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -170,20 +142,23 @@ class haciendaBaseTable extends model {
     $this->ubicacion = $ubicacion;
   }
 
-  public function setRepresentante_legal($representante_legal) {
+  public function setRepresentanteLegal($representante_legal) {
     $this->representante_legal = $representante_legal;
   }
 
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
+
+
+//tt

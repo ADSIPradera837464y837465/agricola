@@ -24,6 +24,7 @@ class detalleCaudalSurcoBaseTable extends model {
   const CREATED_AT = 'decs_created_at';
   const UPDATED_AT = 'decs_updated_at';
   const DELETED_AT = 'decs_deleted_at';
+  const _SEQUENCE = 'bda_detalle_caudal_surco_decs_id_seq';
   const _TABLE = 'bda_detalle_caudal_surco';
 
   /**

@@ -21,7 +21,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpd_id, tpd_descripcion, tpd_tipo_movimiento, tpd_estado, created_at FROM tipo_documento ORDER BY created_at ASC';
+    $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento AS tipo_movimiento, tpd_estado AS estado, tpd_created_at AS created_at, tpd_updated_at AS updated_at, tpd_deleted_at AS deleted_at FROM bda_tipo_documento WHERE tpd_deleted_at IS NULL ORDER BY tpd_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -37,7 +37,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento As tipo_movimiento, tpd_estado As estado, tpd_created_at AS createdAt, tpd_updated_at AS updatedAt, tpd_deleted_at AS deletedAt FROM bda_tipo_documento WHERE tpd_deleted_at IS NULL ORDER BY tpd_created_at ASC';
     $params = array(
-        ':tpd_id' => ($id !== null) ? $id : $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -51,16 +51,16 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO tipo_documento (tpd_descripcion, tpd_tipo_movimiento, tpd_estado) VALUES (:tpd_descripcion, :tpd_tipo_movimiento, :tpd_estado)';
+    $sql = 'INSERT INTO bda_tipo_documento (tpd_descripcion, tpd_tipo_movimiento, tpd_estado) VALUES (:descripcion, :tipo_movimiento, :estado)';
     $params = array(
-        ':tipo_descripcion' => $this->getDescripcion(),
-        ':tpd_tipo_movimiento' => $this->getMovimiento(),
-        ':tpd_estado' => $this->getEstado(),
+        ':descripcion' => $this->getDescripcion(),
+        ':tipo_movimiento' => $this->getTipoMovimiento(),
+        ':estado' => $this->getEstado()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
-    return boolean;
+    return true;
   }
 
   /**
@@ -70,11 +70,12 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE tipo_documento SET tpd_descripcion =:tpd_descripcion,tpd_tipo_movimiento = :tpd_tipo_movimiento,tpd_estado = :tpd_estado)';
+    $sql = 'UPDATE bda_tipo_documento SET tpd_descripcion = :descripcion, tpd_tipo_movimiento = :tipo_movimiento, tpd_estado = :estado WHERE tpd_id = :id';
     $params = array(
-        ':tpd_descripcion' => $this->getDescripcion(),
-        ':tpd_tipo_movimiento' => $this->getMovimiento(),
-        ':tpd_estado' => $this->getEstado(),
+        ':descripcion' => $this->getDescripcion(),
+        ':tipo_movimiento' => $this->getTipoMovimiento(),
+        ':estado' => $this->getEstado(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -91,7 +92,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':tpd_id' => $this->getId()
+        ':id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:

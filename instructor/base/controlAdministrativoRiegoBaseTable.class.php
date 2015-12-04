@@ -36,7 +36,7 @@ class controlAdministrativoRiegoBaseTable extends model {
   const PENDIENTE_DIR_SURCO = 'car_pendiente_dir_surco';
   const AGUA_COSTADO = 'car_agua_costado';
   const CREATED_AT = 'car_created_at';
-  const UPDATED_AT = 'car_updated:at';
+  const UPDATED_AT = 'car_updated_at';
   const DELETED_AT = 'car_deleted_at';
   const _SEQUENCE = 'bda_control_administrativo_riego_car_num_documento_seq';
   const _TABLE = 'bda_control_administrativo_riego';

@@ -24,6 +24,7 @@ class detalleAguaSurcoBaseTable extends model {
   const CREATED_AT = 'deaas_created_at';
   const UPDATED_AT = 'deaas_updated_at';
   const DELETED_AT = 'deaas_deleted_at';
+  const _SEQUENCE = 'bda_detalle_agua_surco_deaas_id_seq';
   const _TABLE = 'bda_detalle_agua_surco';
 
   /**

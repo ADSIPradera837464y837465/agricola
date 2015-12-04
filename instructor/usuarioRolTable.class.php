@@ -15,7 +15,7 @@ class usuarioRolTable extends usuarioRolBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT url_id AS id, usr_usuario_id AS usuario_id, rol_id, url_created_at AS created_at FROM bda_usuario_rol ORDER BY url_created_at ASC';
+    $sql = 'SELECT url_id AS id, usr_id AS usuario_id, rol_id, url_created_at AS created_at FROM bda_usuario_rol ORDER BY url_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class usuarioRolTable extends usuarioRolBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT url_id AS id, usr_usuario_id AS usuario_id, rol_id, url_created_at AS created_at FROM bda_usuario_rol AND id = :id';
+    $sql = 'SELECT url_id AS id, usr_id AS usuario_id, rol_id, url_created_at AS created_at FROM bda_usuario_rol AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -34,7 +34,7 @@ class usuarioRolTable extends usuarioRolBaseTable {
 
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_usuario_rol (usr_usuario_id, rol_id) VALUES (:usuario_id, :rol_id)';
+    $sql = 'INSERT INTO bda_usuario_rol (usr_id, rol_id) VALUES (:usuario_id, :rol_id)';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
         ':rol_id' => $this->getRolId()
@@ -47,7 +47,7 @@ class usuarioRolTable extends usuarioRolBaseTable {
 
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_usuario_rol SET usr_usuario_id = :usuario_id, rol_id = :rol_id WHERE url_id = :id';
+    $sql = 'UPDATE bda_usuario_rol SET usr_id = :usuario_id, rol_id = :rol_id WHERE url_id = :id';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
         ':rol_id' => $this->getRolId(),

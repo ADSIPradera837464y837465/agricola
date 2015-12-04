@@ -7,7 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Clase base para la tabla producto
- * @author Julian Andrés Lasso Figueroa <ingeniero.julianlasso@gmail.com>
+ * @author Julian Andrés Lasso Figueroa <ingeniero.julianlasso@gmail.com> Emanuel Castillo Mosquera<corcel125@outlook.com> * 
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -58,12 +58,12 @@ class productoBaseTable extends model {
   /**
    * Fecha y hora para controlar el borrado lógico
    */
-  const DELETED_AT = 'pro_deleted_at';
+  const DELETED_AT = 'pro_deleted_at_at';
 
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_producto_pro_id_seq';
 //  const _SEQUENCE = 'bda_producto_pro_id_seq';
 
   /**
@@ -88,44 +88,44 @@ class productoBaseTable extends model {
    * @var string
    */
   private $descripcion;
-
+  
   /**
    * ID del tipo de producto
    * @var integer
    */
-  private $tipoProductoId;
-
+  private $tipo_producto_id;
+  
   /**
    * ID de la marca
    * @var integer
    */
-  private $marcaId;
-
+  private $marca_id;
+  
   /**
    * ID de la unidad de medida
    * @var integer
    */
-  private $unidadMedidaId;
-
+  private $unidad_medida_id;
+  
   /**
    * Fecha y hora de creación del registro
    * @var string
    */
-  private $createdAt;
-
+  private $created_at;
+  
   /**
    * Fecha y hora de la ultima actualización del registro
    * @var string
    */
-  private $updatedAt;
-
+  private $updated_at;
+  
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var string
    */
-  private $deletedAt;
-
-  /**
+  private $deleted_at;
+  
+/**
    * Constructor de la clase productoBaseTable
    * @version 1.0.0
    * @param config $config
@@ -138,26 +138,19 @@ class productoBaseTable extends model {
    * @param string $updatedAt [opcional] Fecha y hora de actualización del registro
    * @param string $deletedAt [opcional] Fecha y hora del borrado lógico del registro
    */
-  public function __construct(config $config, $id = null, $descripcion = null, $tipoProductoId = null, $marcaId = null, $unidadMedidaId = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $tipo_producto_id = null, $marca_id = null, $unidad_medida_id = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->tipoProductoId = $tipoProductoId;
-    $this->marcaId = $marcaId;
-    $this->unidadMedidaId = $unidadMedidaId;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->tipo_producto_id = $tipo_producto_id;
+    $this->marca_id = $marca_id;
+    $this->unidad_medida_id = $unidad_medida_id;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
-  /**
-   * Retorna el objeto config del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
+  
 
   /**
    * Retorna el ID del registro
@@ -183,7 +176,7 @@ class productoBaseTable extends model {
    * @return integer
    */
   public function getTipoProductoId() {
-    return $this->tipoProductoId;
+    return $this->tipo_producto_id;
   }
 
   /**
@@ -192,7 +185,7 @@ class productoBaseTable extends model {
    * @return integer
    */
   public function getMarcaId() {
-    return $this->marcaId;
+    return $this->marca_id;
   }
 
   /**
@@ -201,7 +194,7 @@ class productoBaseTable extends model {
    * @return integer
    */
   public function getUnidadMedidaId() {
-    return $this->unidadMedidaId;
+    return $this->unidad_medida_id;
   }
 
   /**
@@ -210,7 +203,7 @@ class productoBaseTable extends model {
    * @return string
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -219,7 +212,7 @@ class productoBaseTable extends model {
    * @return string
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -228,7 +221,7 @@ class productoBaseTable extends model {
    * @return string
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
   /**
@@ -263,8 +256,8 @@ class productoBaseTable extends model {
    * @version 1.0.0
    * @param type $tipoProductoId ID del tipo de producto
    */
-  public function setTipoProductoId($tipoProductoId) {
-    $this->tipoProductoId = $tipoProductoId;
+  public function setTipoProductoId($tipo_producto_id) {
+    $this->tipo_producto_id = $tipo_producto_id;
   }
 
   /**
@@ -272,8 +265,8 @@ class productoBaseTable extends model {
    * @version 1.0.0
    * @param integer $marcaId
    */
-  public function setMarcaId($marcaId) {
-    $this->marcaId = $marcaId;
+  public function setMarcaId($marca_id) {
+    $this->marca_id = $marca_id;
   }
 
   /**
@@ -281,8 +274,8 @@ class productoBaseTable extends model {
    * @version 1.0.0
    * @param integer $unidadMedidaId ID de la unidad de medida
    */
-  public function setUnidadMedidaId($unidadMedidaId) {
-    $this->unidadMedidaId = $unidadMedidaId;
+  public function setUnidadMedidaId($unidad_medida_id) {
+    $this->unidad_medida_id = $unidad_medida_id;
   }
 
   /**
@@ -290,8 +283,8 @@ class productoBaseTable extends model {
    * @version 1.0.0
    * @param string $createdAt Fecha y hora de creación
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -299,8 +292,8 @@ class productoBaseTable extends model {
    * @version 1.0.0
    * @param sting $updatedAt Fecha y hora de la última actualización del registro
    */
-  public function setUpdated_at($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -308,8 +301,10 @@ class productoBaseTable extends model {
    * @version 1.0.0
    * @param string $deletedAt Fecha y hora del borrado lógico
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
+
+//gnu

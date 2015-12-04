@@ -15,7 +15,7 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT crp_id AS id, crp_fecha AS fecha, crp_hora_inicio AS hora_inicio, crp_hora_fin AS hora_fin, crp_cantidad_m3_hora AS cantidad_m3_hora, crp_observacion AS observacion, sue_id AS suerte_id, hac_id AS hacienda_id, ter_id AS tercero_id, crp_created_at AS created_at, crp_updated:at AS updated_at, crp_deleted_at AS deleted_at FROM bda_control_riego_pluviosidad WHERE crp_deleted_at IS NULL ORDER BY crp_created_at ASC';
+    $sql = 'SELECT crp_id AS id, crp_fecha AS fecha, crp_hora_inicio AS hora_inicio, crp_hora_fin AS hora_fin, crp_cantidad_m3_hora AS cantidad_m3_hora, crp_observacion AS observacion, sue_id AS suerte_id, hac_id AS hacienda_id, ter_id AS tercero_id, crp_created_at AS created_at, crp_updated_at AS updated_at, crp_deleted_at AS deleted_at FROM bda_control_riego_pluviosidad WHERE crp_deleted_at IS NULL ORDER BY crp_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT crp_id AS id, crp_fecha AS fecha, crp_hora_inicio AS hora_inicio, crp_hora_fin AS hora_fin, crp_cantidad_m3_hora AS cantidad_m3_hora, crp_observacion AS observacion, sue_id AS suerte_id, hac_id AS hacienda_id, ter_id AS tercero_id, crp_created_at AS created_at, crp_updated:at AS updated_at, crp_deleted_at AS deleted_at FROM bda_control_riego_pluviosidad WHERE crp_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT crp_id AS id, crp_fecha AS fecha, crp_hora_inicio AS hora_inicio, crp_hora_fin AS hora_fin, crp_cantidad_m3_hora AS cantidad_m3_hora, crp_observacion AS observacion, sue_id AS suerte_id, hac_id AS hacienda_id, ter_id AS tercero_id, crp_created_at AS created_at, crp_updated_at AS updated_at, crp_deleted_at AS deleted_at FROM bda_control_riego_pluviosidad WHERE crp_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

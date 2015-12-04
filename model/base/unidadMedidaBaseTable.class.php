@@ -8,7 +8,7 @@ use FStudio\myConfig as config;
 /**
  * Description of unidadMedidaBaseTable
  * @author AngelaCardona <angela04cardona@hotmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -44,15 +44,7 @@ class unidadMedidaBaseTable extends model {
    * Fecha y hora para controlar el borrado lógico
    */
   const DELETED_AT = 'unm_deleted_at';
-
-  /**
-   * Nombre de la secuencia del ID de la tabla
-   */
-  const _SEQUENCE = '';
-
-  /**
-   * Nombre de la tabla
-   */
+  const _SEQUENCE = 'bda_unidad_medida_unm_id_seq';
   const _TABLE = 'bda_unidad_medida';
 
   /**
@@ -77,19 +69,19 @@ class unidadMedidaBaseTable extends model {
    * Fecha y hora de creación de una unidad de medida
    * @var date_time 
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha y hora de la ultima actualización de la unidad de medida
    * @var date_time
    */
-  private $updateAt;
+  private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var date_time
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * constructor class unidadMedidaBaseTable
@@ -100,22 +92,13 @@ class unidadMedidaBaseTable extends model {
    * @param date_time $updateAt
    * @param date_time $deletedAt
    */
-  public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $updateAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->createdAt = $createdAt;
-    $this->updateAt = $updateAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Retorna la configuracion
-   * @return config
-   * @version 1.0.0
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -141,15 +124,15 @@ class unidadMedidaBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
    * Fecha y hora de la ultima actualización de la descripcion de la unidad de medida
    * @return date_time
    */
-  public function getUpdateAt() {
-    return $this->updateAt;
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   /**
@@ -157,16 +140,7 @@ class unidadMedidaBaseTable extends model {
    * @return date_time 
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija la configuracion del sistema 
-   * @param config $config objeto con configuracion del sistema 
-   * @version 1.0.0
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -192,8 +166,8 @@ class unidadMedidaBaseTable extends model {
    * @version 1.0.0
    * @param date_time $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -201,8 +175,8 @@ class unidadMedidaBaseTable extends model {
    * @version 1.0.0
    * @param date_time $updateAt
    */
-  public function setUpdateAt($updateAt) {
-    $this->updateAt = $updateAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -210,8 +184,8 @@ class unidadMedidaBaseTable extends model {
    * @version 1.0.0
    * @param date_time $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

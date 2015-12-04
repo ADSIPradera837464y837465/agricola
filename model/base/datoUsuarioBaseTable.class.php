@@ -8,7 +8,7 @@ use FStudio\myConfig as config;
 /**
  * Description of datoUsuarioBaseTable
  * @author Emanuel Castillo Mosquera <corcel125@outlook.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -30,34 +30,64 @@ class datoUsuarioBaseTable extends model {
 
    */
   const CEDULA = 'dus_cedula';
+  
+  /**
+   * 
+   */
+   const CEDULA_LENGTH = 20;
 
   /**
    * Nombre del usuario   
    */
   const NOMBRE = 'dus_nombre';
+  
+  /**
+   * 
+   */
+   const NOMBRE_LENGTH = 80;
 
   /**
    * Apellido del usuario
 
    */
-  const APELLIDO = 'dus_apellidos';
+  const APELLIDOS = 'dus_apellidos';
+  
+  /**
+   * 
+   */
+  const APELLIDOS_LENGTH = 80;
 
   /**
    * Numero del celular movil del usuario
 
    */
   const MOVIL = 'dus_movil';
+  
+  /**
+   * 
+   */
+  const MOVIL_LENGTH = 12;
 
   /**
    * Direccion E-mail del usuario
 
    */
   const CORREO = 'dus_correo';
+  
+  /**
+   * 
+   */
+   const CORREO_LENGTH = 120;
 
   /**
    * 
    */
   const IMAGEN = 'dus_imagen';
+  
+  /**
+   * 
+   */
+  const IMAGEN_LENGTH = 36;
 
   /**
    * Genero del usuario
@@ -81,7 +111,18 @@ class datoUsuarioBaseTable extends model {
   const DELETED_AT = 'dus_deleted_at';
   
   /**
-   * Nombre de la secuencia del ID de la tabla
+   * 
+   */
+  const _SEQUENCE = 'bda_dato_usuario_dus_id_seq';
+  
+  /**
+   * 
+   */
+  const _TABLE = 'bda_dato_usuario';
+  
+  /**
+   * Configuración del sistema
+   * @var config
    */
   const _SEQUENCE = '';
 
@@ -101,7 +142,7 @@ class datoUsuarioBaseTable extends model {
    * Tipo del usuario que ingresa en el sistema
    * @var varchar 
    */
-  private $usuario;
+  private $usuario_id;
 
   /**
    * Numero de documento del usuario
@@ -119,7 +160,7 @@ class datoUsuarioBaseTable extends model {
    * Apellido real del usuario
    * @var varchar 
    */
-  private $apellido;
+  private $apellidos;
 
   /**
    * numero del telefono movil del usuario
@@ -149,19 +190,19 @@ class datoUsuarioBaseTable extends model {
    * Fecha y hora de creación del registro
    * @var string
    */
-  private $createdAt;
+  private $created_at;
 
    /**
    * Fecha y hora de la ultima actualización del registro
    * @var string
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var string
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la clase datoUsuarioBaseTable
@@ -180,29 +221,20 @@ class datoUsuarioBaseTable extends model {
    * @param string $updatedAt [opcional] Fecha y hora de la ultima actualización del registro
    * @param string $deletedAt [opcional] Fecha y hora para controlar el borrado lógico
    */
-  public function __construct(config $config, $id = null, $usuario = null, $cedula = null, $nombre = null, $apellido = null, $movil = null, $correo = null, $imagen = null, $sexo = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $usuario_id = null, $cedula = null, $nombre = null, $apellidos = null, $movil = null, $correo = null, $imagen = null, $sexo = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
-    $this->usuario = $usuario;
+    $this->usuario_id = $usuario_id;
     $this->cedula = $cedula;
     $this->nombre = $nombre;
-    $this->apellido = $apellido;
+    $this->apellidos = $apellidos;
     $this->movil = $movil;
     $this->correo = $correo;
     $this->imagen = $imagen;
     $this->sexo = $sexo;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Retorna la configuracion del sistema
-   * @version 1.0.0
-   * @return Config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -219,8 +251,8 @@ class datoUsuarioBaseTable extends model {
    * @version 1.0.0
    * @return Integer
    */
-  public function getUsuario() {
-    return $this->usuario;
+  public function getUsuarioId() {
+    return $this->usuario_id;
   }
 
   /**
@@ -246,8 +278,8 @@ class datoUsuarioBaseTable extends model {
    * @version 1.0.0
    * @return varchar
    */
-  public function getApellido() {
-    return $this->apellido;
+  public function getApellidos() {
+    return $this->apellidos;
   }
 
   /**
@@ -292,7 +324,7 @@ class datoUsuarioBaseTable extends model {
    * @return string
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -301,7 +333,7 @@ class datoUsuarioBaseTable extends model {
    * @return string
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -310,16 +342,7 @@ class datoUsuarioBaseTable extends model {
    * @return string
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija la configuracion del sistema
-   * @version 1.0.0
-   * @param config $config
-   */
-  public function setConfig($config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -336,8 +359,8 @@ class datoUsuarioBaseTable extends model {
    * @version 1.0.0
    * @param varchar $usuario
    */
-  public function setUsuario($usuario) {
-    $this->usuario = $usuario;
+  public function setUsuarioId($usuario_id) {
+    $this->usuario_id = $usuario_id;
   }
 
   /**
@@ -363,8 +386,8 @@ class datoUsuarioBaseTable extends model {
    * @version 1.0.0
    * @param varchar $apellido
    */
-  public function setApellido($apellido) {
-    $this->apellido = $apellido;
+  public function setApellidos($apellidos) {
+    $this->apellidos = $apellidos;
   }
 
   /**
@@ -408,8 +431,8 @@ class datoUsuarioBaseTable extends model {
    * @version 1.0.0
    * @param string $createdAt Fecha y hora de creación
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -417,8 +440,8 @@ class datoUsuarioBaseTable extends model {
    * @version 1.0.0
    * @param sting $updatedAt Fecha y hora de la última actualización del registro
    */
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -426,8 +449,10 @@ class datoUsuarioBaseTable extends model {
    * @version 1.0.0
    * @param string $deletedAt Fecha y hora del borrado lógico
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
+
+//gnu

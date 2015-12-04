@@ -31,8 +31,8 @@ class siembraBaseTable extends model {
   const FECHA_PRODUCCION = 'sie_fecha_produccion';
   const NUM_HECTAREA = 'sie_num_hectarea';
   const NUM_PLANTA_LEVANTE = 'sie_num_planta_levante';
-  const NUM_PLANTA_PRODUCTIVA = 'sie_num_planta_productivas';
-  const NUM_PLANTA_ERRADICA = 'sie_num_planta_erradica';
+  const NUM_PLANTAS_PRODUCTIVAS = 'sie_num_plantas_productivas';
+  const NUM_PLANTAS_ERRADICA = 'sie_num_plantas_erradica';
   const CREATED_AT = 'sie_created_at';
   const UPDATED_AT = 'sie_updated_at';
   const DELETED_AT = 'sie_deleted_at';
@@ -59,13 +59,13 @@ class siembraBaseTable extends model {
   private $fecha_produccion;
   private $num_hectarea;
   private $num_planta_levante;
-  private $num_planta_productiva;
-  private $num_planta_erradica;
+  private $num_plantas_productivas;
+  private $num_plantas_erradica;
   private $created_at;
   private $updated_at;
   private $deleted_at;
 
-  public function __construct(config $config, $id = null, $suerte_id = null, $tipo_cana_id = null, $dia = null, $presupuesto_empresa = null, $kilos_lote = null, $total_kilos_planta = null, $fecha = null, $fecha_fin_levante = null, $fecha_inicio_ciclo = null, $fecha_fin_ciclo = null, $fecha_poda = null, $fecha_produccion = null, $num_hectarea = null, $num_planta_levante = null, $num_planta_productiva = null, $num_planta_erradica = null, $created_at = null, $updated_at = null, $deleted_at = null) {
+  public function __construct(config $config, $id = null, $suerte_id = null, $tipo_cana_id = null, $dia = null, $presupuesto_empresa = null, $kilos_lote = null, $total_kilos_planta = null, $fecha = null, $fecha_fin_levante = null, $fecha_inicio_ciclo = null, $fecha_fin_ciclo = null, $fecha_poda = null, $fecha_produccion = null, $num_hectarea = null, $num_planta_levante = null, $num_plantas_productivas = null, $num_plantas_erradica = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->suerte_id = $suerte_id;
@@ -82,8 +82,8 @@ class siembraBaseTable extends model {
     $this->fecha_produccion = $fecha_produccion;
     $this->num_hectarea = $num_hectarea;
     $this->num_planta_levante = $num_planta_levante;
-    $this->num_planta_productiva = $num_planta_productiva;
-    $this->num_planta_erradica = $num_planta_erradica;
+    $this->num_plantas_productivas = $num_plantas_productivas;
+    $this->num_plantas_erradica = $num_plantas_erradica;
     $this->created_at = $created_at;
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
@@ -149,12 +149,12 @@ class siembraBaseTable extends model {
     return $this->num_planta_levante;
   }
 
-  public function getNumPlantaProductiva() {
-    return $this->num_planta_productiva;
+  public function getNumPlantasProductivas() {
+    return $this->num_plantas_productivas;
   }
 
-  public function getNumPlantaErradica() {
-    return $this->num_planta_erradica;
+  public function getNumPlantasErradica() {
+    return $this->num_plantas_erradica;
   }
 
   public function getCreatedAt() {
@@ -229,12 +229,12 @@ class siembraBaseTable extends model {
     $this->num_planta_levante = $num_planta_levante;
   }
 
-  public function setNumPlantaProductiva($num_planta_productiva) {
-    $this->num_planta_productiva = $num_planta_productiva;
+  public function setNumPlantasProductivas($num_plantas_productivas) {
+    $this->num_plantas_productivas = $num_plantas_productivas;
   }
 
-  public function setNumPlantaErradica($num_planta_erradica) {
-    $this->num_planta_erradica = $num_planta_erradica;
+  public function setNumPlantasErradica($num_plantas_erradica) {
+    $this->num_plantas_erradica = $num_plantas_erradica;
   }
 
   public function setCreatedAt($created_at) {

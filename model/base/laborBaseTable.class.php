@@ -1,6 +1,7 @@
 <?php
 
 namespace FStudio\model\base;
+
 use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
@@ -17,22 +18,32 @@ class laborBaseTable extends model {
   /**
    * ID del labor
    */
-  const ID = lab_id;
+  const ID = 'lab_id';
 
   /**
    * Descripción de la labor
    */
-  const DESCRIPCION = lab_descripcion;
+  const DESCRIPCION = 'lab_descripcion';
+  
+  /**
+   * Descripción de la labor
+   */
+  const DESCRIPCION_LENGTH = 80;
 
   /**
    * Valor de la labor
    */
-  const VALOR = lab_valor;
+  const VALOR = 'lab_valor';
 
   /**
    * Estado de la labor
    */
-  const ESTADO = lab_estado;
+  const ESTADO = 'lab_estado';
+  
+  /**
+   * Estado de la labor
+   */
+  const ESTADO_LENGTH = 30;
 
   /**
    * Fecha y hora de creación del registro
@@ -48,11 +59,23 @@ class laborBaseTable extends model {
    * Fecha y hora para controlar el borrado lógico
    */
   const DELETED_AT = 'lab_deleted_at';
-
+  
+  /**
+   * 
+   */
+  const _SEQUENCE = 'bda_labor_lab_id_seq';
+  
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_labor_lab_id_seq';
+  
+  /**
+   * 
+   */
+  const _TABLE = 'bda_labor';
+
+  
 
   /**
    * Configuración del sistema
@@ -88,19 +111,19 @@ class laborBaseTable extends model {
    * Fecha y hora de creación del registro
    * @var string
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha y hora de la ultima actualización del registro
    * @var string
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var string
    */
-  private $deletedAt;
+  private $deleted_at;
   
   /**
    *  Constructor de la clase laborBaseTable
@@ -114,25 +137,18 @@ class laborBaseTable extends model {
    * @param string $updatedAt [opcional] Fecha y hora de actualización del registro
    * @param string $deletedAt [opcional] Fecha y hora del borrado lógico del registro
    */
-  public function __construct(config $config, $id = null, $descripcion = null,$valor = null,$estado = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $valor = null, $estado = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
     $this->valor = $valor;
     $this->estado = $estado;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
-  /**
-   * Retorna el objeto config del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
+  
 
   /**
    * Retorna el ID del registro
@@ -176,7 +192,7 @@ class laborBaseTable extends model {
    * @return string
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -185,7 +201,7 @@ class laborBaseTable extends model {
    * @return string
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -194,17 +210,10 @@ class laborBaseTable extends model {
    * @return string
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
-  /**
-   * Fija el objeto de la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto de la configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
-  }
+  
 
   /**
    * Fija el ID para un registro del sistema
@@ -229,7 +238,7 @@ class laborBaseTable extends model {
    * @version 1.0.0
    * @param  integer $valor
    */
-  public function setValor(type $valor) {
+  public function setValor($valor) {
     $this->valor = $valor;
   }
 
@@ -238,7 +247,7 @@ class laborBaseTable extends model {
    * @version 1.0.0
    * @param  varchar $estado
    */
-  public function setEstado(type $estado) {
+  public function setEstado($estado) {
     $this->estado = $estado;
   }
 
@@ -247,8 +256,8 @@ class laborBaseTable extends model {
    * @version 1.0.0
    * @param string $createdAt Fecha y hora de creación
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -256,8 +265,8 @@ class laborBaseTable extends model {
    * @version 1.0.0
    * @param sting $updatedAt Fecha y hora de la última actualización del registro
    */
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -265,7 +274,10 @@ class laborBaseTable extends model {
    * @version 1.0.0
    * @param string $deletedAt Fecha y hora del borrado lógico
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
+
 }
+
+//gnu

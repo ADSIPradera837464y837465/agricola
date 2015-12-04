@@ -84,31 +84,35 @@ class terceroBaseTable extends model {
    * Foranea de la tabla  tipo_id
    */
   const TIPO_ID = 'tpi_id';
+  /**
+   * foranea de tipo terxcero
+   */
+  const TIPO_TERCERO_ID = 'tit_id';
 
   /**
    * Fecha de creacion del registro
    */
-  const CREATED_AT = 'created_at';
+  const CREATED_AT = 'ter_created_at';
 
   /**
    * Fecha de actualizacion del registro
    */
-  const UPDATED_AT = 'created_at';
+  const UPDATED_AT = 'ter_updated_at';
 
   /**
    * Fecha de eliminacion del registro
    */
-  const DELETED_AT = 'deleted_at';
+  const DELETED_AT = 'ter_deleted_at';
 
   /**
    * Secuencia de la tabla para la llave primaria
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_tercero_ter_id_seq';
 
   /**
    * Nombre de la tabla 
    */
-  const _TABLE = 'dba_tercero';
+  const _TABLE = 'bda_tercero';
 
   /**
    * Configuración del sistema
@@ -153,40 +157,40 @@ class terceroBaseTable extends model {
   private $correo;
 
   /**
-   * Foranea de la tabla  tipo_tercero
-   * @var integer
-   */
-  private $tipoTercero;
-
-  /**
    * Foranea de la tabla  cargo
    * @var integer
    */
-  private $CargoId;
+  private $cargo_id;
 
   /**
    * Foranea de la tabla tipo_id
    * @var integer 
    */
-  private $tipoId;
+  private $tipo_id;
+  
+  /**
+   * Foranea de la tabla  tipo_tercero
+   * @var integer
+   */
+  private $tipo_tercero_id;
 
   /**
    * Fecha de creacion del registro
    * @var date_time
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Fecha de actualización del registro
    * @var date_time
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * Fecha de eliminación del registro
    * @var date_time
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la tabla tercero
@@ -205,7 +209,7 @@ class terceroBaseTable extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  public function __construct(config $config, $id = null, $nombre = null, $apellido = null, $telefono = null, $direccion = null, $correo = null, $tipoTercero = null, $CargoId = null, $tipoId = null, date_time $createdAt = null, date_time $updatedAt = null, date_time $deletedAt = null) {
+  public function __construct(config $config, $id = null, $nombre = null, $apellido = null, $telefono = null, $direccion = null, $correo = null, $cargo_id = null, $tipo_id = null, $tipo_tercero_id = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->nombre = $nombre;
@@ -213,23 +217,14 @@ class terceroBaseTable extends model {
     $this->telefono = $telefono;
     $this->direccion = $direccion;
     $this->correo = $correo;
-    $this->tipoTercero = $tipoTercero;
-    $this->CargoId = $CargoId;
-    $this->tipoId = $tipoId;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->cargo_id = $cargo_id;
+    $this->tipo_id = $tipo_id;
+    $this->tipo_tercero_id = $tipo_tercero_id;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
-
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
-
+  
   /**
    * Retorna el id del registro
    * @version 1.0.0
@@ -284,14 +279,6 @@ class terceroBaseTable extends model {
     return $this->correo;
   }
 
-  /**
-   * Retorna el id del tipo de tercero
-   * @version 1.0.0
-   * @return integer
-   */
-  public function getTipoTercero() {
-    return $this->tipoTercero;
-  }
 
   /**
    * Retorna el id del cargo 
@@ -299,7 +286,7 @@ class terceroBaseTable extends model {
    * @return integer
    */
   public function getCargoId() {
-    return $this->CargoId;
+    return $this->cargo_id;
   }
 
   /**
@@ -308,7 +295,16 @@ class terceroBaseTable extends model {
    * @return integer
    */
   public function getTipoId() {
-    return $this->tipoId;
+    return $this->tipo_id;
+  }
+  
+  /**
+   * Retorna el id del tipo de tercero
+   * @version 1.0.0
+   * @return integer
+   */
+  public function getTipoTerceroId() {
+    return $this->tipo_tercero_id;
   }
 
   /**
@@ -317,7 +313,7 @@ class terceroBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -326,7 +322,7 @@ class terceroBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -335,16 +331,7 @@ class terceroBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -395,52 +382,53 @@ class terceroBaseTable extends model {
     $this->correo = $correo;
   }
 
-  /**
-   * Fija el tipo de tercero
-   * @param integer $tipoTercero
-   */
-  public function setTipoTercero($tipoTercero) {
-    $this->tipoTercero = $tipoTercero;
-  }
 
   /**
    * Fija el tipo de cargo del tercero
-   * @param integer $CargoId
+   * @param integer $cargo_id
    */
-  public function setCargoId($CargoId) {
-    $this->CargoId = $CargoId;
+  public function setCargoId($cargo_id) {
+    $this->cargo_id = $cargo_id;
   }
 
   /**
    * Fija el tipo de identificación del tercero
-   * @param integer $tipoId
+   * @param integer $tipo_id
    */
-  public function setTipoId($tipoId) {
-    $this->tipoId = $tipoId;
+  public function setTipoId($tipo_id) {
+    $this->tipo_id = $tipo_id;
+  }
+  
+  /**
+   * Fija el tipo de tercero
+   * @param integer $tipo_tercero_id
+   */
+  public function setTipoTerceroId($tipo_tercero_id) {
+    $this->tipo_tercero_id = $tipo_tercero_id;
   }
 
   /**
    * Fija la fecha de creació del registro
-   * @param date_time $createdAt
+   * @param date_time $created_at
    */
-  public function setCreatedAt(date_time $createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
    * Fija la fecha de actualización del registro
-   * @param date_time $updatedAt
+   * @param date_time $updated_at
    */
-  public function setUpdatedAt(date_time $updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
    * Fija la fecha de eliminacio del registro
-   * @param date_time $deletedAt
+   * @param date_time $deleted_at
    */
-  public function setDeletedAt(date_time $deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

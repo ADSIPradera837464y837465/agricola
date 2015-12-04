@@ -18,7 +18,7 @@ class cargoTable extends cargoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT car_id, car_descipcion, created_at, updated_at, deleted_at FROM dba_cargo WHERE deleted_at IS NULL ORDER BY created_at ASC';
+    $sql = 'SELECT car_id AS id, car_descripcion AS descripcion, car_created_at AS created_at, car_updated_at AS updated_at, car_deleted_at AS deleted_at FROM bda_cargo WHERE car_deleted_at IS NULL ORDER BY car_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -32,8 +32,7 @@ class cargoTable extends cargoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT car_id, car_descipcion, created_at, updated_at, deleted_at FROM dba_cargo WHERE deleted_at IS NULL '
-            . 'AND car_id = :id';
+    $sql = 'SELECT car_id AS id, car_descripcion AS descripcion, car_created_at AS created_at, car_updated_at AS updated_at, car_deleted_at AS deleted_at FROM bda_cargo WHERE car_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -49,7 +48,7 @@ class cargoTable extends cargoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO dba_cargo (car_descripcion) VALUES (:descripcion)';
+    $sql = 'INSERT INTO bda_cargo (car_descripcion) VALUES (:descripcion)';
     $params = array(
         ':descripcion' => $this->getDescripcion()
     );
@@ -66,8 +65,9 @@ class cargoTable extends cargoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE dba_cargo SET car_descipcion = :descripcion WHERE id = :id';
+    $sql = 'UPDATE bda_cargo SET car_descripcion = :descripcion WHERE car_id = :id';
     $params = array(
+        ':descripcion' => $this->getDescripcion(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -89,13 +89,13 @@ class cargoTable extends cargoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE dba_cargo SET deleted_at = now() WHERE id = :id';
+        $sql = 'UPDATE bda_cargo SET car_deleted_at = now() WHERE car_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM dba_cargo WHERE id = :id';
+        $sql = 'DELETE FROM bda_cargo WHERE car_id = :id';
         break;
       default:
-        throw new PDOException('Por favor indique un dato coherente para el borrado lógico o físico');
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
     }
     $answer = $conn->prepare($sql);
     $answer->execute($params);

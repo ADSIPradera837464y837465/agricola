@@ -27,7 +27,7 @@ class controlRiegoPluviosidadBaseTable extends model {
   const HACIENDA_ID = 'hac_id';
   const TERCERO_ID = 'ter_id';
   const CREATED_AT = 'crp_created_at';
-  const UPDATED_AT = 'crp_updated:at';
+  const UPDATED_AT = 'crp_updated_at';
   const DELETED_AT = 'crp_deleted_at';
   const _SEQUENCE = 'bda_contro_riego_pluviosidad_crp_id_seq';
   const _TABLE = 'bda_control_riego_pluviosidad';

@@ -111,3 +111,6 @@ class productoTable extends productoBaseTable {
   }
 
 }
+
+
+//gnu
