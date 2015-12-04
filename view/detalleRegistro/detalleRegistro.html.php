@@ -24,28 +24,29 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($detalleRegistro as $dRegistro) : ?>
+        
+        <?php if($objdetalleRegistro !== false): ?>        
+        <?php foreach ($objdetalleRegistro as $dtRegistro) : ?>        
           <tr>
             <td><input type="checkbox" id="" name=""></td>
-            <td><?php echo $dRegistro->relme_numero ?></td>
-            <td><?php echo $dRegistro->ter_id ?></td>
-            <td><?php echo $dRegistro->lab_id ?></td>
-            <td><?php echo $dRegistro->sue_id ?></td>
-            <td><?php echo $dRegistro->pro_id ?></td>
-            <td><?php echo $dRegistro->unm_id ?></td>
-            <td><?php echo $dRegistro->maq_id ?></td>
-            <td><?php echo $dRegistro->der_tiempo_muerto ?></td>
-            <td><?php echo $dRegistro->der_total_horas_trabajadas ?></td>
-            <td><?php echo $dRegistro->der_hora_inicio ?></td>
-            <td><?php echo $dRegistro->der_hora_fin ?></td>
-            <td><?php echo $dRegistro->der_created_at ?></td>
+            <td><?php #echo $dtRegistro->relme_numero ?></td>           
+            <td><?php #echo $dtRegistro->ter_id ?></td>
+            <td><?php #echo $dtRegistro->lab_id ?></td>
+            <td><?php #echo $dtRegistro->sue_id ?></td>
+            <td><?php #echo $dtRegistro->pro_id ?></td>
+            <td><?php #echo $dtRegistro->unm_id ?></td>
+            <td><?php #echo $dtRegistro->maq_id ?></td>
+            <td><?php #echo $dtRegistro->der_tiempo_muerto ?></td>
+            <td><?php #echo $dtRegistro->der_total_horas_trabajadas ?></td>
+            <td><?php #echo $dtRegistro->der_hora_inicio ?></td>
+            <td><?php #echo $dtRegistro->der_hora_fin ?></td>
+            <td><?php #echo $dtRegistro->der_created_at ?></td>
             <td>
-              <a href="<?php echo $fsConfig->getUrl() ?>index.php/iglesia/ver?id=<?php echo $usuario->usr_id ?>" class="btn btn-warning btn-xs">Ver</a>
-              <a href="<?php echo $fsConfig->getUrl() ?>index.php/iglesia/editar?id=<?php echo $usuario->usr_id ?>" class="btn btn-primary btn-xs">Editar</a>
-              <a data-toggle="modal" data-target="#myModal<?php echo $usuario->usr_id ?>" class="btn btn-danger btn-xs">Eliminar</a>
+          
             </td>
           </tr>
-        <?php endforeach ?>
+        <?php endforeach ?>   
+        <?php endif;?>   
       </tbody>
     </table>
   </body>

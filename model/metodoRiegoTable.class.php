@@ -1,5 +1,7 @@
 <?php
 
+use FStudio\model\base\metodoRiegoBaseTable;
+
 /**
  * Description of metodoRiegoTable
  * @author mariam montaño <nichesitap@hotmail.com>
@@ -12,7 +14,7 @@ class metodoRiegoTable extends metodoRiegoBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT met_rie_id, mat_rie_descripcion,created_at, updated_at, deleted_at FROM metodoRiego ORDER BY created_at ASC';
+    $sql = 'SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_deleted_at IS NULL ORDER BY met_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -20,11 +22,9 @@ class metodoRiegoTable extends metodoRiegoBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT met_rie_id, met_rie_descripcion, met_Created_at, met_Updated_at, met_Deleted_at '
-            . 'FROM metodoRiego '
-            . 'AND met_rie_id = :met_rie_id';
+    $sql = 'SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':met_rie_id' => ($id !==null)? $id:$this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -33,32 +33,43 @@ class metodoRiegoTable extends metodoRiegoBaseTable {
 
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO metodoRiego (descripcion) VALUES (:descripcion)';
+    $sql = 'INSERT INTO bda_metodo_riego (met_rie_descripcion) VALUES (:descripcion)';
     $params = array(
-        ':descripcion' => $this->getdescripcion()
+        ':descripcion' => $this->getDescripcion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-   $this->setId($conn->lastinsertId (self::_SEQUENCE));
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE metodoRiego SET descripcion = :descripcion WHERE id = :id';
+    $sql = 'UPDATE bda_metodo_riego SET met_rie_descripcion = :descripcion WHERE met_rie_id = :id';
     $params = array(
-        ':descripcion' => $this->getdescripcion()
+        ':descripcion' => $this->getDescripcion(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
   }
 
-  public function delete() {
+  public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM metodoRiego WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_metodo_riego SET met_deleted_at = now() WHERE met_rie_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_metodo_riego WHERE met_rie_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;

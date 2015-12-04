@@ -1,9 +1,14 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
  * Description of metodoRiegoBaseTable
  * @author merian montaño<nichesitap@hotmail.com>
- * @package 
+ * @package
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -16,17 +21,41 @@ class metodoRiegoBaseTable extends model {
   const ID = 'met_rie_id';
 
   /**
-   * Descripcion del metodo de riego
+   * descripcion del metodo de riego
    */
   const DESCRIPCION = 'met_rie_descripcion';
 
   /**
-   * Longitud del campo de descripcion
+   * longuitud para la descripcion del  metodo
    */
   const DESCRIPCION_LENGTH = 80;
 
   /**
-   * @version 1.0.0
+   * Fecha y hora de creación del registro
+   */
+  const CREATED_AT = 'met_created_at';
+
+  /**
+   * Fecha y hora de la ultima actualización del registro
+   */
+  const UPDATED_AT = 'met_updated_at';
+
+  /**
+   * Fecha y hora para controlar el borrado lógico
+   */
+  const DELETED_AT = 'met_deleted_at';
+
+  /**
+   * Nombre de la secuencia del ID de la tabla
+   */
+  const _SEQUENCE = 'bda_metodo_riego_met_rie_id_seq';
+
+  /**
+   * Nombre de la tabla
+   */
+  const _TABLE = 'bda_metodo_riego';
+
+  /**
    * Configuración del sistema
    * @var config
    */
@@ -39,59 +68,41 @@ class metodoRiegoBaseTable extends model {
   private $id;
 
   /**
-   * Descripcion del metodo de riego
+   * descripcion del metodo
    * @var string
    */
   private $descripcion;
 
   /**
    * Fecha y hora de la reacion del registro
-   * @var 
+   * @var
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Modificar  metodo de riego
-   * @var 
+   * @var
    */
-  private $updateAt;
+  private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado logico
-   * @var 
+   * @var
    */
-  private $deletedAt;
+  private $deleted_at;
 
-  /**
-   * Constructor de la clase metodoRiegoBaseTable
-   * 
-   * @param config $config
-   * @param integer $id
-   * @param string $descripcion
-   * @param date_time $createdAt
-   * @param date_time $updateAt
-   * @param date_time $deletedAt
-   */
-  public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $updateAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->createdAt = $createdAt;
-    $this->updateAt = $updateAt;
-    $this->deletedAt = $deletedAt;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
-   * Retorna la configuración del sistema
+   * Retorna el id del registro de la tabla
    * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
-
-  /**
-   * Retorna el id del registro
    * @return integer
    */
   public function getId() {
@@ -100,6 +111,7 @@ class metodoRiegoBaseTable extends model {
 
   /**
    * Retorna la descripcion del sistema de riego
+   * @version 1.0.0
    * @return string
    */
   public function getDescripcion() {
@@ -108,75 +120,74 @@ class metodoRiegoBaseTable extends model {
 
   /**
    * Retorna la creacion de un metodo de riego
-   * @return 
+   * @version 1.0.0
+   * @return
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
-   * Retorna la modificasion de un metodo de riego
-   * @return 
+   * Retorna la actualizacion de un metodo de riego
+   * @version 1.0.0
+   * @return
    */
-  public function getUpdateAt() {
-    return $this->updateAt;
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   /**
    * Retorna la eliminacion de un metodo de riego
-   * @return 
+   * @version 1.0.0
+   * @return
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
   /**
-   * Fija la configuración del sistema
+   * Fija el id para el registro en la tabla
    * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
-  }
-
-  /**
-   * Retorna el id del registro
-   * @return integer
+   * @param integer $id
    */
   public function setId($id) {
     $this->id = $id;
   }
 
   /**
-   * Retorna la descripcion del sistema de riego
-   * @return string
+   * Fija la descripcion del metodo de riego
+   * @version 1.0.0
+   * @param integer $descripcion
    */
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
 
   /**
-   * Retorna la modificasion de un metodo de riego
-   * @return 
+   * Fija los datos creados que se hayan hecho en la tabla
+   * @version 1.0.0
+   * @param integer $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
-   * Retorna la modificasion de un metodo de riego
-   * @return 
+   * Fija las actualizaciones que se hayan hecho en la tabla
+   * @version 1.0.0
+   * @param integer $updatedAt
    */
-  public function setUpdateAt($updateAt) {
-    $this->updateAt = $updateAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
-   * Retorna la eliminacion de un metodo de riego
-   * @return 
+   * Fija las datos eliminados que se hayan hecho en la tabla
+   * @version 1.0.0
+   * @param integer $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
