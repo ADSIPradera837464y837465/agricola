@@ -14,7 +14,7 @@ bda_inventario:
     pro_id:           { name: producto_id }
     tpd_id:           { name: tipo_documento_id }
     inv_num_doc:      { name: num_doc, }
-    inv_fech:         { name: fecha }
+    inv_fecha:        { name: fecha }
     inv_cantidad:     { name: cantidad }
     inv_movimiento:   { name: movimiento, length: 80 }
     inv_saldo:        { name: saldo }
@@ -34,5 +34,3 @@ bda_labor:
     lab_created_at:   { name: created_at, behavior: created }
     lab_updated_at:   { name: updated_at, behavior: updated }
     lab_deleted_at:   { name: deleted_at, behavior: deleted }
-
-

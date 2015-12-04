@@ -37,7 +37,6 @@ bda_control_administrativo_riego:
     car_updated:at:              { name: updated_at, behavior: updated }
     car_deleted_at:              { name: deleted_at, behavior: deleted }
 
-
 bda_control_salida_cana:
   name:                          control_salida_cana
   columns:
@@ -52,11 +51,3 @@ bda_control_salida_cana:
     csc_created_at:              { name: created_at, behavior: created }
     csc_updated:at:              { name: updated_at, behavior: updated }
     csc_deleted_at:              { name: deleted_at, behavior: deleted }
-
-
-
-
-
-
-
-

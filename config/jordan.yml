@@ -1,28 +1,28 @@
 bda_turno:
-  name: turno
-  columns: 
-  tur_id: {name: id, constrain: PK, sequence: bda_turno_tur_id_seq}
-  tur_descripcion: {name: descripcion, length: 80 }
-  tur_hora_inicio: {name: hora_inicio}
-  tur_hora_fin: {name: hora_fin}
-  tur_estado: {name: estado, length: 80 }
-  tur_created_at: {name: created_at, behavior: created }
-  tur_updated_at: {name: updated_at, behavior: updated }
-  tur_deleted_at: {name: deleted_at, behavior: deleted }
-  
+  name:               turno
+  columns:
+    tur_id:           { name: id, constrain: PK, sequence: bda_turno_tur_id_seq }
+    tur_descripcion:  { name: descripcion, length: 80 }
+    tur_hora_inicio:  { name: hora_inicio }
+    tur_hora_fin:     { name: hora_fin }
+    tur_estado:       { name: estado, length: 80 }
+    tur_created_at:   { name: created_at, behavior: created }
+    tur_updated_at:   { name: updated_at, behavior: updated }
+    tur_deleted_at:   { name: deleted_at, behavior: deleted }
+
 bda_unidad_medida:
-  name: unidad_medida
-  columns: 
-  unm_id: {name: id, constrain: PK, sequence: bda_unidad_medida_unm_id_seq}
-  unm_descripcion: {name: descripcion, length: 80 }
-  unm_created_at: {name: created_at, behavior: created }
-  unm_updated_at: {name: updated_at, behavior: updated }
-  unm_deleted_at: {name: deleted_at, behavior: deleted }
+  name:               unidad_medida
+  columns:
+    unm_id:           { name: id, constrain: PK, sequence: bda_unidad_medida_unm_id_seq }
+    unm_descripcion:  { name: descripcion, length: 80 }
+    unm_created_at:   { name: created_at, behavior: created }
+    unm_updated_at:   { name: updated_at, behavior: updated }
+    unm_deleted_at:   { name: deleted_at, behavior: deleted }
 
 bda_usuario_rol:
-  name: usuario_rol
-  columns: 
-  url_id: {name: id, constrain: PK, sequence: bda_unidad_medida_unm_id_seq}
-  usr_usuario_id: {name: usuario_id}
-  rol_id: {name: rol_id}
-  url_created_at: {name: created_at, behavior: created }
+  name:               usuario_rol
+  columns:
+    url_id:           { name: id, constrain: PK, sequence: bda_unidad_medida_unm_id_seq }
+    usr_usuario_id:   { name: usuario_id }
+    rol_id:           { name: rol_id }
+    url_created_at:   { name: created_at, behavior: created }

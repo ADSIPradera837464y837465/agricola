@@ -9,21 +9,21 @@ bda_avance_agua_surco:
     aas_deleted_at:     { name: deleted_at, behavior: deleted }
 
 bda_bitacora:
-  name:                bitacora
+  name:                 bitacora
   columns:
-    bit_id:            { name: id, constrain: PK, sequence: bda_bitacora_bit_id_seq }
-    usr_id:            { name: usuario_id }
-    bit_accion:        { name: accion, length: 80 }
-    bit_tabla:         { name: tabla, length: 80 }
-    bit_registro:      { name: registro }
-    bit_observacion:   { name: observaciones, lenght: 1024 }
-    bit_fecha:         { name: fecha }
+    bit_id:             { name: id, constrain: PK, sequence: bda_bitacora_bit_id_seq }
+    usr_id:             { name: usuario_id }
+    bit_accion:         { name: accion, length: 80 }
+    bit_tabla:          { name: tabla, length: 80 }
+    bit_registro:       { name: registro }
+    bit_observacion:    { name: observaciones, lenght: 1024 }
+    bit_fecha:          { name: fecha }
 
 bda_cargo:
-  name:                cargo
+  name:                 cargo
   columns:
-    car_id:            { name: id, constrain: PK, sequence: bda_cargo_car_id_seq }
-    car_descripcion:   { name: descripcion, lenght: 80 }
-    car_created_at:    { name: created_at, behavior: created }
-    car_updated_at:    { name: updated_at, behavior: updated }
-    car_deleted_at:    { name: deleted_at, behavior: deleted }
+    car_id:             { name: id, constrain: PK, sequence: bda_cargo_car_id_seq }
+    car_descripcion:    { name: descripcion, lenght: 80 }
+    car_created_at:     { name: created_at, behavior: created }
+    car_updated_at:     { name: updated_at, behavior: updated }
+    car_deleted_at:     { name: deleted_at, behavior: deleted }

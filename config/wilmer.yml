@@ -21,7 +21,7 @@ bda_siembra:
     sie_created_at:             { name: created_at, behavior: created }
     sie_updated_at:             { name: updated_at, behavior: updated }
     sie_deleted_at:             { name: deleted_at, behavior: deleted }
-    
+
 bda_servicio_maquina:
   name:                         servicio_maquina
   column:

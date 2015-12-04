@@ -6,7 +6,7 @@ bda_metodo_riego:
     met_created_at:       { name: created_at, behavior: created }
     met_updated_at:       { name: updated_at, behavior: updated }
     met_deleted_at:       { name: deleted_at, behavior: deleted }
-    
+
 bda_orden_ejecucion:
   name:                   orden_ejecucion
   columns:
@@ -19,7 +19,7 @@ bda_orden_ejecucion:
     ore_created_at:       { name: created_at, behavior: created }
     ore_updated_at:       { name: updated_at, behavior: updated }
     ore_deleted_at:       { name: deleted_at, behavior: deleted }
-    
+
 bda_orden_servicio:
   name:                   orden_servicio
   columns:

@@ -1,0 +1,43 @@
+bda_detalle_registro:
+  name:                         detalle_registro
+  columns:
+    der_item:                   { name: item, constraint: PK, sequence: bda_detalle_registro_der_item_seq }
+    relme_numero:               { name: realme_numero }
+    ter_id:                     { name: tercero_id }
+    lab_id:                     { name: labor_id }
+    sue_id:                     { name: suerte_id }
+    pro_id:                     { name: producto_id }
+    unm_id:                     { name: unidad_de_medida_id }
+    maq_id:                     { name: maquina_id }
+    der_tiempo_muerto:          { name: tiempo_muerto }
+    der_total_horas_trabajadas: { name: total_horas_trabajadas }
+    der_hora_inicio:            { name: hora_inicio }
+    der_hora_fin:               { name: hora_fin }
+    der_cantidad:               { name: cantidad }
+    der_created_at:             { name: created_at, behavier: created }
+    der_updated_at:             { name: updated_at, behavier: updated }
+    der_deleted_at:             { name: deleted_at, behavier: deleted }
+
+bda_entrada_salida_bodega:
+  name:                         entrada_salida_bodega
+  columns:
+    esb_id:                     { name: id, constraint: PK, sequence: bda_entrada_salida_bodega_esb_id_seq }
+    ter_id_elabora:             { name: tercero_id_elabora }
+    ter_id_solicita:            { name: tercero_id_solicita }
+    tpd_id:                     { name: tipo_documento_id }
+    esb_fecha:                  { name: fecha }
+    esb_observacion:            { name: observacion }
+    esb_created_at:             { name: created_at, behavier: created }
+    esb_updated_at:             { name: updated_at, behavier: update  }
+    esb_deleted_at:             { name: deleted_at, behavier: deleted }
+
+bda_hacienda:
+  name:                         hacienda
+  columns:
+    hac_id:                     { name: id, constraint: PK, sequence: bda_hacienda_hac_id_seq }
+    hac_descripcion:            { name: descripcion, length: 80 }
+    hac_ubicacion:              { name: ubicacion, length: 100 }
+    hac_representante_legal:    { name: representante_legal, length: 100 }
+    hac_created_at:             { name: created_at, behavier: created }
+    hac_updated_at:             { name: updated_at, behavier: update  }
+    hac_deleted_at:             { name: deleted_at, behavier: deleted }

@@ -33,12 +33,3 @@ bda_tercero:
     ter_created_at:   { name: created_at, behavior: created }
     ter_updated_at:   { name: updated_at, behavior: updated }
     ter_deleted_at:   { name: deleted_at, behavior: deleted }
-    
-    
-    
-    
-
-    
-    
-    
-    

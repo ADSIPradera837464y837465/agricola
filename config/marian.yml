@@ -1,19 +1,19 @@
 bda_labores_maqina_equipo:
- name:                         labor_maquina_equipo
- columns:
-   lme_numero:                 { name: id, constraint: PK, secuence: bda_labores_maquina_equipo_lme_numero_seq}
-   hac_id:                     { name: hacienda_id }
-   ter_id:                     { name: tercero_id }
-   tpd_id:                     { name: tipo_documento_id }
-   imp_id:                     { name: implemento_id }
-   lme_fecha:                  { name: fecha }
-   lme_estado:                 { name: estado }
-   lme_tiempo:                 { name: tiempo }
-   lme_total_horas_trabajadas: { name: total_horas_trabajadas }
-   lme_created_at:             { name: created_at, behavior: created }
-   lme_updated_at:             { name: updated_at, behavior: updated }
-   lme_deleted_at:             { name: deleted_at, behavior: deleted }
-   
+  name:                            labores_maquina_equipo
+  columns:
+    lme_numero:                    { name: id, constraint: PK, secuence: bda_labores_maquina_equipo_lme_numero_seq}
+    hac_id:                        { name: hacienda_id }
+    ter_id:                        { name: tercero_id }
+    tpd_id:                        { name: tipo_documento_id }
+    imp_id:                        { name: implemento_id }
+    lme_fecha:                     { name: fecha }
+    lme_estado:                    { name: estado }
+    lme_tiempo:                    { name: tiempo }
+    lme_total_horas_trabajadas:    { name: total_horas_trabajadas }
+    lme_created_at:                { name: created_at, behavior: created }
+    lme_updated_at:                { name: updated_at, behavior: updated }
+    lme_deleted_at:                { name: deleted_at, behavior: deleted }
+
 bda_maquina:
   name:                            maquina
   columns:
@@ -22,25 +22,23 @@ bda_maquina:
     maq_valor:                     { name: valor }
     maq_fecha_compra:              { name: fecha_compra }
     maq_numero_chasis:             { name: numero_chasis, length: 80 }
-    maq_tipo_accesorio:            { name: tipo_accesorio,  length: 80 } 
+    maq_tipo_accesorio:            { name: tipo_accesorio,  length: 80 }
     maq_horas_trabajadas:          { name: horas_trabajadas }
-    maq_tiempo_mantenimiento_hora: { name: tiempo_mantenimiento_hora } 
-    maq_numero_serie:              { name: numero_serie, length: 80 } 
-    maq_modelo:                    { name: modelo, length: 80 } 
+    maq_tiempo_mantenimiento_hora: { name: tiempo_mantenimiento_hora }
+    maq_numero_serie:              { name: numero_serie, length: 80 }
+    maq_modelo:                    { name: modelo, length: 80 }
     maq_horas_actividad:           { name: horas_actividad }
-    maq_valor_hora:                { name: valor_hora } 
-    maq_created_at:                {name: created_at, behavior: created }
-    maq_updated_at:                {name: updated_at, behavior: updated }
+    maq_valor_hora:                { name: valor_hora }
+    maq_created_at:                { name: created_at, behavior: created }
+    maq_updated_at:                { name: updated_at, behavior: updated }
     maq_deleted_at:                { name: deleted_at, behavior: deleted }
-   
+
 
 bda_marca:
-  name:                marca
+  name:                            marca
   columns:
-     mar_id:          { name: id, constraint: PK, secuence: bda_marca_mar_id_seq }
-     mar_descripcion: { name: descripcion, length: 80 }
-     mar_created_at:  {name: created_at, behavior: created }
-     mar_updated_at:  {name: updated_at, behavior: updated }
-     mar_deleted_at:  { name: deleted_at, behavior: deleted }
-   
-    
+    mar_id:                        { name: id, constraint: PK, secuence: bda_marca_mar_id_seq }
+    mar_descripcion:               { name: descripcion, length: 80 }
+    mar_created_at:                { name: created_at, behavior: created }
+    mar_updated_at:                { name: updated_at, behavior: updated }
+    mar_deleted_at:                { name: deleted_at, behavior: deleted }

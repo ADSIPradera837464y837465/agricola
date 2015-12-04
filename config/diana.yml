@@ -31,7 +31,7 @@ bda_detalle_caudal_surco:
     decs_id:                { name: id, constraint: PK, secuence: bda_detalle_caudal_surco_decs_id_seq }
     decs_item:              { name: item, lenght: 80 }
     decs_cantidad_surco:    { name: cantidad_surco }
-    fore_num_documento:     { name: num_documento }
+    fore_num_documento:     { name: control_administrativo_riego_id }
     decs_created_at:        { name: created_at, behavior: created }
     decs_updated_at:        { name: updated_at, behavior: updated }
     decs_deleted_at:        { name: deleted_at, behavior: deleted }

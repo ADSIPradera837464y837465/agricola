@@ -1,13 +1,12 @@
 bda_tipo_producto:
   name:                 tipo_producto
   columns:
-    tpr_id:             { name: id, constraint: Pk, sequence: bda_tipo_producto_tpr_id_seq }
+    tpr_id:             { name: id, constraint: PK, sequence: bda_tipo_producto_tpr_id_seq }
     tpr_descripcion:    { name: descripcion, length: 80 }
     tpr_created_at:     { name: created_at, behavior: created }
     tpr_updated:        { name: updated_at, behavior: updated }
     tpr_deleted:        { name: deleted_at, behavior: deleted }
-    
-    
+
 bda_tipo_suelo:
   name:                 tipo_suelo
   columns:
@@ -16,14 +15,12 @@ bda_tipo_suelo:
     tis_created_at:     { name: created_at, behavior: created }
     tis_updated_at:     { name: updated_at, behavior: updated }
     tis_deleted_at:     { name: deleted_at, behavior: deleted }
-    
+
 bda_tipo_tercero:
   name:                 tipo_tercero
   columns:
-    tit_id:             { name: id, constraint: Pk, sequence: bda_tipo_tercero_tit_id_seq }
+    tit_id:             { name: id, constraint: PK, sequence: bda_tipo_tercero_tit_id_seq }
     tit_observacion:    { name: descripcion, legth: 80 }
     tit_created_at:     { name: created_at, behavior: created }
     tit_updated_at:     { name: updated_at, behavior: updated }
     tit_deleted_at:     { name: deleted_at, behavior: deleted }
-    
-  
