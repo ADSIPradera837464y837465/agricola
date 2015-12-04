@@ -15,7 +15,7 @@ class registroTractorTable extends registroTractorBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT rtr_item AS item, csc_id AS control_salida_cana, rtr_hora_salida AS hora_salida, rtr_created_at AS created_at, rtr_updated_at AS updated_at, rtr_deleted_at AS deleted_at FROM bda_registro_tractor WHERE rtr_deleted_at IS NULL ORDER BY rtr_created_at ASC';
+    $sql = 'SELECT rtr_item AS id, csc_id AS control_salida_cana, rtr_hora_salida AS hora_salida, rtr_created_at AS created_at, rtr_updated_at AS updated_at, rtr_deleted_at AS deleted_at FROM bda_registro_tractor WHERE rtr_deleted_at IS NULL ORDER BY rtr_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,9 +23,9 @@ class registroTractorTable extends registroTractorBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT rtr_item AS item, csc_id AS control_salida_cana, rtr_hora_salida AS hora_salida, rtr_created_at AS created_at, rtr_updated_at AS updated_at, rtr_deleted_at AS deleted_at FROM bda_registro_tractor WHERE rtr_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT rtr_item AS id, csc_id AS control_salida_cana, rtr_hora_salida AS hora_salida, rtr_created_at AS created_at, rtr_updated_at AS updated_at, rtr_deleted_at AS deleted_at FROM bda_registro_tractor WHERE rtr_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id : $this->getItem()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -41,17 +41,17 @@ class registroTractorTable extends registroTractorBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this->setItem($conn->lastInsertId(self::_SEQUENCE));
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
 
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_registro_tractor SET csc_id = :control_salida_cana, rtr_hora_salida = :hora_salida WHERE rtr_item = :item';
+    $sql = 'UPDATE bda_registro_tractor SET csc_id = :control_salida_cana, rtr_hora_salida = :hora_salida WHERE rtr_item = :id';
     $params = array(
         ':control_salida_cana' => $this->getControlSalidaCana(),
         ':hora_salida' => $this->getHoraSalida(),
-        ':item' => $this->getItem()
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -61,14 +61,14 @@ class registroTractorTable extends registroTractorBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':item' => $this->getItem()
+        ':id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_registro_tractor SET rtr_deleted_at = now() WHERE rtr_item = :item';
+        $sql = 'UPDATE bda_registro_tractor SET rtr_deleted_at = now() WHERE rtr_item = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_registro_tractor WHERE rtr_item = :item';
+        $sql = 'DELETE FROM bda_registro_tractor WHERE rtr_item = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');

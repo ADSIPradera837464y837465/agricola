@@ -85,7 +85,7 @@ schema:
   bda_dato_usuario:
     name:                     dato_usuario
     columns:
-      dus_id:                 { name: id, constraint: PK, secuence: bda_dato_usuario_dus_id_seq }
+      dus_id:                 { name: id, constraint: PK, sequence: bda_dato_usuario_dus_id_seq }
       usr_id:                 { name: usuario_id }
       dus_cedula:             { name: cedula, length: 20 }
       dus_nombre:             { name: nombre, length: 80 }
@@ -101,7 +101,7 @@ schema:
   bda_detalle_agua_surco:
     name:                     detalle_agua_surco
     columns:
-      deaas_id:               { name: id, constraint: PK, secuence: bda_detalle_agua_surco_deaas_id_seq }
+      deaas_id:               { name: id, constraint: PK, sequence: bda_detalle_agua_surco_deaas_id_seq }
       deaas_item:             { name: item, length: 80 }
       deaas_cantidad_surco:   { name: cantidad_surco }
       fore_num_documento:     { name: control_administrativo_riego_id }
@@ -112,7 +112,7 @@ schema:
   bda_detalle_caudal_surco:
     name:                     detalle_caudal_surco
     columns:
-      decs_id:                { name: id, constraint: PK, secuence: bda_detalle_caudal_surco_decs_id_seq }
+      decs_id:                { name: id, constraint: PK, sequence: bda_detalle_caudal_surco_decs_id_seq }
       decs_item:              { name: item, length: 80 }
       decs_cantidad_surco:    { name: cantidad_surco }
       fore_num_documento:     { name: control_administrativo_riego_id }
@@ -125,9 +125,9 @@ schema:
     columns:
       rol_id:         { name: id, constraint: PK, sequence: bda_rol_rol_id_seq }
       rol_nombre:     { name: nombre, length: 80 }
-      ror_created_at: { name: created_at, behavior: created }
-      ror_created_at: { name: updated_at, behavior: updated }
-      ror_created_at: { name: deleted_at, behavior: deleted }
+      rol_created_at: { name: created_at, behavior: created }
+      rol_updated_at: { name: updated_at, behavior: updated }
+      rol_deleted_at: { name: deleted_at, behavior: deleted }
 
   bda_detalle_ejecucion:
     name:              detalle_ejecucion
@@ -227,7 +227,7 @@ schema:
   bda_registro_tractor:
     name:                registro_tractor
     columns:
-      rtr_item:          { name: item, constraint: PK, sequence: bda_registro_tractor_rt_item_seq }
+      rtr_item:          { name: id, constraint: PK, sequence: bda_registro_tractor_rt_item_seq }
       csc_id:            { name: control_salida_cana }
       rtr_hora_salida:   { name: hora_salida }
       rtr_created_at:    { name: created_at, behavior: created }
@@ -349,7 +349,7 @@ schema:
   bda_labores_maqina_equipo:
     name:                            labores_maquina_equipo
     columns:
-      lme_numero:                    { name: id, constraint: PK, secuence: bda_labores_maquina_equipo_lme_numero_seq}
+      lme_numero:                    { name: id, constraint: PK, sequence: bda_labores_maquina_equipo_lme_numero_seq}
       hac_id:                        { name: hacienda_id }
       ter_id:                        { name: tercero_id }
       tpd_id:                        { name: tipo_documento_id }
@@ -365,7 +365,7 @@ schema:
   bda_maquina:
     name:                            maquina
     columns:
-      maq_id:                        { name: id, constraint: PK, secuence: bda_maquina_maq_id_seq }
+      maq_id:                        { name: id, constraint: PK, sequence: bda_maquina_maq_id_seq }
       maq_estado:                    { name: estado, length: 30 }
       maq_valor:                     { name: valor }
       maq_fecha_compra:              { name: fecha_compra }
@@ -384,7 +384,7 @@ schema:
   bda_marca:
     name:                            marca
     columns:
-      mar_id:                        { name: id, constraint: PK, secuence: bda_marca_mar_id_seq }
+      mar_id:                        { name: id, constraint: PK, sequence: bda_marca_mar_id_seq }
       mar_descripcion:               { name: descripcion, length: 80 }
       mar_created_at:                { name: created_at, behavior: created }
       mar_updated_at:                { name: updated_at, behavior: updated }
@@ -475,8 +475,8 @@ schema:
       sie_fecha_produccion:       { name: fecha_produccion }
       sie_num_hectarea:           { name: num_hectarea }
       sie_num_planta_levante:     { name: num_planta_levante }
-      sie_num_planta_productivas: { name: num_planta_productiva }
-      sie_num_planta_erradica:    { name: num_planta_erradica }
+      sie_num_plantas_productivas: { name: num_plantas_productivas }
+      sie_num_plantas_erradica:    { name: num_plantas_erradica }
       sie_created_at:             { name: created_at, behavior: created }
       sie_updated_at:             { name: updated_at, behavior: updated }
       sie_deleted_at:             { name: deleted_at, behavior: deleted }

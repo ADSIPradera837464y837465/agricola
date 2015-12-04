@@ -16,7 +16,7 @@ use FStudio\myConfig as config;
  */
 class registroTractorBaseTable extends model {
 
-  const ITEM = 'rtr_item';
+  const ID = 'rtr_item';
   const CONTROL_SALIDA_CANA = 'csc_id';
   const HORA_SALIDA = 'rtr_hora_salida';
   const CREATED_AT = 'rtr_created_at';
@@ -30,16 +30,16 @@ class registroTractorBaseTable extends model {
    * @var config
    */
   protected $config;
-  private $item;
+  private $id;
   private $control_salida_cana;
   private $hora_salida;
   private $created_at;
   private $updated_at;
   private $deleted_at;
 
-  public function __construct(config $config, $item = null, $control_salida_cana = null, $hora_salida = null, $created_at = null, $updated_at = null, $deleted_at = null) {
+  public function __construct(config $config, $id = null, $control_salida_cana = null, $hora_salida = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
-    $this->item = $item;
+    $this->id = $id;
     $this->control_salida_cana = $control_salida_cana;
     $this->hora_salida = $hora_salida;
     $this->created_at = $created_at;
@@ -47,8 +47,8 @@ class registroTractorBaseTable extends model {
     $this->deleted_at = $deleted_at;
   }
 
-  public function getItem() {
-    return $this->item;
+  public function getId() {
+    return $this->id;
   }
 
   public function getControlSalidaCana() {
@@ -71,8 +71,8 @@ class registroTractorBaseTable extends model {
     return $this->deleted_at;
   }
 
-  public function setItem($item) {
-    $this->item = $item;
+  public function setId($id) {
+    $this->id = $id;
   }
 
   public function setControlSalidaCana($control_salida_cana) {
