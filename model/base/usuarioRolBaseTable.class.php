@@ -1,39 +1,52 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
  * Description of bda_rolUsuario
  * @author WilmerAndresMartinez wilmerelmejor94@hotmail.com
  * @package
  * @subpackage model
- * @subpackage table
+ * @subpackage base
  * @version 1.0.0
  */
-class rolUsuarioBaseTable extends model {
+class usuarioRolBaseTable extends model {
  
    /**
    * url_Id de la tabla
    * @var integer
    */
   
-  const url_id = 'url_Id';
+  const ID = 'url_id';
   /**
    * usr_usuario_id de la tabla
    * @var integer
    */
-  const usr_usuario_id ='usr_usuario_id';
+  const USUARIO_ID = 'usr_id';
   /**
    * rol_id de la tabla
    * @var integer
    */
-  const rol_id = 'rol_id ';
+  const ROL_ID = 'rol_id';
   /**
    * url_create_at de la tabla
    * @var date_time
    */
-  const url_created_at ='url_create_at';
+  const CREATED_AT = 'url_created_at';
+  /**
+   * nombre de la secuencia ID de la tabla
+   */
+  const _SEQUENCE = 'bda_unidad_medida_unm_id_seq';
+  /**
+   * bda_usuario de la tabla
+   */
+  const _TABLE = 'bda_usuario_rol';
   
   /**
-   *configuracion del sistema
+   * Configuración del sistema
    * @var config
    */
   
@@ -43,24 +56,24 @@ class rolUsuarioBaseTable extends model {
    * @var integer
    */
   
-  private $urlId;
+  private $id;
   /**
    *usrUsuarioId
    * @var integer
    */
-  private $usrUsuarioId;
-  /**
+  private $usuario_id;
+  /*
    *rolId de la tabla
    * @var integer
    */
-  private $rolId;
-  /**
+  private $rol_id;
+  /*
    *urlCreateAt de la tabla
    * @var date_time
    */
-  private $urlCreatedAt;
+  private $created_at;
   
-  /**
+  /*
    * 
    * @param config $config
    * @param type $urlId
@@ -69,101 +82,84 @@ class rolUsuarioBaseTable extends model {
    * @param type $urlCreatedAt
    */
  
-  public function __construct( config $config =null, $urlId=null, $usrUsuarioId=null, $rolId=null, $urlCreatedAt=null) {
+  public function __construct(config $config, $id = null, $usuario_id = null, $rol_id = null, $created_at = null) {
     $this->config = $config;
-    $this->urlId = $urlId;
-    $this->usrUsuarioId = $usrUsuarioId;
-    $this->rolId = $rolId;
-    $this->urlCreatedAt = $urlCreatedAt;
+    $this->id = $id;
+    $this->usuario_id = $usuario_id;
+    $this->rol_id = $rol_id;
+    $this->created_at = $created_at;
   }
   
-  /**
+  /*
    * 
    * @retorna la configuracion del sistema 
    * @version 1.0.0
    * @return config
    */
 
-  public function getConfig() {
-    return $this->config;
+  public function getId() {
+    return $this->id;
   }
-  /**
+  /*
    * Retorna el UrlID del registro
    * @version 1.0.0
    * @return integer
    */
 
-  public function getUrlId() {
-    return $this->urlId;
+  public function getUsuarioId() {
+    return $this->usuario_id;
   }
-  /**
-   *Retorna el UsrUsuarioId del registro
-   * @version 1.0.0
-   * @return integer
-   */
-
-  public function getUsrUsuarioId() {
-    return $this->usrUsuarioId;
-  }
-/**
+  
+/*
    * Retorna el RolId del registro
    * @version 1.0.0
    * @return integer
    */
   public function getRolId() {
-    return $this->rolId;
+    return $this->rol_id;
   }
-/**
+/*
    * Retorna la fecha y la hora de creación del registro
    * @version 1.0.0
    * @return string
    */
-  public function getUrlCreatedAt() {
-    return $this->urlCreateAt;
+  public function getCreatedAt() {
+    return $this->created_at;
   }
   
-  /**
-   * fija la configuracion del sistema
-   * @version 1.0.0
-   * @param config $config objeto con configuracion del sistema
-   */
-
-  public function setConfig($config) {
-    $this->config = $config;
-  }
-  /**
+  /*
    * Fija el UrlID para un registro del sistema
    * @version 1.0.0
    * @param integer $urlId ID de un registro
    */
-  public function setUrlId($urlId) {
-    $this->urlId = $urlId;
+  public function setId($id) {
+    $this->id = $id;
   }
-/**
-   * Fija el ID de UsrUsurario
+
+/*
+   * Fija el ID de Usuario
    * @version 1.0.0
    * @param integer $usrUsuarioId
    */
-  public function setUsrUsuarioId($usrUsuarioId) {
-    $this->usrUsuarioId = $usrUsuarioId;
+  public function setUsuarioId($usuario_id) {
+    $this->usuario_id = $usuario_id;
   }
-  /**
+  /*
    * Fija el ID de la RolId
    * @version 1.0.0
    * @param integer $rolId
    */
 
-  public function setRolId($rolId) {
-    $this->rolId = $rolId;
+  public function setRolId($rol_id) {
+    $this->rol_id = $rol_id;
   }
-/**
+/*
    * Fija la fecha y la hora de creación del registro
    * @version 1.0.0
    * @param string $urlCreatedAt Fecha y hora de creación
    */
-  public function setUrlCreatedAt($urlCreatedAt) {
-    $this->urlCreatedAt = $urlCreatedAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
-
 
 }

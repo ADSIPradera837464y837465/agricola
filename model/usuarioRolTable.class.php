@@ -1,6 +1,6 @@
 <?php
 
-use FStudio\model\base\rolUsuarioBaseTable;
+use FStudio\model\base\usuarioRolBaseTable;
 
 /**
  * Description of bitacoraTable
@@ -10,7 +10,7 @@ use FStudio\model\base\rolUsuarioBaseTable;
  * @subpackage table
  * @version 1.0.0
  */
-class rolUsuarioTable extends rolUsuarioBaseTable {
+class usuarioRolTable extends usuarioRolBaseTable {
 
   /**
    * obtiene todos los datos demla tabla
@@ -18,7 +18,7 @@ class rolUsuarioTable extends rolUsuarioBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT url_id, usr_usuario_id, rol_id, url_created_at FROM rolUsuario WHERE deleted_at IS NULL ORDER BY created_at ASC';
+    $sql = 'SELECT url_id AS id, usr_id AS usuario_id, rol_id, url_created_at AS created_at FROM bda_usuario_rol ORDER BY url_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,11 +31,9 @@ class rolUsuarioTable extends rolUsuarioBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT url_id, usr_usuario_id, rol_id, url_created_at'
-            . 'FROM rolUsuario WHERE deleted_at IS NULL '
-            . 'AND url_id = :url_id';
+    $sql = 'SELECT url_id AS id, usr_id AS usuario_id, rol_id, url_created_at AS created_at FROM bda_usuario_rol AND id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id : $this->getById()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -48,12 +46,10 @@ class rolUsuarioTable extends rolUsuarioBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO usuario (url_id, usr_usuario_id, rol_id, url_created_at) VALUES (:url_id, :usr_usuario_id, :rol_id, :url_created_at)';
+    $sql = 'INSERT INTO bda_usuario_rol (usr_id, rol_id) VALUES (:usuario_id, :rol_id)';
     $params = array(
-        ':url_id' => $this->getUrlId(),
-        ':usr_usuario_id' => $this->getUsrUsuarioId(),
-        ':rol_id' => $this->getRolId(),
-        ':url_created_at' => $this->getUrlCreateAt()
+        ':usuario_id' => $this->getUsuarioId(),
+        ':rol_id' => $this->getRolId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -68,12 +64,11 @@ class rolUsuarioTable extends rolUsuarioBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE usuario SET url_id = :url_id, usr_usuario_id = :usr_usuario_id, rol_id = :rol_id, url_created_at = :url_created_at WHERE id = :url_id';
+    $sql = 'UPDATE bda_usuario_rol SET usr_id = :usuario_id, rol_id = :rol_id WHERE url_id = :id';
     $params = array(
-        ':url_id' => $this->getUrlId(),
-        ':usr_usuario_id' => $this->getUsrUsuarioId(),
+        ':usuario_id' => $this->getUsuarioId(),
         ':rol_id' => $this->getRolId(),
-        ':url_created_at' => $this->getUrlCreateAt()
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -88,11 +83,10 @@ class rolUsuarioTable extends rolUsuarioBaseTable {
    */
   public function delete() {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM rol WHERE id = :id';
+    $sql = 'DELETE FROM bda_usuario_rol WHERE url_id = :id';
     $params = array(
         ':id' => $this->getId()
     );
-
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
