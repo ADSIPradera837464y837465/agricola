@@ -20,8 +20,8 @@ class tipoProductoBaseTable extends model {
   const DESCRIPCION = 'tpr_descripcion';
   const DESCRIPCION_LENGTH = 80;
   const CREATED_AT = 'tpr_created_at';
-  const UPDATED_AT = 'tpr_updated';
-  const DELETED_AT = 'tpr_deleted';
+  const UPDATED_AT = 'tpr_updated_at';
+  const DELETED_AT = 'tpr_deleted_at';
   const _SEQUENCE = 'bda_tipo_producto_tpr_id_seq';
   const _TABLE = 'bda_tipo_producto';
 

@@ -281,8 +281,8 @@ schema:
       tpr_id:             { name: id, constraint: PK, sequence: bda_tipo_producto_tpr_id_seq }
       tpr_descripcion:    { name: descripcion, length: 80 }
       tpr_created_at:     { name: created_at, behavior: created }
-      tpr_updated:        { name: updated_at, behavior: updated }
-      tpr_deleted:        { name: deleted_at, behavior: deleted }
+      tpr_updated_at:     { name: updated_at, behavior: updated }
+      tpr_deleted_at:     { name: deleted_at, behavior: deleted }
 
   bda_tipo_suelo:
     name:                 tipo_suelo
