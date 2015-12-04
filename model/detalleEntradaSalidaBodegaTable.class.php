@@ -7,7 +7,7 @@ use FStudio\model\base\detalleEntradaSalidaBodegaBaseTable;
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
  * @package 
  * @subpackage model
- * @subpackage base
+ * @subpackage table
  * @version 1.0.0
  */
 class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTable {
@@ -19,25 +19,17 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT des_id AS desId, esb_id AS esbId, pro_id  AS proId, unm_id  As umnId, des_cantidad  As cantidad ,des_precio AS precio, des_created_at As createdAt, des_updated_at As updatedAt, des_deleted_at As deletedAt FROM bda_detalle_entrada_salida_bodega  WHERE des_deleted_at IS NULL ORDER BY des_created_at ASC';
+    $sql = 'SELECT des_id AS id, esb_id AS entrada_salida_bodega_id, pro_id AS producto_id, unm_id AS unidad_medida_id, des_cantidad AS cantidad, des_precio AS precio, des_created_at AS created_at, des_updated_at AS updated_at, des_deleted_at AS deleted_at FROM bda_detalle_entrada_salida_bodega ORDER BY des_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
-  /**
-   * Retorna un elemento de la tabla buscado por un ID especifico
-   * @version 1.0.0
-   * @param integer $id ID a buscar
-   * @return mixed [stdClass | boolean]
-   */
-  public function getById($desId = null) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT des_id AS desId, esb_id AS esbId, pro_id  AS proId, unm_id  As umnId, des_cantidad  As cantidad ,des_precio AS precio, des_created_at As createdAt, des_updated_at As updatedAt, des_deleted_at As deletedAt'
-            . 'FROM bda_detalle_entrada_salida_bodega WHERE des_deleted_at IS NULL '
-            . 'AND des_id = :desId';
+    $sql = 'SELECT des_id AS id, esb_id AS entrada_salida_bodega_id, pro_id AS producto_id, unm_id AS unidad_medida_id, des_cantidad AS cantidad, des_precio AS precio, des_created_at AS created_at, des_updated_at AS updated_at, des_deleted_at AS deleted_at FROM bda_detalle_entrada_salida_bodega AND id = :id';
     $params = array(
-        ':des_id' => ($desId !== null) ? $desId : $this->getById()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -51,13 +43,15 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_detalle_entrada_salida_bodega (esb_id , pro_id , unm_id  , des_cantidad ,des_precio) VALUES (:esb_id , :pro_id , :unm_id  , :des_cantidad ,:des_precio)';
+    $sql = 'INSERT INTO bda_detalle_entrada_salida_bodega (esb_id, pro_id, unm_id, des_cantidad, des_precio, des_updated_at, des_deleted_at) VALUES (:entrada_salida_bodega_id, :producto_id, :unidad_medida_id, :cantidad, :precio, :updated_at, :deleted_at)';
     $params = array(
-        ':esb_id'=> $this->getEsbId(), 
-        ':pro_id' => $this->getProId(),
-        ':unm_id' => $this->getUmnId(),
-        ':des_cantidad'=> $this->getCantidad(),
-        ':des_precio'=> $this->getPrecio(),
+        ':entrada_salida_bodega_id' => $this->getEntradaSalidaBodegaId(),
+        ':producto_id' => $this->getProductoId(),
+        ':unidad_medida_id' => $this->getUnidadMedidaId(),
+        ':cantidad' => $this->getCantidad(),
+        ':precio' => $this->getPrecio(),
+        ':updated_at' => $this->getUpdatedAt(),
+        ':deleted_at' => $this->getDeletedAt()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -74,39 +68,26 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE bda_detalle_entrada_salida_bodega SET esb_id = :esb_id, pro_id = :pro_id , unm_id = :unm_id ,des_cantidad = :des_cantidad, des_precio = :des_precio WHERE des_id = :desId';
     $params = array(
-        ':esb_id'=> $this->getEsbId(), 
-        ':pro_id' => $this->getProId(),
-        ':unm_id' => $this->getUmnId(),
-        ':des_cantidad'=> $this->getCantidad(),
-        ':des_precio'=> $this->getPrecio(),
+        ':entrada_salida_bodega_id' => $this->getEntradaSalidaBodegaId(),
+        ':producto_id' => $this->getProductoId(),
+        ':unidad_medida_id' => $this->getUnidadMedidaId(),
+        ':cantidad' => $this->getCantidad(),
+        ':precio' => $this->getPrecio(),
+        ':updated_at' => $this->getUpdatedAt(),
+        ':deleted_at' => $this->getDeletedAt(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
   }
 
-  /**
-   * Borra en forma logica o fisica un registro de la tabla
-   * @version 1.0.0
-   * @param boolean $deleteLogical Especifica el borrado logico (true o false)
-   * @return boolean
-   * @throws PDOException
-   */
-  public function delete($deleteLogical = true) {
+  public function delete() {
     $conn = $this->getConnection($this->config);
+    $sql = 'DELETE FROM bda_detalle_entrada_salida_bodega WHERE des_id = :id';
     $params = array(
-        ':des_id' => $this->getId()
+        ':id' => $this->getId()
     );
-    switch ($deleteLogical) {
-      case true:
-        $sql = 'UPDATE bda_detalle_entrada_salida_bodega SET des_deleted_at = now() WHERE des_id = :des_id';
-        break;
-      case false:
-        $sql = 'DELETE FROM bda_detalle_entrada_salida_bodega WHERE des_id = :des_id';
-        break;
-      default:
-        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
-    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;

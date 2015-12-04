@@ -6,14 +6,14 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of caudalSurcoBaseTable
+ * Description of detallecaudalSurcoBaseTable
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
  * @package 
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
  */
-class caudalSurcoBaseTable extends model {
+class detalleCaudalSurcoBaseTable extends model {
 
   /**
    * ID de la tabla
@@ -39,10 +39,10 @@ class caudalSurcoBaseTable extends model {
   /**
    * numero de documento
    */
-  const NUM_DOCUMENTO = 'fore_num_documento';
+  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'fore_num_documento';
 
   /**
-   * Fecha y hora de creación del registro
+   * Fecha y hora de la creacion de un registro
    */
   const CREATED_AT = 'decs_created_at';
 
@@ -59,7 +59,7 @@ class caudalSurcoBaseTable extends model {
   /**
    * Nombre de la secuencia del ID de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_detalle_caudal_surco_decs_id_seq';
 
   /**
    *  Nombre de la tabla 
@@ -88,55 +88,53 @@ class caudalSurcoBaseTable extends model {
    * cantidad de surco
    * @var integer
    */
-  private $cantidadSurco;
+  private $cantidad_surco;
 
   /**
    * numero de documento
    * @var integer
    */
-  private $numDocumento;
+  private $control_administrativo_riego_id;
 
   /**
    * fecha y hora de cuando se creo  un registro
    * @var date_time
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * fecha y hora de la ultima modificacion de un registro
    * @var date_time
    */
-  private $updatedAt;
-  
+  private $updated_at;
+
   /**
-   * fecha y hora de la eliminacion de un registro
+   * fecha y hora para controlar el borrado logico
    * @var date_time
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
-   * Constructor de la clase caudalSurcoBaseTable
-   * @version 1.0.0
-   * @param config $config
+   * 
+   * Constructor de la clase detalleCaudalSurcoBaseTable
    * @param integer $id
-   * @param integer $item
-   * @param integer $cantidadSurco
-   * @param integer $numDocumento
-   * @param date_time $createdAt
-   * @param date_time $updatedAt
-   * @param date_time $deletedAt
+   * @param string $item
+   * @param integer $cantidad_surco
+   * @param integer $control_administrativo_riego_id
+   * @param date_time $created_at
+   * @param date_time $updated_at
+   * @param date_time $deleted_at
+   * @version 1.0.0
    */
- 
-
-  public function __construct(config $config, $id = null, $item = null, $cantidadSurco = null, $numDocumento = null, date_time $createdAt = null, date_time $updatedAt = null, date_time $deletedAt = null) {
+  public function __construct(config $config, $id = null, $item = null, $cantidad_surco = null, $control_administrativo_riego_id = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->item = $item;
-    $this->cantidadSurco = $cantidadSurco;
-    $this->numeroDocumento = $numDocumento;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->cantidad_surco = $cantidad_surco;
+    $this->control_administrativo_riego_id = $control_administrativo_riego_id;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -172,7 +170,7 @@ class caudalSurcoBaseTable extends model {
    * @return integer
    */
   public function getCantidadSurco() {
-    return $this->cantidadSurco;
+    return $this->cantidad_surco;
   }
 
   /**
@@ -180,8 +178,8 @@ class caudalSurcoBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function getNumDocumento() {
-    return $this->numDocumento;
+  public function getControlAdministrativoRiegoId() {
+    return $this->control_administrativo_riego_id;
   }
 
   /**
@@ -190,7 +188,7 @@ class caudalSurcoBaseTable extends model {
    * @return integer
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -199,7 +197,7 @@ class caudalSurcoBaseTable extends model {
    * @return integer
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -208,7 +206,7 @@ class caudalSurcoBaseTable extends model {
    * @return integer
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
   }
 
   /**
@@ -243,8 +241,8 @@ class caudalSurcoBaseTable extends model {
    * @version 1.0.0
    * @param integer $cantidadSurco
    */
-  public function setCantidadSurco($cantidadSurco) {
-    $this->cantidadSurco = $cantidadSurco;
+  public function setCantidadSurco($cantidad_surco) {
+    $this->cantidad_surco = $cantidad_surco;
   }
 
   /**
@@ -252,8 +250,8 @@ class caudalSurcoBaseTable extends model {
    * @version 1.0.0
    * @param integer $numDocumento
    */
-  public function setNumDocumento($numDocumento) {
-    $this->numDocumento = $numDocumento;
+  public function setControlAdministrativoRiegoId($control_administrativo_riego_id) {
+    $this->control_administrativo_riego_id = $control_administrativo_riego_id;
   }
 
   /**
@@ -261,8 +259,8 @@ class caudalSurcoBaseTable extends model {
    * @version 1.0.0
    * @param integer $createdAt
    */
-  public function setCreatedAt(date_time $createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -270,8 +268,8 @@ class caudalSurcoBaseTable extends model {
    * @version 1.0.0
    * @param integer $updatedAt
    */
-  public function setUpdatedAt(date_time $updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -279,8 +277,8 @@ class caudalSurcoBaseTable extends model {
    * @version 1.0.0
    * @param integer $deletedAt
    */
-  public function setDeletedAt(date_time $deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
