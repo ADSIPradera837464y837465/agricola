@@ -48,7 +48,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   /**
    * Fecha y hora de la ultima modificacion  de un registro
    */
-  const UPDATED_AT = 'des_updated_at';
+  const UPDATED_AT = 'des_created_at';
 
   /**
    * Fecha y hora para controlar el borrado lógico
