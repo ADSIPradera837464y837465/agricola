@@ -5,62 +5,64 @@ namespace FStudio\model\base;
 use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
-
 /**
  * Description of registroTractorBaseTable
  * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
  */
 class registroTractorBaseTable extends model {
-  
 
   /**
-   * Item de la tabla
+   * Id de la tabla
    */
-  const ITEM = 'rt_item';
+  const ID = 'rtr_item';
 
   /**
-   * Foranea de la tabla usuario
+   * Foranea de la tabla controol_salida_de_cana
    */
   const ID = 'csc_id';
+
+  /**
+   * Foranea de la tabla controol_salida_de_cana
+   */
+  const CONTROL_SALIDA_CANA = 'csc_id';
 
   /**
 
    * hora de salida de la tabla registroTractor
    */
-  const Hora_Salida = 'rt_hora_salida';
-
-  /**
-   * Longitud del campo acción
-   */
-  const TRACTOR_LENGTH = 80;
-
+  const HORA_SALIDA = 'rtr_hora_salida';
   /**
 
-   * observaciones de la tabla registroTractor
+   * fecha de creacion del  registroTractor
    */
-  const OBSERVACION = 'rt_observacion';
-
-  /**
-
-   * longitud de las observaciones
-   */
-  const OBSERVACION_LENGTH = 'rt_observacion';
   
+  const CREATED_AT = 'rtr_created_at';
   /**
+
+   * fecha de actualizacion del  registroTractor
+   */
+  const UPDATED_AT = 'rtr_updated_at';
+  /**
+
+   * fecha de eliminacion del registroTractor
+   */
+  const DELETED_AT = 'rtr_deleted_at';
+
+  /**
+
    * Secuencia de la identificacion de la tabla
    */
-  const _SEQUENCE = '';
-  
-   /**
+  const _SEQUENCE = 'bda_registro_tractor_rt_item_seq';
+
+  /**
 
    * Nombre de la tabla
    */
-  const TABLE = 'bda_registroTractor';
-  
+  const _TABLE = 'bda_registro_tractor';
 
   /**
    * Configuración del sistema
@@ -69,139 +71,94 @@ class registroTractorBaseTable extends model {
   protected $config;
 
   /**
-   * ITEM de la tabla
-   * @version 1.0.0
-   * @var integer
-   */
-  private $item;
-
-  /**
    * ID de la tabla
    * @version 1.0.0
    * @var integer
    */
   private $id;
+  /**
+   * control_salida_cana de la tabla
+   * @version 1.0.0
+   * @var time
+   */
+  
+  private $control_salida_cana;
 
   /**
    * rt_hora_salida de la tabla
    * @version 1.0.0
    * @var time
    */
-  private $horaSalida;
-
-  /**
-   * rt_tractor de la tabla
-   * @version 1.0.0
-   * @var varchar
-   */
-  private $tractor;
-
-  /**
-   * rt_observacion de la tabla
-   * @version 1.0.0
-   * @var string
-   */
-  private $observacion;
+  private $hora_salida;
 
   /**
    * crea la tabla
    * @version 1.0.0
    * @var time_stamp
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * actualiza la tabla
    * @version 1.0.0
    * @var time_stamp
    */
-  private $updatedAt;
+  private $updated_at;
 
   /**
    * elimina la tabla
    * @version 1.0.0
    * @var time_stamp
    */
-  private $deletedAt;
+  private $deleted_at;
 
   /**
-   * Constructor de la clase registroTractorBaseTable
+   * 
    * @param config $config
-   * @param integer $item
-   * @param integer $id
-   * @param time $horaSalida
-   * @param varchar $tractor
-   * @param text   $observacion
-   * @param string $tabla
-   * @param stamp_time $createdAt
-   * @param stamp_time $updatedAt
-   * @param stamp_time $deletedAt
+   * @param type $id
+   * @param type $control_salida_cana
+   * @param type $hora_salida
+   * @param type $created_at
+   * @param type $updated_at
+   * @param type $deleted_at
    */
-  public function __construct(config $config, $item = null, $id = null, $horaSalida = null, $tractor = null, $tabla = null, $observacion = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $control_salida_cana = null, $hora_salida = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
-    $this->item = $item;
     $this->id = $id;
-    $this->horaSalida = $horaSalida;
-    $this->tractor = $tractor;
-    $this->observacion = $observacion;
-    $this->tabla = $tabla;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
+    $this->control_salida_cana = $control_salida_cana;
+    $this->hora_salida = $hora_salida;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
-   * Retorna la configuración del sistema
+   * Retorna el id del sistema
    * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
-
-  /**
-   * Retorna el item del sistema
-   * @version 1.0.0
-   * @return integer
-   */
-  public function getItem() {
-    return $this->item;
-  }
-
-  /**
-   * Retorna el id del registro
-   * version 1.0.o
    * @return integer
    */
   public function getId() {
     return $this->id;
   }
 
+ 
+
   /**
-   * Retorna la hora_salida del sistema
+   * Retorna el control_salida_cana del sistema
    * @version 1.0.0
    * @return time
    */
-  public function gethoraSalida() {
-    return $this->horaSalida;
+  public function getControlSalidaCana() {
+    return $this->control_salida_cana;
   }
 
   /**
-   * Retorna el el tractor del sistema
+   * Retorna la hora_salida del sistema
    * @version 1.0.0
    * @return varchar
    */
-  public function gettractor() {
-    return $this->tractor;
-  }
-
-  /**
-   * Retorna la  longitud de las observacion
-   * @version 1.0.0 
-   * @return text
-   */
-  public function getobservacion() {
-    return $this->observacion;
+  public function getHoraSalida() {
+    return $this->hora_salida;
   }
 
   /**
@@ -231,24 +188,7 @@ class registroTractorBaseTable extends model {
     return $this->deletedAt;
   }
 
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
-  }
-
-  /**
-   * Fija el item para el registro en la tabla
-   * version 1.0.0
-   * @param integer $item
-   */
-  public function setItem($item) {
-    $this->item = $item;
-  }
-
+  
   /**
    * Fija el id para el registro en la tabla
    * @version 1.o.o
@@ -259,30 +199,21 @@ class registroTractorBaseTable extends model {
   }
 
   /**
+   * Fija el control_ salida_cana para el registro en la tabla
+   * @version 1.0.0
+   * @param time $control_salida_cana
+   */
+  public function setControlSalidaCana($control_salida_cana) {
+    $this->control_salida_cana = $control_salida_cana;
+  }
+
+  /**
    * Fija la hora_salida para el registro en la tabla
    * @version 1.0.0
-   * @param time $hora_salida
+   * @param varchar $hora_salida
    */
-  public function sethoraSalida(time $horaSalida) {
-    $this->horaSalida = $horaSalida;
-  }
-
-  /**
-   * Fija el tractor para el registro en la tabla
-   * @version 1.0.0
-   * @param varchar $tractor
-   */
-  public function setractor(varchar $tractor) {
-    $this->tractor = $tractor;
-  }
-
-  /**
-   * Fija la observacion para el registro en la tabla
-   * @version 1.0.0
-   * @param text $observacion
-   */
-  public function setobservacion($observacion) {
-    $this->observacion = $observacion;
+  public function setHoraSalida($hora_salida) {
+    $this->hora_salida = $hora_salida;
   }
 
   /**
@@ -290,8 +221,8 @@ class registroTractorBaseTable extends model {
    * @version 1.0.0
    * @return time_stamp
    */
-  public function setCreatedAt(time_stamp $createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -299,8 +230,8 @@ class registroTractorBaseTable extends model {
    * @version 1.0.0
    * @return time_stamp
    */
-  public function setUpdatedAt(time_stamp $updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -308,8 +239,8 @@ class registroTractorBaseTable extends model {
    * @version 1.0.0
    * @return time_stamp
    */
-  public function setDeletedAt(time_stamp $deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
