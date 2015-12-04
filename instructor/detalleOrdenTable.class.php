@@ -15,7 +15,7 @@ class detalleOrdenTable extends detalleOrdenBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT deo_id AS id, ors_id AS orden_servicio_id, ser_id AS servicio_id, deo_estado AS estado, deo_created_at AS created_at, deo_updated_at AS updated_at, deo_deleted_at AS deleted_at FROM bda_detalle_orden ORDER BY deo_created_at ASC';
+    $sql = 'SELECT deo_id AS id, ors_id AS orden_servicio_id, ser_id AS servicio_id, deo_estado AS estado, deo_created_at AS created_at, deo_updated_at AS updated_at, deo_deleted_at AS deleted_at FROM bda_detalle_orden WHERE deo_deleted_at IS NULL ORDER BY deo_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class detalleOrdenTable extends detalleOrdenBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT deo_id AS id, ors_id AS orden_servicio_id, ser_id AS servicio_id, deo_estado AS estado, deo_created_at AS created_at, deo_updated_at AS updated_at, deo_deleted_at AS deleted_at FROM bda_detalle_orden AND id = :id';
+    $sql = 'SELECT deo_id AS id, ors_id AS orden_servicio_id, ser_id AS servicio_id, deo_estado AS estado, deo_created_at AS created_at, deo_updated_at AS updated_at, deo_deleted_at AS deleted_at FROM bda_detalle_orden WHERE deo_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -34,13 +34,11 @@ class detalleOrdenTable extends detalleOrdenBaseTable {
 
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_detalle_orden (ors_id, ser_id, deo_estado, deo_updated_at, deo_deleted_at) VALUES (:orden_servicio_id, :servicio_id, :estado, :updated_at, :deleted_at)';
+    $sql = 'INSERT INTO bda_detalle_orden (ors_id, ser_id, deo_estado) VALUES (:orden_servicio_id, :servicio_id, :estado)';
     $params = array(
         ':orden_servicio_id' => $this->getOrdenServicioId(),
         ':servicio_id' => $this->getServicioId(),
-        ':estado' => $this->getEstado(),
-        ':updated_at' => $this->getUpdatedAt(),
-        ':deleted_at' => $this->getDeletedAt()
+        ':estado' => $this->getEstado()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -50,13 +48,11 @@ class detalleOrdenTable extends detalleOrdenBaseTable {
 
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_detalle_orden SET ors_id = :orden_servicio_id, ser_id = :servicio_id, deo_estado = :estado, deo_updated_at = :updated_at, deo_deleted_at = :deleted_at WHERE deo_id = :id';
+    $sql = 'UPDATE bda_detalle_orden SET ors_id = :orden_servicio_id, ser_id = :servicio_id, deo_estado = :estado WHERE deo_id = :id';
     $params = array(
         ':orden_servicio_id' => $this->getOrdenServicioId(),
         ':servicio_id' => $this->getServicioId(),
         ':estado' => $this->getEstado(),
-        ':updated_at' => $this->getUpdatedAt(),
-        ':deleted_at' => $this->getDeletedAt(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -64,12 +60,21 @@ class detalleOrdenTable extends detalleOrdenBaseTable {
     return true;
   }
 
-  public function delete() {
+  public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM bda_detalle_orden WHERE deo_id = :id';
     $params = array(
         ':id' => $this->getId()
     );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_detalle_orden SET deo_deleted_at = now() WHERE deo_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_detalle_orden WHERE deo_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;

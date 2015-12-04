@@ -153,8 +153,8 @@ schema:
       des_cantidad:    { name: cantidad }
       des_precio:      { name: precio }
       des_created_at:  { name: created_at, behavior: created }
-      des_updated_at:  { name: updated_at, behavion: updated }
-      des_deleted_at:  { name: deleted_at, behavion: deleted }
+      des_updated_at:  { name: updated_at, behavior: updated }
+      des_deleted_at:  { name: deleted_at, behavior: deleted }
 
   bda_detalle_orden:
     name:              detalle_orden
@@ -164,8 +164,8 @@ schema:
       ser_id:          { name: servicio_id }
       deo_estado:      { name: estado }
       deo_created_at:  { name: created_at, behavior: created }
-      deo_updated_at:  { name: updated_at, behavion: updated }
-      deo_deleted_at:  { name: deleted_at, behavion: deleted }
+      deo_updated_at:  { name: updated_at, behavior: updated }
+      deo_deleted_at:  { name: deleted_at, behavior: deleted }
 
   bda_metodo_riego:
     name:                   metodo_riego
