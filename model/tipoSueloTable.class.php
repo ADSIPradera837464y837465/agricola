@@ -2,13 +2,12 @@
 
 use FStudio\model\base\tipoSueloBaseTable;
 
-
 /**
  * Description of tipoSueloTable
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model
- * @subpackage base
+ * @subpackage table
  * @version 1.0.0
  */
 class tipoSueloTable extends tipoSueloBaseTable {
@@ -18,12 +17,12 @@ class tipoSueloTable extends tipoSueloBaseTable {
    * @version 1.0.0
    * @return [stdClass | boolean]
    */
-  static public function getAll() {
-    $conn = $this->getConexion($this->config);
-    $sql = 'SELECT tis_id, tis_descripcion, created_at, updated_at, deleted_at FROM dba_tipo_suelo WHERE deleted_at IS NULL ORDER BY created_at ASC';
-    $respuesta = $conn->prepare($sql);
-    $respuesta->execute();
-    return ($respuesta->rowCount() > 0 ) ? $respuesta->fetchAll(PDO::FETCH_OBJ) : false;
+  public function getAll() {
+    $conn = $this->getConnection($this->config);
+    $sql = 'SELECT tis_id AS id, tis_descripcion AS descripcion, tis_created_at AS created_at, tis_updated_at AS updated_at, tis_deleted_at AS deleted_at FROM bda_tipo_suelo WHERE tis_deleted_at IS NULL ORDER BY tis_created_at ASC';
+    $answer = $conn->prepare($sql);
+    $answer->execute();
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
   /**
@@ -34,13 +33,13 @@ class tipoSueloTable extends tipoSueloBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tis_id, tis_descripcion, created_at, updated_at, deleted_at FROM dba_tipo_suelo WHERE deleted_at IS NULL AND tis_id = :id';
+    $sql = 'SELECT tis_id AS id, tis_descripcion AS descripcion, tis_created_at AS created_at, tis_updated_at AS updated_at, tis_deleted_at AS deleted_at FROM bda_tipo_suelo WHERE tis_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':tis_id' => ($id !== null) ? $id : $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
-    $respuesta = $conn->prepare($sql);
-    $respuesta->execute($params);
-    return ($respuesta->rowCount() > 0 ) ? $respuesta->fetchAll(PDO::FETCH_OBJ) : false;
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
   /**
@@ -50,13 +49,12 @@ class tipoSueloTable extends tipoSueloBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO dba_tipo_suelo (tis_descripcion) VALUES'
-            . '(:tis_descripcion)';
+    $sql = 'INSERT INTO bda_tipo_suelo (tis_descripcion) VALUES (:descripcion)';
     $params = array(
-        ':tis_descripcion' => $this->getDescripcion(),
+        ':descripcion' => $this->getDescripcion()
     );
-    $respuesta = $conn->prepare($sql);
-    $respuesta->execute($params);
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
@@ -68,13 +66,13 @@ class tipoSueloTable extends tipoSueloBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE dba_tipo_suelo SET tis_descripcion = :tis_descripcion WHERE tis_id = :tis_id';
+    $sql = 'UPDATE bda_tipo_suelo SET tis_descripcion = :descripcion WHERE tis_id = :id';
     $params = array(
-        ':tis_id' => $this->getId(),
-        ':tis_descripcion' => $this->getDescripcion()
+        ':descripcion' => $this->getDescripcion(),
+        ':id' => $this->getId()
     );
-    $respuesta = $conn->prepare($sql);
-    $respuesta->execute($params);
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
     return true;
   }
 
@@ -88,20 +86,20 @@ class tipoSueloTable extends tipoSueloBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':tis_id' => $this->getId()
+        ':id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE dba_tipo_suelo SET deleted_at = now() WHERE tis_id = :tis_id';
+        $sql = 'UPDATE bda_tipo_suelo SET tis_deleted_at = now() WHERE tis_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM dba_tipo_suelo WHERE tis_id = :tis_id';
+        $sql = 'DELETE FROM bda_tipo_suelo WHERE tis_id = :id';
         break;
       default:
-        throw new PDOException('Por favor borre de verdad, no sea mañoso');
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
     }
-    $respuesta = $conn->prepare($sql);
-    $respuesta->execute($params);
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
     return true;
   }
 

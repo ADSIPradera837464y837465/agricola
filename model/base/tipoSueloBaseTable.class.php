@@ -13,7 +13,6 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-
 class tipoSueloBaseTable extends model {
   
   /**
@@ -34,27 +33,27 @@ class tipoSueloBaseTable extends model {
   /**
    * Registra la fecha y hora de la creacion de un registro en la tabla tipo de suelo
    */
-  const CREATED_AT = 'created_at';
+  const CREATED_AT = 'tis_created_at';
   
   /**
    * Registra la fecha y hora de la actualización de un registro en la tabla tipo de suelo
    */
-  const UPDATED_AT = 'update_at';
+  const UPDATED_AT = 'tis_updated_at';
   
   /**
    * Registra la fecha y hora del borrado lógico de un registro en la tabla tipo de suelo
    */
-  const DELETED_AT = 'deleted_at';
+  const DELETED_AT = 'tis_deleted_at';
   
   /**
    * Sequencia del indentificador de la tabla
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_tipo_suelo_tis_id_seq';
   
   /**
    * Nombre de la tabla
    */
-  const _TABLE = 'dba_tipo_suelo';
+  const _TABLE = 'bda_tipo_suelo';
   
   /**
    * Configuración del sistema
@@ -78,47 +77,37 @@ class tipoSueloBaseTable extends model {
    * Registra la fecha y hora de la creacion de un registro en la tabla tipo de suelo
    * @var date_time 
    */
-  private $createdAt;
+  private $created_at;
   
   /**
    * Registra la fecha y hora de la actualización de un registro en la tabla tipo de suelo
    * @var date_time 
    */
-  private $upDatedAt;
+  private $updated_at;
   
   /**
    * Registra la fecha y hora del borrado lógico de un registro en la tabla tipo de suelo
    * @var date_time 
    */
-  private $deletedAt;
+  private $deleted_at;
   
   /**
    * Constructor de la clase tipoSueloBaseTable
-   * @version 1.0.0
    * @param config $config
-   * @param integer $id
-   * @param string $descripcion
-   * @param date_time $createdAt
-   * @param date_time $upDatedAt
-   * @param date_time $deletedAt
+   * @param type $id
+   * @param type $descripcion
+   * @param type $created_at
+   * @param type $updated_at
+   * @param type $deleted_at
    */
   
-  public function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $upDatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->createdAt = $createdAt;
-    $this->upDatedAt = $upDatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-  
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -145,7 +134,7 @@ class tipoSueloBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
   
   /**
@@ -153,8 +142,8 @@ class tipoSueloBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function getUpDatedAt() {
-    return $this->upDatedAt;
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   /**
@@ -163,16 +152,7 @@ class tipoSueloBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -198,8 +178,8 @@ class tipoSueloBaseTable extends model {
    * @version 1.0.0
    * @param date_time $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -207,8 +187,8 @@ class tipoSueloBaseTable extends model {
    * @version 1.0.0
    * @param date_time $upDatedAt
    */
-  public function setUpDatedAt($upDatedAt) {
-    $this->upDatedAt = $upDatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -216,9 +196,8 @@ class tipoSueloBaseTable extends model {
    * @version 1.0.0
    * @param date_time $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
-
 
 }

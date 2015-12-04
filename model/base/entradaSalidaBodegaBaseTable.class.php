@@ -58,7 +58,7 @@ class entradaSalidaBodegaBaseTable extends model {
   /**
    * Fecha de actualizacion del registro
    */
-  const UPDATED_AT = 'esb_created_at';
+  const UPDATED_AT = 'esb_updated_at';
 
   /**
    * Fecha de eliminacion del registro
@@ -68,7 +68,7 @@ class entradaSalidaBodegaBaseTable extends model {
   /**
    * Secuencia de la tabla para la llave primaria
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_entrada_salida_bodega_esb_id_seq';
 
   /**
    * Nombre de la tabla
@@ -90,83 +90,74 @@ class entradaSalidaBodegaBaseTable extends model {
    * Foranea de la tabla bda_tercero
    * @var integer 
    */
-  private $terIdElabora;
+  private $tercero_id_elabora;
 
   /**
    * Foranea de la tabla bda_tercero
    * @var integer 
    */
-  private $terIdSolicita;
+  private $tercero_id_solicita;
 
   /**
    * Foranea de la tabla bda_tipo_documento
    * @var integer 
    */
-  private $tpdId;
+  private $tipo_documento_id;
 
   /**
    * Fecha de la tabla
    * @var date 
    */
-  private $esbFecha;
+  private $fecha;
 
   /**
    * Observación de la tabla
    * @var string 
    */
-  private $esbObservacion;
+  private $observacion;
 
   /**
    * Fecha de creación del registro
    * @var date_time 
    */
-  private $esbCreatedAt;
+  private $created_at;
 
   /**
    * Fecha de actualización del registro
    * @var date_time
    */
-  private $esbUpdatedAt;
+  private $updated_at;
 
   /**
    * Fecha de elimincación del registro
    * @var date _time
    */
-  private $esbDeletedAt;
+  private $deleted_at;
 
   /**
    * Constructor de la clase entradaSalidaBodegBaseTable
    * @param config $config
    * @param type $id
-   * @param type $terIdElabora
-   * @param type $terIdSolicita
-   * @param type $tpdId
-   * @param \FStudio\model\base\date $esbFecha
-   * @param type $esbObservacion
-   * @param \FStudio\model\base\date_time $esbCreatedAt
-   * @param \FStudio\model\base\date_time $esbUpdatedAt
-   * @param \FStudio\model\base\date $esbDeletedAt
+   * @param type $tercero_id_elabora
+   * @param type $tercero_id_solicita
+   * @param type $tipo_documento_id
+   * @param type $fecha
+   * @param type $observacion
+   * @param type $created_at
+   * @param type $updated_at
+   * @param type $deleted_at
    */
-  public function __construct(config $config, $id = null, $terIdElabora = null, $terIdSolicita = null, $tpdId = null, date $esbFecha = null, $esbObservacion = null, date_time $esbCreatedAt = null, date_time $esbUpdatedAt = null, date $esbDeletedAt = null) {
+  public function __construct(config $config, $id = null, $tercero_id_elabora = null, $tercero_id_solicita = null, $tipo_documento_id = null, $fecha = null, $observacion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
-    $this->terIdElabora = $terIdElabora;
-    $this->terIdSolicita = $terIdSolicita;
-    $this->tpdId = $tpdId;
-    $this->esbFecha = $esbFecha;
-    $this->esbObservacion = $esbObservacion;
-    $this->esbCreatedAt = $esbCreatedAt;
-    $this->esbUpdatedAt = $esbUpdatedAt;
-    $this->esbDeletedAt = $esbDeletedAt;
-  }
-
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->tercero_id_elabora = $tercero_id_elabora;
+    $this->tercero_id_solicita = $tercero_id_solicita;
+    $this->tipo_documento_id = $tipo_documento_id;
+    $this->fecha = $fecha;
+    $this->observacion = $observacion;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -183,8 +174,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function getTerIdElabora() {
-    return $this->terIdElabora;
+  public function getTerceroIdElabora() {
+    return $this->tercero_id_elabora;
   }
 
   /**
@@ -192,8 +183,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function getTerIdSolicita() {
-    return $this->terIdSolicita;
+  public function getTerceroIdSolicita() {
+    return $this->tercero_id_solicita;
   }
 
   /**
@@ -201,16 +192,16 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function getTpdId() {
-    return $this->tpdId;
+  public function getTipoDocumentoId() {
+    return $this->tipo_documento_id;
   }
 
   /**
    * Almacena la fecha de la tabla
    * @return date
    */
-  public function getEsbFecha() {
-    return $this->esbFecha;
+  public function getFecha() {
+    return $this->fecha;
   }
 
   /**
@@ -218,8 +209,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return string
    */
-  public function getEsbObservacion() {
-    return $this->esbObservacion;
+  public function getObservacion() {
+    return $this->observacion;
   }
 
   /**
@@ -227,8 +218,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function getEsbCreatedAt() {
-    return $this->esbCreatedAt;
+  public function getCreatedAt() {
+    return $this->created_at;
   }
 
   /**
@@ -236,8 +227,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function getEsbUpdatedAt() {
-    return $this->esbUpdatedAt;
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   /**
@@ -245,17 +236,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function getEsbDeletedAt() {
-    return $this->esbDeletedAt;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+  public function getDeletedAt() {
+    return $this->deleted_at;
   }
 
   /**
@@ -272,8 +254,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param integer $terIdElabora
    */
-  public function setTerIdElabora($terIdElabora) {
-    $this->terIdElabora = $terIdElabora;
+  public function setTerceroIdElabora($tercero_id_elabora) {
+    $this->tercero_id_elabora = $tercero_id_elabora;
   }
 
   /**
@@ -281,8 +263,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param integer $terIdSolicita
    */
-  public function setTerIdSolicita($terIdSolicita) {
-    $this->terIdSolicita = $terIdSolicita;
+  public function setTerceroIdSolicita($tercero_id_solicita) {
+    $this->tercero_id_solicita = $tercero_id_solicita;
   }
 
   /**
@@ -290,8 +272,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param integer $tpdId
    */
-  public function setTpdId($tpdId) {
-    $this->tpdId = $tpdId;
+  public function setTipoDocumentoId($tipo_documento_id) {
+    $this->tipo_documento_id = $tipo_documento_id;
   }
 
   /**
@@ -299,8 +281,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param integer $esbFecha
    */
-  public function setEsbFecha(date $esbFecha) {
-    $this->esbFecha = $esbFecha;
+  public function setFecha($fecha) {
+    $this->fecha = $fecha;
   }
 
   /**
@@ -308,8 +290,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param string $esbObservacion
    */
-  public function setEsbObservacion($esbObservacion) {
-    $this->esbObservacion = $esbObservacion;
+  public function setObservacion($observacion) {
+    $this->observacion = $observacion;
   }
 
   /**
@@ -317,8 +299,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param date_time $esbCreatedAt
    */
-  public function setEsbCreatedAt(date_time $esbCreatedAt) {
-    $this->esbCreatedAt = $esbCreatedAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -326,8 +308,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param date_time $esbUpdatedAt
    */
-  public function setEsbUpdatedAt(date_time $esbUpdatedAt) {
-    $this->esbUpdatedAt = $esbUpdatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -335,8 +317,8 @@ class entradaSalidaBodegaBaseTable extends model {
    * @version 1.0.0
    * @param date_time $esbDeletedAt
    */
-  public function setEsbDeletedAt(date $esbDeletedAt) {
-    $this->esbDeletedAt = $esbDeletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

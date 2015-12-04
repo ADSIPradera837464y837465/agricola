@@ -13,138 +13,126 @@ use FStudio\myConfig as config;
  * @subpackage base
  * @version 1.0.0
  */
-
 class suerteBaseTable extends model {
-  
+
   /**
    * ID de la tabla
    */
   const ID = 'sue_id';
-  
+
   /**
    * Contiene la descripcion del suelo
    */
   const DESCRIPCION = 'sue_descripcion';
-  
+
   /**
    * Longitud del campo DESCRIPCION
    */
   const DESCRIPCION_LENGTH = 80;
-  
+
   /**
    * Contiene el id del area del suelo
    */
   const AREA = 'sue_area';
   
   /**
-   * Registra la fecha y hora de la creacion de un registro en la tabla suerte
-   */
-  const CREATED_AT = 'created_at';
-  
-  /**
-   * Registra la fecha y hora de la actualización de un registro en la tabla suerte
-   */
-  const UPDATED_AT = 'update_at';
-  
-  /**
-   * Registra la fecha y hora del borrado lógico de un registro en la tabla suerte
-   */
-  const DELETED_AT = 'deleted_at';
-  
-  /**
    * Foranea de la tabla tipo suelo
    */
   const TIPO_SUELO_ID = 'tis_id';
-  
+
+  /**
+   * Registra la fecha y hora de la creacion de un registro en la tabla suerte
+   */
+  const CREATED_AT = 'sue_created_at';
+
+  /**
+   * Registra la fecha y hora de la actualización de un registro en la tabla suerte
+   */
+  const UPDATED_AT = 'sue_updated_at';
+
+  /**
+   * Registra la fecha y hora del borrado lógico de un registro en la tabla suerte
+   */
+  const DELETED_AT = 'sue_deleted_at';
+
   /**
    * Sequencia del indentificador de la tabla
    */
-  const _SEQUENCE = '';
-  
+  const _SEQUENCE = 'bda_suerte_sue_id_seq';
+
   /**
    * Nombre de la tabla
    */
   const _TABLE = 'bda_suerte';
-  
+
   /**
    * Configuración del sistema
    * @var config
    */
   protected $config;
-  
+
   /**
    * ID de la tabla
    * @var integer
    */
   private $id;
-  
+
   /**
    * Contiene la descripcion del suelo
-   * @var string 
+   * @var string
    */
   private $descripcion;
-  
+
   /**
    * Contiene el id del area del suelo
-   * @var integer 
+   * @var integer
    */
   private $area;
-  
-  /**
-   * Registra la fecha y hora de la creacion de un registro en la tabla suerte
-   * @var date_time 
-   */
-  private $createdAt;
-  
-  /**
-   * Registra la fecha y hora de la actualización de un registro en la tabla suerte
-   * @var date_time 
-   */
-  private $upDatedAt;
-  
-  /**
-   * Registra la fecha y hora del borrado lógico de un registro en la tabla suerte
-   * @var date_time 
-   */
-  private $deletedAt;
-  
+
   /**
    * Foranea de la tabla tipo suelo
-   * @var integer 
+   * @var integer
    */
-  private $tipoSueloId;
-  
+  private $tipo_suelo_id;
+
+  /**
+   * Registra la fecha y hora de la creacion de un registro en la tabla suerte
+   * @var date_time
+   */
+  private $created_at;
+
+  /**
+   * Registra la fecha y hora de la actualización de un registro en la tabla suerte
+   * @var date_time
+   */
+  private $updated_at;
+
+  /**
+   * Registra la fecha y hora del borrado lógico de un registro en la tabla suerte
+   * @var date_time
+   */
+  private $deleted_at;
+
   /**
    * Constructor de la clase suerteBaseTable
-   * @version 1.0.0
    * @param config $config
-   * @param integer $id
-   * @param string $descripcion
-   * @param integer $area
-   * @param date_time $createdAt
-   * @param date_time $upDatedAt
-   * @param date_time $deletedAt
-   * @param integer $tipoSueloId
+   * @param type $id
+   * @param type $descripcion
+   * @param type $area
+   * @param type $tipo_suelo_id
+   * @param type $created_at
+   * @param type $updated_at
+   * @param type $deleted_at
    */
-  
-  public function __construct(config $config, $id = null, $descripcion = null, $area = null, $createdAt = null, $upDatedAt = null, $deletedAt = null, $tipoSueloId = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $area = null, $tipo_suelo_id = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
     $this->area = $area;
-    $this->createdAt = $createdAt;
-    $this->upDatedAt = $upDatedAt;
-    $this->deletedAt = $deletedAt;
-    $this->tipoSueloId = $tipoSueloId;
-  }
-  
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->tipo_suelo_id = $tipo_suelo_id;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -175,21 +163,30 @@ class suerteBaseTable extends model {
   }
 
   /**
+   * Obtiene el identificador de la tabla tipo de suelo
+   * @version 1.0.0
+   * @return integer
+   */
+  public function getTipoSueloId() {
+    return $this->tipo_suelo_id;
+  }
+
+  /**
    * Obtiene la hora y fecha de la creacion de un registro en la tabla suerte
    * @version 1.0.0
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
-  
+
   /**
    * Obtiene la hora y fecha de la actualización de un registro en la tabla suerte
    * @version 1.0.0
    * @return date_time
    */
-  public function getUpDatedAt() {
-    return $this->upDatedAt;
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   /**
@@ -198,25 +195,7 @@ class suerteBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Obtiene el identificador de la tabla tipo de suelo
-   * @version 1.0.0
-   * @return integer
-   */
-  public function getTipoSueloId() {
-    return $this->tipoSueloId;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -247,12 +226,21 @@ class suerteBaseTable extends model {
   }
 
   /**
+   * Fija la foranea de la tabla tipo suelo
+   * @version 1.0.0
+   * @param integer $tipoSueloId
+   */
+  public function setTipoSueloId($tipo_suelo_id) {
+    $this->tipo_suelo_id = $tipo_suelo_id;
+  }
+  
+  /**
    * Fija la hora y fecha de la cracion de un registro en la tabla
    * @version 1.0.0
    * @param date_time $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -260,8 +248,8 @@ class suerteBaseTable extends model {
    * @version 1.0.0
    * @param date_time $upDatedAt
    */
-  public function setUpDatedAt($upDatedAt) {
-    $this->upDatedAt = $upDatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -269,17 +257,8 @@ class suerteBaseTable extends model {
    * @version 1.0.0
    * @param date_time $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * Fija la foranea de la tabla tipo suelo
-   * @version 1.0.0
-   * @param integer $tipoSueloId
-   */
-  public function setTipoSueloId($tipoSueloId) {
-    $this->tipoSueloId = $tipoSueloId;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }
