@@ -19,7 +19,7 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT des_id AS id, esb_id AS id2, pro_id  AS id3, unm_id  As id4, des_cantidad  As cantidad ,des_precio AS precio, des_created_at As createdAt, des_updated_at As updatedAt, des_deleted_at As deletedAt FROM bda_detalle_entrada_salida_bodega  WHERE des_deleted_at IS NULL ORDER BY des_created_at ASC';
+    $sql = 'SELECT des_id AS desId, esb_id AS esbId, pro_id  AS proId, unm_id  As umnId, des_cantidad  As cantidad ,des_precio AS precio, des_created_at As createdAt, des_updated_at As updatedAt, des_deleted_at As deletedAt FROM bda_detalle_entrada_salida_bodega  WHERE des_deleted_at IS NULL ORDER BY des_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,13 +31,13 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id = null) {
+  public function getById($desId = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT des_id AS id, esb_id AS id2, pro_id  AS id3, unm_id  As id4, des_cantidad  As cantidad ,des_precio AS precio, des_created_at As createdAt, des_updated_at As updatedAt, des_deleted_at As deletedAt'
+    $sql = 'SELECT des_id AS desId, esb_id AS esbId, pro_id  AS proId, unm_id  As umnId, des_cantidad  As cantidad ,des_precio AS precio, des_created_at As createdAt, des_updated_at As updatedAt, des_deleted_at As deletedAt'
             . 'FROM bda_detalle_entrada_salida_bodega WHERE des_deleted_at IS NULL '
-            . 'AND des_id = :id';
+            . 'AND des_id = :desId';
     $params = array(
-        ':des_id' => ($id !== null) ? $id : $this->getById()
+        ':des_id' => ($desId !== null) ? $desId : $this->getById()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -72,7 +72,7 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_detalle_entrada_salida_bodega SET esb_id = :esb_id, pro_id = :pro_id , unm_id = :unm_id ,des_cantidad = :des_cantidad, des_precio = :des_precio WHERE id = :id';
+    $sql = 'UPDATE bda_detalle_entrada_salida_bodega SET esb_id = :esb_id, pro_id = :pro_id , unm_id = :unm_id ,des_cantidad = :des_cantidad, des_precio = :des_precio WHERE des_id = :desId';
     $params = array(
         ':esb_id'=> $this->getEsbId(), 
         ':pro_id' => $this->getProId(),
