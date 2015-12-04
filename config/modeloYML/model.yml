@@ -259,7 +259,7 @@ schema:
     name:               usuario_rol
     columns:
       url_id:           { name: id, constraint: PK, sequence: bda_unidad_medida_unm_id_seq }
-      usr_usuario_id:   { name: usuario_id }
+      usr_id:           { name: usuario_id }
       rol_id:           { name: rol_id }
       url_created_at:   { name: created_at, behavior: created }
 
@@ -318,9 +318,9 @@ schema:
       der_hora_inicio:            { name: hora_inicio }
       der_hora_fin:               { name: hora_fin }
       der_cantidad:               { name: cantidad }
-      der_created_at:             { name: created_at, behavier: created }
-      der_updated_at:             { name: updated_at, behavier: updated }
-      der_deleted_at:             { name: deleted_at, behavier: deleted }
+      der_created_at:             { name: created_at, behavior: created }
+      der_updated_at:             { name: updated_at, behavior: updated }
+      der_deleted_at:             { name: deleted_at, behavior: deleted }
 
   bda_entrada_salida_bodega:
     name:                         entrada_salida_bodega
@@ -331,9 +331,9 @@ schema:
       tpd_id:                     { name: tipo_documento_id }
       esb_fecha:                  { name: fecha }
       esb_observacion:            { name: observacion, length: 1024 }
-      esb_created_at:             { name: created_at, behavier: created }
-      esb_updated_at:             { name: updated_at, behavier: updated }
-      esb_deleted_at:             { name: deleted_at, behavier: deleted }
+      esb_created_at:             { name: created_at, behavior: created }
+      esb_updated_at:             { name: updated_at, behavior: updated }
+      esb_deleted_at:             { name: deleted_at, behavior: deleted }
 
   bda_hacienda:
     name:                         hacienda
@@ -342,9 +342,9 @@ schema:
       hac_descripcion:            { name: descripcion, length: 80 }
       hac_ubicacion:              { name: ubicacion, length: 100 }
       hac_representante_legal:    { name: representante_legal, length: 100 }
-      hac_created_at:             { name: created_at, behavier: created }
-      hac_updated_at:             { name: updated_at, behavier: updated }
-      hac_deleted_at:             { name: deleted_at, behavier: deleted }
+      hac_created_at:             { name: created_at, behavior: created }
+      hac_updated_at:             { name: updated_at, behavior: updated }
+      hac_deleted_at:             { name: deleted_at, behavior: deleted }
 
   bda_labores_maqina_equipo:
     name:                            labores_maquina_equipo
