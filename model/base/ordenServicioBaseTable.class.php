@@ -1,8 +1,13 @@
 <?php
 
+namespace FStudio\model\base;
+
+use FStudio\fsModel as model;
+use FStudio\myConfig as config;
+
 /**
  * Description of ordenServicioBaseTable
- * @author merian montaño<nichesitap@hotmail.com>
+ * @author marian montaño<nichesitap@hotmail.com>
  * @package 
  * @subpackage model
  * @subpackage base
@@ -10,41 +15,43 @@
  */
 class ordenServicioBaseTable extends model {
 
-  /**
-   * ID de la tabla
-   */
   const ID = 'ors_id';
-
-  /**
-   * foranea de la tabla maquina
-   */
-  const MAQID = 'maq_id';
-
-  /**
-   * foranea de la tabla tipo mantenimiento
-   */
-  const TMAID = 'tma_id';
-
-  /**
-   * foranea de la tabla tercero elabora
-   */
-  const TERELABORAID = 'ter_id_elabora';
-
-  /**
-   * foranea de la tabla tercero realiza
-   */
-  const TERREALIZAID = 'ter_id_realiza';
-
-  /**
-   * fecha de la orden de servicio
-   */
+  const MAQUINA_ID = 'maq_id';
+  const TIPO_MANTENIMIENTO_ID = 'tma_id';
+  const TERCERO_ID_ELABORA = 'ter_id_elabora';
+  const TERCERO_ID_REALIZA = 'ter_id_realiza';
   const FECHA = 'ors_fecha';
 
   /**
    * descripcion de la orden de servicio
    */
   const OBSERVACION = 'ors_observacion';
-  const OBSERVACION_LENGTH = 80;
+  const OBSERVACION_LENGTH = 1024;
+
+  /**
+   * Fecha y hora  de creacion del registro
+   */
+  const CREATED_AT = 'ors_created_at';
+
+  /**
+   * Fecha y hora para controlar el borrado lógico
+   */
+  const UPDATED_AT = 'ors_updated_at';
+
+  /**
+   * Fecha y hora para controlar el borrado lógico
+   */
+  const DELETED_AT = 'ors_deleted_at';
+
+  /**
+   * Secuencia de la tabla 
+   */
+  const _SEQUENCE = 'bda_orden_servicio_ors_id_seq';
+
+  /**
+   * nombre de la tabla
+   */
+  const _TABLE = 'bda_orden_servicio';
 
   /**
    * @version 1.0.0
@@ -57,61 +64,61 @@ class ordenServicioBaseTable extends model {
    * ID de la tabla
    * @var integer
    */
-  private $orsId;
+  private $id;
 
   /**
    * id e la tabla maquina foranea
    * @var integer
    */
-  private $maqId;
+  private $maquina_id;
 
   /**
    * id de la tabla tipo mantenimiento foranea
    * @var integer
    */
-  private $tmaId;
+  private $tipo_mantenimiento_id;
 
   /**
-   * id de la taaba tercero elabora
+   * id de la tabla tercero elabora
    * @var integer
    */
-  private $terIdElabora;
+  private $tercero_id_elabora;
 
   /**
    * id de la taba tercero realiza
    * @var integer
    */
-  private $terIdRealiza;
+  private $tercero_id_realiza;
 
   /**
    *
    * @var date
    */
-  private $orsFecha;
+  private $fecha;
 
   /**
    * chequeo de la observacion
    * @var string
    */
-  private $orsObservacion;
+  private $observacion;
 
   /**
    * Fecha y hora del tipo de mantenimiento
    * @var 
    */
-  private $orsCreatedAt;
+  private $created_at;
 
   /**
    * Modificar el tipo de mantenimiento
    * @var 
    */
-  private $orsUpdatedAt;
+  private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado logico
    * @var 
    */
-  private $orsDeletedAt;
+  private $deleted_at;
 
   /**
    * 
@@ -127,107 +134,98 @@ class ordenServicioBaseTable extends model {
    * @param type $orsUpdatedAt
    * @param type $orsDeletedAt
    */
-  function __construct($config, $orsId = null, $maqId = null, $tmaId = null, $terIdElabora = null, $terIdRealiza = null, $orsFecha = null, $orsObservacion = null, $orsCreatedAt = null, $orsUpdatedAt = null, $orsDeletedAt = null) {
+  public function __construct(config $config, $id = null, $maquina_id = null, $tipo_mantenimiento_id = null, $tercero_id_elabora = null, $tercero_id_realiza = null, $fecha = null, $observacion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
-    $this->orsId = $orsId;
-    $this->maqId = $maqId;
-    $this->tmaId = $tmaId;
-    $this->terIdElabora = $terIdElabora;
-    $this->terIdRealiza = $terIdRealiza;
-    $this->orsFecha = $orsFecha;
-    $this->orsObservacion = $orsObservacion;
-    $this->orsCreatedAt = $orsCreatedAt;
-    $this->orsUpdatedAt = $orsUpdatedAt;
-    $this->orsDeletedAt = $orsDeletedAt;
-  }
-
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  function getConfig() {
-    return $this->config;
+    $this->id = $id;
+    $this->maquina_id = $maquina_id;
+    $this->tipo_mantenimiento_id = $tipo_mantenimiento_id;
+    $this->tercero_id_elabora = $tercero_id_elabora;
+    $this->tercero_id_realiza = $tercero_id_realiza;
+    $this->fecha = $fecha;
+    $this->observacion = $observacion;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
    * Retorna el id de la orden de servicio
    * @return integer
    */
-  function getOrsId() {
-    return $this->orsId;
+  public function getId() {
+    return $this->id;
   }
 
   /**
    * retorna el id de tabla maquina
    * @return integer
    */
-  function getMaqId() {
-    return $this->maqId;
+  public function getMaquinaId() {
+    return $this->maquina_id;
   }
 
   /**
    * retorma el id de la tabla tipo mantenimiento 
    * @return integer
    */
-  function getTmaId() {
-    return $this->tmaId;
+  public function getTipoMantenimientoId() {
+    return $this->tipo_mantenimiento_id;
   }
 
   /**
    * retorna de la tabla tercero elabora
    * @return integer
    */
-  function getTerIdElabora() {
-    return $this->terIdElabora;
+  public function getTerceroIdElabora() {
+    return $this->tercero_id_elabora;
   }
 
   /**
    * retorma el id de la tabla tercero realiza
    * @return integer
    */
-  function getTerIdRealiza() {
-    return $this->terIdRealiza;
+  public function getTerceroIdRealiza() {
+    return $this->tercero_id_realiza;
   }
 
   /**
    * Retorna la fecha de la creacion de la orden de servicio
    * @return date
    */
-  function getOrsFecha() {
-    return $this->orsFecha;
+  public function getFecha() {
+    return $this->fecha;
   }
 
   /**
    * retorna el chequeo de la informacion
    * @return string
    */
-  function getOrsObservacion() {
-    return $this->orsObservacion;
+  public function getObservacion() {
+    return $this->observacion;
   }
 
   /**
    * Retorna la creacion de una orden de servicio
    * @return 
    */
-  function getOrsCreatedAt() {
-    return $this->orsCreatedAt;
+  public function getCreatedAt() {
+    return $this->created_at;
   }
 
   /**
    * Retorna la modificasion de una orden de servicio
    * @return 
    */
-  function getOrsUpdatedAt() {
-    return $this->orsUpdatedAt;
+  public function getUpdatedAt() {
+    return $this->updated_at;
   }
 
   /**
    * Retorna la eliminacion de una orden de servicio
    * @return 
    */
-  function getOrsDeletedAt() {
-    return $this->orsDeletedAt;
+  public function getDeletedAt() {
+    return $this->deleted_at;
   }
 
   /**
@@ -243,80 +241,80 @@ class ordenServicioBaseTable extends model {
    * Retorna el id de la orden
    * @param integer
    */
-  function setOrsId($orsId) {
-    $this->orsId = $orsId;
+  public function setId($id) {
+    $this->id = $id;
   }
 
   /**
    * Retorna el id de la maquina
    * @param integer
    */
-  function setMaqId($maqId) {
-    $this->maqId = $maqId;
+  public function setMaquinaId($maquina_id) {
+    $this->maquina_id = $maquina_id;
   }
 
   /**
    * Retorna el id del tipo mantenimiento
    * @param integer
    */
-  function setTmaId($tmaId) {
-    $this->tmaId = $tmaId;
+  public function setTipoMantenimientoId($tipo_mantenimiento_id) {
+    $this->tipo_mantenimiento_id = $tipo_mantenimiento_id;
   }
 
   /**
    * Retorna el id del tercero elabora
    * @param integer
    */
-  function setTerIdElabora($terIdElabora) {
-    $this->terIdElabora = $terIdElabora;
+  public function setTerceroIdElabora($tercero_id_elabora) {
+    $this->tercero_id_elabora = $tercero_id_elabora;
   }
 
   /**
    * Retorna el id del tercero realiza
    * @param integer
    */
-  function setTerIdRealiza($terIdRealiza) {
-    $this->terIdRealiza = $terIdRealiza;
+  public function setTerceroIdRealiza($tercero_id_realiza) {
+    $this->tercero_id_realiza = $tercero_id_realiza;
   }
 
   /**
    * retorna la fecha de la orden
    * @param date $orsFecha
    */
-  function setOrsFecha($orsFecha) {
-    $this->orsFecha = $orsFecha;
+  public function setFecha($fecha) {
+    $this->fecha = $fecha;
   }
 
   /**
    * retorna el chequeo de la observacio
    * @param integer $orsObservacion
    */
-  function setOrsObservacion($orsObservacion) {
-    $this->orsObservacion = $orsObservacion;
+  public function setObservacion($observacion) {
+    $this->observacion = $observacion;
   }
 
   /**
    * retorna la creacion de una nueva orden de servicio
    * @param type $orsCreatedAt
    */
-  function setOrsCreatedAt($orsCreatedAt) {
-    $this->orsCreatedAt = $orsCreatedAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
    * retorna la modificasion de la orden de servicio
    * @param type $orsUpdatedAt
    */
-  function setOrsUpdatedAt($orsUpdatedAt) {
-    $this->orsUpdatedAt = $orsUpdatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
    * retorna la eliminacion de una orden de servicio
    * @param type $orsDeletedAt
    */
-  function setOrsDeletedAt($orsDeletedAt) {
-    $this->orsDeletedAt = $orsDeletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+use FStudio\model\base\tipoMantenimientoBaseTable;
+
 /**
  * Description of tipoMantenimientoTable
  * @author mariam montaño <nichesitap@hotmail.com>
@@ -12,7 +14,7 @@ class tipoMantenimientoTable extends tipoMantenimientoBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tma_id, tma_descripcion,tma_created_at, tma_updated_at, tma_deleted_at FROM tipoMantenimiento ORDER BY tma_created_at ASC';
+    $sql = 'SELECT tma_id AS id, tma_descripcion AS descripcion, tma_created_at AS created_at, tma_updated_at AS updated_at, tma_deleted_at AS deleted_at FROM bda_tipo_mantenimiento WHERE tma_deleted_at IS NULL ORDER BY tma_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -20,11 +22,9 @@ class tipoMantenimientoTable extends tipoMantenimientoBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tma_id, tma_descripcion, tma_created_at, tma_updated_at, tma_deleted_at '
-            . 'FROM tipoMantenimiento '
-            . 'AND tma_id = :tma_id';
+    $sql = 'SELECT tma_id AS id, tma_descripcion AS descripcion, tma_created_at AS created_at, tma_updated_at AS updated_at, tma_deleted_at AS deleted_at FROM bda_tipo_mantenimiento WHERE tma_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':tma_id' => ($id = null) ? $id : $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -33,34 +33,43 @@ class tipoMantenimientoTable extends tipoMantenimientoBaseTable {
 
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO tipoMantenimiento (descripcion) VALUES (:descripcion)';
+    $sql = 'INSERT INTO bda_tipo_mantenimiento (tma_descripcion) VALUES (:descripcion)';
     $params = array(
-        ':descripcion' => $this->getdescripcion()
+        ':descripcion' => $this->getDescripcion()
     );
-
-
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE tipoMantenimiento SET descripcion = :descripcion WHERE id = :id';
+    $sql = 'UPDATE bda_tipo_mantenimiento SET tma_descripcion = :descripcion WHERE tma_id = :id';
     $params = array(
-        ':descripcion' => $this->getdescripcion()
+        ':descripcion' => $this->getDescripcion(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
   }
 
-  public function delete() {
+  public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM tipoMantenimiento WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_tipo_mantenimiento SET tma_deleted_at = now() WHERE tma_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_tipo_mantenimiento WHERE tma_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
