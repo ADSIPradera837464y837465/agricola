@@ -1,0 +1,44 @@
+bda_suerte:
+  name:               suerte
+  columns:
+    sue_id:           { name: id, constraint: PK, sequence: bda_suerte_sue_id_seq }
+    sue_descripcion:  { name: descripcion, length: 80 }
+    sue_area:         { name: area }
+    tis_id:           { name: tipo_suelo_id }
+    sue_created_at:   { name: created_at, behavior: created }
+    sue_updated_at:   { name: updated_at, behavior: updated }
+    sue_deleted_at:   { name: deleted_at, behavior: deleted }
+
+bda_tipo_cana:
+  name:               tipo_cana
+  columns:
+    tic_id:           { name: id, constraint: PK, sequence: bda_tipo_cana_tic_id_seq }
+    tic_descripcion:  { name: descripcion, length: 80 }
+    tic_created_at:   { name: created_at, behavior: created }
+    tic_updated_at:   { name: updated_at, behavior: updated }
+    tic_deleted_at:   { name: deleted_at, behavior: deleted }
+
+bda_tercero:
+  name:               tercero
+  columns:
+    ter_id:           { name: id, constraint: PK, sequence: bda_tercero_ter_id_seq }
+    ter_nombre:       { name: nombre, length: 80 }
+    ter_apellido:     { name: apellido, length: 80 }
+    ter_telefono:     { name: telefono, length: 20 }
+    ter_direccion:    { name: direccion, length: 100 }
+    ter_correo:       { name: correo, length: 100 }
+    car_id:           { name: cargo_id }
+    tpi_id:           { name: tipo_id }
+    tit_id:           { name: tipo_tercero_id }
+    ter_created_at:   { name: created_at, behavior: created }
+    ter_updated_at:   { name: updated_at, behavior: updated }
+    ter_deleted_at:   { name: deleted_at, behavior: deleted }
+    
+    
+    
+    
+
+    
+    
+    
+    
