@@ -47,9 +47,9 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_tipo_tercero (tit_descripcion) VALUES (:descripcion)';
+    $sql = 'INSERT INTO bda_tipo_tercero (tit_descripcion) VALUES (:tit_descripcion)';
     $params = array(
-        ':descripcion' => $this->getDescripcion()
+        ':tit_descripcion' => $this->getDescripcion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -63,9 +63,9 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_tipo_tercero SET tit_descipcion = :descripcion WHERE id = :id';
+    $sql = 'UPDATE bda_tipo_tercero SET tit_descipcion = :tit_descripcion WHERE tit_id = :tit_id';
     $params = array(
-        ':id' => $this->getId()
+        ':tit_id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);

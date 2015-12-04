@@ -2,7 +2,7 @@
 <div class="container container-fluid">
   <h1>CRUD de la tabla Tipo Tercero</h1>
   <p>
-    <a href="<?php echo $fsConfig->getUrl() ?>index.php/tipoTercero/nuevo" class="btn btn-success">Nuevo</a>
+    <a href="<?php echo $fsConfig->getUrl()?>index.php/tipoTercero/nuevo" class="btn btn-success">Nuevo</a>
   </p>
   <table class="table table-bordered table-striped">
     <thead>

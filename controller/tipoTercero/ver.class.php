@@ -25,7 +25,7 @@ class ver extends controller implements action {
 
     $this->objTipoTercero = $tipoTercero->getById($id);
 
-    $this->defineView('tipoTercero', 'ver', 'html');
+    $this->defineView('tipoTercero', 'verView', 'html');
   }
 
 }

@@ -1,32 +1,32 @@
 <?php
-use azucar\myConfig\myConfig as config;
-use azucar\controller\controller;
-use azucar\view\view;
-include config::getPath() . 'model/personaTable.Class.php';
+
+require_once '../model/base/tipoTerceroBaseTable.class.php';
+require_once '../model/tipoTerceroTable.class.php';
+
+use FStudio\fsController as controller;
+use FStudio\interfaces\fsAction as action;
 
 /**
- * Description of crear
+ * Description of crear.class.php
  *
- * @author xubuntu
+ * @author Jordan Marles <jordanmarles@hotmail.es>
+ * @package FStudio
+ * @subpackage controller
+ * @subpackage ver.class.php
+ * @version 1.0.0
  */
-class crear extends controller{
+class crear extends controller implements action{
   
   public function execute() {
     
-    $formPersona = filter_input_array(INPUT_POST)['persona'];
+    $config = $this->getConfig();
     
-//    $nombre = filter_input(INPUT_POST, 'nombre');
+    $descripcion = filter_input_array(INPUT_POST)['descripcion'];    
+    $tipoTercero = new tipoTerceroTable($config);
+    $tipoTercero->setDescripcion($descripcion['descripcion']);
+    $this->objTipoTercero = $tipoTercero->save();
     
-    $persona = new personaTable();
-    $persona->setUsuario($formPersona['usuario']);
-    $persona->setNombre($formPersona['nombre']);
-    $persona->setApellido($formPersona['apellido']);
-    $persona->setFecha_nacimiento($formPersona['nacimiento']);
-    $persona->setDireccion($formPersona['direccion']);
-    $persona->setTelefono($formPersona['telefono']);
-    $persona->save();
-    
-    header('Location: ' . config::getUrl() . 'index.php/persona/index');
+    header('Location: ' . $fsConfig->getUrl() . 'index.php/tipoPersona/index');
     
     
   }

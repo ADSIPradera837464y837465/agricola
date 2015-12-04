@@ -16,7 +16,7 @@ class nuevo extends controller implements action {
 
   public function execute() {
 
-    $this->defineView('tipoTercero', 'nuevo', null, 'html');
+    $this->defineView('tipoTercero', 'nuevoView', 'html');
   }
 
 }
