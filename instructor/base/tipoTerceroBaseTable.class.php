@@ -17,7 +17,7 @@ use FStudio\myConfig as config;
 class tipoTerceroBaseTable extends model {
 
   const ID = 'tit_id';
-  const DESCRIPCION = 'tit_observacion';
+  const DESCRIPCION = 'tit_descripcion';
   const CREATED_AT = 'tit_created_at';
   const UPDATED_AT = 'tit_updated_at';
   const DELETED_AT = 'tit_deleted_at';

@@ -12,7 +12,7 @@ schema:
       hac_id:                      { name: hacienda_id }
       ter_id:                      { name: tercero_id }
       crp_created_at:              { name: created_at, behavior: created }
-      crp_updated:at:              { name: updated_at, behavior: updated }
+      crp_updated_at:              { name: updated_at, behavior: updated }
       crp_deleted_at:              { name: deleted_at, behavior: deleted }
 
   bda_control_administrativo_riego:
@@ -35,7 +35,7 @@ schema:
       car_pendiente_dir_surco:     { name: pendiente_dir_surco }
       car_agua_costado:            { name: agua_costado }
       car_created_at:              { name: created_at, behavior: created }
-      car_updated:at:              { name: updated_at, behavior: updated }
+      car_updated_at:              { name: updated_at, behavior: updated }
       car_deleted_at:              { name: deleted_at, behavior: deleted }
 
   bda_control_salida_cana:
@@ -50,7 +50,7 @@ schema:
       sue_id:                      { name: suerte_id }
       ter_id:                      { name: tercero_id }
       csc_created_at:              { name: created_at, behavior: created }
-      csc_updated:at:              { name: updated_at, behavior: updated }
+      csc_updated_at:              { name: updated_at, behavior: updated }
       csc_deleted_at:              { name: deleted_at, behavior: deleted }
 
   bda_tipo_documento:
@@ -332,7 +332,7 @@ schema:
       esb_fecha:                  { name: fecha }
       esb_observacion:            { name: observacion }
       esb_created_at:             { name: created_at, behavier: created }
-      esb_updated_at:             { name: updated_at, behavier: update  }
+      esb_updated_at:             { name: updated_at, behavier: updated }
       esb_deleted_at:             { name: deleted_at, behavier: deleted }
 
   bda_hacienda:
@@ -343,7 +343,7 @@ schema:
       hac_ubicacion:              { name: ubicacion, length: 100 }
       hac_representante_legal:    { name: representante_legal, length: 100 }
       hac_created_at:             { name: created_at, behavier: created }
-      hac_updated_at:             { name: updated_at, behavier: update  }
+      hac_updated_at:             { name: updated_at, behavier: updated }
       hac_deleted_at:             { name: deleted_at, behavier: deleted }
 
   bda_labores_maqina_equipo:
