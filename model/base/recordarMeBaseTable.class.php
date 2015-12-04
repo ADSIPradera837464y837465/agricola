@@ -8,7 +8,7 @@ use FStudio\myConfig as config;
 /**
  * clase base para la tabla recordarMe
  * @author maribel zamora <mazagi86@hotmail.com>
- * @package fStudio
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -53,7 +53,7 @@ class recordarMeBaseTable extends model {
   /**
    * secuencia de la tabla para la llave foranea
    */
-  const _SEQUENCE = '';
+  const _SEQUENCE = 'bda_recordar_me_rcm_id_seq';
 
   /**
    * nombre de la tabla
@@ -107,22 +107,13 @@ class recordarMeBaseTable extends model {
    * @param string $hashCookie
    * @param date_time $createdAt
    */
-  public function __construct(config $config, $id = null, $usuarioId = null, $ipAddress = null, $hashCookie = null, $createdAt = null) {
+  public function __construct(config $config, $id = null, $usuario_id = null, $ip_address = null, $hash_cookie = null, $created_at = null) {
     $this->config = $config;
     $this->id = $id;
-    $this->usuarioId = $usuarioId;
-    $this->ipAddress = $ipAddress;
-    $this->hashCookie = $hashCookie;
-    $this->createdAt = $createdAt;
-  }
-
-  /**
-   * retorna la configuracion del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->usuario_id = $usuario_id;
+    $this->ip_address = $ip_address;
+    $this->hash_cookie = $hash_cookie;
+    $this->created_at = $created_at;
   }
 
   /**
@@ -168,15 +159,6 @@ class recordarMeBaseTable extends model {
    */
   public function getCreatedAt() {
     return $this->created_at;
-  }
-
-  /**
-   * Fija la configuracion del sistema
-   * version 1.0.0
-   * config $config objeto con configuracion del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
   }
 
   /**

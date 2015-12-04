@@ -21,9 +21,9 @@ class crear extends controller {
     $formDetalleOrden = filter_input_array(INPUT_POST)['detalleOrden'];
 
     $detalleOrden = new detalleOrdenTable();
-    $detalleOrden->setDeoId($formDetalleOrden['no']);
-    $detalleOrden->setOrsId($formDetalleOrden['no']);
-    $detalleOrden->setSerId($formDetalleOrden['no']);
+    $detalleOrden->setDeoId($formDetalleOrden['deoId']);
+    $detalleOrden->setOrsId($formDetalleOrden['orsId']);
+    $detalleOrden->setSerId($formDetalleOrden['serId']);
     $detalleOrden->save();
 
 

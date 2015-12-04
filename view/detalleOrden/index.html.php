@@ -1,4 +1,3 @@
-
 <?php
 
 use azucar\myConfig\myConfig as config ?>
@@ -19,7 +18,7 @@ use azucar\myConfig\myConfig as config ?>
       </tr>
     </thead>
     <tbody>
-<?php foreach ($objdetalleOrden as $detalleOrden): ?>
+      <?php foreach ($objdDetalleOrden as $detalleOrden): ?>
         <tr>
           <td><?php echo $detalleOrden->deo_Id ?></td>
           <td><?php echo $detalleOrden->ors_Id ?></td>
@@ -34,7 +33,7 @@ use azucar\myConfig\myConfig as config ?>
             <a href="#" class="btn btn-danger btn-xs">Eliminar</a>
           </td>
         </tr>
-<?php endforeach ?>
+      <?php endforeach ?>
     </tbody>
   </table>
 

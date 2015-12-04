@@ -26,6 +26,11 @@ class implementoBaseTable extends model {
   const DESCRIPCION = 'imp_descripcion';
 
   /**
+   * longitud de la descripcion de la tabla
+   */
+  const DESCRIPCION_LENGTH = 80;
+
+  /**
    * fecha de creacion del registro
    */
   const CREATED_AT = 'imp_created_at';
@@ -43,7 +48,7 @@ class implementoBaseTable extends model {
   /**
    * nombre de la secuencia del id de la tabla
    */
-  const _SEQUENCE = 'implemento_Id_seq';
+  const _SEQUENCE = 'bda_implemento_imp_id_seq';
 
   /**
    * nombre de la tabla
@@ -96,22 +101,13 @@ class implementoBaseTable extends model {
    * @param date_time $updatedAt
    * @param date_time $deletedAt
    */
-  function __construct(config $config, $id = null, $descripcion = null, $createdAt = null, $updatedAt = null, $deletedAt = null) {
+  public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
     $this->descripcion = $descripcion;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deletedAt = $deletedAt;
-  }
-
-  /**
-   * retorna la configuracion del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   /**
@@ -138,7 +134,7 @@ class implementoBaseTable extends model {
    * @return date_time
    */
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -147,7 +143,7 @@ class implementoBaseTable extends model {
    * @return date_time
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
@@ -156,16 +152,7 @@ class implementoBaseTable extends model {
    * @return date_time
    */
   public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  /**
-   * Fija  la configuracion del sistema
-   * @version 1.0.0
-   * @param config $config configuracion del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
+    return $this->deleted_at;
   }
 
   /**
@@ -187,12 +174,12 @@ class implementoBaseTable extends model {
   }
 
   /**
-   * Fija hora y fecha de creacion del registro
-   * version 1.0.0 
-   * @param date_time $createdAt fecha y hora de creacion del rgistro
+   * Fija la creacion del registro
+   * version 1.0.0
+   * @param date_time createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
@@ -200,8 +187,8 @@ class implementoBaseTable extends model {
    * version 1.0.0
    * @param date_time $updatedAt
    */
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
@@ -209,8 +196,8 @@ class implementoBaseTable extends model {
    * @version 1.0.0
    * @param date_time $deletedAt
    */
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

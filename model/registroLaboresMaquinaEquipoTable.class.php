@@ -1,17 +1,17 @@
 
 <?php
 
-use FStudio\model\base\registroLaboresMaquinaEquipoBaseTable;
+use FStudio\model\base\laboresMaquinaEquipoBaseTable;
 
 /**
- * clase para manejar la tabla registroLaboresMaquinaEquipo
+ * clase para manejar la tabla laboresMaquinaEquipo
  * @author maribel zamora <mazagi86@hotmail.com>
  * @package fStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
-class registroLaboresMaquinaEquipoTable extends registroLaboresMaquinaEquipoBaseTable {
+class laboresMaquinaEquipoTable extends laboresMaquinaEquipoBaseTable {
 
   /**
    * obtiene todos los datos de la tabla
@@ -20,12 +20,10 @@ class registroLaboresMaquinaEquipoTable extends registroLaboresMaquinaEquipoBase
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT relme_numero, hac_id, ter_id, tpd_id, imp_id,relme_fecha, relme_estado, relme_tiempo,relme_total_horas_trabajadas, relme_created_at, relme_updated_at, relme_deleted_at
-    FROM bda_registroLaboresMaquinaEquipo WHERE deleted_at IS NULL ORDER BY created_at ASC';
+    $sql = 'SELECT lme_numero AS id, hac_id AS hacienda_id, ter_id AS tercero_id, tpd_id AS tipo_documento_id, imp_id AS implemento_id, lme_fecha AS fecha, lme_estado AS estado, lme_tiempo AS tiempo, lme_total_horas_trabajadas AS total_horas_trabajadas, lme_created_at AS created_at, lme_updated_at AS updated_at, lme_deleted_at AS deleted_at FROM bda_labores_maqina_equipo WHERE lme_deleted_at IS NULL ORDER BY lme_created_at ASC';s
     $answer = $conn->prepare($sql);
     $answer->execute();
-    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) :
-            false;
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
   /**

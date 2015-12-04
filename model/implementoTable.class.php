@@ -20,12 +20,10 @@ class implementoTable extends implementoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT imp_id, imp_descripcion,imp_created_at, imp_updated_at, imp_deleted_at
-    FROM bda_implemento ORDER BY created_at ASC';
+    $sql = 'SELECT imp_id AS id, imp_descripcion AS descripcion, imp_created_at AS created_at, imp_updated_at AS updated_at, imp_deleted_at AS deleted_at FROM bda_implemento WHERE imp_deleted_at IS NULL ORDER BY imp_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
-    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) :
-            false;
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
   /**
@@ -36,16 +34,13 @@ class implementoTable extends implementoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT imp_id, imp_descripcion, imp_created_at, imp_updated_at, imp_deleted_at '
-            . 'FROM bda_implemento WHERE deleted_at IS NULL '
-            . 'AND id = :id';
+    $sql = 'SELECT imp_id AS id, imp_descripcion AS descripcion, imp_created_at AS created_at, imp_updated_at AS updated_at, imp_deleted_at AS deleted_at FROM bda_implemento WHERE imp_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) :
-            false;
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
   /**
@@ -72,9 +67,9 @@ class implementoTable extends implementoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_implemento SET imp_descripcion = :descripcion,
-    WHERE imp_id = :id';
+    $sql = 'UPDATE bda_implemento SET imp_descripcion = :descripcion WHERE imp_id = :id';
     $params = array(
+        ':descripcion' => $this->getDescripcion(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -102,7 +97,7 @@ class implementoTable extends implementoBaseTable {
         $sql = 'DELETE FROM bda_implemento WHERE imp_id = :id';
         break;
       default:
-        throw new PDOException('indique un dato coherente para el borrado  (true) o físico (false)');
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
     }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
