@@ -5,8 +5,9 @@ use FStudio\model\base\laboresMaquinaEquipoBaseTable;
 
 /**
  * clase para manejar la tabla laboresMaquinaEquipo
- * @author maribel zamora <mazagi86@hotmail.com>
- * @package fStudio
+ * 
+ * @author Maribel Zamora <mazagi86@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -105,13 +106,13 @@ class laboresMaquinaEquipoTable extends laboresMaquinaEquipoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_registro_labores_maquina_equipo SET relme_deleted_at = now() WHERE relme_numero = :numero';
+        $sql = 'UPDATE bda_labores_maqina_equipo SET lme_deleted_at = now() WHERE lme_numero = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_registro_labores_maquina_equipo WHERE relme_numero = :numero';
+        $sql = 'DELETE FROM bda_labores_maqina_equipo WHERE lme_numero = :id';
         break;
       default:
-        throw new PDOException('indique un dato coherente para el borrado  (true) o físico (false)');
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
     }
     $answer = $conn->prepare($sql);
     $answer->execute($params);
