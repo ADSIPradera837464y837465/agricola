@@ -4,10 +4,11 @@ use FStudio\model\base\cargoBaseTable;
 
 /**
  * Description of cargoTable
+ *
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package FStudio
  * @subpackage model
- * @subpackage base
+ * @subpackage table
  * @version 1.0.0
  */
 class cargoTable extends cargoBaseTable {

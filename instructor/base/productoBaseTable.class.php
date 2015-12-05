@@ -24,7 +24,7 @@ class productoBaseTable extends model {
   const UNIDAD_MEDIDA_ID = 'unm_id';
   const CREATED_AT = 'pro_created_at';
   const UPDATED_AT = 'pro_updated_at';
-  const DELETED_AT = 'pro_deleted_at_at';
+  const DELETED_AT = 'pro_deleted_at';
   const _SEQUENCE = 'bda_producto_pro_id_seq';
   const _TABLE = 'bda_producto';
 

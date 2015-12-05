@@ -213,7 +213,7 @@ schema:
       unm_id:            { name: unidad_medida_id }
       pro_created_at:    { name: created_at, behavior: created }
       pro_updated_at:    { name: updated_at, behavior: updated }
-      pro_deleted_at_at: { name: deleted_at, behavior: deleted }
+      pro_deleted_at:    { name: deleted_at, behavior: deleted }
 
   bda_recordar_me:
     name:                recordar_me

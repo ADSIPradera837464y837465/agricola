@@ -4,8 +4,9 @@ use FStudio\model\base\tipoIdBaseTable;
 
 /**
  * Description of tipoIdTable
+ * 
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0

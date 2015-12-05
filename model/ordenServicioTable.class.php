@@ -4,10 +4,11 @@ use FStudio\model\base\ordenServicioBaseTable;
 
 /**
  * Description of ordenServicioTable
- * @author merian montaño<nichesitap@hotmail.com>
- * @package 
+ * 
+ * @author Marian Montaño <nichesitap@hotmail.com>
+ * @package FStudio
  * @subpackage model
- * @subpackage base
+ * @subpackage table
  * @version 1.0.0
  */
 class ordenServicioTable extends ordenServicioBaseTable {

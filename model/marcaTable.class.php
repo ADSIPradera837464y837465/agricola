@@ -3,9 +3,9 @@
 use FStudio\model\base\marcaBaseTable;
 
 /**
- * clase para manejar la tabla marca
- * Description of marcaTable
- *  @author Angela Cardona Molina <angela04cardona@hotmail.com>
+ * Clase para manejar la tabla marca
+ * 
+ * @author Angela Cardona Molina <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table
@@ -20,7 +20,7 @@ class marcaTable extends marcaBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT mar_id, mar_descripcion, created_at FROM marca ORDER BY created_at ASC';
+    $sql = 'SELECT mar_id AS id, mar_descripcion AS descripcion, mar_created_at AS created_at, mar_updated_at AS updated_at, mar_deleted_at AS deleted_at FROM bda_marca WHERE mar_deleted_at IS NULL ORDER BY mar_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -34,7 +34,10 @@ class marcaTable extends marcaBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT mar_id AS id, mar_descripcion AS descripcion, mar_created_at AS createdAt, mar_updated_at AS updatedAt, mar_deleted_at AS deletedAt FROM bda_marca WHERE mar_deleted_at IS NULL ORDER BY mar_created_at ASC';
+    $sql = 'SELECT mar_id AS id, mar_descripcion AS descripcion, mar_created_at AS created_at, mar_updated_at AS updated_at, mar_deleted_at AS deleted_at FROM bda_marca WHERE mar_deleted_at IS NULL AND id = :id';
+    $params = array(
+        ':id' => ($id !== null) ? $id : $this->getId()
+    );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -47,9 +50,9 @@ class marcaTable extends marcaBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO marca (mar_descripcion) VALUES (:mar_descripcion)';
+    $sql = 'INSERT INTO bda_marca (mar_descripcion) VALUES (:descripcion)';
     $params = array(
-        ':mar_descripcion' => $this->getDescripcion(),
+        ':descripcion' => $this->getDescripcion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -64,9 +67,10 @@ class marcaTable extends marcaBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE marca SET mar_descripcion =:mar_descripcion)';
+    $sql = 'UPDATE bda_marca SET mar_descripcion = :descripcion WHERE mar_id = :id';
     $params = array(
-        ':mar_descripcion' => $this->getDescripcion(),
+        ':descripcion' => $this->getDescripcion(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -83,7 +87,7 @@ class marcaTable extends marcaBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':mar_id' => $this->getId()
+        ':id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:

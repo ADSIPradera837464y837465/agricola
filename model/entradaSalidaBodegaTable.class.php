@@ -4,6 +4,7 @@ use FStudio\model\base\entradaSalidaBodegaBaseTable;
 
 /**
  * Description of entradaSalidaBodegaTable
+ * 
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model
@@ -76,9 +77,6 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
         ':tipo_documento_id' => $this->getTipoDocumentoId(),
         ':fecha' => $this->getFecha(),
         ':observacion' => $this->getObservacion(),
-        ':created_at' => $this->getCreatedAt(),
-        ':updated_at' => $this->getUpdatedAt(),
-        ':deleted_at' => $this->getDeletedAt(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);

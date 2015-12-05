@@ -3,7 +3,8 @@
 use FStudio\model\base\datoUsuarioBaseTable;
 
 /**
- * Description of dba_dato_usuario
+ * Description of datoUsuarioTable
+ *
  * @author Emanuel Castillo Mosquera <corcel125@outlook.com>
  * @package FStudio
  * @subpackage model
@@ -43,7 +44,7 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_dato_usuario (usr_id, dus_cedula, dus_nombre, dus_apellidos, dus_movil,dus_correo,dus_imagen,dus_sexo) VALUES (:usr_id, :dus_cedula, :dus_nombre, :dus_apellidos, :dus_movil,:dus_correo,:dus_imagen,:dus_sexo)';
+    $sql = 'INSERT INTO bda_dato_usuario (usr_id, dus_cedula, dus_nombre, dus_apellidos, dus_movil, dus_correo, dus_imagen, dus_sexo) VALUES (:usuario_id, :cedula, :nombre, :apellidos, :movil, :correo, :imagen, :sexo)';
     $params = array(
         ':usuario_id' => $this->getUsuarioId(),
         ':cedula' => $this->getCedula(),
@@ -112,5 +113,3 @@ class datoUsuarioTable extends datoUsuarioBaseTable {
   }
 
 }
-
-//gnu

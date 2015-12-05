@@ -3,7 +3,8 @@
 use FStudio\model\base\maquinaBaseTable;
 
 /**
- * Description ofmaquinaTable
+ * Description of maquinaTable
+ * 
  * @author Johanna G <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
@@ -28,7 +29,7 @@ class maquinaTable extends maquinaBaseTable {
   /**
    * Retorna un elemento de la tabla buscado por un ID especifico
    * @version 1.0.0
-   * @param integer $id 
+   * @param integer $id
    * @return mixed [stdClass | boolean]
    */
   public function getById($id = null) {

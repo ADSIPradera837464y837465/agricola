@@ -3,9 +3,10 @@
 use FStudio\model\base\detalleAguaSurcoBaseTable;
 
 /**
- * Description of aguaSurcoTable
+ * Description of detalleAguaSurcoTable
+ * 
  * @author Johanna G <ladyjkaulitz@hotmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -28,7 +29,7 @@ class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
   /**
    * Retorna un elemento de la tabla buscado por un ID especifico
    * @version 1.0.0
-   * @param integer $id 
+   * @param integer $id
    * @return mixed [stdClass | boolean]
    */
   public function getById($id = null) {
@@ -49,7 +50,7 @@ class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_detalle_agua_surco (deaas_item, deaas_cantidad_surco,fore_num_documento) VALUES (:deaas_item, :deaas_cantidad_surco, :fore_num_documento)';
+    $sql = 'INSERT INTO bda_detalle_agua_surco (deaas_item, deaas_cantidad_surco, fore_num_documento) VALUES (:item, :cantidad_surco, :control_administrativo_riego_id)';
     $params = array(
         ':item' => $this->getItem(),
         ':cantidad_surco' => $this->getCantidadSurco(),
