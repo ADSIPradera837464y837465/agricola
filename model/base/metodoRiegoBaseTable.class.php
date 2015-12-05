@@ -7,8 +7,9 @@ use FStudio\myConfig as config;
 
 /**
  * Description of metodoRiegoBaseTable
+ * 
  * @author merian montaño<nichesitap@hotmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0

@@ -7,7 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of servicioMaquinaBaseTable
- * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com>
+ * 
+ * @author Yuri Adriana Hurtado Rojas <yurodri.1996@gmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -17,38 +18,38 @@ class servicioMaquinaBaseTable extends model {
 
   /**
    * Id de la tabla
-   * @var integer 
+   * @var integer
    */
   const ID = 'ser_id';
 
   /**
    * Descripcion de la tabla
-   * @var varchaR 
+   * @var varchaR
    */
   const DESCRIPCION = 'ser_descripcion';
 
   /**
    * Longitud de la descripcion de la tabla
-   * @var varchaR 
+   * @var varchaR
    */
   const DESCRIPCION_LENGTH = 80;
 
   /**
    * Estado de la tabla
-   * @var varchaR 
+   * @var varchaR
    */
   const ESTADO = 'ser_estado';
 
   /**
    * Estado de la longitud de la tabla
-   * @var varchaR 
+   * @var varchaR
    */
   const ESTADO_LENGTH = 30;
 
   /**
    * Fecha y hora de creación del registro
    */
-  const CREATED_AT = 'ser_create_at';
+  const CREATED_AT = 'ser_created_at';
 
   /**
    * Fecha y hora de la ultima actualización del registro
@@ -74,48 +75,48 @@ class servicioMaquinaBaseTable extends model {
 
   /**
    * Configuración del sistema
-   * @var config 
+   * @var config
    */
   protected $config;
 
   /**
    * Id del servicio_maquina en la base de datos
-   * @var integer 
+   * @var integer
    */
   private $id;
 
   /**
    * Descripcion del servicio_maquina en la base de datos
-   * @var varchar 
+   * @var varchar
    */
   private $descripcion;
 
   /**
    * Estado del servicio_maquina en la base de datos
-   * @var varchar 
+   * @var varchar
    */
   private $estado;
 
   /**
    * Fecha de creacion de los datos del servicio_maquina en el sistema
-   * @var type 
+   * @var type
    */
   private $created_at;
 
   /**
    * Fecha de actualizacion de los datos del servicio_maquina en el sistema
-   * @var type 
+   * @var type
    */
   private $updated_at;
 
   /**
    * Fecha de eliminacion de los datos del servicio_maquina en el sistema
-   * @var type 
+   * @var type
    */
   private $deleted_at;
 
   /**
-   * 
+   *
    * @param config $config
    * @param type $id
    * @param type $descripcion
@@ -180,14 +181,6 @@ class servicioMaquinaBaseTable extends model {
    */
   public function getDeletedAt() {
     return $this->deleted_at;
-  }
-
-  /**
-   * Fija la configuracion del sistema
-   * @param type $config
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
   }
 
   /**

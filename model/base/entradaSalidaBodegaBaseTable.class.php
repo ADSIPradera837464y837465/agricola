@@ -7,6 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Description of entradaSalidaBodegaBaseTable
+ * 
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model

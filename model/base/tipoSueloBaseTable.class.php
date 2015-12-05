@@ -7,6 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Description of tipoSueloBaseTable
+ * 
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model
@@ -14,83 +15,83 @@ use FStudio\myConfig as config;
  * @version 1.0.0
  */
 class tipoSueloBaseTable extends model {
-  
+
   /**
    * ID de la tabla
    */
   const ID = 'tis_id';
-  
+
   /**
    * Contiene la descripcion del tipo de suelo
    */
   const DESCRIPCION = 'tis_descripcion';
-  
+
   /**
    * Longitud del campo DESCRIPCION
    */
   const DESCRIPCION_LENGTH = 80;
- 
+
   /**
    * Registra la fecha y hora de la creacion de un registro en la tabla tipo de suelo
    */
   const CREATED_AT = 'tis_created_at';
-  
+
   /**
    * Registra la fecha y hora de la actualización de un registro en la tabla tipo de suelo
    */
   const UPDATED_AT = 'tis_updated_at';
-  
+
   /**
    * Registra la fecha y hora del borrado lógico de un registro en la tabla tipo de suelo
    */
   const DELETED_AT = 'tis_deleted_at';
-  
+
   /**
    * Sequencia del indentificador de la tabla
    */
   const _SEQUENCE = 'bda_tipo_suelo_tis_id_seq';
-  
+
   /**
    * Nombre de la tabla
    */
   const _TABLE = 'bda_tipo_suelo';
-  
+
   /**
    * Configuración del sistema
    * @var config
    */
   protected $config;
-  
+
   /**
    * ID de la tabla
    * @var integer
    */
   private $id;
-  
+
   /**
    * Contiene la descripcion del tipo de suelo
-   * @var string 
+   * @var string
    */
   private $descripcion;
 
   /**
    * Registra la fecha y hora de la creacion de un registro en la tabla tipo de suelo
-   * @var date_time 
+   * @var date_time
    */
   private $created_at;
-  
+
   /**
    * Registra la fecha y hora de la actualización de un registro en la tabla tipo de suelo
-   * @var date_time 
+   * @var date_time
    */
   private $updated_at;
-  
+
   /**
    * Registra la fecha y hora del borrado lógico de un registro en la tabla tipo de suelo
-   * @var date_time 
+   * @var date_time
    */
   private $deleted_at;
-  
+
   /**
    * Constructor de la clase tipoSueloBaseTable
    * @param config $config
@@ -100,7 +101,6 @@ class tipoSueloBaseTable extends model {
    * @param type $updated_at
    * @param type $deleted_at
    */
-  
   public function __construct(config $config, $id = null, $descripcion = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
@@ -136,7 +136,7 @@ class tipoSueloBaseTable extends model {
   public function getCreatedAt() {
     return $this->created_at;
   }
-  
+
   /**
    * Obtiene la hora y fecha de la actualización de un registro en la tabla tipo de suelo
    * @version 1.0.0

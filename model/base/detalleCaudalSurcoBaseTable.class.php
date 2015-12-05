@@ -7,8 +7,9 @@ use FStudio\myConfig as config;
 
 /**
  * Description of detallecaudalSurcoBaseTable
+ * 
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -17,7 +18,7 @@ class detalleCaudalSurcoBaseTable extends model {
 
   /**
    * ID de la tabla
-   * 
+   *
    */
   const ID = 'decs_id';
 
@@ -62,7 +63,7 @@ class detalleCaudalSurcoBaseTable extends model {
   const _SEQUENCE = 'bda_detalle_caudal_surco_decs_id_seq';
 
   /**
-   *  Nombre de la tabla 
+   *  Nombre de la tabla
    */
   const _TABLE = 'bda_detalle_caudal_surco';
 
@@ -115,7 +116,7 @@ class detalleCaudalSurcoBaseTable extends model {
   private $deleted_at;
 
   /**
-   * 
+   *
    * Constructor de la clase detalleCaudalSurcoBaseTable
    * @param integer $id
    * @param string $item
@@ -135,15 +136,6 @@ class detalleCaudalSurcoBaseTable extends model {
     $this->created_at = $created_at;
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
-  }
-
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
   }
 
   /**
@@ -207,15 +199,6 @@ class detalleCaudalSurcoBaseTable extends model {
    */
   public function getDeletedAt() {
     return $this->deleted_at;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
   }
 
   /**

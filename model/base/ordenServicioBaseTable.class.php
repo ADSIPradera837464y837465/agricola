@@ -7,8 +7,9 @@ use FStudio\myConfig as config;
 
 /**
  * Description of ordenServicioBaseTable
- * @author marian montaño<nichesitap@hotmail.com>
- * @package 
+ * 
+ * @author Marian Montaño <nichesitap@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -44,7 +45,7 @@ class ordenServicioBaseTable extends model {
   const DELETED_AT = 'ors_deleted_at';
 
   /**
-   * Secuencia de la tabla 
+   * Secuencia de la tabla
    */
   const _SEQUENCE = 'bda_orden_servicio_ors_id_seq';
 
@@ -104,24 +105,24 @@ class ordenServicioBaseTable extends model {
 
   /**
    * Fecha y hora del tipo de mantenimiento
-   * @var 
+   * @var
    */
   private $created_at;
 
   /**
    * Modificar el tipo de mantenimiento
-   * @var 
+   * @var
    */
   private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado logico
-   * @var 
+   * @var
    */
   private $deleted_at;
 
   /**
-   * 
+   *
    * @param type $config
    * @param type $orsId
    * @param type $maqId
@@ -165,7 +166,7 @@ class ordenServicioBaseTable extends model {
   }
 
   /**
-   * retorma el id de la tabla tipo mantenimiento 
+   * retorma el id de la tabla tipo mantenimiento
    * @return integer
    */
   public function getTipoMantenimientoId() {
@@ -206,7 +207,7 @@ class ordenServicioBaseTable extends model {
 
   /**
    * Retorna la creacion de una orden de servicio
-   * @return 
+   * @return
    */
   public function getCreatedAt() {
     return $this->created_at;
@@ -214,7 +215,7 @@ class ordenServicioBaseTable extends model {
 
   /**
    * Retorna la modificasion de una orden de servicio
-   * @return 
+   * @return
    */
   public function getUpdatedAt() {
     return $this->updated_at;
@@ -222,19 +223,10 @@ class ordenServicioBaseTable extends model {
 
   /**
    * Retorna la eliminacion de una orden de servicio
-   * @return 
+   * @return
    */
   public function getDeletedAt() {
     return $this->deleted_at;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  function setConfig($config) {
-    $this->config = $config;
   }
 
   /**

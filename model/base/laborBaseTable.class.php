@@ -7,6 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Clase base para la tabla labor
+ * 
  * @author Emanuel Castillo Mosquera <corcel125@outlook.com>
  * @package FStudio
  * @subpackage model
@@ -24,7 +25,7 @@ class laborBaseTable extends model {
    * Descripción de la labor
    */
   const DESCRIPCION = 'lab_descripcion';
-  
+
   /**
    * Descripción de la labor
    */
@@ -39,7 +40,7 @@ class laborBaseTable extends model {
    * Estado de la labor
    */
   const ESTADO = 'lab_estado';
-  
+
   /**
    * Estado de la labor
    */
@@ -59,23 +60,16 @@ class laborBaseTable extends model {
    * Fecha y hora para controlar el borrado lógico
    */
   const DELETED_AT = 'lab_deleted_at';
-  
-  /**
-   * 
-   */
-  const _SEQUENCE = 'bda_labor_lab_id_seq';
-  
+
   /**
    * Nombre de la secuencia del ID de la tabla
    */
   const _SEQUENCE = 'bda_labor_lab_id_seq';
-  
+
   /**
-   * 
+   *
    */
   const _TABLE = 'bda_labor';
-
-  
 
   /**
    * Configuración del sistema
@@ -97,13 +91,13 @@ class laborBaseTable extends model {
 
   /**
    *
-   * @var type 
+   * @var type
    */
   private $valor;
 
   /**
    *
-   * @var type 
+   * @var type
    */
   private $estado;
 
@@ -124,7 +118,7 @@ class laborBaseTable extends model {
    * @var string
    */
   private $deleted_at;
-  
+
   /**
    *  Constructor de la clase laborBaseTable
    * @version 1.0.0
@@ -147,8 +141,6 @@ class laborBaseTable extends model {
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
   }
-
-  
 
   /**
    * Retorna el ID del registro
@@ -212,8 +204,6 @@ class laborBaseTable extends model {
   public function getDeletedAt() {
     return $this->deleted_at;
   }
-
-  
 
   /**
    * Fija el ID para un registro del sistema
@@ -279,5 +269,3 @@ class laborBaseTable extends model {
   }
 
 }
-
-//gnu

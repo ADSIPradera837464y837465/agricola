@@ -306,7 +306,7 @@ schema:
     name:                         detalle_registro
     columns:
       der_item:                   { name: item, constraint: PK, sequence: bda_detalle_registro_der_item_seq }
-      relme_numero:               { name: realme_numero }
+      relme_numero:               { name: labores_maquina_equipo_numero }
       ter_id:                     { name: tercero_id }
       lab_id:                     { name: labor_id }
       sue_id:                     { name: suerte_id }

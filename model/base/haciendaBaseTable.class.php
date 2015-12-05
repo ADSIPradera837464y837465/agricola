@@ -7,8 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of haciendaBaseTable
- *
- * @author victoria cortes <victoriacortes2014@hotmail.com>
+ * 
+ * @author Victoria Cortes <victoriacortes2014@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -55,18 +55,22 @@ class haciendaBaseTable extends model {
    * Longitud del campo varchar
    */
   const CREATED_AT = 'hac_created_at';
+
   /**
    * Longitud del campo hac_created_at
    */
   const UPDATED_AT = 'hac_updated_at';
+
   /**
    * Longitud del campo hac_updated_at
    */
   const DELETED_AT = 'hac_deleted_at';
+
   /**
    * Longitud del campo hac_deleted_at
    */
   const _SEQUENCE = 'bda_hacienda_hac_id_seq';
+
   /**
    * Longitud del campo bda_hacienda_hac_id_seq
    */
@@ -100,28 +104,24 @@ class haciendaBaseTable extends model {
    * @var string
    */
   private $representante_legal;
-  
+
   /**
    * representante_legal de la tabla
    * @var string
    */
   private $created_at;
-  
+
   /**
    * created_at de la tabla
    * @var string
    */
   private $updated_at;
-  
+
   /**
    * updated_at de la tabla
    * @var string
    */
   private $deleted_at;
-  /**
-   * deleted_at de la tabla
-   * @var string
-   */
 
   /**
    * Constructor de la clase haciendaBaseTable
@@ -137,47 +137,12 @@ class haciendaBaseTable extends model {
   public function __construct(config $config, $id = null, $descripcion = null, $ubicacion = null, $representante_legal = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
-   
-  /**
-   * Retorna el id del la configuracion
-   * @return integer
-   */
     $this->descripcion = $descripcion;
-    
-  /**
-   * Retorna la descripcion de la cofiguracion
-   * @return integer
-   */
     $this->ubicacion = $ubicacion;
-    
-  /**
-   * Retorna la ubicacion de la configuracion
-   * @return integer
-   */
     $this->representante_legal = $representante_legal;
-    
-  /**
-   * Retorna representante_legal de la configuracion
-   * @return integer
-   */
     $this->created_at = $created_at;
-    
-  /**
-   * Retorna el created_at de la configuracion
-   * @return integer
-   */
     $this->updated_at = $updated_at;
-    
-  /**
-   * Retorna el updated_at de la configuracion
-   * @return integer
-   */
     $this->deleted_at = $deleted_at;
-    
-  /**
-   * Retorna el deleted_at de la configuracion
-   * @return integer
-   */
   }
 
   /**
@@ -267,25 +232,21 @@ class haciendaBaseTable extends model {
   public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
+
   /**
    * created_atdel registro
    * @return integer
    */
-
   public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
   }
+
   /**
    * updated_at del registro
    * @return integer
    */
-
   public function setDeletedAt($deleted_at) {
     $this->deleted_at = $deleted_at;
   }
-  /**
-   * deleted_at del registro
-   * @return integer
-   */
 
 }

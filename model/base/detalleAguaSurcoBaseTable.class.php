@@ -6,9 +6,10 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of  detalleAguaSurcoBaseTable
+ * Description of detalleAguaSurcoBaseTable
+ * 
  * @author Johanna G <ladyjkaulitz@hotmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -26,13 +27,13 @@ class detalleAguaSurcoBaseTable extends model {
   const ITEM = 'deaas_item';
 
   /**
-   * Longitud del campo item 
+   * Longitud del campo item
    */
   const ITEM_LENGTH = 80;
 
   /**
    * Cantidad del surco
-   * 
+   *
    */
   const CANTIDAD_SURCO = 'deaas_cantidad_surco';
 
@@ -40,30 +41,29 @@ class detalleAguaSurcoBaseTable extends model {
    * control del riego de la tabla
    */
   const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'fore_num_documento';
+
   /**
    * creacion de la tabla
    */
-  
-   const CREATED_AT = 'deaas_created_at';
-   
-   /**
+  const CREATED_AT = 'deaas_created_at';
+
+  /**
    * modificacion de la tabla
    */
-  
-   const UPDATED_AT = 'deaas_updated_at';
-   
-    /**
+  const UPDATED_AT = 'deaas_updated_at';
+
+  /**
    * eliminando un elemento de la tabla
    */
-  
-   const DELETED_AT = 'deaas_deleted_at';
-   /**
+  const DELETED_AT = 'deaas_deleted_at';
+
+  /**
    * Secuencia de la tabla
    */
   const _SEQUENCE = 'bda_detalle_agua_surco_deaas_id_seq';
 
   /**
-   * Tabla 
+   * Tabla
    */
   const _TABLE = 'bda_detalle_agua_surco';
 
@@ -86,34 +86,34 @@ class detalleAguaSurcoBaseTable extends model {
   private $item;
 
   /**
-   * Cantidad del surco 
+   * Cantidad del surco
    * @var integer
    */
   private $cantidad_surco;
 
   /**
-   * Numero del documento 
+   * Numero del documento
    * @var integer
    */
   private $control_administrativo_riego_id;
 
   /**
-   * Fecha y hora de la creacion de un nuevo registro 
-   * 
+   * Fecha y hora de la creacion de un nuevo registro
+   *
    * @var date_time
    */
   private $created_at;
 
   /**
-   * Fecha y hora de la  actualizacion de un registro 
-   * 
-   * @var date_time 
+   * Fecha y hora de la  actualizacion de un registro
+   *
+   * @var date_time
    */
   private $updated_at;
 
   /**
-   * Fecha y hora de la eliminacion de un registro 
-   * 
+   * Fecha y hora de la eliminacion de un registro
+   *
    * @var  date_time
    */
   private $deleted_at;
@@ -128,8 +128,6 @@ class detalleAguaSurcoBaseTable extends model {
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
   }
-
- 
 
   /**
    * Retorna el id del registro
@@ -187,7 +185,6 @@ class detalleAguaSurcoBaseTable extends model {
     return $this->deleted_at;
   }
 
-
   /**
    * Fija el id para el registro en la tabla
    * @param integer $id
@@ -224,7 +221,7 @@ class detalleAguaSurcoBaseTable extends model {
    * Fija la creacion de un nuevo registro en la tabla
    * @param date_time $createdAt
    */
-   public function setCreatedAt($created_at) {
+  public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
 
