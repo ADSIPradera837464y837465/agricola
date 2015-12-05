@@ -21,13 +21,13 @@ class crear extends controller implements action{
     
     $config = $this->getConfig();
     
-    $descripcion = filter_input_array(INPUT_POST)['descripcion'];    
+    $formTipoTercero = filter_input_array(INPUT_POST)['tipoTercero'];    
     $tipoTercero = new tipoTerceroTable($config);
-    $tipoTercero->setDescripcion($descripcion['descripcion']);
+    $tipoTercero->setDescripcion($formTipoTercero['descripcion']);
     $this->objTipoTercero = $tipoTercero->save();
     
-    header('Location: ' . $fsConfig->getUrl() . 'index.php/tipoPersona/index');
-    
+    header('Location: ' . $config->getUrl() . 'index.php/tipoTercero/index');
+    exit();
     
   }
   
