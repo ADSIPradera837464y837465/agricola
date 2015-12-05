@@ -5,15 +5,15 @@
     <?php foreach ($objTipoTercero as $tipoTercero):?>
     <div href="" class="list-group-item ">
       <h4 class="list-group-item-heading">ID</h4>
-      <p class="list-group-item-text"><?php echo $tipoTercero->tit_id ?></p>
+      <p class="list-group-item-text"><?php echo $tipoTercero->id ?></p>
     </div>
     <div href="" class="list-group-item ">
       <h4 class="list-group-item-heading">Descripción</h4>
-      <p class="list-group-item-text"><?php echo $tipoTercero->tit_descripcion ?></p>
+      <p class="list-group-item-text"><?php echo $tipoTercero->descripcion ?></p>
     </div>
     <div href="" class="list-group-item ">
       <h4 class="list-group-item-heading">Descripción</h4>
-      <p class="list-group-item-text"><?php echo $tipoTercero->tit_created_at ?></p>
+      <p class="list-group-item-text"><?php echo $tipoTercero->created_at ?></p>
     </div>
     <?php endforeach;?>
   <div class="text-right">
