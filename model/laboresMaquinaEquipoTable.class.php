@@ -105,10 +105,10 @@ class laboresMaquinaEquipoTable extends laboresMaquinaEquipoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_registro_labores_maquina_equipo SET relme_deleted_at = now() WHERE relme_numero = :numero';
+        $sql = 'UPDATE bda_labores_maquina_equipo SET relme_deleted_at = now() WHERE relme_numero = :numero';
         break;
       case false:
-        $sql = 'DELETE FROM bda_registro_labores_maquina_equipo WHERE relme_numero = :numero';
+        $sql = 'DELETE FROM bda_labores_maquina_equipo WHERE relme_numero = :numero';
         break;
       default:
         throw new PDOException('indique un dato coherente para el borrado  (true) o físico (false)');
