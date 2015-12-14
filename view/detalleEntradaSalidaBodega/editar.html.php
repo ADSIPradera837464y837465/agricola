@@ -1,5 +1,5 @@
 <?php use FStudio\fsController as controller; ?>
-<?php include_once config::getPath() . 'view/partial/head.php'; ?>
+<?php include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
 <h1>Modificar Informacion</h1>
 <div class="container container-fluid"> 
     <form class="form-inline" action="<?php echo $fsconfig->getUrl() ?>index.php/detalleEntradaSalidaBodega/actualizar" method="post">
@@ -35,4 +35,4 @@
         </div>
     </form>
 </div>
-<?php include_once config::getPath() . 'view/partial/foot.php'; ?>
+<?php include_once $fsConfig->getPath() . 'view/partial/foot.php'; ?>

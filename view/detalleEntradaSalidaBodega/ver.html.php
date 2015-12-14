@@ -1,5 +1,5 @@
 <?php use FStudio\fsController as controller; ?>
-<?php include_once config::getPath() . 'view/partial/head.php'; ?>
+<?php include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
 <br>
 <div class="container container-fluid"> 
     <h2>detalle entrada salida bodega numero: <?php echo $objDetalleEntradaSalidaBodega[0]->des_id  ?></h2>
@@ -35,4 +35,4 @@
     </div>
 
 </div>
-<?php include_once config::getPath() . 'view/partial/foot.php'; ?>
+<?php include_once $fsConfig->getPath() . 'view/partial/foot.php'; ?>

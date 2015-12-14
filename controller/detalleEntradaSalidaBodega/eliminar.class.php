@@ -1,17 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+require_once '../model/base/detalleEntradaSalidaBodegaBaseTable.class.php';
+require_once '../model/detalleEntradaSalidaBodegaTable.class.php';
 
+use FStudio\fsController as controller;
+use FStudio\interfaces\fsAction as action;
 /**
  * Description of eliminar
  *
- * @author diana
+ * @author diana <meneses_d@rocketmail.com>
  */
-class eliminar extends controller {
+class eliminar extends controller implements action {
 
     public function execute() {
      
@@ -22,6 +21,6 @@ class eliminar extends controller {
         $variables=array(
             'data'=>array('code'=>200)
             );
-        view::defineView('detalleEntradaSalidaBodega','eliminar' , $variables, 'json');
+            $this->defineView('detalleEntradaSalidaBodega','eliminar' , $variables, 'json');
     }
 }
