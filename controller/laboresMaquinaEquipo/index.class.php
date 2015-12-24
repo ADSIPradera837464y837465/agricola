@@ -25,3 +25,5 @@ class index extends controller implements action {
       $this->defineView('laboresMaquinaEquipo', 'index', 'html');
     }
 }
+
+//a
