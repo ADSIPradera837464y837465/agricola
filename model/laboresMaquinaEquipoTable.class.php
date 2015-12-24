@@ -120,3 +120,4 @@ class laboresMaquinaEquipoTable extends laboresMaquinaEquipoBaseTable {
   }
 
 }
+//emanuel

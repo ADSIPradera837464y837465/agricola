@@ -25,4 +25,3 @@ class index extends controller implements action {
       $this->defineView('datoUsuario', 'index', 'html');
     }
 }
-
