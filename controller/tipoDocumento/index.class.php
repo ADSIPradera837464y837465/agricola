@@ -1,6 +1,5 @@
 <?php
 
-
 require_once '../model/base/tipoDocumentoBaseTable.class.php';
 require_once '../model/tipoDocumentoTable.class.php';
 
@@ -27,5 +26,3 @@ class index extends controller implements action {
     }
 }
 
-
-//a
