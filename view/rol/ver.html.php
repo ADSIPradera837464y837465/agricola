@@ -40,3 +40,4 @@ include_once $fsConfig->getPath() . 'view/partial/head.php';
 </html>
 
 
+<!--w-->

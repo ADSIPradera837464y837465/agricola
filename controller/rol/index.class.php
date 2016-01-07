@@ -25,3 +25,6 @@ class index extends controller implements action {
       $this->defineView('rol', 'index', 'html');
     }
 }
+
+
+//w

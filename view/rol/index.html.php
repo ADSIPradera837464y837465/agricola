@@ -55,3 +55,6 @@ include_once $fsConfig->getPath() . 'view/partial/head.php';
 <?php // endif; ?>
 </body>
 </html>
+
+
+<!--//w-->
