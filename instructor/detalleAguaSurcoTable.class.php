@@ -48,7 +48,7 @@ class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
 
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_detalle_agua_surco SET deaas_item = :item, deaas_cantidad_surco = :cantidad_surco, fore_num_documento = :control_administrativo_riego_id WHERE deaas_id = :id';
+    $sql = 'UPDATE bda_detalle_agua_surco SET deaas_item = :item, deaas_cantidad_surco = :cantidad_surco, car_num_documento = :control_administrativo_riego_id WHERE deaas_id = :id';
     $params = array(
         ':item' => $this->getItem(),
         ':cantidad_surco' => $this->getCantidadSurco(),

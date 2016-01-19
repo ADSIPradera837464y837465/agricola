@@ -12,7 +12,7 @@ $config->setHost('localhost');
 $config->setPort(5432);
 $config->setDbName('agro');
 $config->setUser('postgres');
-$config->setPassword('123456');
+$config->setPassword('123');
 $config->setDsn($config->getDriver() . ':host=' . $config->getHost() . ';port=' . $config->getPort() . ';dbname=' . $config->getDbName());
 
 $config->setSessionName('FStudio');

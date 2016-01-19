@@ -40,7 +40,7 @@ class detalleAguaSurcoBaseTable extends model {
   /**
    * control del riego de la tabla
    */
-  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'fore_num_documento';
+  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'car_num_documento';
 
   /**
    * creacion de la tabla

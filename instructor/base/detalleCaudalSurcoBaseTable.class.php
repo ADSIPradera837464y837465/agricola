@@ -20,7 +20,7 @@ class detalleCaudalSurcoBaseTable extends model {
   const ITEM = 'decs_item';
   const ITEM_LENGTH = 80;
   const CANTIDAD_SURCO = 'decs_cantidad_surco';
-  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'fore_num_documento';
+  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'car_num_documento';
   const CREATED_AT = 'decs_created_at';
   const UPDATED_AT = 'decs_updated_at';
   const DELETED_AT = 'decs_deleted_at';

@@ -23,7 +23,7 @@ class metodoRiegoTable extends metodoRiegoBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_deleted_at IS NULL AND met_rie_id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

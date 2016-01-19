@@ -23,7 +23,7 @@ class avanceAguaSurcoTable extends avanceAguaSurcoBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT aas_item AS id, car_num_documento AS control_administrativo_riego_id, aas_surco_id AS surco_id, aas_created_at AS created_at, aas_updated_at AS updated_at, aas_deleted_at AS deleted_at FROM bda_avance_agua_surco WHERE aas_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT aas_item AS id, car_num_documento AS control_administrativo_riego_id, aas_surco_id AS surco_id, aas_created_at AS created_at, aas_updated_at AS updated_at, aas_deleted_at AS deleted_at FROM bda_avance_agua_surco WHERE aas_deleted_at IS NULL AND aas_item = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
