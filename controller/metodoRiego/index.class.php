@@ -21,15 +21,20 @@ class index extends controller implements action {
   public function execute() {
     $config = $this->getConfig();
     $metodo = new metodoRiegoTable($config);
-    $paginacion = new Zebra_Pagination();   
-    $this->objRespuesta =   $metodo->total();
+    $paginacion = new Zebra_Pagination();
+    $this->objRespuesta = $metodo->total();
     $respuesta = $this->objRespuesta[0];
-    $resultado = 10;
-    $pagina = ($paginacion->get_page() -1 ) * $resultado;
-    $this->objMetodo = $metodo->getAll($resultado ,$pagina);        
+    $resultado = 7;
+    $pagina = ($paginacion->get_page() - 1 ) * $resultado;
+
+
     $indicio = filter_input(INPUT_POST, 'filtro');
-    #$this->objFiltro = $metodo->filtro('u');
- 
+    if (empty($indicio)) {
+    $this->objMetodo = $metodo->getAll($resultado, $pagina);
+    } else{
+      $this->objFiltro = $metodo->filtro($indicio);
+      $this->objMetodo = $this->objFiltro;
+    }
     $this->defineView('metodoRiego', 'index', 'html');
   }
 

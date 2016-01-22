@@ -88,14 +88,11 @@ class metodoRiegoTable extends metodoRiegoBaseTable {
     return $answer->fetch();
   }
   
-  public function filtro($indicio) {
+  public function filtro($indicio = null) {
     $conn = $this->getConnection($this->config);
-    $sql = "SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_rie_descripcion LIKE '%:indicio%' AND  met_deleted_at IS NULL";
-    $params = array(
-        ':indicio' => $indicio
-    );
+    $sql = "SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_rie_descripcion LIKE '%". $indicio."%' AND  met_deleted_at IS NULL limit 2";    
     $answer = $conn->prepare($sql);
-    $answer->execute($params);
+    $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
