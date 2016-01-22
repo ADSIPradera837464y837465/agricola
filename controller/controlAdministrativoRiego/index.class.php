@@ -1,7 +1,7 @@
 <?php
 
-require_once '../model/base/detalleCaudalSurcoBaseTable.class.php';
-require_once '../model/detalleCaudalSurcoTable.class.php';
+require_once '../model/base/controlAdministrativoRiegoBaseTable.class.php';
+require_once '../model/controlAdministrativoRiegoTable.class.php';
 
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
@@ -19,9 +19,9 @@ class index extends controller implements action {
 
     public function execute() {
     $config = $this->getConfig();
-    $caudal = new detalleCaudalSurcoTable($config);
-    $this->objCaudal = $caudal->getAll();
-    
-     $this->defineView('detalleCaudalSurco', 'index', 'html');
+    $control = new controlAdministrativoRiegoTable($config);
+     $this->objCar = $control->getAll();
+          
+     $this->defineView('controlAdministrativoRiego', 'index', 'html');
     }
 }

@@ -2,6 +2,7 @@
 
 require_once '../model/base/metodoRiegoBaseTable.class.php';
 require_once '../model/metodoRiegoTable.class.php';
+require_once '../libs/Zebra_Pagination.php';
 
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
@@ -17,11 +18,19 @@ use FStudio\interfaces\fsAction as action;
  */
 class index extends controller implements action {
 
-    public function execute() {
+  public function execute() {
     $config = $this->getConfig();
     $metodo = new metodoRiegoTable($config);
-    $this->objMetodo = $metodo->getAll();
-          
-     $this->defineView('metodoRiego', 'index', 'html');
-    }
+    $paginacion = new Zebra_Pagination();   
+    $this->objRespuesta =   $metodo->total();
+    $respuesta = $this->objRespuesta[0];
+    $resultado = 10;
+    $pagina = ($paginacion->get_page() -1 ) * $resultado;
+    $this->objMetodo = $metodo->getAll($resultado ,$pagina);        
+    $indicio = filter_input(INPUT_POST, 'filtro');
+    #$this->objFiltro = $metodo->filtro('u');
+ 
+    $this->defineView('metodoRiego', 'index', 'html');
+  }
+
 }

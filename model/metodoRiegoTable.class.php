@@ -13,11 +13,15 @@ use FStudio\model\base\metodoRiegoBaseTable;
  */
 class metodoRiegoTable extends metodoRiegoBaseTable {
 
-  public function getAll() {
+  public function getAll($inicio, $fin) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_deleted_at IS NULL ORDER BY met_created_at ASC';
+    $sql = 'SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_deleted_at IS NULL ORDER BY met_created_at ASC LIMIT :inicio offset :fin';
+    $params = array(
+        ':inicio' => $inicio,
+        ':fin' => $fin
+    );
     $answer = $conn->prepare($sql);
-    $answer->execute();
+    $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
@@ -74,6 +78,25 @@ class metodoRiegoTable extends metodoRiegoBaseTable {
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
+  }
+
+  public function total() {
+    $conn = $this->getConnection($this->config);
+    $sql = 'Select count(*) from bda_metodo_riego';    
+    $answer = $conn->prepare($sql);
+    $answer->execute();
+    return $answer->fetch();
+  }
+  
+  public function filtro($indicio) {
+    $conn = $this->getConnection($this->config);
+    $sql = "SELECT met_rie_id AS id, met_rie_descripcion AS descripcion, met_created_at AS created_at, met_updated_at AS updated_at, met_deleted_at AS deleted_at FROM bda_metodo_riego WHERE met_rie_descripcion LIKE '%:indicio%' AND  met_deleted_at IS NULL";
+    $params = array(
+        ':indicio' => $indicio
+    );
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
 }

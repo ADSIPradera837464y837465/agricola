@@ -40,7 +40,7 @@ class detalleCaudalSurcoBaseTable extends model {
   /**
    * numero de documento
    */
-  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'fore_num_documento';
+  const CONTROL_ADMINISTRATIVO_RIEGO_ID = 'car_num_documento';
 
   /**
    * Fecha y hora de la creacion de un registro

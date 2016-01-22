@@ -1,7 +1,7 @@
 <?php
 
-require_once '../model/base/detalleCaudalSurcoBaseTable.class.php';
-require_once '../model/detalleCaudalSurcoTable.class.php';
+require_once '../model/base/haciendaBaseTable.class.php';
+require_once '../model/haciendaTable.class.php';
 
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
@@ -17,11 +17,12 @@ use FStudio\interfaces\fsAction as action;
  */
 class index extends controller implements action {
 
-    public function execute() {
+  public function execute() {
     $config = $this->getConfig();
-    $caudal = new detalleCaudalSurcoTable($config);
-    $this->objCaudal = $caudal->getAll();
-    
-     $this->defineView('detalleCaudalSurco', 'index', 'html');
-    }
+    $hacienda = new haciendaTable($config);
+    $this->objHacienda  = $hacienda->getAll();
+
+    $this->defineView('hacienda', 'index', 'html');
+  }
+
 }
