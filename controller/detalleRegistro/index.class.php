@@ -14,14 +14,14 @@ use FStudio\interfaces\fsAction as action;
  * @subpackage table
  * @version 1.0.0
  */
+class index extends controller implements action {
 
-class dRegistro extends controller implements action {
+  public function execute() {
+    $config = $this->getConfig();
+    $dRegistro = new detalleRegistroTable($config);
+    $this->objdetalleRegistro = $dRegistro->getAll();
+    // así declaramos la vista a usar
+    $this->defineView('detalleRegistro', 'index', 'html');
+  }
 
-    public function execute() {
-      $config = $this->getConfig();
-      $dRegistro = new detalleRegistroTable($config);
-      $this->objdetalleRegistro = $dRegistro->getAll();
-      // así declaramos la vista a usar
-      $this->defineView('detalleRegistro', 'detalleRegistro', 'html');
-    }
 }
