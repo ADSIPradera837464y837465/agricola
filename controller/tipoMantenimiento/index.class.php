@@ -21,7 +21,7 @@ class index extends controller implements action {
     $index = new tipoMantenimientoTable($config);
     $this->objtipoMantenimiento = $index->getAll();
     // así declaramos la vista a usar
-    $this->defineView('tipoMantenimiento', 'index', 'html');
+    $this->defineView('tipoMantenimiento', 'index', 'html') ; 
   }
 
 }

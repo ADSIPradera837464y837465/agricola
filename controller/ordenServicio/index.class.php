@@ -21,7 +21,7 @@ class index extends controller implements action {
     $index = new ordenServicioTable($config);
     $this->objordenServicio = $index->getAll();
     // así declaramos la vista a usar
-    $this->defineView('ordenServicio', 'index', 'html');
+    $this->defineView('ordenServicio', 'index', 'html' );
   }
 
 }
