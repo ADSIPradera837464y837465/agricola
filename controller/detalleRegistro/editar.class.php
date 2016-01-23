@@ -8,7 +8,7 @@ use FStudio\interfaces\fsAction as action;
 
 /**
  * Description detalleRegistro
- * @author Johanna G <ladyjkaulitz@hotmail.com>
+ * @author Johanna Gale <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
  * @subpackage table
