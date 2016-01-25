@@ -7,7 +7,6 @@ use FStudio\myConfig as config;
 
 /**
  * Description of suerteBaseTable
- * 
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model
@@ -35,7 +34,7 @@ class suerteBaseTable extends model {
    * Contiene el id del area del suelo
    */
   const AREA = 'sue_area';
-
+  
   /**
    * Foranea de la tabla tipo suelo
    */
@@ -234,7 +233,7 @@ class suerteBaseTable extends model {
   public function setTipoSueloId($tipo_suelo_id) {
     $this->tipo_suelo_id = $tipo_suelo_id;
   }
-
+  
   /**
    * Fija la hora y fecha de la cracion de un registro en la tabla
    * @version 1.0.0

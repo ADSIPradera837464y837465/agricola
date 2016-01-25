@@ -3,9 +3,9 @@
 use FStudio\model\base\unidadMedidaBaseTable;
 
 /**
- * Clase para manejar la tabla unidadMedida
- * 
- * @author Angela Cardona Molina <angela04cardona@hotmail.com>
+ * clase para manejar la tabla unidadMedida
+ * Description of unidadMedidaTable
+ *  @author Angela Cardona Molina <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table

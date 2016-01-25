@@ -4,7 +4,6 @@ use FStudio\model\base\suerteBaseTable;
 
 /**
  * Description of suerteTable
- *
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model

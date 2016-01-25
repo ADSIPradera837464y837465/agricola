@@ -7,7 +7,7 @@ use FStudio\model\base\tipoTerceroBaseTable;
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package FStudio
  * @subpackage model
- * @subpackage table
+ * @subpackage base
  * @version 1.0.0
  */
 class tipoTerceroTable extends tipoTerceroBaseTable {
@@ -31,7 +31,7 @@ class tipoTerceroTable extends tipoTerceroBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tit_id AS id, tit_descripcion AS descripcion, tit_created_at AS created_at, tit_updated_at AS updated_at, tit_deleted_at AS deleted_at FROM bda_tipo_tercero WHERE tit_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT tit_id AS id, tit_descripcion AS descripcion, tit_created_at AS created_at, tit_updated_at AS updated_at, tit_deleted_at AS deleted_at FROM bda_tipo_tercero WHERE tit_deleted_at IS NULL AND tit_id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

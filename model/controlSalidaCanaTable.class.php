@@ -4,11 +4,10 @@ use FStudio\model\base\controlSalidaCanaBaseTable;
 
 /**
  * Description of controlSalidaCanaTable
- *
  * @author Daniela Barona Mosquera <mo_naok@hotmail.com>
- * @package FStudio
+ * @package 
  * @subpackage model
- * @subpackage table
+ * @subpackage base
  * @version 1.0.0
  */
 class controlSalidaCanaTable extends controlSalidaCanaBaseTable {

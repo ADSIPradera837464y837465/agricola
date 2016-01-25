@@ -1,15 +1,8 @@
 <?php
-
-use FStudio\fsController as controller; ?>
-<?php include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
+include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 <h1>Nuevo Detalle Entrada Salida Bodega</h1>
 <div class="container container-fluid"> 
   <form class="form-inline" action="<?php echo $fsConfig->getUrl() ?>index.php/detalleEntradaSalidaBodega/crear" method="post">
-
-     <div class="form-group" class="modificar">
-     <label for="desId">Id Detalle Entrada Salida Bodega</label>
-      <input type="text" class="form-control" id="id" name="detalleEntradaSalidaBodega[desId]" placeholder="id ">
-    </div>  
     
     <div class="form-group" class="modificar">
       <label for="esbId">id entrada salida bodega</label>

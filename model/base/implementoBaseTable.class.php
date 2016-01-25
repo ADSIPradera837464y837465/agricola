@@ -6,10 +6,9 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Clase base para la tabla bdaImplemento
- * 
- * @author Maribel Zamora <mazagi86@hotmail.com>
- * @package FStudio
+ * clase base para la tabla bdaImplemento
+ * @author maribel zamora <mazagi86@hotmail.com>
+ * @package fStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -157,16 +156,16 @@ class implementoBaseTable extends model {
   }
 
   /**
-   * Fija el id del registro
+   * Fija el id del registro 
    * @version 1.0.0
-   * @param integer $id
+   * @param integer $id 
    */
   public function setId($id) {
     $this->id = $id;
   }
 
   /**
-   * Fija la descripcion del registro
+   * Fija la descripcion del registro 
    * @version 1.0.0
    * @param string $descripcion
    */

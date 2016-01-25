@@ -5,9 +5,8 @@ use FStudio\model\base\implementoBaseTable;
 
 /**
  * clase para manejar la tabla implemento
- * 
- * @author Maribel Zamora <mazagi86@hotmail.com>
- * @package FStudio
+ * @author maribel zamora <mazagi86@hotmail.com>
+ * @package fStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -51,13 +50,13 @@ class implementoTable extends implementoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_implemento (imp_descripcion) VALUES (:descripcion)';
+    $sql = 'INSERT INTO bda_implemento (imp_descripcion) VALUES (:usuario_id, :ip_address, :hash_cookie)';
     $params = array(
-        ':descripcion' => $this->getDescripcion()
+        ':descripcion' => $this->getDescripcion(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    $this->setId($conn->lastInsertId(self::SEQUENCE));
     return true;
   }
 

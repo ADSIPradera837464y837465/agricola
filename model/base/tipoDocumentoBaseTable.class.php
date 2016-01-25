@@ -7,12 +7,11 @@ use FStudio\myConfig as config;
 
 /**
  * Description of tipoDocumentoBaseTable
- * 
- * @author Angela Cardona <angela04cardona@hotmail.com>
+ * @author AngelaCardona <angela04cardona@hotmail.com>
  * @package FStudio
- * @subpackage model
+* @subpackage model
  * @subpackage base
- * @version 1.0.0
+ * @version 1.0.0      
  */
 class tipoDocumentoBaseTable extends model {
 
@@ -32,7 +31,7 @@ class tipoDocumentoBaseTable extends model {
   const DESCRIPCION_LENGTH = 80;
 
   /**
-   * Descripcion del tipo de movimiento
+   * Descripcion del tipo de movimiento 
    */
   const TIPO_MOVIMIENTO = 'tpd_tipo_movimiento';
 
@@ -42,7 +41,7 @@ class tipoDocumentoBaseTable extends model {
   const TIPO_MOVIMIENTO_LENGTH = 80;
 
   /**
-   * Estado documento
+   * Estado documento 
    */
   const ESTADO = 'tpd_estado';
 
@@ -95,7 +94,7 @@ class tipoDocumentoBaseTable extends model {
 
   /**
    * Fecha y hora de creación del documento
-   * @var date_time
+   * @var date_time 
    */
   private $created_at;
 
@@ -104,15 +103,15 @@ class tipoDocumentoBaseTable extends model {
    * @var date_time
    */
   private $updated_at;
+ 
 
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var date_time
    */
   private $deleted_at;
-
-  /**
-   *
+/**
+   * 
    * constructor class tipoDocumentoBaseTable
    * @version 1.0.0
    * @param integer $id
@@ -149,8 +148,7 @@ class tipoDocumentoBaseTable extends model {
   public function getDescripcion() {
     return $this->descripcion;
   }
-
-  /**
+/**
    * Retorna el tipo de movimiento del documento
    * @return varchar
    */
@@ -160,7 +158,7 @@ class tipoDocumentoBaseTable extends model {
 
   /**
    * Retorna el estado del documento
-   * @return boolean
+   * @return boolean 
    */
   public function getEstado() {
     return $this->estado;
@@ -173,9 +171,8 @@ class tipoDocumentoBaseTable extends model {
   public function getCreatedAt() {
     return $this->created_at;
   }
-
-  /**
-   * Fecha y hora de la ultima actualización de la descripcion del documento
+/**
+   * Fecha y hora de la ultima actualización de la descripcion del documento 
    * @return date_time
    */
   public function getUpdatedAt() {
@@ -184,12 +181,13 @@ class tipoDocumentoBaseTable extends model {
 
   /**
    * Retorna la fecha y la hora del borrado lógico del registro
-   * @return date_time
+   * @return date_time 
    */
   public function getDeletedAt() {
     return $this->deleted_at;
   }
 
+  
   /**
    * Fija el id del registro del documento
    * @param integer $id
@@ -199,14 +197,13 @@ class tipoDocumentoBaseTable extends model {
   }
 
   /**
-   * descripcion del tipo de documento
-   * @param varchar $descripcion
+   * descripcion del tipo de documento 
+   * @param varchar $descripcion 
    */
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
-
-  /**
+/**
    * movimiento del documento
    * @param varchar $movimiento
    */
@@ -221,8 +218,7 @@ class tipoDocumentoBaseTable extends model {
   public function setEstado($estado) {
     $this->estado = $estado;
   }
-
-  /**
+/**
    * Fija la fecha y la hora de creación del documento
    * @version 1.0.0
    * @param date_time $createdAt
@@ -230,8 +226,7 @@ class tipoDocumentoBaseTable extends model {
   public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
-
-  /**
+/**
    * Fija la fecha y la hora de la última actualización del documento
    * @version 1.0.0
    * @param date_time $updateAt
@@ -239,8 +234,7 @@ class tipoDocumentoBaseTable extends model {
   public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
   }
-
-  /**
+ /**
    * Fija la fecha y la hora del borrado lógico
    * @version 1.0.0
    * @param date_time $deletedAt

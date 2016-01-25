@@ -7,7 +7,6 @@ use FStudio\myConfig as config;
 
 /**
  * Description of detalleRegistroBaseTable
- * 
  * @author Magda Chaux <lucia_chaux@hotmail.com>
  * @package FStudio
  * @subpackage model
@@ -24,10 +23,10 @@ class detalleRegistroBaseTable extends model {
   /**
    * Foranea de la tabla registro labores maquina equipo
    */
-  const LABORES_MAQUINA_EQUIPO_NUMERO = 'relme_numero';
+  const REGISTRO_LABORES_MAQUINA_EQUIPO = 'relme_numero';
 
   /**
-   * Foranea de la tabla tercero
+   * Foranea de la tabla tercero 
    */
   const TERCERO_ID = 'ter_id';
 
@@ -40,22 +39,22 @@ class detalleRegistroBaseTable extends model {
    * Foranea de la tabla suerte
    */
   const SUERTE_ID = 'sue_id';
-
+  
   /**
    * Foranea de la tabla producto
    */
   const PRODUCTO_ID = 'pro_id';
-
+  
   /**
    * Foranea de la tabla unidad medida
    */
   const UNIDAD_MEDIDA_ID = 'unm_id';
-
+  
   /**
    * Foranea de la tabla maquina
    */
   const MAQUINA_ID = 'maq_id';
-
+  
   /**
    * Tiempo sin uso
    */
@@ -75,16 +74,16 @@ class detalleRegistroBaseTable extends model {
    * Hora exacta de fin
    */
   const HORA_FIN = 'der_hora_fin';
-
+  
   /**
    * Cantidad
    */
   const CANTIDAD = 'der_cantidad';
-
+  
   /**
    * Fecha de creacion del registro
    */
-  const CREATED_AT = 'der_created_at';
+  const CREATED_AT = 'esb_created_at';
 
   /**
    * Fecha de actualizacion del registro
@@ -99,7 +98,7 @@ class detalleRegistroBaseTable extends model {
   /**
    * Secuencia de la tabla para la llave primaria
    */
-  const _SEQUENCE = 'bda_detalle_registro_der_item_seq';
+  const _SEQUENCE = '';
 
   /**
    * Nombre de la tabla
@@ -119,79 +118,79 @@ class detalleRegistroBaseTable extends model {
 
   /**
    * Foranea de la tabla registro labores maquina equipo
-   * @var integer
+   * @var integer 
    */
   private $relmeNumero;
 
   /**
-   * Foranea de la tabla tercero
-   * @var integer
+   * Foranea de la tabla tercero 
+   * @var integer 
    */
   private $terId;
 
   /**
    * Foranea de la tabla labor
-   * @var integer
+   * @var integer 
    */
   private $labId;
-
+  
   /**
    * Foranea de la tabla suerte
-   * @var integer
+   * @var integer 
    */
   private $sueId;
-
+  
   /**
    * Foranea de la tabla producto
-   * @var integer
+   * @var integer 
    */
   private $proId;
-
+  
   /**
    * Foranea de la tabla unidad medida
-   * @var integer
+   * @var integer 
    */
   private $unmId;
-
+  
   /**
    * Foranea de la tabla maquina
-   * @var integer
+   * @var integer 
    */
   private $maqId;
 
   /**
    * Tiempo sin uso
-   * @var integer
+   * @var integer 
    */
   private $derTiempoMuerto;
 
   /**
    * Total de horas laboradas
-   * @var integer
+   * @var integer 
    */
   private $derTotalHorasTrabajadas;
 
   /**
    * Hora exacta de inicio
-   * @var time
+   * @var time 
    */
   private $derHoraInicio;
-
+  
   /**
    * Hora exacta de fin
-   * @var time
+   * @var time 
    */
   private $derHoraFin;
-
+  
   /**
    * Hora exacta de cantidad
-   * @var integer
+   * @var integer 
    */
   private $derCantidad;
-
+  
   /**
    * Fecha de creación del registro
-   * @var date_time
+   * @var date_time 
    */
   private $derCreatedAt;
 

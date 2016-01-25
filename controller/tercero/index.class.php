@@ -1,6 +1,6 @@
 <?php
 
-require_once '../model/base/terceroTable.class.php';
+require_once '../model/base/terceroBaseTable.class.php';
 require_once '../model/terceroTable.class.php';
 
 use FStudio\fsController as controller;
@@ -17,11 +17,13 @@ use FStudio\interfaces\fsAction as action;
  */
 class index extends controller implements action {
 
-    public function execute() {
-      $config = $this->getConfig();
-      $tercero = new terceroTable($config);
-      $this->objTercero = $tercero->getAll();
-      // así declaramos la vista a usar
-      $this->defineView('tercero', 'index', 'html');
-    }
+  public function execute() {
+
+    $config = $this->getConfig();
+    $tercero = new terceroTable($config);
+    $this->objtercero = $tercero->getAll();
+    
+    $this->defineView('tercero', 'index', 'html');
+  }
+
 }

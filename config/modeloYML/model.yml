@@ -213,7 +213,7 @@ schema:
       unm_id:            { name: unidad_medida_id }
       pro_created_at:    { name: created_at, behavior: created }
       pro_updated_at:    { name: updated_at, behavior: updated }
-      pro_deleted_at:    { name: deleted_at, behavior: deleted }
+      pro_deleted_at_at: { name: deleted_at, behavior: deleted }
 
   bda_recordar_me:
     name:                recordar_me
@@ -306,7 +306,7 @@ schema:
     name:                         detalle_registro
     columns:
       der_item:                   { name: item, constraint: PK, sequence: bda_detalle_registro_der_item_seq }
-      relme_numero:               { name: labores_maquina_equipo_numero }
+      relme_numero:               { name: realme_numero }
       ter_id:                     { name: tercero_id }
       lab_id:                     { name: labor_id }
       sue_id:                     { name: suerte_id }

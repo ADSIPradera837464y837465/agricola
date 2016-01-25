@@ -7,8 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Description of registroTractorBaseTable
- * 
- * @author Yuri Adriana Hurtado Rojas <yurodri.1996@gmail.com>
+ * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -32,21 +31,21 @@ class registroTractorBaseTable extends model {
   const CONTROL_SALIDA_CANA = 'csc_id';
 
   /**
+
    * hora de salida de la tabla registroTractor
    */
   const HORA_SALIDA = 'rtr_hora_salida';
-
   /**
 
    * fecha de creacion del  registroTractor
    */
+  
   const CREATED_AT = 'rtr_created_at';
-
   /**
+
    * fecha de actualizacion del  registroTractor
    */
   const UPDATED_AT = 'rtr_updated_at';
-
   /**
 
    * fecha de eliminacion del registroTractor
@@ -77,12 +76,12 @@ class registroTractorBaseTable extends model {
    * @var integer
    */
   private $id;
-
   /**
    * control_salida_cana de la tabla
    * @version 1.0.0
    * @var time
    */
+  
   private $control_salida_cana;
 
   /**
@@ -114,7 +113,7 @@ class registroTractorBaseTable extends model {
   private $deleted_at;
 
   /**
-   *
+   * 
    * @param config $config
    * @param type $id
    * @param type $control_salida_cana
@@ -142,6 +141,8 @@ class registroTractorBaseTable extends model {
     return $this->id;
   }
 
+ 
+
   /**
    * Retorna el control_salida_cana del sistema
    * @version 1.0.0
@@ -166,7 +167,7 @@ class registroTractorBaseTable extends model {
    * @return time_stamp
    */
   public function getCreatedAt() {
-    return $this->created_at;
+    return $this->createdAt;
   }
 
   /**
@@ -175,7 +176,7 @@ class registroTractorBaseTable extends model {
    * @return time_stamp
    */
   public function getUpdatedAt() {
-    return $this->updated_at;
+    return $this->updatedAt;
   }
 
   /**
@@ -184,9 +185,10 @@ class registroTractorBaseTable extends model {
    * @return time_stamp
    */
   public function getDeletedAt() {
-    return $this->deleted_at;
+    return $this->deletedAt;
   }
 
+  
   /**
    * Fija el id para el registro en la tabla
    * @version 1.o.o

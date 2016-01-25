@@ -7,7 +7,6 @@ use FStudio\myConfig as config;
 
 /**
  * Description of bitacoraBaseTable
- * 
  * @author Diana Meneses <meneses_d@rocketmail.com>
  * @package FStudio
  * @subpackage model
@@ -52,7 +51,7 @@ class bitacoraBaseTable extends model {
   const REGISTRO = 'bit_registro';
 
   /**
-   * Observaciones que se realizan en la tabla
+   * Observaciones que se realizan en la tabla   
    */
   const OBSERVACION = 'bit_observacion';
 
@@ -84,37 +83,37 @@ class bitacoraBaseTable extends model {
 
   /**
    * Id de la tabla
-   * @var integer
+   * @var integer 
    */
   private $id;
 
   /**
    * primaria de usuario
-   * @var integer
+   * @var integer 
    */
   private $usuario_id;
-
+  
   /**
    * Accion realizada
-   * @var string
+   * @var string 
    */
   private $accion;
-
+  
   /**
    * nombre de la tabla
-   * @var varchar
+   * @var varchar 
    */
   private $tabla;
-
+  
   /**
    * Descripcion del registro
    * @var varchar
    */
   private $registro;
-
+  
   /**
    * descripcion realizada
-   * @var varchar
+   * @var varchar 
    */
   private $observacion;
 
@@ -125,7 +124,7 @@ class bitacoraBaseTable extends model {
   private $fecha;
 
   /**
-   *
+   * 
    * Constructor de la clase bitacoraBaseTable
    * @param integer $id
    * @param string $accion
@@ -155,8 +154,8 @@ class bitacoraBaseTable extends model {
   public function getId() {
     return $this->id;
   }
-
-  /**
+  
+   /**
    * retorna el id (identificacion) del usuario
    * @version 1.0.0
    * @return integer
@@ -174,7 +173,7 @@ class bitacoraBaseTable extends model {
     return $this->accion;
   }
 
-  /**
+    /**
    * Retorna el nombre de la tabla
    * @version 1.0.0
    * @return varchar
@@ -182,7 +181,8 @@ class bitacoraBaseTable extends model {
   public function getTabla() {
     return $this->tabla;
   }
-
+  
+  
   /**
    * REtorna numero del registro
    * @version 1.0.0
@@ -191,6 +191,7 @@ class bitacoraBaseTable extends model {
   public function getRegistro() {
     return $this->registro;
   }
+ 
 
   /**
    * Retorna las observaciones realizadas
@@ -201,6 +202,9 @@ class bitacoraBaseTable extends model {
     return $this->observacion;
   }
 
+
+
+
   /**
    * retorna fecha de registro
    * @version 1.0.0
@@ -210,6 +214,8 @@ class bitacoraBaseTable extends model {
     return $this->fecha;
   }
 
+
+
   /**
    * Fija el id para el registro en la tabla
    * @version 1.0.0
@@ -218,8 +224,8 @@ class bitacoraBaseTable extends model {
   public function setId($id) {
     $this->id = $id;
   }
-
-  /**
+  
+      /**
    * Fija el id del usuario
    * @version 1.0.0
    * @param integer $usuarioId
@@ -237,7 +243,7 @@ class bitacoraBaseTable extends model {
     $this->accion = $accion;
   }
 
-  /**
+    /**
    * Fija el nombre de la tabla
    * @version 1.0.0
    * @param varchar $tabla
@@ -255,6 +261,7 @@ class bitacoraBaseTable extends model {
     $this->registro = $registro;
   }
 
+
   /**
    * fija las observaciones que se realizaron
    * @version 1.0.0
@@ -263,6 +270,8 @@ class bitacoraBaseTable extends model {
   public function setObservacion($observacion) {
     $this->observacion = $observacion;
   }
+
+
 
   /**
    * Fija La fecha de creacion del registro

@@ -4,7 +4,6 @@ use FStudio\model\base\entradaSalidaBodegaBaseTable;
 
 /**
  * Description of entradaSalidaBodegaTable
- * 
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model
@@ -33,7 +32,7 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE esb_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE esb_deleted_at IS NULL AND esb_id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

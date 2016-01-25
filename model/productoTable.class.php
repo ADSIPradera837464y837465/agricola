@@ -4,11 +4,10 @@ use FStudio\model\base\productoBaseTable;
 
 /**
  * Clase para manejar la tabla producto
- *
- * @author
+ * @author Julian Andrés Lasso Figueroa <ingeniero.julianlasso@gmail.com>
  * @package FStudio
  * @subpackage model
- * @subpackage table
+ * @subpackage table 
  * @version 1.0.0
  */
 class productoTable extends productoBaseTable {
@@ -20,7 +19,7 @@ class productoTable extends productoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipo_producto_id, mar_id AS marca_id, unm_id AS unidad_medida_id, pro_created_at AS created_at, pro_updated_at AS updated_at, pro_deleted_at AS deleted_at FROM bda_producto WHERE pro_deleted_at IS NULL ORDER BY pro_created_at ASC';
+    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipoProductoId, mar_id AS marcaId, unm_id AS unidadMedidaId, pro_created_at AS createdAt, pro_updated_at AS updatedAt, pro_deleted_at AS deletedAt FROM bda_producto WHERE pro_deleted_at IS NULL ORDER BY pro_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -32,11 +31,13 @@ class productoTable extends productoBaseTable {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($id = null) {
+  public function getById($id) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipo_producto_id, mar_id AS marca_id, unm_id AS unidad_medida_id, pro_created_at AS created_at, pro_updated_at AS updated_at, pro_deleted_at AS deleted_at FROM bda_producto WHERE pro_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipoProductoId, mar_id AS marcaId, unm_id AS unidadMedidaId, pro_created_at AS createdAt, pro_updated_at AS updatedAt, pro_deleted_at AS deletedAt '
+            . 'FROM bda_producto WHERE pro_deleted_at IS NULL '
+            . 'AND pro_id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id : $this->getId()
+        ':id' => $id
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -50,17 +51,16 @@ class productoTable extends productoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_producto (pro_descripcion, tpr_id, mar_id, unm_id) VALUES (:descripcion, :tipo_producto_id, :marca_id, :unidad_medida_id)';
+    $sql = 'INSERT INTO bda_producto (pro_descripcion, tpr_id, mar_id, unm_id) VALUES (:descripcion, :tipo_producto, :marca, :unidad_medida)';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
-        ':tipo_producto_id' => $this->getTipoProductoId(),
-        ':marca_id' => $this->getMarcaId(),
-        ':unidad_medida_id' => $this->getUnidadMedidaId()
+        ':tipo_producto' => $this->getTipoProductoId(),
+        ':marca' => $this->getMarcaId(),
+        ':unidad_medida' => $this->getUnidadMedidaId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this->setId($conn->lastInsertId(self::_SEQUENCE));
-    return true;
+    return $conn->lastInsertId(self::_SEQUENCE);
   }
 
   /**
@@ -70,12 +70,12 @@ class productoTable extends productoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_producto SET pro_descripcion = :descripcion, tpr_id = :tipo_producto_id, mar_id = :marca_id, unm_id = :unidad_medida_id WHERE pro_id = :id';
+    $sql = 'UPDATE bda_producto SET pro_descripcion = :descripcion, tpr_id = :tipo_producto, mar_id = :marca, unm_id = :unidad_medida WHERE pro_id = :id';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
-        ':tipo_producto_id' => $this->getTipoProductoId(),
-        ':marca_id' => $this->getMarcaId(),
-        ':unidad_medida_id' => $this->getUnidadMedidaId(),
+        ':tipo_producto' => $this->getTipoProductoId(),
+        ':marca' => $this->getMarcaId(),
+        ':unidad_medida' => $this->getUnidadMedidaId(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -111,3 +111,6 @@ class productoTable extends productoBaseTable {
   }
 
 }
+
+
+//gnu

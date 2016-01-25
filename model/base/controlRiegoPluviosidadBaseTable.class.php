@@ -7,9 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of bitacoraBaseTable
- * 
- * @author Lina Vanessa Montaño <linamontano-1995@hotmail.es>
- * @package FStudio
+ * @author linaVanessaMontaño <linamontano-1995@hotmail.es>
+ * @package estudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -302,6 +301,15 @@ class controlRiegoPluviosidadBaseTable extends model {
   }
 
   /**
+   * Retorna la configuración del sistema
+   * @version 1.0.0
+   * @return config
+   */
+  public function setConfig(config $config) {
+    $this->config = $config;
+  }
+
+  /**
    * Retorna el id del registro
    * @version 1.0.0
    * @return integer
@@ -315,7 +323,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date
    */
-  public function setFecha($fecha) {
+   public function setFecha($fecha) {
     $this->fecha = $fecha;
   }
 
@@ -324,7 +332,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return time
    */
-  public function setHoraInicio($hora_inicio) {
+    public function setHoraInicio($hora_inicio) {
     $this->hora_inicio = $hora_inicio;
   }
 
@@ -333,7 +341,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return time
    */
-  public function setHoraFin($hora_fin) {
+    public function setHoraFin($hora_fin) {
     $this->hora_fin = $hora_fin;
   }
 
@@ -342,7 +350,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function setCantidadM3Hora($cantidad_m3_hora) {
+   public function setCantidadM3Hora($cantidad_m3_hora) {
     $this->cantidad_m3_hora = $cantidad_m3_hora;
   }
 
@@ -351,7 +359,8 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return text
    */
-  public function setObservacion($observacion) {
+
+   public function setObservacion($observacion) {
     $this->observacion = $observacion;
   }
 
@@ -369,7 +378,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function setHaciendaId($hacienda_id) {
+    public function setHaciendaId($hacienda_id) {
     $this->hacienda_id = $hacienda_id;
   }
 
@@ -378,7 +387,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return integer
    */
-  public function setTerceroId($tercero_id) {
+   public function setTerceroId($tercero_id) {
     $this->tercero_id = $tercero_id;
   }
 
@@ -387,7 +396,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function setCreatedAt($created_at) {
+ public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
 
@@ -396,7 +405,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function setUpdatedAt($updated_at) {
+   public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
   }
 
@@ -405,7 +414,7 @@ class controlRiegoPluviosidadBaseTable extends model {
    * @version 1.0.0
    * @return date_time
    */
-  public function setDeletedAt($deleted_at) {
+   public function setDeletedAt($deleted_at) {
     $this->deleted_at = $deleted_at;
   }
 

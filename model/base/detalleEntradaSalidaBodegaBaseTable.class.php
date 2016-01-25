@@ -7,9 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of detalleEntradaSalidaBodegaBaseTable
- * 
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
- * @package FStudio
+ * @package 
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -22,7 +21,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   const ID = 'des_id';
 
   /**
-   * ID de la tabla entrada salida bodega
+   * ID de la tabla entrada salida bodega 
    */
   const ENTRADA_SALIDA_BODEGA_ID = 'esb_id';
 
@@ -67,7 +66,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   const _SEQUENCE = 'bda_detalle_entrada_salida_bodega_des_id_seq';
 
   /**
-   *  Nombre de la tabla
+   *  Nombre de la tabla 
    */
   const _TABLE = 'bda_detalle_entrada_salida_bodega';
 
@@ -84,8 +83,8 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   private $id;
 
   /**
-   * ID de la tabla entrada salida bodega
-   * @var integer
+   * ID de la tabla entrada salida bodega 
+   * @var integer 
    */
   private $entrada_salida_bodega_id;
 
@@ -103,7 +102,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
 
   /**
    * Descripcion de la cantidad  de la tabla
-   * @var integer
+   * @var integer 
    */
   private $cantidad;
 
@@ -132,7 +131,7 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
   private $deleted_at;
 
   /**
-   *
+   * 
    * Constructor de la clase detalleEntradaSalidaBodegaBaseTable
    * @param integer $id
    * @param integer $entrada_salida_bodega_id
@@ -192,6 +191,15 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    */
   public function getUnidadMedidaId() {
     return $this->unidad_medida_id;
+  }
+
+  /**
+   * Retorna el id de umn del registro
+   * @version 1.0.0
+   * @return config
+   */
+  public function getUmnId() {
+    return $this->umnId;
   }
 
   /**
@@ -273,6 +281,15 @@ class detalleEntradaSalidaBodegaBaseTable extends model {
    */
   public function setUnidadMedidaId($unidad_medida_id) {
     $this->unidad_medida_id = $unidad_medida_id;
+  }
+
+  /**
+   * Fija el id para el registro en la tabla
+   * @version 1.0.0
+   * @param integer $id
+   */
+  public function setUmnId($umnId) {
+    $this->umnId = $umnId;
   }
 
   /**

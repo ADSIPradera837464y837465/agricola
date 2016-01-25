@@ -7,9 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of tipoMantenimientoBaseTable
- * 
- * @author Marian Montaño <nichesitap@hotmail.com>
- * @package FStudio
+ * @author merian montaño<nichesitap@hotmail.com>
+ * @package 
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -76,7 +75,7 @@ class tipoMantenimientoBaseTable extends model {
 
   /**
    * Fecha de creación del registro
-   * @var date_time
+   * @var date_time 
    */
   private $created_at;
 
@@ -115,7 +114,7 @@ class tipoMantenimientoBaseTable extends model {
 
   /**
    * Retorna la creacion de tipo de mantenimiento nuevo
-   * @return
+   * @return 
    */
   public function getCreatedAt() {
     return $this->created_at;
@@ -123,7 +122,7 @@ class tipoMantenimientoBaseTable extends model {
 
   /**
    * Retorna la modificasion de un tipo de mantenimiento
-   * @return
+   * @return 
    */
   public function getUpdatedAt() {
     return $this->updated_at;
@@ -131,10 +130,19 @@ class tipoMantenimientoBaseTable extends model {
 
   /**
    * Retorna la eliminacion de un tipo de mantenimiento
-   * @return
+   * @return 
    */
   public function getDeletedAt() {
     return $this->deleted_at;
+  }
+
+  /**
+   * Fija la configuración del sistema
+   * @version 1.0.0
+   * @param config $config Objeto con configuración del sistema
+   */
+  function setConfig(config $config) {
+    $this->config = $config;
   }
 
   /**
@@ -155,7 +163,7 @@ class tipoMantenimientoBaseTable extends model {
 
   /**
    * Retorna la modificasion de un tipo de mantenimiento
-   * @return
+   * @return 
    */
   public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
@@ -163,7 +171,7 @@ class tipoMantenimientoBaseTable extends model {
 
   /**
    * Retorna la modificasion de un tipo de mantenimiento
-   * @return
+   * @return 
    */
   public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
@@ -171,7 +179,7 @@ class tipoMantenimientoBaseTable extends model {
 
   /**
    * Retorna la eliminacion de un tipo de mantenimiento
-   * @return
+   * @return 
    */
   public function setDeletedAt($deleted_at) {
     $this->deleted_at = $deleted_at;

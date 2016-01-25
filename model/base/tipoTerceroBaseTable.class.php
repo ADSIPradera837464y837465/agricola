@@ -7,7 +7,6 @@ use FStudio\myConfig as config;
 
 /**
  * Description of tipoTerceroBaseTable
- * 
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package FStudio
  * @subpackage model
@@ -167,7 +166,7 @@ class tipoTerceroBaseTable extends model {
 
   /**
    * Fija la descripcion para el registro de la tabla
-   * @version
+   * @version 
    * @param string $descripcion
    */
   public function setDescripcion($descripcion) {

@@ -7,8 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Description of unidadMedidaBaseTable
- * 
- * @author Angela Cardona <angela04cardona@hotmail.com>
+ * @author AngelaCardona <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -32,7 +31,7 @@ class unidadMedidaBaseTable extends model {
   const DESCRIPCION_LENGTH = 80;
 
   /**
-   * Fecha y hora de creación de una nueva unidad de medida
+   * Fecha y hora de creación de una nueva unidad de medida 
    */
   const CREATED_AT = 'unm_created_at';
 
@@ -68,7 +67,7 @@ class unidadMedidaBaseTable extends model {
 
   /**
    * Fecha y hora de creación de una unidad de medida
-   * @var date_time
+   * @var date_time 
    */
   private $created_at;
 
@@ -138,7 +137,7 @@ class unidadMedidaBaseTable extends model {
 
   /**
    * Fecha y hora para controlar el borrado lógico
-   * @return date_time
+   * @return date_time 
    */
   public function getDeletedAt() {
     return $this->deleted_at;
@@ -155,7 +154,7 @@ class unidadMedidaBaseTable extends model {
 
   /**
    * descripcion del tipo de la unidad de medida
-   * @param varchar $descripcion
+   * @param varchar $descripcion 
    * @version 1.0.0
    */
   public function setDescripcion($descripcion) {

@@ -3,15 +3,14 @@
 use FStudio\model\base\recordarMeBaseTable;
 
 /**
- * Clase para manejar la tabla recordar_me
- *
- * @author Maribel Zamora <mazagi86@hotmail.com>
- * @package FStudio
+ * clase para manejar la tabla recordarMe
+ * @author maribel zamora <mazagi86@hotmail.com>
+ * @package fStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
-class recordarMeTable extends recordarMeBaseTable {
+class recordarMeTable extends recordarMeTable {
 
   /**
    * obtiene todos los datos de la tabla
@@ -58,7 +57,7 @@ class recordarMeTable extends recordarMeBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    $this->setId($conn->lastInsertId(self::SEQUENCE));
     return true;
   }
 
@@ -90,7 +89,7 @@ class recordarMeTable extends recordarMeBaseTable {
    */
   public function delete() {
     $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM bda_recordar_me WHERE rcm_id = :id';
+    $sql = 'DELETE FROM bda_recordar_me WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );

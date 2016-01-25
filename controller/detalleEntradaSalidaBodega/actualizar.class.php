@@ -9,24 +9,31 @@ use FStudio\interfaces\fsAction as action;
 /**
  * Description of actualizar
  *
- * @author diana <meneses_d@rocketmail.com>
+ * @author Diana Meneses <meneses_d@rocketmail.com>
+ * @package FStudio
+ * @subpackage controller
+ * @subpackage index.class.php
+ * @version 1.0.0
  */
 class actualizar extends controller implements action {
 
   public function execute() {
+
+    $config = $this->getConfig();
+    $detalleEntradaSalidaBodega = new detalleEntradaSalidaBodegaTable($config);
+
     $formDetalleEntradaSalidaBodega = filter_input_array(INPUT_POST)['detalleEntradaSalidaBodega'];
 
-    $detalleEntradaSalidaBodega = new detalleEntradaSalidaBodegaTable();
-    $detalleEntradaSalidaBodega->setDesId($formDetalleEntradaSalidaBodega['desIs']);
-    $detalleEntradaSalidaBodega->setEsbId($formDetalleEntradaSalidaBodega['esbId']);
-    $detalleEntradaSalidaBodega->setProId($formDetalleEntradaSalidaBodega['proId']);
-    $detalleEntradaSalidaBodega->setUmnId($formDetalleEntradaSalidaBodega['unmId']);
-    $detalleEntradaSalidaBodega->setCantidad($formDetalleEntradaSalidaBodega['cantidad']);
-    $detalleEntradaSalidaBodega->setPrecio($formDetalleEntradaSalidaBodega['precio']);
-    $trabajador->update();
+    $detalleEntradaSalidaBodega->setId($formDetalleEntradaSalidaBodega['desId']);
+    $detalleEntradaSalidaBodega->setEntradaSalidaBodegaId($formDetalleEntradaSalidaBodega['esbId']);
+    $detalleEntradaSalidaBodega->setProductoId($formDetalleEntradaSalidaBodega['proId']);
+    $detalleEntradaSalidaBodega->setUnidadMedidaId($formDetalleEntradaSalidaBodega['unmId']);
+    $detalleEntradaSalidaBodega->setCantidad($formDetalleEntradaSalidaBodega['desCantidad']);
+    $detalleEntradaSalidaBodega->setPrecio($formDetalleEntradaSalidaBodega['desPrecio']);
 
 
-    header('Location: ' . $fsConfig->getUrl() . 'index.php/detalleEntradaSalidaBodega/index');
-  }
+    $this->objDetalleEntradaSalidaBodega = $detalleEntradaSalidaBodega->update();
+    header('Location: ' . $config->getUrl() . 'index.php/detalleEntradaSalidaBodega/index');
+    }
 
 }

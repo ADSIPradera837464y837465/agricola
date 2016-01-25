@@ -4,8 +4,7 @@ use FStudio\model\base\bitacoraBaseTable;
 
 /**
  * Description of bitacoraTable
- *
- * @author Diana Meneses <meneses_d@rocketmail.com>
+  * @author Diana Meneses <meneses_d@rocketmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table
@@ -20,12 +19,11 @@ class bitacoraTable extends bitacoraBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT bit_id AS id, usr_id AS usuario_id, bit_accion AS accion, bit_tabla AS tabla, bit_registro AS registro, bit_observacion AS observacion, bit_fecha AS fecha FROM bda_bitacora ORDER BY bit_fecha ASC';
+    $sql = 'SELECT bit_id AS id, usr_id AS usuario_id, bit_accion AS accion, bit_tabla AS tabla, bit_registro AS registro, bit_observacion AS observaciones, bit_fecha AS fecha FROM bda_bitacora ORDER BY  ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
   }
-
   /**
    * Retorna un elemento de la tabla buscado por un ID especifico
    * @version 1.0.0
@@ -88,7 +86,7 @@ class bitacoraTable extends bitacoraBaseTable {
   /**
    * Borra en forma logica o fisica un registro de la tabla
    * @version 1.0.0
-   * @param boolean
+   * @param boolean 
    * @return boolean
    * @throws PDOException
    */

@@ -5,24 +5,25 @@ require_once '../model/detalleEntradaSalidaBodegaTable.class.php';
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
 
-include $fsConfig->getPath() . 'model/detalleEntradaSalidaBodegaTable.class.php';
-
 /**
  * Description of ver
  *
- * @author diana
+ * @author Diana Meneses <meneses_d@rocketmail.com>
+ * @package FStudio
+ * @subpackage controller
+ * @subpackage index.class.php
+ * @version 1.0.0
  */
 class ver extends controller implements action{
 
   public function execute() {
-    $desId  = filter_input(INPUT_GET, 'desId');
-    $objDetalleEntradaSalidaBodega = detalleEntradaSalidaBodegaTable::getById($id);
+    $config = $this->getConfig();
+    $id  = filter_input(INPUT_GET, 'id');
+    $detalleEntradaSalidaBodega = new detalleEntradaSalidaBodegaTable($config);
+    
+    $this->objDetalleEntradaSalidaBodega = $detalleEntradaSalidaBodega->getById($id);
 
-    $variables = array(
-        'objDetalleEntradaSalidaBodega' => $objDetalleEntradaSalidaBodega
-    );
-
-    $this->defineView('detalleEntradaSalidaBodega', 'ver', $variables, 'html');
+    $this->defineView('detalleEntradaSalidaBodega', 'ver', 'html');
   }
 
 }

@@ -4,7 +4,6 @@ use FStudio\model\base\terceroBaseTable;
 
 /**
  * Description of terceroTable
- * 
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package FStudio
  * @subpackage model
@@ -32,8 +31,8 @@ class terceroTable extends terceroBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT ter_id AS id, ter_nombre AS nombre, ter_apellido AS apellido, ter_telefono AS telefono, ter_direccion AS direccion, ter_correo AS correo, car_id AS cargo_id, tpi_id AS tipo_id, tit_id AS tipo_tercero_id, ter_created_at AS created_at, ter_updated_at AS updated_at, ter_deleted_at AS deleted_at FROM bda_tercero WHERE ter_deleted_at IS NULL AND id = :id';
-    $params = array(
+    $sql = 'SELECT ter_id AS id, ter_nombre AS nombre, ter_apellido AS apellido, ter_telefono AS telefono, ter_direccion AS direccion, ter_correo AS correo, car_id AS cargo_id, tpi_id AS tipo_id, tit_id AS tipo_tercero_id, ter_created_at AS created_at, ter_updated_at AS updated_at, ter_deleted_at AS deleted_at FROM bda_tercero WHERE ter_deleted_at IS NULL AND ter_id = :id';
+    $params = array(        
         ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -72,6 +71,7 @@ class terceroTable extends terceroBaseTable {
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE bda_tercero SET ter_nombre = :nombre, ter_apellido = :apellido, ter_telefono = :telefono, ter_direccion = :direccion, ter_correo = :correo, car_id = :cargo_id, tpi_id = :tipo_id, tit_id = :tipo_tercero_id WHERE ter_id = :id';
     $params = array(
+        ':id' => $this->getId(),
         ':nombre' => $this->getNombre(),
         ':apellido' => $this->getApellido(),
         ':telefono' => $this->getTelefono(),

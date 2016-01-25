@@ -5,7 +5,7 @@ use FStudio\model\base\detalleEjecucionBaseTable;
 /**
  * Description of detalleEjecucionTable
  *
- * @author
+ * @author nombre completo <su@correo.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table

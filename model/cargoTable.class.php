@@ -4,11 +4,10 @@ use FStudio\model\base\cargoBaseTable;
 
 /**
  * Description of cargoTable
- *
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package FStudio
  * @subpackage model
- * @subpackage table
+ * @subpackage base
  * @version 1.0.0
  */
 class cargoTable extends cargoBaseTable {
@@ -33,7 +32,7 @@ class cargoTable extends cargoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT car_id AS id, car_descripcion AS descripcion, car_created_at AS created_at, car_updated_at AS updated_at, car_deleted_at AS deleted_at FROM bda_cargo WHERE car_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT car_id AS id, car_descripcion AS descripcion, car_created_at AS created_at, car_updated_at AS updated_at, car_deleted_at AS deleted_at FROM bda_cargo WHERE car_deleted_at IS NULL AND car_id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

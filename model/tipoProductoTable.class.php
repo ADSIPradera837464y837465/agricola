@@ -3,9 +3,9 @@
 use FStudio\model\base\tipoProductoBaseTable;
 
 /**
- * Clase para manejar la tabla tipoProducto
- * 
- * @author Angela Cardona Molina <angela04cardona@hotmail.com>
+ * clase para manejar la tabla tipoProducto
+ * Description of tipoProductoTable
+ *  @author Angela Cardona Molina <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table
@@ -20,7 +20,7 @@ class tipoProductoTable extends tipoProductoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpr_id AS id, tpr_descripcion AS descripcion, tpr_created_at AS created_at, tpr_updated_at AS updated_at, tpr_deleted_at AS deleted_at FROM bda_tipo_producto WHERE tpr_deleted_at IS NULL ORDER BY tpr_created_at ASC';
+    $sql = 'SELECT tpr_id, tpr_descripcion, created_at FROM tipoProducto Table ORDER BY created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -34,10 +34,7 @@ class tipoProductoTable extends tipoProductoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpr_id AS id, tpr_descripcion AS descripcion, tpr_created_at AS created_at, tpr_updated_at AS updated_at, tpr_deleted_at AS deleted_at FROM bda_tipo_producto WHERE tpr_deleted_at IS NULL AND id = :id';
-    $params = array(
-        ':id' => ($id !== null) ? $id : $this->getId()
-    );
+    $sql = 'SELECT tpr_id AS id, tpr_descripcion AS descripcion, tpr_created_at AS createdAt, tpr_updated_at AS updatedAt, tpr_deleted_at AS deletedAt FROM bda_tipo_producto WHERE tpr_deleted_at IS NULL ORDER BY tpr_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -50,9 +47,9 @@ class tipoProductoTable extends tipoProductoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_tipo_producto (tpr_descripcion) VALUES (:descripcion)';
+    $sql = 'INSERT INTO tipoProducto (tpr_descripcion) VALUES (:tpr_descripcion)';
     $params = array(
-        ':descripcion' => $this->getDescripcion()
+        ':tpr_descripcion' => $this->getDescripcion(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -67,10 +64,9 @@ class tipoProductoTable extends tipoProductoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_tipo_producto SET tpr_descripcion = :descripcion WHERE tpr_id = :id';
+    $sql = 'UPDATE tipProducto SET tpr_descripcion =:tpr_descripcion)';
     $params = array(
-        ':descripcion' => $this->getDescripcion(),
-        ':id' => $this->getId()
+        ':tpr_descripcion' => $this->getDescripcion(),
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -87,7 +83,7 @@ class tipoProductoTable extends tipoProductoBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':id' => $this->getId()
+        ':tpr_id' => $this->getId()
     );
     switch ($deleteLogical) {
       case true:

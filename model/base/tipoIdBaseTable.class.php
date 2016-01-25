@@ -7,7 +7,6 @@ use FStudio\myConfig as config;
 
 /**
  * Description of tipoIdBaseTable
- * 
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package FStudio
  * @subpackage model
@@ -64,13 +63,13 @@ class tipoIdBaseTable extends model {
 
   /**
    * ID de la tabla
-   * @var integer
+   * @var integer 
    */
   private $id;
 
   /**
    * Descripcion de la tabla
-   * @var string
+   * @var string 
    */
   private $descripcion;
 
@@ -154,6 +153,15 @@ class tipoIdBaseTable extends model {
    */
   public function getDeletedAt() {
     return $this->deleted_at;
+  }
+
+  /**
+   * Fija la configuración del sistema
+   * @version 1.0.0
+   * @param config $config Objeto con configuración del sistema
+   */
+  public function setConfig(config $config) {
+    $this->config = $config;
   }
 
   /**

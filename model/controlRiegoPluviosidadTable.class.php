@@ -60,7 +60,7 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    $this -> setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
 
@@ -72,7 +72,7 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
     $conn = $this->getConnection($this->config);
     $sql = 'UPDATE bda_control_riego_pluviosidad SET crp_fecha = :fecha, crp_hora_inicio = :hora_inicio, crp_hora_fin = :hora_fin, crp_cantidad_m3_hora = :cantidad_m3_hora, crp_observacion = :observacion, sue_id = :suerte_id, hac_id = :hacienda_id, ter_id = :tercero_id WHERE crp_id = :id';
     $params = array(
-        ':fecha' => $this->getFecha(),
+         ':fecha' => $this->getFecha(),
         ':hora_inicio' => $this->getHoraInicio(),
         ':hora_fin' => $this->getHoraFin(),
         ':cantidad_m3_hora' => $this->getCantidadM3Hora(),
@@ -93,8 +93,9 @@ class controlRiegoPluviosidadTable extends controlRiegoPluviosidadBaseTable {
    * @return boolean
    * @throws PDOException
    */
-  public function delete($deleteLogical = true) {
+   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
+    $sql = 'DELETE FROM controlRiegoPluviosidad WHERE id = :id';
     $params = array(
         ':id' => $this->getId()
     );

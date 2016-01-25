@@ -4,8 +4,8 @@ use FStudio\model\base\tipoDocumentoBaseTable;
 
 /**
  * clase para manejar la tabla tipoDocumento
- * 
- * @author Angela Cardona Molina <angela04cardona@hotmail.com>
+ * Description of tipoDocumentoTable
+ *  @author Angela Cardona Molina <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table
@@ -16,7 +16,8 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
   /**
    * Obtiene todos los datos de la tabla
    *  @version 1.0.0
-   * @return  [stdClass | boolean]
+   * @return  [stdClass | boolean]    
+   
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
@@ -34,7 +35,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento AS tipo_movimiento, tpd_estado AS estado, tpd_created_at AS created_at, tpd_updated_at AS updated_at, tpd_deleted_at AS deleted_at FROM bda_tipo_documento WHERE tpd_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento As tipo_movimiento, tpd_estado As estado, tpd_created_at AS createdAt, tpd_updated_at AS updatedAt, tpd_deleted_at AS deletedAt FROM bda_tipo_documento WHERE tpd_deleted_at IS NULL ORDER BY tpd_created_at ASC';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

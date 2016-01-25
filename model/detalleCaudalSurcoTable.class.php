@@ -3,10 +3,9 @@
 use FStudio\model\base\detalleCaudalSurcoBaseTable;
 
 /**
- * Description of detalleCaudalSurcoTable
- * 
+ * Description of detallecaudalSurcoBaseTable
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
- * @package FStudio
+ * @package 
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -69,7 +68,7 @@ class detalleCaudalSurcoTable extends detalleCaudalSurcoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_detalle_caudal_surco SET decs_item = :item, decs_cantidad_surco = :cantidad_surco, fore_num_documento = :control_administrativo_riego_id WHERE decs_id = :id';
+    $sql = 'UPDATE bda_detalle_caudal_surco SET decs_item = :decs_item, decs_cantidad_surco = :decs_cantidad_surco, fore_num_documento = :fore_num_documento WHERE id = :id';
     $params = array(
         ':item' => $this->getItem(),
         ':cantidad_surco' => $this->getCantidadSurco(),

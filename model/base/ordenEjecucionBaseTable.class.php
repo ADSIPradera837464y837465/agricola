@@ -7,15 +7,13 @@ use FStudio\myConfig as config;
 
 /**
  * Description of bda_rolUsuario
- * 
- * @author Wilmer Andres Martinez <wilmerelmejor94@hotmail.com>
- * @package FStudio
+ * @author WilmerAndresMartinez wilmerelmejor94@hotmail.com
+ * @package
  * @subpackage model
- * @subpackage base
+ * @subpackage table
  * @version 1.0.0
  */
 class ordenEjecucionBaseTable extends model {
-
   /**
    * Id de la tabla
    * @var integer
@@ -165,7 +163,6 @@ class ordenEjecucionBaseTable extends model {
   public function getConfig() {
     return $this->config;
   }
-
   /**
    * Retorna la id del registro
    * @version 1.0.0
@@ -185,7 +182,7 @@ class ordenEjecucionBaseTable extends model {
   }
 
   /**
-   * retorna la orden de servicio de la tabla
+   *retorna la orden de servicio de la tabla  
    * @param type integer $orsId
    */
   public function getOrsId() {
@@ -217,7 +214,7 @@ class ordenEjecucionBaseTable extends model {
     return $this->oreObservacion;
   }
 
-  /**
+   /**
    * Fija la fecha y la hora de creación del registro
    * @version 1.0.0
    * @param string $createdAt Fecha y hora de creación
@@ -270,9 +267,9 @@ class ordenEjecucionBaseTable extends model {
   public function setTerIdElabora($terIdElabora) {
     $this->terIdElabora = $terIdElabora;
   }
-
+  
   /**
-   * fija la orden de servicio de la tabla
+   *fija la orden de servicio de la tabla  
    * @param type $orsId
    */
   public function setOrsId($orsId) {
@@ -329,5 +326,4 @@ class ordenEjecucionBaseTable extends model {
   public function setOreDeletedAt($oreDeletedAt) {
     $this->oreDeletedAt = $oreDeletedAt;
   }
-
 }

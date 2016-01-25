@@ -4,11 +4,10 @@ use FStudio\model\base\detalleRegistroBaseTable;
 
 /**
  * Description of detalleRegistroTable
- * 
  * @author Magda Chaux <lucia_chaux@hotmail.com>
  * @package FStudio
  * @subpackage model
- * @subpackage table
+ * @subpackage base
  * @version 1.0.0
  */
 class detalleRegistroTable extends detalleRegistroBaseTable {
@@ -20,10 +19,10 @@ class detalleRegistroTable extends detalleRegistroBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT der_item AS item, relme_numero AS labores_maquina_equipo_numero, ter_id AS tercero_id, lab_id AS labor_id, sue_id AS suerte_id, pro_id AS producto_id, unm_id AS unidad_de_medida_id, maq_id AS maquina_id, der_tiempo_muerto AS tiempo_muerto, der_total_horas_trabajadas AS total_horas_trabajadas, der_hora_inicio AS hora_inicio, der_hora_fin AS hora_fin, der_cantidad AS cantidad, der_created_at AS created_at, der_updated_at AS updated_at, der_deleted_at AS deleted_at FROM bda_detalle_registro WHERE der_deleted_at IS NULL ORDER BY der_created_at ASC';
-    $answer = $conn->prepare($sql);
-    $answer->execute();
-    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+    $sql = 'SELECT der_item, relme_numero, ter_id, lab_id, sue_id, pro_id, unm_id, maq_id, der_tiempo_muerto, der_total_horas_trabajadas, der_hora_inicio, der_hora_fin, der_cantidad, der_created_at, der_updated_at, der_deleted_at FROM bda_detalle_registro WHERE der_deleted_at IS NULL ORDER BY der_created_at ASC';
+    $respuesta = $conn->prepare($sql);
+    $respuesta->execute();
+    return ($respuesta->rowCount() > 0 ) ? $respuesta->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
   /**
@@ -32,15 +31,15 @@ class detalleRegistroTable extends detalleRegistroBaseTable {
    * @param integer der_item
    * @return [stdClass | boolean]
    */
-  public function getById($id = null) {
+  public function getById($item = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT der_item AS item, relme_numero AS labores_maquina_equipo_numero, ter_id AS tercero_id, lab_id AS labor_id, sue_id AS suerte_id, pro_id AS producto_id, unm_id AS unidad_de_medida_id, maq_id AS maquina_id, der_tiempo_muerto AS tiempo_muerto, der_total_horas_trabajadas AS total_horas_trabajadas, der_hora_inicio AS hora_inicio, der_hora_fin AS hora_fin, der_cantidad AS cantidad, der_created_at AS created_at, der_updated_at AS updated_at, der_deleted_at AS deleted_at FROM bda_detalle_registro WHERE der_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT der_item, relme_numero, ter_id, lab_id, sue_id, pro_id, unm_id, maq_id, der_tiempo_muerto, der_total_horas_trabajadas, der_hora_inicio, der_hora_fin, der_cantidad, der_created_at, der_updated_at, der_deleted_at FROM bda_detalle_registro WHERE der_deleted_at IS NULL';
     $params = array(
-        ':id' => ($id !== null) ? $id : $this->getItem()
+        ':der_item' => ($item !== null) ? $item : $this->getItem(),
     );
-    $answer = $conn->prepare($sql);
-    $answer->execute($params);
-    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+    $respuesta = $conn->prepare($sql);
+    $respuesta->execute($params);
+    return ($respuesta->rowCount() > 0 ) ? $respuesta->fetchAll(PDO::FETCH_OBJ) : false;
   }
 
   /**
@@ -50,24 +49,24 @@ class detalleRegistroTable extends detalleRegistroBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_detalle_registro (relme_numero, ter_id, lab_id, sue_id, pro_id, unm_id, maq_id, der_tiempo_muerto, der_total_horas_trabajadas, der_hora_inicio, der_hora_fin, der_cantidad) VALUES (:labores_maquina_equipo_numero, :tercero_id, :labor_id, :suerte_id, :producto_id, :unidad_de_medida_id, :maquina_id, :tiempo_muerto, :total_horas_trabajadas, :hora_inicio, :hora_fin, :cantidad)';
+    $sql = 'INSERT INTO bda_detalle_registro (relme_numero, ter_id, lab_id, sue_id, pro_id, unm_id, maq_id, der_tiempo_muerto, der_total_horas_trabajadas, der_hora_inicio, der_hora_fin, der_cantidad) VALUES'
+            . '(:relme_numero, :ter_id, :lab_id, :sue_id, :pro_id, :unm_id, maq_id, :der_tiempo_muerto, :der_total_horas_trabajadas, :der_hora_inicio, :der_hora_fin, :der_cantidad)';
     $params = array(
-        ':labores_maquina_equipo_numero' => $this->getLaboresMaquinaEquipoNumero(),
-        ':tercero_id' => $this->getTerceroId(),
-        ':labor_id' => $this->getLaborId(),
-        ':suerte_id' => $this->getSuerteId(),
-        ':producto_id' => $this->getProductoId(),
-        ':unidad_de_medida_id' => $this->getUnidadDeMedidaId(),
-        ':maquina_id' => $this->getMaquinaId(),
-        ':tiempo_muerto' => $this->getTiempoMuerto(),
-        ':total_horas_trabajadas' => $this->getTotalHorasTrabajadas(),
-        ':hora_inicio' => $this->getHoraInicio(),
-        ':hora_fin' => $this->getHoraFin(),
-        ':cantidad' => $this->getCantidad()
-    );
-    $answer = $conn->prepare($sql);
-    $answer->execute($params);
-    $this->setItem($conn->lastInsertId(self::_SEQUENCE));
+        ':relme_numero' => $this->getRelmeNumero(),
+        ':ter_id' => $this->getTerId(),
+        ':lab_id' => $this->getLabId(),
+        ':sue_id' => $this->getSueId(),
+        ':pro_id' => $this->getProId(),
+        ':unm_id' => $this->getUnmId(),
+        ':maq_id' => $this->getMaqId(),
+        ':der_tiempo_muerto' => $this->getDerTiempoMuerto(),
+        ':der_total_horas_trabajadas' => $this->getDerTotalHorasTrabajadas(),
+        ':der_hora_inicio' => $this->getDerHoraInicio(),
+        ':der_hora_fin' => $this->getDerHoraFin(),
+        ':der_cantidad' => $this->getDerCantidad());
+    $respuesta = $conn->prepare($sql);
+    $respuesta->execute($params);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
 
@@ -78,24 +77,13 @@ class detalleRegistroTable extends detalleRegistroBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_detalle_registro SET relme_numero = :labores_maquina_equipo_numero, ter_id = :tercero_id, lab_id = :labor_id, sue_id = :suerte_id, pro_id = :producto_id, unm_id = :unidad_de_medida_id, maq_id = :maquina_id, der_tiempo_muerto = :tiempo_muerto, der_total_horas_trabajadas = :total_horas_trabajadas, der_hora_inicio = :hora_inicio, der_hora_fin = :hora_fin, der_cantidad = :cantidad WHERE der_item = :item';
+    $sql = 'UPDATE bda_detalle_registro SET relme_numero = :relme_numero, ter_id = :ter_id, lab_id = :lab_id, sue_id = :sue_id, pro_id = :pro_id, unm_id = :unm_id,'
+            . 'maq_id = :maq_id, der_tiempo_muerto = :der_tiempo_muerto, der_total_horas_trabajadas = :der_total_horas_trabajadas, der_hora_inicio = :der_hora_inicio, der_hora_fin = :der_hora_fin, der_cantidad = :der_cantidad WHERE der_item = :der_item';
     $params = array(
-        ':labores_maquina_equipo_numero' => $this->getLaboresMaquinaEquipoNumero(),
-        ':tercero_id' => $this->getTerceroId(),
-        ':labor_id' => $this->getLaborId(),
-        ':suerte_id' => $this->getSuerteId(),
-        ':producto_id' => $this->getProductoId(),
-        ':unidad_de_medida_id' => $this->getUnidadDeMedidaId(),
-        ':maquina_id' => $this->getMaquinaId(),
-        ':tiempo_muerto' => $this->getTiempoMuerto(),
-        ':total_horas_trabajadas' => $this->getTotalHorasTrabajadas(),
-        ':hora_inicio' => $this->getHoraInicio(),
-        ':hora_fin' => $this->getHoraFin(),
-        ':cantidad' => $this->getCantidad(),
-        ':item' => $this->getItem()
+        ':der_item' => $this->getItem()
     );
-    $answer = $conn->prepare($sql);
-    $answer->execute($params);
+    $respuesta = $conn->prepare($sql);
+    $respuesta->execute($params);
     return true;
   }
 
@@ -109,20 +97,20 @@ class detalleRegistroTable extends detalleRegistroBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':item' => $this->getItem()
+        ':der_item' => $this->getItem()
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_detalle_registro SET der_deleted_at = now() WHERE der_item = :item';
+        $sql = 'UPDATE bda_detalle_registro SET der_deleted_at = now() WHERE der_item = :der_item';
         break;
       case false:
-        $sql = 'DELETE FROM bda_detalle_registro WHERE der_item = :item';
+        $sql = 'DELETE FROM bda_detalle_registro WHERE der_item = :der_item';
         break;
       default:
-        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+        throw new PDOException('Por favor borre de manera logica');
     }
-    $answer = $conn->prepare($sql);
-    $answer->execute($params);
+    $respuesta = $conn->prepare($sql);
+    $respuesta->execute($params);
     return true;
   }
 

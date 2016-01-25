@@ -17,7 +17,7 @@ use FStudio\myConfig as config;
 class detalleRegistroBaseTable extends model {
 
   const ITEM = 'der_item';
-  const LABORES_MAQUINA_EQUIPO_NUMERO = 'relme_numero';
+  const REALME_NUMERO = 'relme_numero';
   const TERCERO_ID = 'ter_id';
   const LABOR_ID = 'lab_id';
   const SUERTE_ID = 'sue_id';
@@ -41,7 +41,7 @@ class detalleRegistroBaseTable extends model {
    */
   protected $config;
   private $item;
-  private $labores_maquina_equipo_numero;
+  private $realme_numero;
   private $tercero_id;
   private $labor_id;
   private $suerte_id;
@@ -57,10 +57,10 @@ class detalleRegistroBaseTable extends model {
   private $updated_at;
   private $deleted_at;
 
-  public function __construct(config $config, $item = null, $labores_maquina_equipo_numero = null, $tercero_id = null, $labor_id = null, $suerte_id = null, $producto_id = null, $unidad_de_medida_id = null, $maquina_id = null, $tiempo_muerto = null, $total_horas_trabajadas = null, $hora_inicio = null, $hora_fin = null, $cantidad = null, $created_at = null, $updated_at = null, $deleted_at = null) {
+  public function __construct(config $config, $item = null, $realme_numero = null, $tercero_id = null, $labor_id = null, $suerte_id = null, $producto_id = null, $unidad_de_medida_id = null, $maquina_id = null, $tiempo_muerto = null, $total_horas_trabajadas = null, $hora_inicio = null, $hora_fin = null, $cantidad = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->item = $item;
-    $this->labores_maquina_equipo_numero = $labores_maquina_equipo_numero;
+    $this->realme_numero = $realme_numero;
     $this->tercero_id = $tercero_id;
     $this->labor_id = $labor_id;
     $this->suerte_id = $suerte_id;
@@ -81,8 +81,8 @@ class detalleRegistroBaseTable extends model {
     return $this->item;
   }
 
-  public function getLaboresMaquinaEquipoNumero() {
-    return $this->labores_maquina_equipo_numero;
+  public function getRealmeNumero() {
+    return $this->realme_numero;
   }
 
   public function getTerceroId() {
@@ -145,8 +145,8 @@ class detalleRegistroBaseTable extends model {
     $this->item = $item;
   }
 
-  public function setLaboresMaquinaEquipoNumero($labores_maquina_equipo_numero) {
-    $this->labores_maquina_equipo_numero = $labores_maquina_equipo_numero;
+  public function setRealmeNumero($realme_numero) {
+    $this->realme_numero = $realme_numero;
   }
 
   public function setTerceroId($tercero_id) {

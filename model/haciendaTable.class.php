@@ -4,7 +4,6 @@ use FStudio\model\base\haciendaBaseTable;
 
 /**
  * Description of haciendaTable
- * 
  * @author Victoria Cortes  <victoriacortes2014@hotmail.com>
  * @package FStudio
  * @subpackage model
@@ -19,7 +18,7 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda WHERE hac_deleted_at IS NULL ORDER BY hac_created_at ASC';
+    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda ORDER BY  ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -32,7 +31,7 @@ class haciendaTable extends haciendaBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda WHERE hac_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -58,7 +57,6 @@ class haciendaTable extends haciendaBaseTable {
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
-
   /**
    * atualiza un registro de la tabla
    * @return boolean

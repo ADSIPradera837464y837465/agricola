@@ -7,8 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Description of marcaBaseTable
- * 
- * @author Angela Cardona <angela04cardona@hotmail.com>
+ * @author AngelaCardona <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -22,7 +21,7 @@ class marcaBaseTable extends model {
   const ID = 'mar_id';
 
   /**
-   * Descripcion de la marca
+   * Descripcion de la marca 
    */
   const DESCRIPCION = 'mar_descripcion';
 
@@ -45,12 +44,11 @@ class marcaBaseTable extends model {
    * Fecha y hora para controlar el borrado lógico
    */
   const DELETED_AT = 'mar_deleted_at';
-
+  
   /**
    * Nombre de la secuencia del ID de la tabla
    */
   const _SEQUENCE = 'bda_marca_mar_id_seq';
-
   /**
    * nombre de la tabla
    */
@@ -76,7 +74,7 @@ class marcaBaseTable extends model {
 
   /**
    * Fecha y hora de creación de la marca
-   * @var date_time
+   * @var date_time 
    */
   private $created_at;
 
@@ -91,8 +89,8 @@ class marcaBaseTable extends model {
    * @var date_time
    */
   private $deleted_at;
-
-  /**
+  
+/**
    * constructor class marcaBaseTable
    * @version 1.0.0
    * @param integer $id
@@ -109,6 +107,7 @@ class marcaBaseTable extends model {
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
   }
+
 
   /**
    * Retorna el id del registro
@@ -144,12 +143,13 @@ class marcaBaseTable extends model {
 
   /**
    * Fecha y hora para controlar el borrado lógico
-   * @return date_time
+   * @return date_time 
    */
   public function getDeletedAt() {
     return $this->deleted_at;
   }
 
+ 
   /**
    * Fija el id de la marca
    * @version 1.0.0
@@ -162,13 +162,12 @@ class marcaBaseTable extends model {
   /**
    * descripcion del tipo de marca
    * @version 1.0.0
-   * @param varchar $descripcion
+   * @param varchar $descripcion 
    */
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
-
-  /**
+/**
    * Fija la fecha y la hora de creación de la descripcion de la marca
    * @version 1.0.0
    * @param date_time $createdAt
@@ -176,8 +175,7 @@ class marcaBaseTable extends model {
   public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
-
-  /**
+/**
    * Fija la fecha y la hora de la última actualización de la descripcion de la marca
    * @version 1.0.0
    * @param date_time $updateAt
@@ -185,8 +183,7 @@ class marcaBaseTable extends model {
   public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
   }
-
-  /**
+/**
    * Fija la fecha y la hora del borrado lógico
    * @version 1.0.0
    * @param date_time $deletedAt

@@ -7,9 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of contolAdministrativoRiego
- * 
- * @author Marian Montaño <nichesitap@hotmail.com>
- * @package FStudio
+ * @author marian montaño<nichesitap@hotmail.com>
+ * @package
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -303,7 +302,15 @@ class controlAdministrativoRiegoBaseTable extends model {
   }
 
   /**
-   * Retorna el id del registro de la tabla
+   * Retorna la configuración del sistema
+   * @version 1.0.0
+   * @return config
+   */
+  function getConfig() {
+    return $this->config;
+  }
+
+  /** Retorna el id del registro de la tabla
    * @version 1.0.0
    * @return integer
    */
@@ -313,7 +320,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    * retorna la fecha del control administrativo
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return date
    */
   public function getFecha() {
@@ -322,7 +329,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    * retorna el id de la tabla metodo riego
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getMetodoRiegoId() {
@@ -331,7 +338,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    * retorna el id de la tabla hacienda
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getHaciendaId() {
@@ -340,7 +347,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    * retorna el id de la tabla suerte
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getSuerteId() {
@@ -349,7 +356,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getCaudalRiego() {
@@ -358,7 +365,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getTiempoRiego() {
@@ -367,7 +374,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getTiempoTotalSuspension() {
@@ -376,7 +383,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getLongitudSurco() {
@@ -385,7 +392,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getEspacioSurco() {
@@ -394,7 +401,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getNumSurcoRegados() {
@@ -403,7 +410,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getEstadoHumedad() {
@@ -412,7 +419,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getSueloGrieta() {
@@ -421,7 +428,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getFacilAvanceAgua() {
@@ -430,7 +437,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getPendienteDirSurco() {
@@ -439,7 +446,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getAguaCostado() {
@@ -448,7 +455,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getCreatedAt() {
@@ -457,7 +464,7 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getUpdatedAt() {
@@ -466,11 +473,20 @@ class controlAdministrativoRiegoBaseTable extends model {
 
   /**
    *
-   * @version 1.0.0
+   *  @version 1.0.0
    * @return integer
    */
   public function getDeletedAt() {
     return $this->deleted_at;
+  }
+
+  /**
+   * Fija la configuración del sistema
+   * @version 1.0.0
+   * @param config $config Objeto con configuración del sistema
+   */
+  public function setConfig(config $config) {
+    $this->config = $config;
   }
 
   /**

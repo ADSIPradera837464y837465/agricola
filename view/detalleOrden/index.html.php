@@ -1,32 +1,27 @@
 <?php
-
-use azucar\myConfig\myConfig as config ?>
-<?php include_once config::getPath() . 'view/parcial/head.php' ?>
+include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 <div class="container container-fluid">
   <h1>Crud de tabla detalle orden</h1>
-  <a href="<?php echo config::getUrl() ?>index.php/detalleOrden/nuevo" class="btn btn-success">Nuevo</a>
-
+  <p>
+    <a href="<?php echo $fsConfig->getUrl() ?>index.php/detalleOrden/nuevo"  class="btn btn-warning glyphicon glyphicon-plus" >Nuevo</a>
+  </p>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>Id detalle orden</th>
         <th>Id orden de servicio</th>
         <th>Id servicio de maquina</th>
-        <th>Crear</th>
+<!--        <th>Crear</th>
         <th>Actualizar</th>
-        <th>Eliminar</th>
+        <th>Eliminar</th>-->
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($objdDetalleOrden as $detalleOrden): ?>
+      <?php foreach ($objDetalleOrden as $detalleOrden): ?>
         <tr>
-          <td><?php echo $detalleOrden->deo_Id ?></td>
-          <td><?php echo $detalleOrden->ors_Id ?></td>
-          <td><?php echo $detalleOrden->ser_Id ?></td>
-          <td><?php echo $detalleOrden->deo_created_at ?></td>
-          <td><?php echo $detalleOrden->deo_updated_at ?></td>
-          <td><?php echo $detalleOrden->deo_deleted_at ?></td>
-
+          <td><?php echo $detalleOrden->id ?></td>
+          <td><?php echo $detalleOrden->orden_servicio_id ?></td>
+          <td><?php echo $detalleOrden->servicio_id ?></td>
           <td>
             a href="#" class="btn btn-warning btn-xs">Ver</a>
             <a href="#" class="btn btn-primary btn-xs">Editar</a>
@@ -38,7 +33,7 @@ use azucar\myConfig\myConfig as config ?>
   </table>
 
 </div>
-<?php include_once config::getPath() . 'view/parcial/foot.php' ?>
+<?php include_once $fsConfig->getPath() . 'view/partial/foot.php' ?>
 
 
 

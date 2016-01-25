@@ -4,9 +4,8 @@ use FStudio\model\base\detalleEntradaSalidaBodegaBaseTable;
 
 /**
  * Description of detalleEntradaSalidaBodegaTable
- * 
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
- * @package FStudio
+ * @package 
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -28,7 +27,7 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT des_id AS id, esb_id AS entrada_salida_bodega_id, pro_id AS producto_id, unm_id AS unidad_medida_id, des_cantidad AS cantidad, des_precio AS precio, des_created_at AS created_at, des_updated_at AS updated_at, des_deleted_at AS deleted_at FROM bda_detalle_entrada_salida_bodega WHERE des_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT des_id AS id, esb_id AS entrada_salida_bodega_id, pro_id AS producto_id, unm_id AS unidad_medida_id, des_cantidad AS cantidad, des_precio AS precio, des_created_at AS created_at, des_updated_at AS updated_at, des_deleted_at AS deleted_at FROM bda_detalle_entrada_salida_bodega WHERE des_deleted_at IS NULL AND des_id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -98,5 +97,15 @@ class detalleEntradaSalidaBodegaTable extends detalleEntradaSalidaBodegaBaseTabl
     $answer->execute($params);
     return true;
   }
+  
+  
+   public function resultadoPaginador() {
+    $conn = $this->getConnection($this->config);
+    $sql = 'Select count(*) from bda_detalle_entrada_salida_bodega';    
+    $answer = $conn->prepare($sql);
+    $answer->execute();
+    return $answer->fetch();
+  }
+   
 
 }

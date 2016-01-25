@@ -7,8 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * clase base para la tabla recordarMe
- * 
- * @author Maribel Zamora <mazagi86@hotmail.com>
+ * @author maribel zamora <mazagi86@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -82,7 +81,7 @@ class recordarMeBaseTable extends model {
   /**
    * direccion ip del usuario
    * @var string
-   *
+   * 
    */
   private $ip_address;
 
@@ -137,7 +136,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna direccion ip
-   * * @version 1.0.0
+   ** @version 1.0.0 
    * @return string
    */
   public function getIpAddress() {
@@ -146,7 +145,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna el hash de usuario
-   * @version 1.0.0
+   * @version 1.0.0 
    * @return string
    */
   public function getHashCookie() {
@@ -155,7 +154,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * retorna la fecha de la creacion
-   * @version 1.0.0
+   * @version 1.0.0 
    * @return date
    */
   public function getCreatedAt() {
@@ -164,7 +163,7 @@ class recordarMeBaseTable extends model {
 
   /**
    * Fija el id para el registro de la tabla
-   * version 1.0.0
+   *version 1.0.0 
    * @param integer $id
    */
   public function setId($id) {

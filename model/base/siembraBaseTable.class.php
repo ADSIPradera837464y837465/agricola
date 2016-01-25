@@ -7,7 +7,6 @@ use FStudio\myConfig as config;
 
 /**
  * Description of siembraBaseTable
- * 
  * @author Diana Meneses <meneses_d@rocketmail.com>
  * @package FStudio
  * @subpackage model
@@ -25,11 +24,11 @@ class siembraBaseTable extends model {
    * Id de tabla suerte
    */
   const SUERTE_ID = 'sue_id';
-
+  
   /**
    * id del tipo de caña
    */
-  const TIPO_CANA_ID = 'tic_id';
+    const TIPO_CANA_ID = 'tic_id';
 
   /**
    * dia de la siembra
@@ -134,20 +133,19 @@ class siembraBaseTable extends model {
 
   /**
    * Id de la tabla
-   * @var integer
+   * @var integer 
    */
   private $id;
 
   /**
    * dia de la siembra
-   * @var integer
+   * @var integer 
    */
   private $suerte_id;
-  private $tipo_cana_id;
 
   /**
    * dia de la siembra
-   * @var integer
+   * @var integer 
    */
   private $dia;
 
@@ -159,73 +157,73 @@ class siembraBaseTable extends model {
 
   /**
    * kilos para la siembra por lote
-   * @var integer
+   * @var integer 
    */
-  private $kilos_lote;
+ private $kilos_lote;
 
   /**
    * kilos de la planta
-   * @var integer
+   * @var integer 
    */
-  private $total_kilos_planta;
+private $total_kilos_planta;
 
   /**
    * fecha de la siembra
-   * @var date
+   * @var date 
    */
   private $fecha;
 
   /**
    * fecha final del levante
-   * @var date
+   * @var date 
    */
-  private $fecha_fin_levante;
+private $fecha_fin_levante;
 
   /**
    * fecha inicial del ciclo
-   * @var date
+   * @var date 
    */
-  private $fecha_inicio_ciclo;
+    private $fecha_inicio_ciclo;
 
   /**
    * fecha final del ciclo
-   * @var date
+   * @var date 
    */
   private $fecha_fin_ciclo;
 
   /**
    * fecha de poda de la caña
-   * @var date
+   * @var date 
    */
-  private $fecha_poda;
+   private $fecha_poda;
 
   /**
    * fecha de la producción
-   * @var date
+   * @var date 
    */
-  private $fecha_produccion;
+ private $fecha_produccion;
 
   /**
    * numero de la hectarea en la que se sembró
    * @var integer
    */
-  private $num_hectarea;
+ private $num_hectarea;
 
   /**
    * numero de plantas de levante
-   * @var integer
+   * @var integer 
    */
   private $num_planta_levante;
 
   /**
    * numero de plantas productivas
-   * @var integer
+   * @var integer 
    */
   private $num_plantas_productivas;
 
   /**
    * numero de plantas erradicadas
-   * @var integer
+   * @var integer 
    */
   private $num_plantas_erradica;
 
@@ -233,22 +231,22 @@ class siembraBaseTable extends model {
    * Fecha y hora de creación del registro
    * @var string
    */
-  private $created_at;
+ private $created_at;
 
   /**
    * Fecha y hora de la ultima actualización del registro
    * @var string
    */
-  private $updated_at;
+ private $updated_at;
 
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var string
    */
-  private $deleted_at;
+    private $deleted_at;
 
-  /**
-   *
+      /**
+   * 
    * Constructor de la clase siembraBaseTable
    * @param integer $id
    * @param integer $suerteId
@@ -274,25 +272,24 @@ class siembraBaseTable extends model {
   public function __construct(config $config, $id = null, $suerte_id = null, $tipo_cana_id = null, $dia = null, $presupuesto_empresa = null, $kilos_lote = null, $total_kilos_planta = null, $fecha = null, $fecha_fin_levante = null, $fecha_inicio_ciclo = null, $fecha_fin_ciclo = null, $fecha_poda = null, $fecha_produccion = null, $num_hectarea = null, $num_planta_levante = null, $num_plantas_productivas = null, $num_plantas_erradica = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
-    $this->suerte_id = $suerte_id;
-    $this->tipo_cana_id = $tipo_cana_id;
+    $this->suerteId = $suerteId;
     $this->dia = $dia;
-    $this->presupuesto_empresa = $presupuesto_empresa;
-    $this->kilos_lote = $kilos_lote;
-    $this->total_kilos_planta = $total_kilos_planta;
+    $this->presupuestoEmpresa = $presupuestoEmpresa;
+    $this->kilosLote = $kilosLote;
+    $this->TotalKilosPlanta = $TotalKilosPlanta;
     $this->fecha = $fecha;
-    $this->fecha_fin_levante = $fecha_fin_levante;
-    $this->fecha_inicio_ciclo = $fecha_inicio_ciclo;
-    $this->fecha_fin_ciclo = $fecha_fin_ciclo;
-    $this->fecha_poda = $fecha_poda;
-    $this->fecha_produccion = $fecha_produccion;
-    $this->num_hectarea = $num_hectarea;
-    $this->num_planta_levante = $num_planta_levante;
-    $this->num_plantas_productivas = $num_plantas_productivas;
-    $this->num_plantas_erradica = $num_plantas_erradica;
-    $this->created_at = $created_at;
-    $this->updated_at = $updated_at;
-    $this->deleted_at = $deleted_at;
+    $this->fechaFinlevante = $fechaFinlevante;
+    $this->fechaInicioCiclo = $fechaInicioCiclo;
+    $this->fechaFinCiclo = $fechaFinCiclo;
+    $this->fechaPoda = $fechaPoda;
+    $this->fechaProduccion = $fechaProduccion;
+    $this->numHectarea = $numHectarea;
+    $this->numPlantaLevante = $numPlantaLevante;
+    $this->numPlantasProductivas = $numPlantasProductivas;
+    $this->numPlantasErradica = $numPlantasErradica;
+    $this->createdAt = $createdAt;
+    $this->updatedAt = $updatedAt;
+    $this->deletedAt = $deletedAt;
   }
 
   /**
@@ -312,8 +309,8 @@ class siembraBaseTable extends model {
   public function getSuerteId() {
     return $this->suerte_id;
   }
-
-  public function getTipoCanaId() {
+  
+    public function getTipoCanaId() {
     return $this->tipo_cana_id;
   }
 
@@ -336,7 +333,7 @@ class siembraBaseTable extends model {
   }
 
   /**
-   * retorna los kilos por lote
+   * retorna los kilos por lote 
    * @version 1.0.0
    * @return integer
    */
@@ -470,6 +467,8 @@ class siembraBaseTable extends model {
     return $this->deleted_at;
   }
 
+
+
   /**
    * Fija el ID para un registro del sistema
    * @version 1.0.0
@@ -487,10 +486,11 @@ class siembraBaseTable extends model {
   public function setSuerteId($suerte_id) {
     $this->suerte_id = $suerte_id;
   }
-
+  
   public function setTipoCanaId($tipo_cana_id) {
     $this->tipo_cana_id = $tipo_cana_id;
   }
+  
 
   /**
    * Fija el dia de la siembra
@@ -518,7 +518,6 @@ class siembraBaseTable extends model {
   public function setKilosLote($kilos_lote) {
     $this->kilos_lote = $kilos_lote;
   }
-
   /**
    * Fija el total de plantas semradas por lote
    * @version 1.0.0
@@ -533,8 +532,7 @@ class siembraBaseTable extends model {
    * @version 1.0.0
    * @params date $fecha
    */
-
-  public function setFecha($fecha) {
+   public function setFecha($fecha) {
     $this->fecha = $fecha;
   }
 
@@ -543,7 +541,7 @@ class siembraBaseTable extends model {
    * @version 1.0.0
    * @param date $fechaFinlevante
    */
-  public function setFechaFinLevante($fecha_fin_levante) {
+   public function setFechaFinLevante($fecha_fin_levante) {
     $this->fecha_fin_levante = $fecha_fin_levante;
   }
 
@@ -570,7 +568,7 @@ class siembraBaseTable extends model {
    * @version 1.0.0
    * @param date $fechaPoda
    */
-  public function setFechaPoda($fecha_poda) {
+   public function setFechaPoda($fecha_poda) {
     $this->fecha_poda = $fecha_poda;
   }
 
@@ -597,7 +595,7 @@ class siembraBaseTable extends model {
    * @version 1.0.0
    * @param integer $numPlantaLevante
    */
-  public function setNumPlantaLevante($num_planta_levante) {
+ public function setNumPlantaLevante($num_planta_levante) {
     $this->num_planta_levante = $num_planta_levante;
   }
 
@@ -628,7 +626,7 @@ class siembraBaseTable extends model {
     $this->created_at = $created_at;
   }
 
-  /**
+    /**
    * Fija la fecha y la hora de la última actualización del registro
    * @version 1.0.0
    * @param sting $updatedAt Fecha y hora de la última actualización del registro
@@ -637,7 +635,7 @@ class siembraBaseTable extends model {
     $this->updated_at = $updated_at;
   }
 
-  /**
+    /**
    * Fija la fecha y la hora del borrado lógico
    * @version 1.0.0
    * @param string $deletedAt Fecha y hora del borrado lógico

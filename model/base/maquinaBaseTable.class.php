@@ -7,7 +7,6 @@ use FStudio\myConfig as config;
 
 /**
  * Description of maquinaBaseTable
- * 
  * @author Johanna G <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
@@ -27,13 +26,13 @@ class maquinaBaseTable extends model {
   const ESTADO = 'maq_estado';
 
   /**
-   * Longitud del campo estado
+   * Longitud del campo estado 
    */
   const ESTADO_LENGTH = 30;
 
   /**
    * valor de la maquina
-   *
+   * 
    */
   const VALOR = 'maq_valor';
 
@@ -48,7 +47,7 @@ class maquinaBaseTable extends model {
   const NUMERO_CHASIS = 'maq_numero_chasis';
 
   /**
-   * Longitud del campo numero chasis
+   * Longitud del campo numero chasis 
    */
   const NUMERO_CHASIS_LENGTH = 80;
 
@@ -58,12 +57,12 @@ class maquinaBaseTable extends model {
   const TIPO_ACCESORIO = 'maq_tipo_accesorio';
 
   /**
-   * Longitud del campo accesorio
+   * Longitud del campo accesorio 
    */
   const TIPO_ACCESORIO_LENGTH = 80;
 
   /**
-   * horas trabajadas de la maquina
+   * horas trabajadas de la maquina 
    */
   const HORAS_TRABAJADAS = 'maq_horas_trabajadas';
 
@@ -78,7 +77,7 @@ class maquinaBaseTable extends model {
   const NUMERO_SERIE = 'maq_numero_serie';
 
   /**
-   * Longitud del campo numero serie
+   * Longitud del campo numero serie 
    */
   const NUMERO_SERIE_LENGTH = 80;
 
@@ -88,7 +87,7 @@ class maquinaBaseTable extends model {
   const MODELO = 'maq_modelo';
 
   /**
-   * Longitud del campo modelo
+   * Longitud del campo modelo 
    */
   const MODELO_LENGTH = 80;
 
@@ -120,10 +119,10 @@ class maquinaBaseTable extends model {
   /**
    * Secuencia de la tabla
    */
-  const _SEQUENCE = 'bda_maquina_maq_id_seq';
+  const _SEQUENCE = '';
 
   /**
-   * Tabla
+   * Tabla 
    */
   const _TABLE = 'bda_maquina';
 
@@ -152,7 +151,7 @@ class maquinaBaseTable extends model {
   private $valor;
 
   /**
-   * fecha de la compra de la maquina
+   * fecha de la compra de la maquina 
    * @var date
    */
   private $fecha_compra;
@@ -262,6 +261,8 @@ class maquinaBaseTable extends model {
     $this->deleted_at = $deleted_at;
   }
 
+  
+
   /**
    * Retorna el Id de la tabla maquina
    * @return config
@@ -322,7 +323,7 @@ class maquinaBaseTable extends model {
    * Retorna el tiempo en el que se trabajo en la tabla maquina
    * @return config
    */
-  public function getTiempoMantenimientoHora() {
+    public function getTiempoMantenimientoHora() {
     return $this->tiempo_mantenimiento_hora;
   }
 
@@ -381,6 +382,7 @@ class maquinaBaseTable extends model {
   public function getDeletedAt() {
     return $this->deleted_at;
   }
+
 
   /**
    * Fija el id para el registro en la tabl
@@ -445,6 +447,7 @@ class maquinaBaseTable extends model {
   public function setTiempoMantenimientoHora($tiempo_mantenimiento_hora) {
     $this->tiempo_mantenimiento_hora = $tiempo_mantenimiento_hora;
   }
+
 
   /**
    * Fija el numero de serie para el registro en la tabla

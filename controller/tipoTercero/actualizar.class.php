@@ -1,30 +1,34 @@
 <?php
 
-use azucar\myConfig\myConfig as config;
-use azucar\controller\controller;
-use azucar\view\view;
-include config::getPath() . 'model/personaTable.Class.php';
+require_once '../model/base/tipoTerceroBaseTable.class.php';
+require_once '../model/tipoTerceroTable.class.php';
+
+use FStudio\fsController as controller;
+use FStudio\interfaces\fsAction as action;
 
 /**
- * Description of actualizar
+ * Description of actualizar.class.php
  *
- * @author xubuntu
+ * @author Jordan Marles <jordanmarles@hotmail.es>
+ * @package FStudio
+ * @subpackage controller
+ * @subpackage actualizar.class.php
+ * @version 1.0.0
  */
-class actualizar extends controller {
+class actualizar extends controller implements action{
   
   public function execute() {
-    $formularioPersona = filter_input_array(INPUT_POST)['persona'];
-    $persona = new personaTable();
-    $persona->setId($formularioPersona['id']);
-    $persona->setUsuario($formularioPersona['usuario']);
-    $persona->setNombre($formularioPersona['nombre']);
-    $persona->setApellido($formularioPersona['apellido']);
-    $persona->setFecha_nacimiento($formularioPersona['nacimiento']);
-    $persona->setDireccion($formularioPersona['direccion']);
-    $persona->setTelefono($formularioPersona['telefono']);
-    $persona->update();
     
-    header('Location:' . config::getUrl() . 'index.php/persona/index');
+    $config = $this->getConfig();
+    
+    $formTipoTercero = filter_input_array(INPUT_POST)['tipoTercero'];    
+    $tipoTercero = new tipoTerceroTable($config);
+    $tipoTercero->setId($formTipoTercero['id']);
+    $tipoTercero->setDescripcion($formTipoTercero['descripcion']);
+    $this->objTipoTercero = $tipoTercero->update();
+    
+    header('Location: ' . $config->getUrl() . 'index.php/tipoTercero/index');
+    exit();
     
   }
   
