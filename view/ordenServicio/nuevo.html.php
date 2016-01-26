@@ -1,7 +1,7 @@
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 
 <div class="container container-fluid">
-
+   
   <h1>Nuevo</h1>
   <form class="form-horizontal" action=" <?php echo config::getUrl() ?>  index.php/ordenServicio/crear" method="POST">
     <div class="form-group">
@@ -16,7 +16,7 @@
       <div class="col-sm-10">
         <input type="number" class="form-control" id="maq_id"  name="ordenServicio[maq_id]"placeholder="identificacion de la maquina">
       </div>
-    </div>
+    </div>  
 
     <div class="form-group">
       <label for="tma_id" class="col-sm-2 control-label">identificacion del tipo mantenimiento</label>

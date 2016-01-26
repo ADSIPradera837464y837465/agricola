@@ -19,7 +19,7 @@ use FStudio\fsController as controller; ?>
   <div class="col-sm-10">
     <input  value="<?php $objtipoMantenimiento[0]->tma_descripcion ?>"  type="text" class="form-control" id="tma_descripcion"  name="tipoMantenimiento[tma_descripcion]"placeholder="descripcion tipo mantenimiento">
   </div>
-</div>
+</div>  
 
 
 <div class="form-group" class="modificar">

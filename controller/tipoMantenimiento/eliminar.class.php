@@ -13,7 +13,7 @@ use FStudio\interfaces\fsAction as action;
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
- */
+ */   
 class eliminar extends controller implements action {
 
   public function execute() {

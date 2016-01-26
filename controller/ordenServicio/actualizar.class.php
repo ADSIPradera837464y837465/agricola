@@ -8,7 +8,7 @@ use FStudio\interfaces\fsAction as action;
 
 /**
  * Description of  actualizar
- * @author Itiani Moreno Rosero <itiani2811@gmail.com>
+ * @author Itiani Moreno Rosero <itiani2811@gmail.com>  
  * @package
  * @subpackage model
  * @subpackage table

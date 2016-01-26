@@ -1,6 +1,6 @@
 <?php include_once $fsConfig - th() . 'view/partial/head.php' ?>
 
-
+   
 <div class="container container-fluid">
   <h1>Tipo Mantenimiento</h1>
   <a href=" <?php config:: getUrl() ?>index.php/tipoMantenimiento/nuevo" class="btn-success">Nuevo</a>

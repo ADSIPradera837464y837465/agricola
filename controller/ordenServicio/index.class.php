@@ -12,7 +12,7 @@ use FStudio\interfaces\fsAction as action;
  * @package FStudio
  * @subpackage controller
  * @subpackage index.class.php
- * @version 1.0.0
+ * @version 1.0.0  
  */
 class index extends controller implements action {
 

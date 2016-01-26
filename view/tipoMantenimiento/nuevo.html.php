@@ -1,7 +1,7 @@
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 
 <div class="container container-fluid">
-
+   
   <h1>Nuevo</h1>
   <form class="form-horizontal" action=" <?php echo config::getUrl() ?>  index.php/tipoMantenimiento/crear" method="POST">
     <div class="form-group">

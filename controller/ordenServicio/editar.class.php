@@ -11,7 +11,7 @@ use FStudio\interfaces\fsAction as action;
  * @author Itiani Moreno Rosero <itiani2811@gmail.com>
  * @package
  * @subpackage model
- * @subpackage table
+ * @subpackage table   
  * @version 1.0.0
  */
 class editar extends controller implements action {

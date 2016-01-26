@@ -1,6 +1,6 @@
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
 <?php use FStudio\fsController as controller; ?>
-
+  
 
 <div class="container container-fluid">
 

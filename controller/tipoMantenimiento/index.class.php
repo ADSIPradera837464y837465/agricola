@@ -15,7 +15,7 @@ use FStudio\interfaces\fsAction as action;
  * @version 1.0.0
  */
 class index extends controller implements action {
-
+   
   public function execute() {
     $config = $this->getConfig();
     $index = new tipoMantenimientoTable($config);
