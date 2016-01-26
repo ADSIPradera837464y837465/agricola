@@ -10,7 +10,7 @@ use FStudio\fsController as controller; ?>
   <form class="form-inline" action="<?php echo $fsconfig->getUrl() ?>index.php/detalleRegistro/editar" method="post">
     <input type="hidden" name="detalleRegistro[relme_numero]" value="<?php echo $objdetalleRegistro[0]->relme_numero ?>">
     <div class="col-sm-10">
-      <input  value="<?php $objdetalleRegistro[0]->relme_numero ?>"  type="text" class="form-control" id="relme_numeroraza"  name="detalleRegistro[relme_numero]"placeholder="numero de registro">
+      <input  value="<?php $objdetalleRegistro[0]->relme_numero ?>"  type="text" class="form-control" id="relme_numero"  name="detalleRegistro[relme_numero]"placeholder="numero de registro">
     </div>
 </div>
 
@@ -96,7 +96,7 @@ use FStudio\fsController as controller; ?>
 
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-    <button type="submit" class="btn btn-default">Actualizar Pez</button>
+    <button type="submit" class="btn btn-default">Editar </button>
   </div>
 </div>
 </form>

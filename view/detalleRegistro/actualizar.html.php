@@ -27,11 +27,11 @@
     
     <input type="text"  name="der_total_horas_trabajadas" id="der_total_horas_trabajadas" value="<?php echo $dRegistro->der_total_horas_trabajadas ?>">
     
-    <input type="text"  name="relme_numero" id="der_hora_inicio" value="<?php echo $dRegistro->der_hora_inicio ?>">
+    <input type="text"  name="der_hora_inicio" id="der_hora_inicio" value="<?php echo $dRegistro->der_hora_inicio ?>">
     
-    <input type="text"  name="relme_numero" id="der_hora_fin" value="<?php echo $dRegistro->der_hora_fin ?>">
+    <input type="text"  name="der_hora_fin" id="der_hora_fin" value="<?php echo $dRegistro->der_hora_fin ?>">
     
-    <input type="text"  name="relme_numero" id="der_created_atder_created_at" value="<?php echo $dRegistro->der_created_at ?>">
+    <input type="text"  name="der_created_at" id="der_created_at" value="<?php echo $dRegistro->der_created_at ?>">
     
     <?php endforeach; ?>
     
