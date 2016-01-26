@@ -8,8 +8,18 @@ use FStudio\fsController as controller; ?>
   <form class="form-inline" action="<?php echo $fsConfig->getUrl() ?>index.php/tipoDocumento/crear" method="post">
 
      <div class="form-group" class="modificar">
-     <label for="descripcion">tipoDocumento</label>
+     <label for="descripcion">Tipo Documento</label>
       <input type="text" class="form-control" id="id" name="tipoDocumento[descripcion]" placeholder="descripcion ">
+    </div>  
+    
+    <div class="form-group" class="modificar">
+     <label for="descripcion">Tipo movimiento</label>
+      <input type="text" class="form-control" id="id" name="tipoDocumento[tipo_movimiento]" placeholder="Tipo movimiento ">
+    </div>  
+    
+    <div class="form-group" class="modificar">
+     <label for="descripcion">Estado</label>
+      <input type="text" class="form-control" id="id" name="tipoDocumento[estado]" placeholder="Estado ">
     </div>  
     
     <br>

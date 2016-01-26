@@ -7,8 +7,9 @@ use FStudio\myConfig as config;
 
 /**
  * clase base para la tabla bdaLaboresMaquinaEquipo
- * @author maribel zamora <mazagi86@hotmail.com>
- * @package fStudio
+ * 
+ * @author Maribel Zamora <mazagi86@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -61,29 +62,29 @@ class laboresMaquinaEquipoBaseTable extends model {
   const TOTAL_HORAS_TRABAJADAS = 'lme_total_horas_trabajadas';
 
   /**
-   * fecha de creacion de registro 
+   * fecha de creacion de registro
    */
   const CREATED_AT = 'lme_created_at';
 
   /**
-   * fecha de actualizacion de registro 
+   * fecha de actualizacion de registro
    */
   const UPDATED_AT = 'lme_updated_at';
 
   /**
-   * fecha de eliminacion del registro 
+   * fecha de eliminacion del registro
    */
   const DELETED_AT = 'lme_deleted_at';
 
   /**
-   * secuencia de la tabla para la llave primaria 
+   * secuencia de la tabla para la llave primaria
    */
   const _SEQUENCE = 'bda_labores_maquina_equipo_lme_numero_seq';
 
   /**
    * nombre de la tabla
    */
-  const _TABLE = 'bda_labores_maqina_equipo';
+  const _TABLE = 'bda_labores_maquina_equipo';
 
   /**
    * Configuración del sistema
@@ -122,7 +123,7 @@ class laboresMaquinaEquipoBaseTable extends model {
   private $implemento_id;
 
   /**
-   *  labores  de maquina y equipo 
+   *  labores  de maquina y equipo
    * @var date
    */
   private $fecha;
@@ -214,17 +215,15 @@ class laboresMaquinaEquipoBaseTable extends model {
     return $this->hacienda_id;
   }
 
-
   /**
    * Retorna el id del tercero
    * @version 1.0.0
    * @return integer
    */
- 
-  
- public function getTerceroId() {
+  public function getTerceroId() {
     return $this->tercero_id;
   }
+
   /**
    * Retorna el tipo de documento
    * @version 1.0.0
@@ -280,14 +279,13 @@ class laboresMaquinaEquipoBaseTable extends model {
   }
 
   /**
-   * Retorna la fecha y hora de creacion del registro 
+   * Retorna la fecha y hora de creacion del registro
    * @version 1.0.0
    * @return date_time
    */
   public function getCreatedAt() {
     return $this->created_at;
   }
-
 
   /**
    * Retorna la actualizacion del registro
@@ -310,42 +308,38 @@ class laboresMaquinaEquipoBaseTable extends model {
   /**
    * Fija el numero de registro de labores de la maquina y equipo
    * @version 1.0.0
-   * @param integer $id 
+   * @param integer $id
    */
   public function setId($id) {
     $this->id = $id;
   }
 
-
   /**
-   * Fija el id de la hacienda 
+   * Fija el id de la hacienda
    * @version 1.0.0
    * @param integer $haciendaId
    */
-   public function setHaciendaId($hacienda_id) {
+  public function setHaciendaId($hacienda_id) {
     $this->hacienda_id = $hacienda_id;
   }
 
-
   /**
-   * Fija el tercero del id de registro de labores de maquina y equipo 
+   * Fija el tercero del id de registro de labores de maquina y equipo
    * @version 1.0.0
    * @param integer $terceroId
    */
- public function setTerceroId($tercero_id) {
+  public function setTerceroId($tercero_id) {
     $this->tercero_id = $tercero_id;
   }
 
-
   /**
-   * Fija el tipo de documento del id  de labores de maquina y equipo 
+   * Fija el tipo de documento del id  de labores de maquina y equipo
    * @version 1.0.0
    * @param integer $tipoDocumentoId
    */
-   public function setTipoDocumentoId($tipo_documento_id) {
+  public function setTipoDocumentoId($tipo_documento_id) {
     $this->tipo_documento_id = $tipo_documento_id;
   }
-
 
   /**
    * Fija el implemento del id
@@ -361,7 +355,7 @@ class laboresMaquinaEquipoBaseTable extends model {
    * @version 1.0.0
    * @param date $fecha
    */
-   public function setFecha($fecha) {
+  public function setFecha($fecha) {
     $this->fecha = $fecha;
   }
 
@@ -392,25 +386,21 @@ class laboresMaquinaEquipoBaseTable extends model {
     $this->total_horas_trabajadas = $total_horas_trabajadas;
   }
 
-
   /**
    * Fija hora y fecha de creacion del registro
-   * version 1.0.0 
+   * version 1.0.0
    * @param date_time $createdAt fecha y hora de creacion del rgistro
    */
   public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
 
-
   /**
    * Fija la actualizacion del registro
    * version 1.0.0
    * @param date_time $updatedAt
    */
- 
-  
- public function setUpdatedAt($updated_at) {
+  public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
   }
 

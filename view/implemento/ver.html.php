@@ -8,35 +8,19 @@ include_once $fsConfig->getPath() . 'view/partial/head.php';
 
 <div class="container container-fluid">
   <h1> ver Implemento </h1>
-
-
-
-
-    <br>
-
-    <table  class="table table-hover">
-      <thead>
-        <tr>
-          <th><input type="checkbox" id="" name=""></th>    
-          <th>Descripcion</th>
-          <th>Accion</th>                    
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($objImplemento as $implemento) : ?>
-          <tr>
-            <td><input type="checkbox" id="" name=""></td>            
-            <td><?php echo $implemento->descripcion ?></td>            
-            <td>
-              
-            </td>
-          </tr>
-        <?php endforeach ?>
-      </tbody>
-    </table>
-  </div>
-
-</body>
-</html>
+  <br>
+  <table  class="table table-hover">
+    <thead>
+      <tr>
+        <th>Descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><?php echo $objImplemento[0]->descripcion ?></td>       
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 

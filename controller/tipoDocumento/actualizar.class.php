@@ -15,19 +15,22 @@ use FStudio\interfaces\fsAction as action;
  */
 
 class actualizar extends controller  {
-  
+
   public function execute() {
     $config = $this->getConfig();
-     $formTipoDocumento = filter_input_array(INPUT_POST)['tipoDocumento'];
+    $formTipoDocumento = filter_input_array(INPUT_POST)['tipoDocumento'];
 
-        //validaciones
+    //validaciones
 
-        $tipoDocumento = new tipoDocumentoTable($config);
-        $tipoDocumento->setDescripcion($formTipoDocumento['descripcion']);
-       
+    $tipoDocumento = new tipoDocumentoTable($config);
+    $tipoDocumento->setId($formTipoDocumento['id']);
+    $tipoDocumento->setDescripcion($formTipoDocumento['descripcion']);
+    $tipoDocumento->setTipoMovimiento($formTipoDocumento['tipo_movimiento']);
+    $tipoDocumento->setEstado($formTipoDocumento['estado']);
 
-        $this->objTipoDocumento = $tipoDocumento->update();
-        header('Location: ' . $config->getUrl() . 'index.php/tipoDocumento/index');
     
+    $this->objTipoDocumento = $tipoDocumento->update();
+    header('Location: ' . $config->getUrl() . 'index.php/tipoDocumento/index');
+        
   }
 }

@@ -2,12 +2,14 @@
 
 require_once '../model/base/tipoDocumentoBaseTable.class.php';
 require_once '../model/tipoDocumentoTable.class.php';
+require_once '../libs/fpdf/fpdf.php';
 
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
 
+
 /**
- * Description of index.class.php
+  * Description of index.class.php
  *
  * @author Emanuel Castillo Mosquera <corcel125@outlook.com>
  * @package FStudio
@@ -15,15 +17,13 @@ use FStudio\interfaces\fsAction as action;
  * @subpackage index.class.php
  * @version 1.0.0
  */
-class index extends controller implements action {
-
-    public function execute() {
+class reporte extends controller implements action {
+  //put your code here
+  public function execute() {
       $config = $this->getConfig();
       $tipoDocumento = new tipoDocumentoTable($config);
       $this->objTipoDocumento = $tipoDocumento->getAll();
       // así declaramos la vista a usar
-      $this->defineView('tipoDocumento', 'index', 'html');
+      $this->defineView('tipoDocumento', 'reporte', 'html');
     }
-    
 }
-

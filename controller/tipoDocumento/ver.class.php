@@ -6,7 +6,7 @@ require_once '../model/tipoDocumentoTable.class.php';
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
 
-//include $fsConfig->getPath() . 'model/implementoTable.class.php';
+
 
 /**
  * Description of ver
@@ -22,12 +22,8 @@ class ver extends controller implements action {
     $config = $this->getConfig();
     $tipoDocumento = new tipoDocumentoTable($config);
 
-//    $this->objImplemento = implementoTable::getById($id);
-//
-//    $variables = array(
-//        'objImplemento' => $objImplemento
-//    );
-    $this->objTipoDocumento = $tipoDocumento->getAll();
+
+    $this->objTipoDocumento = $tipoDocumento->getById($id);
     $this->defineView('tipoDocumento', 'ver', 'html');
   }
 

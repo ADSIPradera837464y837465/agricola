@@ -5,8 +5,9 @@ use FStudio\model\base\implementoBaseTable;
 
 /**
  * clase para manejar la tabla implemento
- * @author maribel zamora <mazagi86@hotmail.com>
- * @package fStudio
+ * 
+ * @author Maribel Zamora <mazagi86@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -34,7 +35,7 @@ class implementoTable extends implementoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT imp_id AS id, imp_descripcion AS descripcion, imp_created_at AS created_at, imp_updated_at AS updated_at, imp_deleted_at AS deleted_at FROM bda_implemento WHERE imp_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT imp_id AS id, imp_descripcion AS descripcion, imp_created_at AS created_at, imp_updated_at AS updated_at, imp_deleted_at AS deleted_at FROM bda_implemento WHERE imp_deleted_at IS NULL AND imp_id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -50,13 +51,13 @@ class implementoTable extends implementoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_implemento (imp_descripcion) VALUES (:usuario_id, :ip_address, :hash_cookie)';
+    $sql = 'INSERT INTO bda_implemento (imp_descripcion) VALUES (:descripcion)';
     $params = array(
-        ':descripcion' => $this->getDescripcion(),
+        ':descripcion' => $this->getDescripcion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    $this->setId($conn->lastInsertId(self::SEQUENCE));
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
 

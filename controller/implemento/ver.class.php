@@ -6,7 +6,7 @@ require_once '../model/implementoTable.class.php';
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
 
-//include $fsConfig->getPath() . 'model/implementoTable.class.php';
+
 
 /**
  * Description of ver
@@ -22,12 +22,8 @@ class ver extends controller implements action {
     $config = $this->getConfig();
     $implemento = new implementoTable($config);
 
-//    $this->objImplemento = implementoTable::getById($id);
-//
-//    $variables = array(
-//        'objImplemento' => $objImplemento
-//    );
-    $this->objImplemento = $implemento->getAll();
+
+    $this->objImplemento = $implemento->getById($id);
     $this->defineView('implemento', 'ver', 'html');
   }
 

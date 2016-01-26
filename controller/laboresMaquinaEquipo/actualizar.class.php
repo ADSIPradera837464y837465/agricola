@@ -22,11 +22,19 @@ class actualizar extends controller  {
 
         //validaciones
 
-        $laboresMaquinaEquipo = new implementoTable($config);
-        $laboresMaquinaEquipo->setDescripcion($formLaboresMaquinaEquipo['hacienda_id']);
-       
+        $laboresMaquinaEquipo = new laboresMaquinaEquipoTable($config);
+        $laboresMaquinaEquipo->setId($formLaboresMaquinaEquipo['id']);       
+        $laboresMaquinaEquipo->setHaciendaId($formLaboresMaquinaEquipo['hacienda_id']);
+        $laboresMaquinaEquipo->setTerceroId($formLaboresMaquinaEquipo['tercero_id']);
+        $laboresMaquinaEquipo->setTipoDocumentoId($formLaboresMaquinaEquipo['tipo_documento_id']);
+        $laboresMaquinaEquipo->setImplementoId($formLaboresMaquinaEquipo['implemento_id']);
+        $laboresMaquinaEquipo->setFecha($formLaboresMaquinaEquipo['fecha']);
+        $laboresMaquinaEquipo->setEstado($formLaboresMaquinaEquipo['estado']);
+        $laboresMaquinaEquipo->setTiempo($formLaboresMaquinaEquipo['tiempo']);
+        $laboresMaquinaEquipo->setTotalHorasTrabajadas($formLaboresMaquinaEquipo['total_horas_trabajadas']);
 
-        $this->objFormLaboresMaquinaEquipo = $laboresMaquinaEquipo->update();
+        
+        $this->objLaboresMaquinaEquipo = $laboresMaquinaEquipo->update();
         header('Location: ' . $config->getUrl() . 'index.php/laboresMaquinaEquipo/index');
     
   }
