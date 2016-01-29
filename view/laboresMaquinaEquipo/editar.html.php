@@ -1,11 +1,14 @@
-<?php use FStudio\fsController as controller; ?>
+<?php
+
+use FStudio\fsController as controller; ?>
 
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
 
-<h1>Modificar labores maquina equipo</h1>
+
 
 <div class="container container-fluid"> 
-  <form class="form-inline" action="<?php echo $fsConfig->getUrl() ?>index.php/laboresMaquinaEquipo/actualizar" method="post">
+  <h1 class="h1">Modificar labores maquina equipo</h1>
+  <form class="form-horizontal" action="<?php echo $fsConfig->getUrl() ?>index.php/laboresMaquinaEquipo/actualizar" method="post">
     <input type="hidden" name="laboresMaquinaEquipo[id]" value="<?php echo $objLaboresMaquinaEquipo[0]->id ?>">       
     <div class="form-group" class="modificar">
       <label for="hacienda_id">hacienda_id </label>

@@ -23,7 +23,7 @@
   </form>
   <br>
 
-  <table  class="table table-hover">
+  <table  class="table table-hover table-striped">
     <thead>
       <tr>
         <th><input type="checkbox" id="" name=""></th>    
@@ -50,7 +50,7 @@
   
 </div>
 
-<!--<script src="<?php echo $fsConfig->getUrl() ?>css/js/eliminar.js"></script>-->
+
 <script src="<?php echo $fsConfig->getUrl() ?>js/eliminar.js"></script>
 <?php include_once $fsConfig->getPath() . 'view/partial/foot.php' ?> 
 

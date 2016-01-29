@@ -24,7 +24,7 @@
   </form>
   <br>
 
-  <table  class="table table-hover">
+  <table  class="table table-hover table-striped">
     <thead>
       <tr>
         <th><input type="checkbox" id="" name=""></th>    

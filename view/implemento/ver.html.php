@@ -2,17 +2,15 @@
 <?php
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
-
-include_once $fsConfig->getPath() . 'view/partial/head.php';
 ?>
-
+<?php include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
 <div class="container container-fluid">
-  <h1> ver Implemento </h1>
+  <div><h1 class="h1"> ver Implemento </h1>
   <br>
-  <table  class="table table-hover">
+  <table  class="table table-hover table-striped">
     <thead>
       <tr>
-        <th>Descripcion</th>
+        <th class="h2">Descripcion</th>
       </tr>
     </thead>
     <tbody>

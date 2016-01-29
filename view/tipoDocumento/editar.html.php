@@ -5,7 +5,7 @@
 <h1>Modificar Tipo documento</h1>
 
 <div class="container container-fluid"> 
-    <form class="form-inline" action="<?php echo $fsConfig->getUrl()?>index.php/tipoDocumento/actualizar" method="post">
+    <form class="form-horizontal" action="<?php echo $fsConfig->getUrl()?>index.php/tipoDocumento/actualizar" method="post">
         <input type="hidden" name="tipoDocumento[id]" value="<?php echo $objTipoDocumento[0]->id?>">       
         <div class="form-group" class="modificar">
         <label for="descipcion">Descripcion </label>

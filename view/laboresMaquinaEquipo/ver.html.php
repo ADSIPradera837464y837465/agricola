@@ -7,10 +7,10 @@ include_once $fsConfig->getPath() . 'view/partial/head.php';
 ?>
 
 <div class="container container-fluid">
-  <h1> ver labores maquina equipo </h1>
+    <h1 class="h1"> ver labores maquina equipo </h1>
   <br>
-  <table  class="table table-hover">
-    <thead>
+  <table  class="table table-hover table-striped">
+    <thead class="h2">
       <tr>
         <th>hacienda_id</th>
         <th>tercero_id</th>
