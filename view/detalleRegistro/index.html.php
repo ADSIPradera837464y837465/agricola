@@ -2,9 +2,10 @@
 
 
 <div class="container container-fluid">
-  <h1>Registro</h1>
-  <a href=" <?php config:: getUrl() ?>index.php/detalleRegistro/Nuevo" class="btn-success">Registrar Nuevo</a>
-  <table border="1">
+  
+  <a href="<?php echo $fsConfig->getUrl() ?>index.php/detalleRegistro/nuevo" class="btn btn-success">Registrar Nuevo</a>
+  <hr>
+  <table class="table">
     <thead>
       <tr>
         <th><input type="checkbox" id="" name=""></th>
@@ -44,9 +45,9 @@
           </tr>
 
         <td>
-          <a href="<?php echo config::getUrl() ?>index.php/detalleRegistro/ver?=id = <?php echo $dtRegistro->id ?>" class="btn btn-info btn-xs"> Ver </a>
-          <a href="<?php echo config::getUrl() ?>index.php/detalleRegistro/editar?=id = <?php echo $dtRegistro->id ?>" class="btn btn-info btn-xs" class="btn btn-info btn-xs"> Editar</a>
-          <a href="#" data-toggle="modal" data-target="#myModal <?php echo $dtRegistro->id ?> " class="btn btn-info btn-xs"> Eliminar </a>
+          <a href="<?php echo config::getUrl() ?>index.php/detalleRegistro/ver?=id = <?php echo $dtRegistro->id ?>" class="btn btn-info "> Ver </a>
+          <a href="<?php echo config::getUrl() ?>index.php/detalleRegistro/editar?=id = <?php echo $dtRegistro->id ?>" class="btn btn-info " class="btn btn-info btn-xs"> Editar</a>
+          <a href="#" data-toggle="modal" data-target="#myModal <?php echo $dtRegistro->id ?> " class="btn btn-info "> Eliminar </a>
           <?php include config::getPath() . 'View/partial/modelEliminar.php'; ?>
         </td>
 

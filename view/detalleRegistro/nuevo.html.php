@@ -2,12 +2,13 @@
 
 <div class="container container-fluid">
 
-  <h1>Nuevo Registro</h1>
-  <form class="form-horizontal" action=" <?php echo config::getUrl() ?>  index.php/detalleRegistro/crear" method="POST">
+  <h1 class="btn btn-success"> Nuevo Registro</h1>
+  
+  <form class="form-horizontal" action=" <?php echo $fsConfig->getUrl() ?>  index.php/detalleRegistro/crear" method="POST">
     <div class="form-group">
       <label for="relme_numero" class="col-sm-2 control-label">Numero</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="relme_numero"  name="detalleRegistro[relme_numero]"placeholder="Numero">
+        <input type="text" class="form-control" id="relme_numero"  name="detalleRegistro[relme_numero]"placeholder="Numero">
       </div>
     </div>
 
@@ -46,6 +47,11 @@
       </div>
     </div>
 
+    <select>
+      <option>1</option>
+      <option>12</option>
+      <option>123</option>
+    </select>
     <div class="form-group">
       <label for="maq_id" class="col-sm-2 control-label"> identificacion de Maquina</label>
       <div class="col-sm-10">
@@ -56,7 +62,7 @@
     <div class="form-group">
       <label for="der_tiempo_muerto" class="col-sm-2 control-label">Tiempo muerto</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="der_tiempo_muerto"  name="detalleRegistro[der_tiempo_muerto]"placeholder="tiempo muerto">
+        <select> class="form-control" id="der_tiempo_muerto"  name="detalleRegistro[der_tiempo_muerto]"placeholder="tiempo muerto">
       </div>
     </div>
 
@@ -70,7 +76,7 @@
     <div class="form-group">
       <label for="der_hora_inicio" class="col-sm-2 control-label">hora de inicio</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="der_hora_inicio"  name="detalleRegistro[der_hora_inicio]"placeholder="hora de inicio">
+        <input type="time" name="hora" class="form-control" id="der_hora_inicio"  name="detalleRegistro[der_hora_inicio]"placeholder="hora de inicio">
       </div>
     </div>
 
@@ -78,18 +84,12 @@
     <div class="form-group">
       <label for="der_hora_fin" class="col-sm-2 control-label">hora de fin</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="der_hora_fin"  name="detalleRegistro[der_hora_fin]"placeholder="hora fin">
+        <input type="time" name="hora" class="form-control" id="der_hora_fin"  name="detalleRegistro[der_hora_fin]"placeholder="hora fin">
       </div>
     </div>
 
 
-    <div class="form-group">
-      <label for="der_created_at" class="col-sm-2 control-label">fecha de creacion</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="der_created_at"  name="detalleRegistro[der_created_at]"placeholder="fecha de creacion">
-      </div>
-    </div>
-
+<h1 class="btn btn-primary "> Guardar cambios </h1>
 
 
     <?php include_once $fsConfig->getPath() . 'view/partial/foot.php' ?>
