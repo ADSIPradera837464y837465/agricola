@@ -3,7 +3,9 @@
 
 <div class="container container-fluid">
   
-  <a href="<?php echo $fsConfig->getUrl() ?>index.php/detalleRegistro/nuevo" class="btn btn-success">Registrar Nuevo</a>
+  <a href="<?php echo $fsConfig->getUrl() ?>index.php/detalleRegistro/nuevo" class="btn btn-success col-lg-offset-0" type="button" class="btn btn-info btn-lg" ">
+      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+      Nuevo Registro</a>
   <hr>
   <table class="table">
     <thead>
@@ -12,8 +14,8 @@
         <th>Numero</th>
         <th>identificacion de empleado</th>
         <th>numero de labor</th>
-        <th>numero de suerte</th>
-        <th>numero de producto</th>
+        <th>Id de suerte</th>
+        <th>Id de producto</th>
         <th>unidad de medida</th>
         <th>identificacion de la maquina</th>
         <th>tiempo muerto</th>
@@ -59,6 +61,25 @@
 
 
   </table>
+  <nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 </div>
 <script src="<?php echo config::getUrl() ?>js/eliminar.js"></script>
 <?php include config::getPath() . 'view/partial/foot.php'; ?>
