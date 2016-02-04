@@ -32,4 +32,3 @@ $this->objRol = $rol->getAll();
 }
 
 
-//w

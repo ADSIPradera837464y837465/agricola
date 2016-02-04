@@ -20,3 +20,4 @@ $config->setSessionName('FStudio');
 
 $config->setDefaultModule('ejemplo');
 $config->setDefaultAction('index');
+//

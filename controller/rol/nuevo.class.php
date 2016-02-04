@@ -17,4 +17,3 @@ class nuevo extends controller implements action {
 }
 
 
-//w
