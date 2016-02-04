@@ -1,32 +1,39 @@
 <?php
-use azucar\myConfig\myConfig as config;
-use azucar\controller\controller;
-use azucar\view\view;
-include config::getPath() . 'model/bdaMaquinaTable.class.php';
+require_once '../model/base/maquinaBaseTable.class.php';
+require_once '../model/maquinaTable.class.php';
+
+use FStudio\fsController as controller;
+use FStudio\interfaces\fsAction as action;
+;
 /**
  * Description of index
  *
  * @author marian
  */
-class actualizar extends controller {
+class actualizar extends controller implements action {
 
   public function execute() {
-  $formularioBdaMaquina = filter_input_array(INPUT_POST)['bdaMaquina'];
-  $bdaMaquina = new bdaMaquinaTable();
+    $config = $this->getConfig();
+  
+  $bdaMaquina = new maquinaTable($config);
+  $formularioBdaMaquina = filter_input_array(INPUT_POST)['maquina'];
+  
   $bdaMaquina->setId($formularioBdaMaquina['id']);
-  $bdaMaquina->setMaq_estado($formularioBdaMaquina['maqEstado']);
-  $bdaMaquina->setMaq_valor($formularioBdaMaquina['maqValor']);
-  $bdaMaquina->setMaq_fecha_compra($formularioBdaMaquina['maqFechaCompra']);
-  $bdaMaquina->setMaq_numero_chasis($formularioBdaMaquina['maqNumeroChasis']);
-  $bdaMaquina->setMaq_tipo_accesorio($formularioBdaMaquina['maqTipoAccesorio']);
-  $bdaMaquina->setMaq_horas_trabajadas($formularioBdaMaquina['maqHorasTrabajadas']);
-  $bdaMaquina->setMaq_tiempo_mantenimiento_hora($formularioBdaMaquina['maqTiempoMantenimientoHora']);
-  $bdaMaquina->setMaq_numero_serie($formularioBdaMaquina['maqNumeroSerie']);
-  $bdaMaquina->setMaq_modelo($formularioBdaMaquina['maqModelo']);
-  $bdaMaquina->setMaq_horas_actividad($formularioBdaMaquina['maqHorasActividad']);
-  $bdaMaquina->setMaq_valor_hora($formularioBdaMaquina['maqValorHora']);
-  $bdaMaquina->update();
-    header('Location: '. config::getUrl().'index.php/bdaMaquina/index');
+  $bdaMaquina->setEstado($formularioBdaMaquina['maqEstado']);
+  $bdaMaquina->setValor($formularioBdaMaquina['maqValor']);
+  $bdaMaquina->setFechaCompra($formularioBdaMaquina['maqFechaCompra']);
+  $bdaMaquina->setNumeroChasis($formularioBdaMaquina['maqNumeroChasis']);
+  $bdaMaquina->setTipoAccesorio($formularioBdaMaquina['maqTipoAccesorio']);
+  $bdaMaquina->setHorasTrabajadas($formularioBdaMaquina['maqHorasTrabajadas']);
+  $bdaMaquina->setTiempoMantenimientoHora($formularioBdaMaquina['maqTiempoMantenimientoHora']);
+  $bdaMaquina->setNumeroSerie($formularioBdaMaquina['maqNumeroSerie']);
+  $bdaMaquina->setModelo($formularioBdaMaquina['maqModelo']);
+  $bdaMaquina->setHorasActividad($formularioBdaMaquina['maqHorasActividad']);
+  $bdaMaquina->setValorHora($formularioBdaMaquina['maqValorHora']);
+  
+  $this->objMaquina = $bdaMaquina->update();
+  
+    header('Location: '. $config->getUrl().'index.php/maquina/index');
     
   }
 

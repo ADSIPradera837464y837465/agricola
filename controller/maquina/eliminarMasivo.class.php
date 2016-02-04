@@ -1,11 +1,10 @@
 <?php
 
-use azucar\myConfig\myConfig as config;
-use azucar\controller\controller;
-use azucar\view\view;
+require_once '../model/base/maquinaBaseTable.class.php';
+require_once '../model/maquinaTable.class.php';
 
-include config::getPath() . 'model/bdaMaquinaTable.class.php';
-
+use FStudio\fsController as controller;
+use FStudio\interfaces\fsAction as action;
 /**
  * Description of index
  *
@@ -24,9 +23,9 @@ class eliminarMasivo extends controller {
       }
 //      print_r($id);
 //          exit();
-      header('Location: ' . config::getUrl() . 'index.php/bdaMaquina/index');
+      header('Location: ' . $config->getUrl() . 'index.php/bdaMaquina/index');
     } else {
-      header('Location: ' . config::getUrl() . 'index.php/bdaMaquina/index');
+      header('Location: ' . $config->getUrl() . 'index.php/bdaMaquina/index');
     }
   }
 

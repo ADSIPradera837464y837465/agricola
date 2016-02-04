@@ -9,18 +9,19 @@ use FStudio\interfaces\fsAction as action;
  *
  * @author marian
  */
-class eliminar extends controller {
+class eliminar extends controller implements action{
 
   public function execute() {
     $id = filter_input(INPUT_POST, 'id');
-    $bdaMaquina = new bdaMaquinaTable();
-    $bdaMaquina->setId($id);
-    $bdaMaquina->delete();
+     $config = $this->getConfig();
+    $maquina = new maquinaTable($config);
+    $maquina->setId($id);
+    $this->objMaquina = $maquina->delete();
     $variable = array(
         'data' => array('code' => 200)
     );
     
-    view::defineView('bdaMaquina', 'eliminar', $variable, 'json');
+    view::defineView('maquina', 'eliminar', $variable, 'json');
   }
 
   
