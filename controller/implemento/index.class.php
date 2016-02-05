@@ -17,12 +17,12 @@ use FStudio\interfaces\fsAction as action;
  */
 class index extends controller implements action {
 
-  public function execute() {
-    $config = $this->getConfig();
-    $implemento = new implementoTable($config);
-    $this->objImplemento = $implemento->getAll();
-    // así declaramos la vista a usar
-    $this->defineView('implemento', 'index', 'html');
-  }
-
+    public function execute() {
+      $config = $this->getConfig();
+      $implemento = new implementoTable($config);
+      $this->objImplemento = $implemento->getAll();
+      // así declaramos la vista a usar
+      $this->defineView('implemento', 'index', 'html');
+    }
 }
+

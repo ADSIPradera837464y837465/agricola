@@ -4,8 +4,9 @@ use FStudio\model\base\turnoBaseTable;
 
 /**
  * Description of registroTractorTable
- * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com>
- * @package
+ * 
+ * @author Yuri Adriana Hurtado Rojas <yurodri.1996@gmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0

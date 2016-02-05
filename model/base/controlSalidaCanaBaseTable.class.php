@@ -5,11 +5,11 @@ namespace FStudio\model\base;
 use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
-
 /**
  * Description of controlSalidaCanaBaseTable
+ * 
  * @author Daniela Barona Mosquera <mo_naok@hotmail.com>
- * @package 
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
@@ -60,8 +60,8 @@ class controlSalidaCanaBaseTable extends model {
    * Foranea de la tabla tercero
    */
   const TERCERO_ID = 'ter_id';
-  
-   /**
+
+  /**
    * Fecha y hora de creación del registro
    */
   const CREATED_AT = 'csc_created_at';
@@ -86,7 +86,6 @@ class controlSalidaCanaBaseTable extends model {
    */
   const _TABLE = 'bda_control_salida_cana';
 
-
   /**
    * Configuración del sistema
    * @var config
@@ -95,67 +94,67 @@ class controlSalidaCanaBaseTable extends model {
 
   /**
    * ID de la tabla
-   * @var integer 
+   * @var integer
    */
   private $id;
 
   /**
    * FECHA de la tabla
-   * @var date 
+   * @var date
    */
   private $fecha;
 
   /**
    * Total de vagones de la tabla
-   * @var integer 
+   * @var integer
    */
   private $total_vagones;
 
   /**
    * Notas de la tabla
-   * @var text 
+   * @var text
    */
   private $notas;
 
   /**
    * Total de trenes de la tabla
-   * @var integer 
+   * @var integer
    */
   private $total_trenes;
 
   /**
    * Foranea de la tabla turno
-   * @var integer 
+   * @var integer
    */
   private $turno_id;
 
   /**
    * Foranea de la tabla suerte
-   * @var integer 
+   * @var integer
    */
   private $suerte_id;
 
   /**
    * Foranea de la tabla tercero
-   * @var integer 
+   * @var integer
    */
   private $tercero_id;
 
   /**
    * Crea los registros de la tabla
-   * @var date_time 
+   * @var date_time
    */
   private $created_at;
 
   /**
    * Actualiza registros de la tabla
-   * @var date_time 
+   * @var date_time
    */
   private $updated_at;
 
   /**
    * Elimina registros de la tabla
-   * @var date_time 
+   * @var date_time
    */
   private $deleted_at;
 
@@ -187,15 +186,6 @@ class controlSalidaCanaBaseTable extends model {
     $this->created_at = $created_at;
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
-  }
-
-  /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
   }
 
   /**
@@ -295,15 +285,6 @@ class controlSalidaCanaBaseTable extends model {
    */
   public function getDeletedAt() {
     return $this->deleted_at;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
   }
 
   /**

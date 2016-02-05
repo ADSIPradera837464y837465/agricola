@@ -7,6 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Description of datoUsuarioBaseTable
+ * 
  * @author Emanuel Castillo Mosquera <corcel125@outlook.com>
  * @package FStudio
  * @subpackage model
@@ -16,12 +17,12 @@ use FStudio\myConfig as config;
 class datoUsuarioBaseTable extends model {
 
   /**
-   * Id de la dato_usuario   
+   * Id de la dato_usuario
    */
   const ID = 'dus_id';
 
   /**
-   * Id del usuario   
+   * Id del usuario
    */
   const USUARIO_ID = 'usr_id';
 
@@ -30,30 +31,30 @@ class datoUsuarioBaseTable extends model {
 
    */
   const CEDULA = 'dus_cedula';
-  
-  /**
-   * 
-   */
-   const CEDULA_LENGTH = 20;
 
   /**
-   * Nombre del usuario   
+   *
+   */
+  const CEDULA_LENGTH = 20;
+
+  /**
+   * Nombre del usuario
    */
   const NOMBRE = 'dus_nombre';
-  
+
   /**
-   * 
+   *
    */
-   const NOMBRE_LENGTH = 80;
+  const NOMBRE_LENGTH = 80;
 
   /**
    * Apellido del usuario
 
    */
   const APELLIDOS = 'dus_apellidos';
-  
+
   /**
-   * 
+   *
    */
   const APELLIDOS_LENGTH = 80;
 
@@ -62,9 +63,9 @@ class datoUsuarioBaseTable extends model {
 
    */
   const MOVIL = 'dus_movil';
-  
+
   /**
-   * 
+   *
    */
   const MOVIL_LENGTH = 12;
 
@@ -73,19 +74,19 @@ class datoUsuarioBaseTable extends model {
 
    */
   const CORREO = 'dus_correo';
-  
-  /**
-   * 
-   */
-   const CORREO_LENGTH = 120;
 
   /**
-   * 
+   *
+   */
+  const CORREO_LENGTH = 120;
+
+  /**
+   *
    */
   const IMAGEN = 'dus_imagen';
-  
+
   /**
-   * 
+   *
    */
   const IMAGEN_LENGTH = 36;
 
@@ -109,80 +110,74 @@ class datoUsuarioBaseTable extends model {
    * Fecha y hora para controlar el borrado lógico
    */
   const DELETED_AT = 'dus_deleted_at';
-  
+
   /**
-   * 
+   *
    */
   const _SEQUENCE = 'bda_dato_usuario_dus_id_seq';
-  
+
   /**
-   * 
+   *
    */
   const _TABLE = 'bda_dato_usuario';
-  
+
   /**
    * Configuración del sistema
    * @var config
-   */
-  const _SEQUENCE = '';
-
-  /**
-   * Configuracion del sistema
-
    */
   protected $config;
 
   /**
    * Id de la tabla
-   * @var integer 
+   * @var integer
    */
   private $id;
 
   /**
    * Tipo del usuario que ingresa en el sistema
-   * @var varchar 
+   * @var varchar
    */
   private $usuario_id;
 
   /**
    * Numero de documento del usuario
-   * @var integer 
+   * @var integer
    */
   private $cedula;
 
   /**
    * nombre real del usuario
-   * @var varchar 
+   * @var varchar
    */
   private $nombre;
 
   /**
    * Apellido real del usuario
-   * @var varchar 
+   * @var varchar
    */
   private $apellidos;
 
   /**
    * numero del telefono movil del usuario
-   * @var varchar 
+   * @var varchar
    */
   private $movil;
 
   /**
    * Dirrecion del E-mail del usuario
-   * @var varchar 
+   * @var varchar
    */
   private $correo;
 
   /**
    *
-   * @var  
+   * @var
    */
   private $imagen;
 
   /**
    * Genero del Usuario
-   * @var varchar 
+   * @var varchar
    */
   private $sexo;
 
@@ -192,7 +187,7 @@ class datoUsuarioBaseTable extends model {
    */
   private $created_at;
 
-   /**
+  /**
    * Fecha y hora de la ultima actualización del registro
    * @var string
    */
@@ -206,7 +201,7 @@ class datoUsuarioBaseTable extends model {
 
   /**
    * Constructor de la clase datoUsuarioBaseTable
-   *@version 1.0.0
+   * @version 1.0.0
    * @param config $config
    * @param integer $id Id de la tabla
    * @param varchar $usuario Tipo del usuario que ingresa en el sistema
@@ -301,7 +296,7 @@ class datoUsuarioBaseTable extends model {
   }
 
   /**
-   * 
+   *
    * @version 1.0.0
    * @return type
    */
@@ -409,7 +404,7 @@ class datoUsuarioBaseTable extends model {
   }
 
   /**
-   * 
+   *
    * @version 1.0.0
    * @param type $imagen
    */
@@ -454,5 +449,3 @@ class datoUsuarioBaseTable extends model {
   }
 
 }
-
-//gnu

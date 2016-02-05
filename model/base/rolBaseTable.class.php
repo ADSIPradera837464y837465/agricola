@@ -7,8 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of rolBaseTable
- *
- * @author nombre completo <su@correo.com>
+ * 
+ * @author 
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -57,7 +57,6 @@ class rolBaseTable extends model {
    * Configuración del sistema
    * @var config
    */
-
   protected $config;
 
   /**
@@ -150,15 +149,6 @@ class rolBaseTable extends model {
    */
   public function getDeletedAt() {
     return $this->deleted_at;
-  }
-
-  /**
-   * fija la configuracion del sistema
-   * @version 1.0.0
-   * @param config $config objeto con configuracion del sistema
-   */
-  public function setConfig($config) {
-    $this->config = $config;
   }
 
   /**

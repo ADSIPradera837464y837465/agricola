@@ -7,6 +7,7 @@ use FStudio\myConfig as config;
 
 /**
  * Description of terceroBaseTable
+ * 
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
  * @package FStudio
  * @subpackage model
@@ -21,7 +22,7 @@ class terceroBaseTable extends model {
   const ID = 'ter_id';
 
   /**
-   * nombre del tercero 
+   * nombre del tercero
    */
   const NOMBRE = 'ter_nombre';
 
@@ -71,11 +72,6 @@ class terceroBaseTable extends model {
   const CORREO_LENGTH = 100;
 
   /**
-   * Foranea de la tabla  tipo_tercero
-   */
-  const TIPO_TERCERO = 'tit_id';
-
-  /**
    * Foranea de la tabla  cargo
    */
   const CARGO_ID = 'car_id';
@@ -84,6 +80,7 @@ class terceroBaseTable extends model {
    * Foranea de la tabla  tipo_id
    */
   const TIPO_ID = 'tpi_id';
+
   /**
    * foranea de tipo terxcero
    */
@@ -110,7 +107,7 @@ class terceroBaseTable extends model {
   const _SEQUENCE = 'bda_tercero_ter_id_seq';
 
   /**
-   * Nombre de la tabla 
+   * Nombre de la tabla
    */
   const _TABLE = 'bda_tercero';
 
@@ -140,7 +137,7 @@ class terceroBaseTable extends model {
 
   /**
    * telefono del tercero
-   * @var string 
+   * @var string
    */
   private $telefono;
 
@@ -164,10 +161,10 @@ class terceroBaseTable extends model {
 
   /**
    * Foranea de la tabla tipo_id
-   * @var integer 
+   * @var integer
    */
   private $tipo_id;
-  
+
   /**
    * Foranea de la tabla  tipo_tercero
    * @var integer
@@ -224,7 +221,7 @@ class terceroBaseTable extends model {
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
   }
-  
+
   /**
    * Retorna el id del registro
    * @version 1.0.0
@@ -235,7 +232,7 @@ class terceroBaseTable extends model {
   }
 
   /**
-   * retorna el nombre del tercero registrado 
+   * retorna el nombre del tercero registrado
    * @version 1.0.0
    * @return string
    */
@@ -244,7 +241,7 @@ class terceroBaseTable extends model {
   }
 
   /**
-   * Retorna el apellido del tercero registrado 
+   * Retorna el apellido del tercero registrado
    * @version 1.0.0
    * @return string
    */
@@ -253,7 +250,7 @@ class terceroBaseTable extends model {
   }
 
   /**
-   * Retorna el telefono registrado 
+   * Retorna el telefono registrado
    * @version 1.0.0
    * @return string
    */
@@ -279,9 +276,8 @@ class terceroBaseTable extends model {
     return $this->correo;
   }
 
-
   /**
-   * Retorna el id del cargo 
+   * Retorna el id del cargo
    * @version 1.0.0
    * @return integer
    */
@@ -297,7 +293,7 @@ class terceroBaseTable extends model {
   public function getTipoId() {
     return $this->tipo_id;
   }
-  
+
   /**
    * Retorna el id del tipo de tercero
    * @version 1.0.0
@@ -382,7 +378,6 @@ class terceroBaseTable extends model {
     $this->correo = $correo;
   }
 
-
   /**
    * Fija el tipo de cargo del tercero
    * @param integer $cargo_id
@@ -398,7 +393,7 @@ class terceroBaseTable extends model {
   public function setTipoId($tipo_id) {
     $this->tipo_id = $tipo_id;
   }
-  
+
   /**
    * Fija el tipo de tercero
    * @param integer $tipo_tercero_id

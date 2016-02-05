@@ -23,7 +23,6 @@ class actualizar extends controller  {
         //validaciones
 
         $implemento = new implementoTable($config);
-        $implemento->setId($formImplemento['id']);
         $implemento->setDescripcion($formImplemento['descripcion']);
        
 

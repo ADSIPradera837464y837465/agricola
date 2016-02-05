@@ -15,20 +15,19 @@ use FStudio\interfaces\fsAction as action;
  * @subpackage eliminar.class.php
  * @version 1.0.0
  */
-class eliminar extends controller implements action {
-
+class eliminar extends controller implements action{
+  
   public function execute() {
-    $config = $this->getConfig();
-    $id = filter_input(INPUT_POST, 'id');
-
-    $tipoTercero = new tipoTerceroTable($config);
+    
+    $id = filter_input(INPUT_POST, 'tit_id');
+    $tipoTercero = new tipoTerceroTable();
     $tipoTercero->setId($id);
-    $this->objTipoTercero = $tipoTercero->delete();
+    $tipoTercero->delete();
     $variables = array(
         'data' => array('code' => 200)
     );
     $this->defineView('tipoTercero', 'eliminar', $variables, 'json');
     
   }
-
+  
 }

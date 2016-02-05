@@ -49,17 +49,17 @@ class tipoDocumentoBaseTable extends model {
   /**
    * Fecha y hora de creación del documento
    */
-  const CREATED_AT = 'tdp_created_at';
+  const CREATED_AT = 'tpd_created_at';
 
   /**
    * Fecha y hora de la ultima actualización del documento
    */
-  const UPDATED_AT = 'tdp_updated_at';
+  const UPDATED_AT = 'tpd_updated_at';
 
   /**
    * Fecha y hora para controlar el borrado lógico
    */
-  const DELETED_AT = 'tdp_deleted_at';
+  const DELETED_AT = 'tpd_deleted_at';
   const _SEQUENCE = 'bda_tipo_documento_tpd_id_seq';
   const _TABLE = 'bda_tipo_documento';
 

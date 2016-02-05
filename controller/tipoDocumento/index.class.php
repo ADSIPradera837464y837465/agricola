@@ -24,6 +24,5 @@ class index extends controller implements action {
       // así declaramos la vista a usar
       $this->defineView('tipoDocumento', 'index', 'html');
     }
-    
 }
 

@@ -1,5 +1,4 @@
 <?php
-
 require_once '../model/base/detalleEntradaSalidaBodegaBaseTable.class.php';
 require_once '../model/detalleEntradaSalidaBodegaTable.class.php';
 
@@ -8,24 +7,20 @@ use FStudio\interfaces\fsAction as action;
 
 /**
  * Description of editar
- *..
- * @author Diana Meneses <meneses_d@rocketmail.com>
- * @package FStudio
- * @subpackage controller
- * @subpackage index.class.php
- * @version 1.0.0
+ *
+ * @author diana
  */
+class editar extends controller implements action{
 
-class editar extends controller implements action {
+    public function execute() {
+        $id = filter_input(INPUT_GET, 'desId');
+        $objDetalleEntradaSalidaBodega = detalleEntradaSalidaBodegaTable::getById($id);
 
-  public function execute() {
-    $id = filter_input(INPUT_GET, 'id');
-    $config = $this->getConfig();
-    $detalleEntradaSalidaBodega = new detalleEntradaSalidaBodegaTable($config);
+        $variables = array(
+            'objDetalleEntradaSalidaBodega' => $objDetalleEntradaSalidaBodega
+        );
 
-    $this->objDetalleEntradaSalidaBodega = $detalleEntradaSalidaBodega->getById($id);
-
-    $this->defineView('detalleEntradaSalidaBodega', 'editar', 'html');
-  }
+        $this->defineView('detalleEntradaSalidaBodega', 'editar', $variables, 'html');
+    }
 
 }

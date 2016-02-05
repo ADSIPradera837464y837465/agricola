@@ -4,6 +4,7 @@ use FStudio\model\base\laborBaseTable;
 
 /**
  * Clase para manejar la tabla labor
+ * 
  * @author Emanuel Castillo Mosquera <corcel125@outlook.com>
  * @package FStudio
  * @subpackage model
@@ -19,7 +20,7 @@ class laborTable extends laborBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT lab_id AS id, lab_descripcion AS descripcion, lab_valor AS valor, lab_estado AS estado,lab_created_at AS createdAt,lab_updated_at AS updatedAt,lab_deleted_at AS deletedAt FROM bda_labor WHERE lab_deleted_at IS NULL ORDER BY pro_created_at ASC';
+    $sql = 'SELECT lab_id AS id, lab_descripcion AS descripcion, lab_valor AS valor, lab_estado AS estado, lab_created_at AS created_at, lab_updated_at AS updated_at, lab_deleted_at AS deleted_at FROM bda_labor WHERE lab_deleted_at IS NULL ORDER BY lab_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -31,7 +32,7 @@ class laborTable extends laborBaseTable {
    * @param integer $id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-public function getById($id = null) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
     $sql = 'SELECT lab_id AS id, lab_descripcion AS descripcion, lab_valor AS valor, lab_estado AS estado, lab_created_at AS created_at, lab_updated_at AS updated_at, lab_deleted_at AS deleted_at FROM bda_labor WHERE lab_deleted_at IS NULL AND id = :id';
     $params = array(
@@ -68,11 +69,11 @@ public function getById($id = null) {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_labor SET lab_descripcion = :descripcion,lab_valor = :valor, lab_estado = :estado WHERE lab_id = :id';
+    $sql = 'UPDATE bda_labor SET lab_descripcion = :descripcion, lab_valor = :valor, lab_estado = :estado WHERE lab_id = :id';
     $params = array(
         ':descripcion' => $this->getDescripcion(),
         ':valor' => $this->getValor(),
-        ':estado' => $this->getEstado(),        
+        ':estado' => $this->getEstado(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
@@ -108,6 +109,3 @@ public function getById($id = null) {
   }
 
 }
-
-
-//gnu

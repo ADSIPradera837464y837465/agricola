@@ -35,7 +35,7 @@ class implementoTable extends implementoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT imp_id AS id, imp_descripcion AS descripcion, imp_created_at AS created_at, imp_updated_at AS updated_at, imp_deleted_at AS deleted_at FROM bda_implemento WHERE imp_deleted_at IS NULL AND imp_id = :id';
+    $sql = 'SELECT imp_id AS id, imp_descripcion AS descripcion, imp_created_at AS created_at, imp_updated_at AS updated_at, imp_deleted_at AS deleted_at FROM bda_implemento WHERE imp_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

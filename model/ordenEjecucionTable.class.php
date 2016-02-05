@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Description of bitacoraTable
- * @author wilmer andres martinez chamorro <wilmerelmejor94@hotmail.com>
- * @package
+ * Description of ordenEjecucionTable
+ * @author Wilmer Andres Martinez Chamorro <wilmerelmejor94@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -17,8 +17,7 @@ class ordenEjecucionTable extends ordenEjecucionBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT ore_id, ter_id_elabora, ors_id, maq_id, ore_fecha, ore_observacion,ore_created_at, ore_updated_at,ore_deleted_at '
-            . 'FROM bda_orden_ejecusion WHERE ore_deleted_at IS NULL ORDER BY ore_created_at ASC';
+    $sql = 'SELECT ore_id AS id, ter_id_elabora AS tercero_id_elabora, ors_id AS orden_salida_id, maq_id AS maquina_id, ore_fecha AS fecha, ore_observacion AS observacion, ore_created_at AS created_at, ore_updated_at AS updated_at, ore_deleted_at AS deleted_at FROM bda_orden_ejecucion WHERE ore_deleted_at IS NULL ORDER BY ore_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -30,13 +29,11 @@ class ordenEjecucionTable extends ordenEjecucionBaseTable {
    * @param integer $ore_id ID a buscar
    * @return mixed [stdClass | boolean]
    */
-  public function getById($ore_id = null) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT ore_id, ter_id_elabora, ors_id, maq_id, ore_fecha, ore_observacion,ore_created_at, ore_updated_at,ore_deleted_at '
-            . 'FROM bda_orden_ejecusion WHERE ore_deleted_at IS NULL '
-            . 'AND ore_id = :id';
+    $sql = 'SELECT ore_id AS id, ter_id_elabora AS tercero_id_elabora, ors_id AS orden_salida_id, maq_id AS maquina_id, ore_fecha AS fecha, ore_observacion AS observacion, ore_created_at AS created_at, ore_updated_at AS updated_at, ore_deleted_at AS deleted_at FROM bda_orden_ejecucion WHERE ore_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':ore_id' => $ore_id
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -49,18 +46,18 @@ class ordenEjecucionTable extends ordenEjecucionBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_orden_ejecusion (ore_id, ter_id_elabora, ors_id, maq_id, ore_fecha, ore_observacion) VALUES (:ore_id, :ter_id_elabora, :ors_id, :maq_id, :ore_fecha, :ore_observacion)';
+    $sql = 'INSERT INTO bda_orden_ejecucion (ter_id_elabora, ors_id, maq_id, ore_fecha, ore_observacion) VALUES (:tercero_id_elabora, :orden_salida_id, :maquina_id, :fecha, :observacion)';
     $params = array(
-        ':ore_id' => $this->getOreObservacion(),
-        ':ter_id_elabora' => $this->getOreCreate(),
-        ':ors_id' => $this->getOrsId(),
-        ':maq_id' => $this->getMaqId(),
-        ':ore_fecha' => $this->getOreFecha(),
-        ':ore_observacion' => $this->getOreObservacion()
+        ':tercero_id_elabora' => $this->getTerceroIdElabora(),
+        ':orden_salida_id' => $this->getOrdenSalidaId(),
+        ':maquina_id' => $this->getMaquinaId(),
+        ':fecha' => $this->getFecha(),
+        ':observacion' => $this->getObservacion()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-    return $conn->lastInsertId(self::_SEQUENCE);
+    $this->setId($conn->lastInsertId(self::_SEQUENCE));
+    return true;
   }
 
   /**
@@ -70,15 +67,14 @@ class ordenEjecucionTable extends ordenEjecucionBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_orden_ejecusion SET ore_id = :ore_id, ter_id_elabora = :ter_id_elabora, ors_id = :ors_id, maq_id = :maq_id, ore_fecha = :ore_fecha, ore_observacion = :ore_observacion, ore_create_at = :ore_create_at, ore_update_at = :ore_update_at, ore_deleted_at = :ore_deleted_at  WHERE id = :ore_id';
+    $sql = 'UPDATE bda_orden_ejecucion SET ter_id_elabora = :tercero_id_elabora, ors_id = :orden_salida_id, maq_id = :maquina_id, ore_fecha = :fecha, ore_observacion = :observacion WHERE ore_id = :id';
     $params = array(
-        ':ore_id' => $this->getOreObservacion(),
-        ':ter_id_elabora' => $this->getOreCreate(),
-        ':ors_id' => $this->getOrsId(),
-        ':maq_id' => $this->getMaqId(),
-        ':ore_fecha' => $this->getOreFecha(),
-        ':ore_observacion' => $this->getOreObservacion(),
-        ':ore_id' => $this->getOreId()
+        ':tercero_id_elabora' => $this->getTerceroIdElabora(),
+        ':orden_salida_id' => $this->getOrdenSalidaId(),
+        ':maquina_id' => $this->getMaquinaId(),
+        ':fecha' => $this->getFecha(),
+        ':observacion' => $this->getObservacion(),
+        ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -95,15 +91,14 @@ class ordenEjecucionTable extends ordenEjecucionBaseTable {
   public function delete($deleteLogical = true) {
     $conn = $this->getConnection($this->config);
     $params = array(
-        ':ore_id' => $this->getId()
+        ':id' => $this->getId()
     );
-
     switch ($deleteLogical) {
       case true:
         $sql = 'UPDATE bda_orden_ejecucion SET ore_deleted_at = now() WHERE ore_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_producto WHERE ore_id = :id';
+        $sql = 'DELETE FROM bda_orden_ejecucion WHERE ore_id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');

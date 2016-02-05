@@ -22,10 +22,11 @@ class ver extends controller implements action {
     $rol = new rolTable($config);
 
 
-    $this->objRol = $rol->getAll();
+    $this->objRol = $rol->getById($id);
     $this->defineView('rol', 'ver', 'html');
   }
 
 }
 
 
+//y

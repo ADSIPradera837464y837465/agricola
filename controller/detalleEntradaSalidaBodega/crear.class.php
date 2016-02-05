@@ -1,5 +1,4 @@
 <?php
-
 require_once '../model/base/detalleEntradaSalidaBodegaBaseTable.class.php';
 require_once '../model/detalleEntradaSalidaBodegaTable.class.php';
 
@@ -8,33 +7,27 @@ use FStudio\interfaces\fsAction as action;
 
 /**
  * Description of crear
- *..
+ *
  * @author diana meneses <meneses_d@rocketmail.com>
- * @package FStudio
- * @subpackage controller
- * @subpackage ver.class.php
- * @version 1.0.0
  */
-class crear extends controller implements action {
 
+class crear extends controller  {
+  
   public function execute() {
+     $formDetalleEntradaSalidaBodega = filter_input_array(INPUT_POST)['detalleEntradaSalidaBodega'];
 
-    $config = $this->getConfig();
+        //validaciones
 
-    $formDetalleEntradaSalidaBodega = filter_input_array(INPUT_POST)['detalleEntradaSalidaBodega'];
+        $detalleEntradaSalidaBodega = new detalleEntradaSalidaBodegaTable();
+        $detalleEntradaSalidaBodega->setDesId($formDetalleEntradaSalidaBodega['nombre']);
+        $detalleEntradaSalidaBodega->setEsbId($formDetalleEntradaSalidaBodega['apellido']);
+        $detalleEntradaSalidaBodega->setProId($formDetalleEntradaSalidaBodega['telefono']);
+        $detalleEntradaSalidaBodega->setUmnId($formDetalleEntradaSalidaBodega['extencion']);
+        $detalleEntradaSalidaBodega->setCantidad($formDetalleEntradaSalidaBodega['cargo']);
+        $detalleEntradaSalidaBodega->setPrecio($formDetalleEntradaSalidaBodega['sueldo']);
 
-    $detalleEntradaSalidaBodega = new detalleEntradaSalidaBodegaTable($config);
-
-    $detalleEntradaSalidaBodega->setEntradaSalidaBodegaId($formDetalleEntradaSalidaBodega['esbId']);
-    $detalleEntradaSalidaBodega->setProductoId($formDetalleEntradaSalidaBodega['proId']);
-    $detalleEntradaSalidaBodega->setUnidadMedidaId($formDetalleEntradaSalidaBodega['unmId']);
-    $detalleEntradaSalidaBodega->setCantidad($formDetalleEntradaSalidaBodega['desCantidad']);
-    $detalleEntradaSalidaBodega->setPrecio($formDetalleEntradaSalidaBodega['desPrecio']);
-
-    $this->objDetalleEntradaSalidaBodega = $detalleEntradaSalidaBodega->save();
-
-    header('Location: ' . $config->getUrl() . 'index.php/detalleEntradaSalidaBodega/index');
-    exit();
+        $detalleEntradaSalidaBodega->save();
+        header('Location: ' . $fsConfig->getUrl() . 'index.php/detalleEntradaSalidaBodega/index');
+    
   }
-
 }

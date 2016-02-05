@@ -18,13 +18,11 @@ use FStudio\interfaces\fsAction as action;
 class index extends controller implements action {
 
   public function execute() {
-
     $config = $this->getConfig();
-    $detalleOrden= new detalleOrdenTable($config);
+    $detalleOrden = new detalleOrdenTable($config);
     $this->objDetalleOrden = $detalleOrden->getAll();
-    
+    // así declaramos la vista a usar
     $this->defineView('detalleOrden', 'index', 'html');
   }
 
 }
-

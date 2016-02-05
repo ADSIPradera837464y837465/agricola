@@ -84,7 +84,7 @@ class laboresMaquinaEquipoBaseTable extends model {
   /**
    * nombre de la tabla
    */
-  const _TABLE = 'bda_labores_maquina_equipo';
+  const _TABLE = 'bda_labores_maqina_equipo';
 
   /**
    * Configuración del sistema

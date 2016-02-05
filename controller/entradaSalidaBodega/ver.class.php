@@ -1,9 +1,11 @@
 <?php
-require_once '../model/base/entradaSalidaBodegaBaseTable.class.php';
-require_once '../model/entradaSalidaBodegaTable.class.php';
+require_once '../model/base/detalleEntradaSalidaBodegaBaseTable.class.php';
+require_once '../model/detalleEntradaSalidaBodegaTable.class.php';
 
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
+
+include $fsConfig->getPath() . 'model/detalleEntradaSalidaBodegaTable.class.php';
 
 /**
  * Description of ver
@@ -17,13 +19,14 @@ use FStudio\interfaces\fsAction as action;
 class ver extends controller implements action{
 
   public function execute() {
-    $config = $this->getConfig();
-    $id  = filter_input(INPUT_GET, 'id');
-    $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
-    
-    $this->objEntradaSalidaBodega = $entradaSalidaBodega->getById($id);
+    $esbId  = filter_input(INPUT_GET, 'esbId');
+    $objEntradaSalidaBodega = entradaSalidaBodegaTable::getById($id);
 
-    $this->defineView('entradaSalidaBodega', 'ver', 'html');
+    $variables = array(
+        'objEntradaSalidaBodega' => $objEntradaSalidaBodega
+    );
+
+    $this->defineView('entradaSalidaBodega', 'ver', $variables, 'html');
   }
 
 }

@@ -3,8 +3,9 @@
 use FStudio\model\base\rolBaseTable;
 
 /**
- * Description of bitacoraTable
- * @author wilmer andres martinez chamorro <wilmerelmejor94@hotmail.com>
+ * Description of rolTable
+ *
+ * @author Wilmer Andres Martinez Chamorro <wilmerelmejor94@hotmail.com>
  * @package
  * @subpackage model
  * @subpackage table
@@ -31,7 +32,7 @@ class rolTable extends rolBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT rol_id AS id, rol_nombre AS nombre, rol_created_at AS created_at, rol_updated_at AS updated_at, rol_deleted_at AS deleted_at FROM bda_rol WHERE rol_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT rol_id AS id, rol_nombre AS nombre, rol_created_at AS created_at, rol_updated_at AS updated_at, rol_deleted_at AS deleted_at FROM bda_rol WHERE rol_deleted_at IS NULL AND rol_id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -52,13 +53,12 @@ class rolTable extends rolBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-//    return $conn->lastInsertId(self::_SEQUENCE);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }
 
   /**
-   * Actualiza un registro de la tabla 
+   * Actualiza un registro de la tabla
    * @return boolean
    */
   public function update() {
@@ -75,7 +75,7 @@ class rolTable extends rolBaseTable {
 
   /**
    * borra en forma logica o fisica un registro de las tablas
-   * @param boolean $delete
+   * @param boolean $deleteLogical
    * @return boolean
    * @throws PDOException
    */

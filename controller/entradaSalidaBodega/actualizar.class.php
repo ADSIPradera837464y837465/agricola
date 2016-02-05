@@ -18,23 +18,19 @@ use FStudio\interfaces\fsAction as action;
 class actualizar extends controller implements action {
 
   public function execute() {
-    
-    $config = $this->getConfig();
-    $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
-    
     $formEntradaSalidaBodega = filter_input_array(INPUT_POST)['entradaSalidaBodega'];
 
-    
+    $entradaSalidaBodega = new entradaSalidaBodegaTable();
     $entradaSalidaBodega->setId($formEntradaSalidaBodega['esbId']);
     $entradaSalidaBodega->setTerceroIdElabora($formEntradaSalidaBodega['terIdElabora']);
     $entradaSalidaBodega->setTerceroIdSolicita($formEntradaSalidaBodega['terIdSolicita']);
     $entradaSalidaBodega->setTipoDocumentoId($formEntradaSalidaBodega['tpdId']);
     $entradaSalidaBodega->setFecha($formEntradaSalidaBodega['esbFecha']);
     $entradaSalidaBodega->setObservacion($formEntradaSalidaBodega['esbObservacion']);
-    
     $this->objEntradaSalidaBodega = $entradaSalidaBodega->update();
-    
-    header('Location: ' . $config->getUrl() . 'index.php/entradaSalidaBodega/index');
-   }
+
+
+    header('Location: ' . $fsConfig->getUrl() . 'index.php/entradaSalidaBodega/index');
+  }
 
 }

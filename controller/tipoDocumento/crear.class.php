@@ -25,9 +25,6 @@ class crear extends controller  {
 
         $tipoDocumento = new tipoDocumentoTable($config);
         $tipoDocumento->setDescripcion($formTipoDocumento['descripcion']);
-        $tipoDocumento->setTipoMovimiento($formTipoDocumento['tipo_movimiento']);
-        $tipoDocumento->setEstado($formTipoDocumento['estado']);
-        
        
 
         $this->objTipoDocumento = $tipoDocumento->save();

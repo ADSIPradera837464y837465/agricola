@@ -6,7 +6,7 @@ require_once '../model/laboresMaquinaEquipoTable.class.php';
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
 
-
+//include $fsConfig->getPath() . 'model/implementoTable.class.php';
 
 /**
  * Description of ver
@@ -22,8 +22,12 @@ class ver extends controller implements action {
     $config = $this->getConfig();
     $laboresMaquinaEquipo = new laboresMaquinaEquipoTable($config);
 
-
-    $this->objLaboresMaquinaEquipo = $laboresMaquinaEquipo->getById($id);
+//    $this->objImplemento = implementoTable::getById($id);
+//
+//    $variables = array(
+//        'objImplemento' => $objImplemento
+//    );
+    $this->objFormLaboresMaquinaEquipo = $laboresMaquinaEquipo->getAll();
     $this->defineView('laboresMaquinaEquipo', 'ver', 'html');
   }
 

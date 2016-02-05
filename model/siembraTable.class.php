@@ -4,8 +4,9 @@ use FStudio\model\base\siembraBaseTable;
 
 /**
  * Description of siembraTable
+ *
  * @author Diana Meneses <meneses_d@rocketmail.com>
- *  @package FStudio
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -120,10 +121,10 @@ class siembraTable extends siembraBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_siembra SET sie_deleted_at = now() WHERE sie_id = :sie_id';
+        $sql = 'UPDATE bda_siembra SET sie_deleted_at = now() WHERE sie_id = :id';
         break;
       case false:
-        $sql = 'DELETE FROM bda_siembra WHERE sie_id = :sie_id';
+        $sql = 'DELETE FROM bda_siembra WHERE sie_id = :id';
         break;
       default:
         throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');

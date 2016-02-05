@@ -110,5 +110,3 @@ class haciendaBaseTable extends model {
   }
 
 }
-
-

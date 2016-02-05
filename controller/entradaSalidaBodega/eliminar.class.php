@@ -19,10 +19,9 @@ class eliminar extends controller implements action {
 
     public function execute() {
      
-        $id = filter_input(INPUT_POST, 'id');
-         $config = $this->getConfig();
-        $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
-        $entradaSalidaBodega->setId($id);
+        $esbId = filter_input(INPUT_POST, 'esbId');
+        $entradaSalidaBodega = new entradaSalidaBodegaTable();
+        $entradaSalidaBodega->setId($esbId);
         $this->objEntradaSalidaBodega = $entradaSalidaBodega->delete();
         $variables=array(
             'data'=>array('code'=>200)

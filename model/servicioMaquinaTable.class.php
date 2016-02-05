@@ -4,7 +4,8 @@ use FStudio\model\base\servicioMaquinaBaseTable;
 
 /**
  * Description of servicioMaquinaTable
- * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com>
+ *
+ * @author Yuri Adriana Hurtado Rojas <yurodri.1996@gmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage table

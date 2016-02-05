@@ -15,7 +15,7 @@ class productoTable extends productoBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipo_producto_id, mar_id AS marca_id, unm_id AS unidad_medida_id, pro_created_at AS created_at, pro_updated_at AS updated_at, pro_deleted_at_at AS deleted_at FROM bda_producto WHERE pro_deleted_at_at IS NULL ORDER BY pro_created_at ASC';
+    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipo_producto_id, mar_id AS marca_id, unm_id AS unidad_medida_id, pro_created_at AS created_at, pro_updated_at AS updated_at, pro_deleted_at AS deleted_at FROM bda_producto WHERE pro_deleted_at IS NULL ORDER BY pro_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class productoTable extends productoBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipo_producto_id, mar_id AS marca_id, unm_id AS unidad_medida_id, pro_created_at AS created_at, pro_updated_at AS updated_at, pro_deleted_at_at AS deleted_at FROM bda_producto WHERE pro_deleted_at_at IS NULL AND id = :id';
+    $sql = 'SELECT pro_id AS id, pro_descripcion AS descripcion, tpr_id AS tipo_producto_id, mar_id AS marca_id, unm_id AS unidad_medida_id, pro_created_at AS created_at, pro_updated_at AS updated_at, pro_deleted_at AS deleted_at FROM bda_producto WHERE pro_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -69,7 +69,7 @@ class productoTable extends productoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_producto SET pro_deleted_at_at = now() WHERE pro_id = :id';
+        $sql = 'UPDATE bda_producto SET pro_deleted_at = now() WHERE pro_id = :id';
         break;
       case false:
         $sql = 'DELETE FROM bda_producto WHERE pro_id = :id';

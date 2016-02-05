@@ -17,13 +17,11 @@ use FStudio\interfaces\fsAction as action;
  */
 class index extends controller implements action {
 
-  public function execute() {
-
-    $config = $this->getConfig();
-    $cargo = new cargoTable($config);
-    $this->objcargo = $cargo->getAll();
-    
-    $this->defineView('cargo', 'index', 'html');
-  }
-
+    public function execute() {
+      $config = $this->getConfig();
+      $cargo = new cargoTable($config);
+      $this->objCargo = $cargo->getAll();
+      // así declaramos la vista a usar
+      $this->defineView('cargo', 'index', 'html');
+    }
 }

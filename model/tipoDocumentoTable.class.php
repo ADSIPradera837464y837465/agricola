@@ -1,4 +1,3 @@
-
 <?php
 
 use FStudio\model\base\tipoDocumentoBaseTable;
@@ -21,7 +20,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento AS tipo_movimiento, tpd_estado AS estado, tdp_created_at AS created_at, tdp_updated_at AS updated_at, tdp_deleted_at AS deleted_at FROM bda_tipo_documento WHERE tdp_deleted_at IS NULL ORDER BY tdp_created_at ASC';
+    $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento AS tipo_movimiento, tpd_estado AS estado, tpd_created_at AS created_at, tpd_updated_at AS updated_at, tpd_deleted_at AS deleted_at FROM bda_tipo_documento WHERE tpd_deleted_at IS NULL ORDER BY tpd_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -35,7 +34,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento AS tipo_movimiento, tpd_estado AS estado, tdp_created_at AS created_at, tdp_updated_at AS updated_at, tdp_deleted_at AS deleted_at FROM bda_tipo_documento WHERE tdp_deleted_at IS NULL AND tpd_id = :id';
+    $sql = 'SELECT tpd_id AS id, tpd_descripcion AS descripcion, tpd_tipo_movimiento AS tipo_movimiento, tpd_estado AS estado, tpd_created_at AS created_at, tpd_updated_at AS updated_at, tpd_deleted_at AS deleted_at FROM bda_tipo_documento WHERE tpd_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -96,7 +95,7 @@ class tipoDocumentoTable extends tipoDocumentoBaseTable {
     );
     switch ($deleteLogical) {
       case true:
-        $sql = 'UPDATE bda_tipo_documento SET tdp_deleted_at = now() WHERE tpd_id = :id';
+        $sql = 'UPDATE bda_tipo_documento SET tpd_deleted_at = now() WHERE tpd_id = :id';
         break;
       case false:
         $sql = 'DELETE FROM bda_tipo_documento WHERE tpd_id = :id';

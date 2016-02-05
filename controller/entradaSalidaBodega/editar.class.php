@@ -1,7 +1,6 @@
 <?php
-
-require_once '../model/base/entradaSalidaBodegaBaseTable.class.php';
-require_once '../model/entradaSalidaBodegaTable.class.php';
+require_once '../model/base/detalleEntradaSalidaBodegaBaseTable.class.php';
+require_once '../model/detalleEntradaSalidaBodegaTable.class.php';
 
 use FStudio\fsController as controller;
 use FStudio\interfaces\fsAction as action;
@@ -15,16 +14,17 @@ use FStudio\interfaces\fsAction as action;
  * @subpackage index.class.php
  * @version 1.0.0
  */
-class editar extends controller implements action {
+class editar extends controller implements action{
 
-  public function execute() {
-    $id = filter_input(INPUT_GET, 'id');
-    $config = $this->getConfig();
-    $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
+    public function execute() {
+        $id = filter_input(INPUT_GET, 'esbId');
+        $objEntradaSalidaBodega = EntradaSalidaBodegaTable::getById($id);
 
-    $this->objEntradaSalidaBodega = $entradaSalidaBodega->getById($id);
+        $variables = array(
+            'objEntradaSalidaBodega' => $objEntradaSalidaBodega
+        );
 
-    $this->defineView('entradaSalidaBodega', 'editar', 'html');
-  }
+        $this->defineView('EntradaSalidaBodega', 'editar', $variables, 'html');
+    }
 
 }

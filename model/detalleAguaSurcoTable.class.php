@@ -20,7 +20,7 @@ class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT deaas_id AS id, deaas_item AS item, deaas_cantidad_surco AS cantidad_surco, car_num_documento AS control_administrativo_riego_id, deaas_created_at AS created_at, deaas_updated_at AS updated_at, deaas_deleted_at AS deleted_at FROM bda_detalle_agua_surco WHERE deaas_deleted_at IS NULL ORDER BY deaas_created_at ASC';
+    $sql = 'SELECT deaas_id AS id, deaas_item AS item, deaas_cantidad_surco AS cantidad_surco, fore_num_documento AS control_administrativo_riego_id, deaas_created_at AS created_at, deaas_updated_at AS updated_at, deaas_deleted_at AS deleted_at FROM bda_detalle_agua_surco WHERE deaas_deleted_at IS NULL ORDER BY deaas_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -34,7 +34,7 @@ class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT deaas_id AS id, deaas_item AS item, deaas_cantidad_surco AS cantidad_surco, car_num_documento AS control_administrativo_riego_id, deaas_created_at AS created_at, deaas_updated_at AS updated_at, deaas_deleted_at AS deleted_at FROM bda_detalle_agua_surco WHERE deaas_deleted_at IS NULL AND deaas_id = :id';
+    $sql = 'SELECT deaas_id AS id, deaas_item AS item, deaas_cantidad_surco AS cantidad_surco, fore_num_documento AS control_administrativo_riego_id, deaas_created_at AS created_at, deaas_updated_at AS updated_at, deaas_deleted_at AS deleted_at FROM bda_detalle_agua_surco WHERE deaas_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
@@ -50,7 +50,7 @@ class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_detalle_agua_surco (deaas_item, deaas_cantidad_surco, car_num_documento) VALUES (:item, :cantidad_surco, :control_administrativo_riego_id)';
+    $sql = 'INSERT INTO bda_detalle_agua_surco (deaas_item, deaas_cantidad_surco, fore_num_documento) VALUES (:item, :cantidad_surco, :control_administrativo_riego_id)';
     $params = array(
         ':item' => $this->getItem(),
         ':cantidad_surco' => $this->getCantidadSurco(),
@@ -69,7 +69,7 @@ class detalleAguaSurcoTable extends detalleAguaSurcoBaseTable {
    */
   public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_detalle_agua_surco SET deaas_item = :item, deaas_cantidad_surco = :cantidad_surco, car_num_documento = :control_administrativo_riego_id WHERE deaas_id = :id';
+    $sql = 'UPDATE bda_detalle_agua_surco SET deaas_item = :item, deaas_cantidad_surco = :cantidad_surco, fore_num_documento = :control_administrativo_riego_id WHERE deaas_id = :id';
     $params = array(
         ':item' => $this->getItem(),
         ':cantidad_surco' => $this->getCantidadSurco(),

@@ -23,7 +23,7 @@ class haciendaTable extends haciendaBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda WHERE hac_deleted_at IS NULL AND hac_id = :id';
+    $sql = 'SELECT hac_id AS id, hac_descripcion AS descripcion, hac_ubicacion AS ubicacion, hac_representante_legal AS representante_legal, hac_created_at AS created_at, hac_updated_at AS updated_at, hac_deleted_at AS deleted_at FROM bda_hacienda WHERE hac_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

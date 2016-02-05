@@ -1,6 +1,6 @@
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 <div class="container container-fluid">
-  <h1><?php echo 'Tipo tercero' ?></h1>
+  <h1>Id <?php echo 'tipo tercero' ?></h1>
   <div class="list-group">
     <?php foreach ($objTipoTercero as $tipoTercero):?>
     <div href="" class="list-group-item ">

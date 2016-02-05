@@ -5,13 +5,12 @@
     <div class="form-group">
       <label for="descripcion" class="col-sm-2 control-label">Descripción</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="descripcion" name="tipoTercero[descripcion]" placeholder="Descripcion" required autofocus>
+        <input type="text" class="form-control" id="descripcion" name="tipoTercero[descripcion]" placeholder="Descripcion">
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <a href="<?php echo $fsConfig->getUrl()?>index.php/tipoTercero/index" class="btn btn-warning">Cancelar</a>
-        <button type="submit" class="btn btn-success">Crear</button>
+        <button type="submit" class="btn btn-default">Crear</button>
       </div>
     </div>
   </form>

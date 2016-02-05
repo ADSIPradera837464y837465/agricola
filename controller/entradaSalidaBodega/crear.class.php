@@ -20,21 +20,18 @@ class crear extends controller implements action {
   public function execute() {
 
     $config = $this->getConfig();
+
     $formEntradaSalidaBodega = filter_input_array(INPUT_POST)['entradaSalidaBodega'];
-    
-     $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
+     $entradaSalidaBodega = new entradaSalidaBodegaTable();
+    $entradaSalidaBodega->setId($formEntradaSalidaBodega['esbId']);
     $entradaSalidaBodega->setTerceroIdElabora($formEntradaSalidaBodega['terIdElabora']);
     $entradaSalidaBodega->setTerceroIdSolicita($formEntradaSalidaBodega['terIdSolicita']);
     $entradaSalidaBodega->setTipoDocumentoId($formEntradaSalidaBodega['tpdId']);
-    $entradaSalidaBodega->setFecha($formEntradaSalidaBodega['fecha']);
-    $entradaSalidaBodega->setObservacion($formEntradaSalidaBodega['observacion']);
-    
-  
+    $entradaSalidaBodega->setFecha($formEntradaSalidaBodega['esbFecha']);
+    $entradaSalidaBodega->setObservacion($formEntradaSalidaBodega['esbObservacion']);
     $this->objEntradaSalidaBodega = $entradaSalidaBodega->save();
 
-    header('Location: ' . $config->getUrl() . 'index.php/entradaSalidaBodega/index');
-    exit();
-    
+    header('Location: ' . $fsConfig->getUrl() . 'index.php/entrdaSalidaBodega/index');
   }
 
 }

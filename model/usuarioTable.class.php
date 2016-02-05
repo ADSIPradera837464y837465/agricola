@@ -4,22 +4,22 @@ use FStudio\model\base\usuarioBaseTable;
 
 /**
  * Description of usuarioTable
+ * 
  * @author Magda lucia chaux martinez <lucia_chaux@hotmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
  */
 class usuarioTable extends usuarioBaseTable {
-  
+
   /**
    * obtiene todos los datos de la tabla
    * @return type
    */
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT usr_id, usr_user, usr_password, usr_actived, usr_last_login_at, usr_created_at, usr_updated_at, usr_deleted_at '
-            . 'FROM bda_usuario ORDER BY usr_created_at ASC';
+    $sql = 'SELECT usr_id AS id, usr_user AS user, usr_password AS password, usr_actived AS actived, usr_last_login_at AS last_login_at, usr_created_at AS created_at, usr_updated_at AS updated_at, usr_deleted_at AS deleted_at FROM bda_usuario WHERE usr_deleted_at IS NULL ORDER BY usr_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -30,13 +30,11 @@ class usuarioTable extends usuarioBaseTable {
    * @param type $id
    * @return type
    */
-  public function getById($id=null) {
+  public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT usr_id, usr_user, usr_password, usr_actived, usr_last_login_at, usr_created_at, updated_at,usr_deleted_at '
-            . 'FROM bda_usuario '
-            . 'WHERE usr_id = :id';
+    $sql = 'SELECT usr_id AS id, usr_user AS user, usr_password AS password, usr_actived AS actived, usr_last_login_at AS last_login_at, usr_created_at AS created_at, usr_updated_at AS updated_at, usr_deleted_at AS deleted_at FROM bda_usuario WHERE usr_deleted_at IS NULL AND id = :id';
     $params = array(
-        ':id' => ($id !== null) ? $id: $this->getId()
+        ':id' => ($id !== null) ? $id : $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
@@ -49,55 +47,62 @@ class usuarioTable extends usuarioBaseTable {
    */
   public function save() {
     $conn = $this->getConnection($this->config);
-    $sql = 'INSERT INTO bda_usuario ( usr_user, usr_password, usr_actived, usr_last_login_at) VALUES (:usr_user, :usr_password, :usr_actived, :usr_last_login_at)';
+    $sql = 'INSERT INTO bda_usuario (usr_user, usr_password, usr_actived, usr_last_login_at) VALUES (:user, :password, :actived, :last_login_at)';
     $params = array(
-        ':usr_user' => $this->getUsuario(),
-        ':usr_password' => $this->getPassword(),
-        ':usr_actived' => $this->getActivited(),
-        ':usr_last_login_at' => $this->getUsrDeletedAt()
-        
+        ':user' => $this->getUser(),
+        ':password' => $this->getPassword(),
+        ':actived' => $this->getActived(),
+        ':last_login_at' => $this->getLastLoginAt()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-   // return $conn->lastInsertId(self::_SEQUENCE);
-   //  /** esta funcion me trae el id que se acava de registrar   */
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
-    return tuue;
+    return true;
   }
 
   /**
-   * Actualiza un registro de la tabla 
+   * Actualiza un registro de la tabla
    * @return boolean
    */
-  public function update($id) {
+  public function update() {
     $conn = $this->getConnection($this->config);
-    $sql = 'UPDATE bda_usuario SET usr_user = :usr_user, usr_password = :usr_password, usr_actived = :usr_actived, '
-            . ' usr_last_login_at = :usr_last_login_at  WHERE usr_id = :id';
+    $sql = 'UPDATE bda_usuario SET usr_user = :user, usr_password = :password, usr_actived = :actived, usr_last_login_at = :last_login_at WHERE usr_id = :id';
     $params = array(
-        ':usr_user' => $this->getUsuario(),
-        ':usr_password' => $this->getPassword(),
-        ':usr_actived' => $this->getActivited(),
-        ':usr_last_login_at' => $this->getUsrDeletedAt(),
-        ':id'=>$id
-    );
-    $answer = $conn->prepare($sql);
-    $answer->execute($params);
-    return true;
-  }
-/**
- * Boolean $deleteLogica = eliminar un registro visualmente
- * Boolean $deletefisical=eliminar un registro de forma permanente de la base de datos
- * @return boolean
- * 
- */
-  public function delete() {
-    $conn = $this->getConnection($this->config);
-    $sql = 'DELETE FROM bda_usuario WHERE usr_id = :id';
-    $params = array(
+        ':user' => $this->getUser(),
+        ':password' => $this->getPassword(),
+        ':actived' => $this->getActived(),
+        ':last_login_at' => $this->getLastLoginAt(),
         ':id' => $this->getId()
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
     return true;
   }
+
+  /**
+   * Boolean $deleteLogica = eliminar un registro visualmente
+   * Boolean $deletefisical=eliminar un registro de forma permanente de la base de datos
+   * @return boolean
+   *
+   */
+  public function delete($deleteLogical = true) {
+    $conn = $this->getConnection($this->config);
+    $params = array(
+        ':id' => $this->getId()
+    );
+    switch ($deleteLogical) {
+      case true:
+        $sql = 'UPDATE bda_usuario SET usr_deleted_at = now() WHERE usr_id = :id';
+        break;
+      case false:
+        $sql = 'DELETE FROM bda_usuario WHERE usr_id = :id';
+        break;
+      default:
+        throw new PDOException('Por favor indique un dato coherente para el borrado lógico (true) o físico (false)');
+    }
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
+    return true;
+  }
+
 }

@@ -7,7 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of tipoProductoBaseTable
- * @author AngelaCardona <angela04cardona@hotmail.com>
+ * 
+ * @author Angela Cardona <angela04cardona@hotmail.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -21,7 +22,7 @@ class tipoProductoBaseTable extends model {
   const ID = 'tpr_id';
 
   /**
-   * Descripcion del tipo de producto 
+   * Descripcion del tipo de producto
    */
   const DESCRIPCION = 'tpr_descripcion';
 
@@ -36,7 +37,7 @@ class tipoProductoBaseTable extends model {
   const CREATED_AT = 'tpr_created_at';
 
   /**
-   * Fecha y hora de la ultima actualización del tipo producto 
+   * Fecha y hora de la ultima actualización del tipo producto
    */
   const UPDATED_AT = 'tpr_updated_at';
 
@@ -44,7 +45,8 @@ class tipoProductoBaseTable extends model {
    * Fecha y hora para controlar el borrado lógico
    */
   const DELETED_AT = 'tpr_deleted_at';
-   /**
+
+  /**
    * Nombre de la secuencia del ID de la tabla
    */
   const _SEQUENCE = 'bda_tipo_producto_tpr_id_seq';
@@ -73,7 +75,7 @@ class tipoProductoBaseTable extends model {
 
   /**
    * Fecha y hora de creación del tipo producto
-   * @var date_time 
+   * @var date_time
    */
   private $created_at;
 
@@ -88,8 +90,8 @@ class tipoProductoBaseTable extends model {
    * @var date_time
    */
   private $deleted_at;
-  
-/**
+
+  /**
    * constructor class tipoProductoBaseTable
    * @version 1.0.0
    * @param integer $id
@@ -107,7 +109,6 @@ class tipoProductoBaseTable extends model {
     $this->deleted_at = $deleted_at;
   }
 
- 
   public function getId() {
     return $this->id;
   }
@@ -138,13 +139,12 @@ class tipoProductoBaseTable extends model {
 
   /**
    * Fecha y hora para controlar el borrado lógico
-   * @return date_time 
+   * @return date_time
    */
   public function getDeletedAt() {
     return $this->deleted_at;
   }
 
-  
   /**
    * Fija el id del tipo producto
    * @param integer $id
@@ -156,13 +156,14 @@ class tipoProductoBaseTable extends model {
 
   /**
    * descripcion del tipo producto
-   * @param varchar $descripcion 
+   * @param varchar $descripcion
    * @version 1.0.0
    */
   public function setDescripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
-/**
+
+  /**
    * Fija la fecha y la hora de creación de la descripcion del tipo producto
    * @version 1.0.0
    * @param date_time $createdAt
@@ -170,7 +171,8 @@ class tipoProductoBaseTable extends model {
   public function setCreatedAt($created_at) {
     $this->created_at = $created_at;
   }
-/**
+
+  /**
    * Fija la fecha y la hora de la última actualización de la descripcion del tipo producto
    * @version 1.0.0
    * @param date_time $updateAt
@@ -178,8 +180,8 @@ class tipoProductoBaseTable extends model {
   public function setUpdatedAt($updated_at) {
     $this->updated_at = $updated_at;
   }
-  
- /**
+
+  /**
    * Fija la fecha y la hora del borrado lógico
    * @version 1.0.0
    * @param date_time $deletedAt

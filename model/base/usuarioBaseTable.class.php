@@ -6,26 +6,28 @@ use FStudio\fsModel as model;
 use FStudio\myConfig as config;
 
 /**
- * Description of bda_usuario
- * @author Magda lucia Chaux martinez <lucia_chaux@hotmail.com>
- * @package 
+ * Description of usuarioBaseTable
+ * 
+ * @author Magda Lucia Chaux Martinez <lucia_chaux@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage base
  * @version 1.0.0
  */
-  class usuarioBaseTable extends model {
+class usuarioBaseTable extends model {
 
   /**
    * Id de la tabla
-   *  @var string 
+   *  @var string
    */
   const ID = 'usr_id';
 
   /**
    * foranea de la tabla bda_usuario
-   * @var 
+   * @var
    */
-  const USUARIO = 'usr_user';
+  const USER = 'usr_user';
+  const USER_LENGTH = 80;
 
   /**
    * clave de ingreso del usuario
@@ -35,7 +37,7 @@ use FStudio\myConfig as config;
   /**
    * usuario activo e inactivo
    */
-  const ACTIVITED = 'usr_actived';
+  const ACTIVED = 'usr_actived';
 
   /**
    * fecha y hora del ultimo acceso del usuario
@@ -50,25 +52,24 @@ use FStudio\myConfig as config;
   /**
    * Date_Time
    */
-  const UPDATED_AT = 'updated_at';
+  const UPDATED_AT = 'usr_updated_at';
 
   /**
    * Date_Time
    */
   const DELETED_AT = 'usr_deleted_at';
-  
   const _SEQUENCE = 'bda_usuario_usr_id_seq';
+  const _TABLE = 'bda_usuario';
 
   /**
-   *
-   * configuracion del sistema
+   * Configuración del sistema
    * @var config
    */
   protected $config;
 
   /**
    * id de la base de datos
-   * @var integer 
+   * @var integer
    */
   private $id;
 
@@ -76,7 +77,7 @@ use FStudio\myConfig as config;
    * tipo de usuario de ingresa al sistema
    * @var varchar
    */
-  private $usuario;
+  private $user;
 
   /**
    * seguridad del sistema
@@ -88,31 +89,26 @@ use FStudio\myConfig as config;
    * fecha y hora de ingreso al usuario
    * @var varchar
    */
-  private $activited;
+  private $actived;
+  private $last_login_at;
 
   /**
    * Data_time
    * @var interger
    */
-  private $createdAt;
+  private $created_at;
 
   /**
    * Data_Time
    * @var integer
    */
-  private $updatedAt;
+  private $updated_at;
 
   /*
    * Data_Time
    * var@ integer
    */
-  private $deleted;
-
-  /**
-   * Eliminacion de los datos del sistema
-   * @var varchar
-   */
-  private $usrDeletedAt;
+  private $deleted_at;
 
   /**
    * constructor de la clase usuarioBaseTable
@@ -126,24 +122,16 @@ use FStudio\myConfig as config;
    * @param type $deleted
    * @param type $usrDeletedAt
    */
-  public function __construct(config $config, $id = null, $usuario = null, $password = null, $activited = null, $createdAt = null, $updatedAt = null, $deleted = null, $usrDeletedAt = null) {
+  public function __construct(config $config, $id = null, $user = null, $password = null, $actived = null, $last_login_at = null, $created_at = null, $updated_at = null, $deleted_at = null) {
     $this->config = $config;
     $this->id = $id;
-    $this->usuario = $usuario;
+    $this->user = $user;
     $this->password = $password;
-    $this->activited = $activited;
-    $this->createdAt = $createdAt;
-    $this->updatedAt = $updatedAt;
-    $this->deleted = $deleted;
-    $this->usrDeletedAt = $usrDeletedAt;
-  }
-
-  /**
-   * retorna la configuracion del sistema
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
+    $this->actived = $actived;
+    $this->last_login_at = $last_login_at;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
   }
 
   public function getId() {
@@ -154,8 +142,8 @@ use FStudio\myConfig as config;
    * Retorna el id del sistema
    * @return interger
    */
-  public function getUsuario() {
-    return $this->usuario;
+  public function getUser() {
+    return $this->user;
   }
 
   /**
@@ -170,16 +158,16 @@ use FStudio\myConfig as config;
    * Retorna fecha y hora del usuario
    * @return interger
    */
-  public function getActivited() {
-    return $this->activited;
+  public function getActived() {
+    return $this->actived;
   }
 
-  /**
-   * Retorna fecha de creacion del usuario
-   * @return integer
-   */
+  public function getLastLoginAt() {
+    return $this->last_login_at;
+  }
+
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   /**
@@ -187,31 +175,15 @@ use FStudio\myConfig as config;
    * @return integer
    */
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   /**
    * Retorna fecha de la eliminacion de los datos del usuario
    * @return type
    */
-  public function getDelected() {
-    return $this->deleted;
-  }
-
-  /**
-   * 
-   * @return 
-   */
-  public function getUsrDeletedAt() {
-    return $this->usrDeletedAt;
-  }
-
-  /**
-   * fija la configuracion del sistema
-   * @param type $config
-   */
-  public function setConfig($config) {
-    $this->config = $config;
+  public function getDeletedAt() {
+    return $this->deleted_at;
   }
 
   /**
@@ -226,8 +198,8 @@ use FStudio\myConfig as config;
    * fija numero
    * @param type $usuario
    */
-  public function setUsuario($usuario) {
-    $this->usuario = $usuario;
+  public function setUser($user) {
+    $this->user = $user;
   }
 
   /**
@@ -235,47 +207,47 @@ use FStudio\myConfig as config;
    * @param type $password
    */
   public function setPassword($password) {
-    $this->password = $password;
+    $this->password = hash('md5', $password);
   }
 
   /**
    * fija fecha y  del usuario
    * @param type $activited
    */
-  public function setActivited($activited) {
-    $this->activited = $activited;
+  public function setActived($actived) {
+    $this->actived = $actived;
   }
 
   /**
    * fija fecha y creacion del usuario
    * @param type $createdAt
    */
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setLastLoginAt($last_login_at) {
+    $this->last_login_at = $last_login_at;
   }
 
   /**
    * fija la fecha de actualizacion del usuario
    * @param type $updatedAt
    */
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
   }
 
   /**
    * fija la fecha de eliminacion de los datos del usuario
    * @param type $deleted
    */
-  public function setDelected($deleted) {
-    $this->deleted = $deleted;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
   }
 
   /**
    * fija fecha y hora para controlar el borrado logico
    * @param type $usrDeletedAt
    */
-  public function setUsrDeletedAt($usrDeletedAt) {
-    $this->usrDeletedAt = $usrDeletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
   }
 
 }

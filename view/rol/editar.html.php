@@ -1,5 +1,3 @@
-<?php use FStudio\fsController as controller; ?>
-
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
 
 <h1>Modificar Rol</h1>
@@ -20,5 +18,3 @@
     </form>
 </div>
 <?php include_once $fsConfig->getPath() . 'view/partial/foot.php'; ?>
-
-//w

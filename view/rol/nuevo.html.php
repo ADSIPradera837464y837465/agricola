@@ -22,4 +22,4 @@ use FStudio\fsController as controller; ?>
 <?php include_once $fsConfig->getPath() . 'view/partial/foot.php'; ?>
 
 
-<!--w-->
+<!--we-->

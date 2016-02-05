@@ -7,8 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of turnoBaseTable
- *
- * @author yuri adriana hurtado rojas <yurodri.1996@gmail.com.com>
+ * 
+ * @author Yuri Adriana Hurtado Rojas <yurodri.1996@gmail.com.com>
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -25,8 +25,8 @@ class turnoBaseTable extends model {
    * descripcion de la tabla turno
    */
   const DESCRIPCION = 'tur_descripcion';
-  
-    /**
+
+  /**
    * descripcion de loggitud de la tabla turno
    */
   const DESCRIPCION_LENGTH = 80;
@@ -47,7 +47,8 @@ class turnoBaseTable extends model {
    * turno de la tabla estado
    */
   const ESTADO = 'tur_estado';
-   /**
+
+  /**
 
    * estado de longitud de la tabla turno
    */
@@ -77,12 +78,6 @@ class turnoBaseTable extends model {
    * nombre de la tabla
    */
   const _TABLE = 'bda_turno';
-
-  /**
-
-   * Nombre de la tabla
-   */
-  const TABLE = 'bda_Turno';
 
   /**
    * Configuración del sistema
@@ -151,15 +146,6 @@ class turnoBaseTable extends model {
   }
 
   /**
-   * Retorna la configuración del sistema
-   * @version 1.0.0
-   * @return config
-   */
-  public function getConfig() {
-    return $this->config;
-  }
-
-  /**
    * Retorna el id del registro
    * version 1.0.o
    * @return integer
@@ -195,15 +181,6 @@ class turnoBaseTable extends model {
   }
 
   /**
-   * Retorna la tabla del registro
-   * version 1.0.o
-   * @return integer
-   */
-  public function getTabla() {
-    return $this->tabla;
-  }
-
-  /**
    * Retorna los datos creados en la tabla
    * @version 1.0.0
    * @return time_stamp
@@ -228,15 +205,6 @@ class turnoBaseTable extends model {
    */
   public function getDeletedAt() {
     return $this->deleted_at;
-  }
-
-  /**
-   * Fija la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto con configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
   }
 
   /**
@@ -275,6 +243,5 @@ class turnoBaseTable extends model {
   public function setDeletedAt($deleted_at) {
     $this->deleted_at = $deleted_at;
   }
-}
 
- 
+}

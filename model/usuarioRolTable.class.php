@@ -3,9 +3,10 @@
 use FStudio\model\base\usuarioRolBaseTable;
 
 /**
- * Description of bitacoraTable
- * @author wilmer andres martinez chamorro <wilmerelmejor94@hotmail.com>
- * @package
+ * Description of usuarioRolTable
+ * 
+ * @author Wilmer Andres Martinez Chamorro <wilmerelmejor94@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -53,7 +54,6 @@ class usuarioRolTable extends usuarioRolBaseTable {
     );
     $answer = $conn->prepare($sql);
     $answer->execute($params);
-//    return $conn->lastInsertId(self::_SEQUENCE);
     $this->setId($conn->lastInsertId(self::_SEQUENCE));
     return true;
   }

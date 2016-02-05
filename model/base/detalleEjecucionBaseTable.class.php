@@ -7,8 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Description of detalleEjecucionBaseTable
- *
- * @author nombre completo <su@correo.com>
+ * 
+ * @author 
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -111,7 +111,7 @@ class detalleEjecucionBaseTable extends model {
   private $precio;
 
   /**
-   * ID de la tabla 
+   * ID de la tabla
    * @var  date_time
    */
   private $created_at;
@@ -129,7 +129,7 @@ class detalleEjecucionBaseTable extends model {
   private $deleted_at;
 
   /**
-   * 
+   *
    * @param config $config
    * @param type $id
    * @param type $orden_ejecucion_id

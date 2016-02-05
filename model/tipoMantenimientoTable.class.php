@@ -4,8 +4,9 @@ use FStudio\model\base\tipoMantenimientoBaseTable;
 
 /**
  * Description of tipoMantenimientoTable
- * @author mariam montaño <nichesitap@hotmail.com>
- * @package
+ * 
+ * @author Mariam Montaño <nichesitap@hotmail.com>
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0

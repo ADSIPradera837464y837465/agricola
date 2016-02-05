@@ -7,35 +7,35 @@ include_once $fsConfig->getPath() . 'view/partial/head.php';
 ?>
 
 <div class="container container-fluid">
-    <h1 class="h1"> ver labores maquina equipo </h1>
-  <br>
-  <table  class="table table-hover table-striped">
-    <thead class="h2">
-      <tr>
-        <th>hacienda_id</th>
-        <th>tercero_id</th>
-        <th>tipo_documento_id</th>
-        <th>implemento_id</th>
-        <th>fecha</th>
-        <th>estado</th>
-        <th>tiempo</th>
-        <th>total_horas_trabajadas</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><?php echo $objLaboresMaquinaEquipo[0]->hacienda_id ?></td>       
-        <td><?php echo $objLaboresMaquinaEquipo[0]->tercero_id ?></td>       
-        <td><?php echo $objLaboresMaquinaEquipo[0]->tipo_documento_id ?></td>       
-        <td><?php echo $objLaboresMaquinaEquipo[0]->implemento_id ?></td>       
-        <td><?php echo $objLaboresMaquinaEquipo[0]->fecha ?></td>       
-        <td><?php echo $objLaboresMaquinaEquipo[0]->estado ?></td>       
-        <td><?php echo $objLaboresMaquinaEquipo[0]->tiempo ?></td>       
-        <td><?php echo $objLaboresMaquinaEquipo[0]->total_horas_trabajadas ?></td>       
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <h1> ver Implemento </h1>
+
+
+
+
+    <br>
+
+    <table  class="table table-hover">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="" name=""></th>    
+          <th>Descripcion</th>
+          <th>Accion</th>                    
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($objLaboresMaquinaEquipo as $laboresMaquinaEquipo) : ?>
+          <tr>
+            <td><input type="checkbox" id="" name=""></td>            
+            <td><?php echo $laboresMaquinaEquipo->hacienda_id ?></td>            
+            <td>
+              
+            </td>
+          </tr>
+        <?php endforeach ?>
+      </tbody>
+    </table>
+  </div>
+
 </body>
 </html>
 

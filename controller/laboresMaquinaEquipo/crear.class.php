@@ -24,17 +24,10 @@ class crear extends controller  {
         //validaciones
 
         $laboresMaquinaEquipo = new laboresMaquinaEquipoTable($config);
-        $laboresMaquinaEquipo->setHaciendaId($formLaboresMaquinaEquipo['hacienda_id']);
-        $laboresMaquinaEquipo->setTerceroId($formLaboresMaquinaEquipo['tercero_id']);
-        $laboresMaquinaEquipo->setTipoDocumentoId($formLaboresMaquinaEquipo['tipo_documento_id']);
-        $laboresMaquinaEquipo->setImplementoId($formLaboresMaquinaEquipo['implemento_id']);
-        $laboresMaquinaEquipo->setFecha($formLaboresMaquinaEquipo['fecha']);
-        $laboresMaquinaEquipo->setEstado($formLaboresMaquinaEquipo['estado']);
-        $laboresMaquinaEquipo->setTiempo($formLaboresMaquinaEquipo['tiempo']);
-        $laboresMaquinaEquipo->setTotalHorasTrabajadas($formLaboresMaquinaEquipo['total_horas_trabajadas']);
+        $laboresMaquinaEquipo->setDescripcion($formLaboresMaquinaEquipo['hacienda_id']);
        
 
-        $this->objLaboresMaquinaEquipo = $laboresMaquinaEquipo->save();
+        $this->objFormLaboresMaquinaEquipo = $laboresMaquinaEquipo->save();
         header('Location: ' . $config->getUrl() . 'index.php/laboresMaquinaEquipo/index');
     
   }

@@ -15,7 +15,7 @@ class detalleCaudalSurcoTable extends detalleCaudalSurcoBaseTable {
 
   public function getAll() {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidad_surco, car_num_documento AS control_administrativo_riego_id, decs_created_at AS created_at, decs_updated_at AS updated_at, decs_deleted_at AS deleted_at FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL ORDER BY decs_created_at ASC';
+    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidad_surco, fore_num_documento AS control_administrativo_riego_id, decs_created_at AS created_at, decs_updated_at AS updated_at, decs_deleted_at AS deleted_at FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL ORDER BY decs_created_at ASC';
     $answer = $conn->prepare($sql);
     $answer->execute();
     return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
@@ -23,7 +23,7 @@ class detalleCaudalSurcoTable extends detalleCaudalSurcoBaseTable {
 
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidad_surco, car_num_documento AS control_administrativo_riego_id, decs_created_at AS created_at, decs_updated_at AS updated_at, decs_deleted_at AS deleted_at FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL AND id = :id';
+    $sql = 'SELECT decs_id AS id, decs_item AS item, decs_cantidad_surco AS cantidad_surco, fore_num_documento AS control_administrativo_riego_id, decs_created_at AS created_at, decs_updated_at AS updated_at, decs_deleted_at AS deleted_at FROM bda_detalle_caudal_surco WHERE decs_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

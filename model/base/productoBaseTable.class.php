@@ -7,7 +7,8 @@ use FStudio\myConfig as config;
 
 /**
  * Clase base para la tabla producto
- * @author Julian Andrés Lasso Figueroa <ingeniero.julianlasso@gmail.com> Emanuel Castillo Mosquera<corcel125@outlook.com> * 
+ * 
+ * @author 
  * @package FStudio
  * @subpackage model
  * @subpackage base
@@ -64,7 +65,6 @@ class productoBaseTable extends model {
    * Nombre de la secuencia del ID de la tabla
    */
   const _SEQUENCE = 'bda_producto_pro_id_seq';
-//  const _SEQUENCE = 'bda_producto_pro_id_seq';
 
   /**
    * Nombre de la tabla
@@ -88,44 +88,44 @@ class productoBaseTable extends model {
    * @var string
    */
   private $descripcion;
-  
+
   /**
    * ID del tipo de producto
    * @var integer
    */
   private $tipo_producto_id;
-  
+
   /**
    * ID de la marca
    * @var integer
    */
   private $marca_id;
-  
+
   /**
    * ID de la unidad de medida
    * @var integer
    */
   private $unidad_medida_id;
-  
+
   /**
    * Fecha y hora de creación del registro
    * @var string
    */
   private $created_at;
-  
+
   /**
    * Fecha y hora de la ultima actualización del registro
    * @var string
    */
   private $updated_at;
-  
+
   /**
    * Fecha y hora para controlar el borrado lógico
    * @var string
    */
   private $deleted_at;
-  
-/**
+
+  /**
    * Constructor de la clase productoBaseTable
    * @version 1.0.0
    * @param config $config
@@ -149,8 +149,6 @@ class productoBaseTable extends model {
     $this->updated_at = $updated_at;
     $this->deleted_at = $deleted_at;
   }
-
-  
 
   /**
    * Retorna el ID del registro
@@ -222,15 +220,6 @@ class productoBaseTable extends model {
    */
   public function getDeletedAt() {
     return $this->deleted_at;
-  }
-
-  /**
-   * Fija el objeto de la configuración del sistema
-   * @version 1.0.0
-   * @param config $config Objeto de la configuración del sistema
-   */
-  public function setConfig(config $config) {
-    $this->config = $config;
   }
 
   /**
@@ -306,5 +295,3 @@ class productoBaseTable extends model {
   }
 
 }
-
-//gnu

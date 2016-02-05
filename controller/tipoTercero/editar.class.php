@@ -1,35 +1,24 @@
 <?php
-
-require_once '../model/base/tipoTerceroBaseTable.class.php';
-require_once '../model/tipoTerceroTable.class.php';
-
-use FStudio\fsController as controller;
-use FStudio\interfaces\fsAction as action;
+use azucar\myConfig\myConfig as config;
+use azucar\controller\controller;
+use azucar\view\view;
+include config::getPath() . 'model/personaTable.Class.php';
 
 /**
- * Description of editar.class.php
+ * Description of crear
  *
- * @author Jordan Marles <jordanmarles@hotmail.es>
- * @package FStudio
- * @subpackage controller
- * @subpackage editar.class.php
- * @version 1.0.0
+ * @author xubuntu
  */
-class editar extends controller implements action{
+class editar extends controller{
   
   public function execute() {
-    $config = $this->getConfig();
-    
     $id = filter_input(INPUT_GET, 'id');
+    $objPersona = personaTable::getById($id);
+    $variables = array (
+        'objPersona'=>$objPersona
+    );
     
-    $tipoTercero = new tipoTerceroTable($config);
-    
-    $this->objTipoTercero = $tipoTercero->getById($id);
-//    $variables = array (
-//        'objPersona'=>$objPersona
-//    );
-    
-    $this->defineView('tipoTercero', 'editarView', 'html');
+    view::defineView('persona', 'editar', $variables, 'html');
         
     
   }

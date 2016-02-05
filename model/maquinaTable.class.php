@@ -3,7 +3,8 @@
 use FStudio\model\base\maquinaBaseTable;
 
 /**
- * Description ofmaquinaTable
+ * Description of maquinaTable
+ * 
  * @author Johanna G <ladyjkaulitz@hotmail.com>
  * @package
  * @subpackage model
@@ -28,12 +29,12 @@ class maquinaTable extends maquinaBaseTable {
   /**
    * Retorna un elemento de la tabla buscado por un ID especifico
    * @version 1.0.0
-   * @param integer $id 
+   * @param integer $id
    * @return mixed [stdClass | boolean]
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT maq_id AS id, maq_estado AS estado, maq_valor AS valor, maq_fecha_compra AS fecha_compra, maq_numero_chasis AS numero_chasis, maq_tipo_accesorio AS tipo_accesorio, maq_horas_trabajadas AS horas_trabajadas, maq_tiempo_mantenimiento_hora AS tiempo_mantenimiento_hora, maq_numero_serie AS numero_serie, maq_modelo AS modelo, maq_horas_actividad AS horas_actividad, maq_valor_hora AS valor_hora, maq_created_at AS created_at, maq_updated_at AS updated_at, maq_deleted_at AS deleted_at FROM bda_maquina WHERE maq_deleted_at IS NULL AND maq_id = :id';
+    $sql = 'SELECT maq_id AS id, maq_estado AS estado, maq_valor AS valor, maq_fecha_compra AS fecha_compra, maq_numero_chasis AS numero_chasis, maq_tipo_accesorio AS tipo_accesorio, maq_horas_trabajadas AS horas_trabajadas, maq_tiempo_mantenimiento_hora AS tiempo_mantenimiento_hora, maq_numero_serie AS numero_serie, maq_modelo AS modelo, maq_horas_actividad AS horas_actividad, maq_valor_hora AS valor_hora, maq_created_at AS created_at, maq_updated_at AS updated_at, maq_deleted_at AS deleted_at FROM bda_maquina WHERE maq_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );

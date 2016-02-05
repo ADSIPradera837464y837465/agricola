@@ -4,6 +4,7 @@ use FStudio\model\base\tipoSueloBaseTable;
 
 /**
  * Description of tipoSueloTable
+ * 
  * @author Jordan Marles <jordanmarles@hotmail.es>
  * @package FStudio
  * @subpackage model

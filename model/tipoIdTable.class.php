@@ -4,8 +4,9 @@ use FStudio\model\base\tipoIdBaseTable;
 
 /**
  * Description of tipoIdTable
+ * 
  * @author Duvier Marin Escobar <duvierm24@gmail.com>
- * @package
+ * @package FStudio
  * @subpackage model
  * @subpackage table
  * @version 1.0.0
@@ -31,7 +32,7 @@ class tipoIdTable extends tipoIdBaseTable {
    */
   public function getById($id = null) {
     $conn = $this->getConnection($this->config);
-    $sql = 'SELECT tpi_id AS id, tpi_descripcion AS descripcion, tpi_created_at AS created_at, tpi_updated_at AS updated_at, tpi_deleted_at AS deleted_at FROM bda_tipo_id WHERE tpi_deleted_at IS NULL AND tpi_id = :id';
+    $sql = 'SELECT tpi_id AS id, tpi_descripcion AS descripcion, tpi_created_at AS created_at, tpi_updated_at AS updated_at, tpi_deleted_at AS deleted_at FROM bda_tipo_id WHERE tpi_deleted_at IS NULL AND id = :id';
     $params = array(
         ':id' => ($id !== null) ? $id : $this->getId()
     );
