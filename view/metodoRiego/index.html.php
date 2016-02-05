@@ -1,6 +1,5 @@
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 <?php include_once $fsConfig->getPath() . 'libs/Zebra_Pagination.php' ?>
-<?php include_once $fsConfig->getPath() . 'controller/metodoRiego/filtro.class.php' ?>
 <?php $pagina = new Zebra_Pagination();  ?>
 <?php $pagina->records($objRespuesta[0]) ?>
 <?php $pagina->records_per_page(7)?>
