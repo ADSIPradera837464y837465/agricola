@@ -4,7 +4,7 @@ use FStudio\myConfig as config;
 
 $config = new config();
 
-$config->setPath('/var/www/html/agricola/');
+$config->setPath('/var/www/agricola/');
 $config->setUrl('http://localhost/agricola/web/');
 
 $config->setDriver('pgsql');
