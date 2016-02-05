@@ -5,7 +5,7 @@ use FStudio\fsController as controller; ?>
 <h1>Nuevo documento Entrada Salida Bodega</h1>
 <div class="container container-fluid"> 
   <form class="form-inline" action="<?php echo $fsConfig->getUrl() ?>index.php/entradaSalidaBodega/crear" method="post">
-
+<!--//-->
     <div class="form-group" class="modificar">
       <label for="terIdElabora">id de tercero elabora </label>
       <input type="text" class="form-control" id="terIdElabora" name="entradaSalidaBodega[terIdElabora]" placeholder="id  tercero elabora">

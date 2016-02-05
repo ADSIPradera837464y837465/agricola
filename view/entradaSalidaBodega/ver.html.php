@@ -1,6 +1,6 @@
 <?php include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
   <h2>entrada salida bodega numero: <?php echo $objEntradaSalidaBodega[0]->id ?></h2>
-
+<!--//-->
   <div class="list-group">
     <div class="list-group-item ">
       <h4 class="list-group-item-heading">Id entrada salida bodega</h4>

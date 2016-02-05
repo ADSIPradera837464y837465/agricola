@@ -3,24 +3,31 @@ include_once $fsConfig->getPath() . 'view/partial/head.php';
 include_once $fsConfig->getPath() . 'libs/Zebra_Pagination.php';
 ?>
 
-<?php $paginacion = new Zebra_Pagination();  ?>
-<?php $paginacion->records($objRespuesta[0]) ?>
-<?php $paginacion->records_per_page(7)?>
+<?php $pagina = new Zebra_Pagination(); ?>
+<?php $pagina->records($objRespuesta[0]) ?>
+<?php $pagina->records_per_page(2) ?>
+
 <div class="container container-fluid">
   <h1>Lista </h1>
 
   <p>
-    <a href="<?php echo $fsConfig->getUrl() ?>index.php/detalleEntradaSalidaBodega/nuevo"  class="btn btn-warning glyphicon glyphicon-plus" >Nuevo</a>
+    <a href="<?php echo $fsConfig->getUrl() ?>index.php/detalleEntradaSalidaBodega/nuevo"   class="btn btn-success glyphicon glyphicon-plus" >Nuevo</a>
   </p>
+ <?php if($objMetodo !== false) :?> 
   
+
   <div>
     <a href="<?php echo $fsConfig->getUrl() ?>index.php/detalleEntradaSalidaBodega/reporte" target="_blank" class="btn btn-primary btn-xs">Ver Reporte</a>
   </div>
-  <form id="form1" action="<?php echo $fsConfig->getUrl() ?>index.php/detalleEntradaSalidaBodega/filtro" method="post">
 
-    <input type="text" id="filtro" name="filtro" required="" />
-    <button type="submit">Filtrar </button>
+  <form  class="navbar-form navbar-left" role="search" name="formulario_registro" method="POST">
+    
+    <input type="text" class="form-control" id="filtro" name="filtro">
+  
+    <button type="submit"  class="btn btn-warning glyphicon glyphicon-search">Filtrar </button>
   </form>
+
+
   <br>
   <table  class="table table-hover">
     <thead>
@@ -34,7 +41,7 @@ include_once $fsConfig->getPath() . 'libs/Zebra_Pagination.php';
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($objDetalleEntradaSalidaBodega as $detalleEntradaSalidaBodega) : ?>
+      <?php foreach ($objMetodo as $detalleEntradaSalidaBodega) : ?>
         <tr>
           <td><input type="checkbox" id="" name=""></td>
           <td><?php echo $detalleEntradaSalidaBodega->id ?></td>
@@ -49,8 +56,11 @@ include_once $fsConfig->getPath() . 'libs/Zebra_Pagination.php';
       <?php endforeach ?>
     </tbody>
   </table>
-   <?php $paginacion->render() ?>
+  <?php $pagina->render() ?>
+     <?php else: ?>
+      <h2>No hay registros</h2>
  
+<?php endif;  ?>
 </div>
 <script src="<?php echo $fsConfig->getUrl() ?>css/js/eliminar.js"></script>
 <?php include_once $fsConfig->getPath() . 'view/partial/foot.php' ?>

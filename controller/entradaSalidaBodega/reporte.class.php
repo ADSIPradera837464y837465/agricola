@@ -23,11 +23,19 @@ class reporte extends controller implements action {
 
     $config = $this->getConfig();
     $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
-    $this->objEntradaSalidaBodega = $entradaSalidaBodega->getAll();     
+     $this->objEntradaSalidaBodega = $entradaSalidaBodega->getAll();
+//    $reporte = filter_input(INPUT_POST, 'reporte'); 
+//    $reporte1= filter_input(INPUT_POST, 'reporte1'); 
+//    $reporte2 = filter_input(INPUT_POST, 'reporte2'); 
 //$this->objEntradaSalidaBodega = "select tercero_elabora_id,tercero_solicita_id,tipo_documento_id,fecha,observacion FROM  bda_entrada_salida_bodega  WHERE  fecha_reporte BETWEEN '2013-08-01'  AND '2013-08-31";
      
-
-    $this->defineView('entradaSalidaBodega', 'reporteConsulta', 'html');
-  }
-
+//   if (empty($reporte)) {
+//      $this->objEntradaSalidaBodega = $entradaSalidaBodega->reporte($reporte,$reporte1, $reporte2);
+//    } else {
+//      $this->objEntradaSalidaBodega = $entradaSalidaBodega->getAll();
+//      
+//    }
+   $this->defineView('entradaSalidaBodega', 'reporteConsulta', 'html');
+ }
+     
 }

@@ -8,7 +8,7 @@ use FStudio\interfaces\fsAction as action;
 
 /**
  * Description of crear
- *..
+ *
  * @author diana meneses <meneses_d@rocketmail.com>
  * @package FStudio
  * @subpackage controller
@@ -20,17 +20,19 @@ class filtro extends controller implements action {
   public function execute() {
 
     $config = $this->getConfig();
-    $detalleEntradaSalidaBodega = new detalleEntradaSalidaBodegaTable($config);
+    $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
 
-    $this->objDetalleEntradaSalidaBodega = $detalleEntradaSalidaBodega->getAll();
-    $filtro = "";
-    if (filter_input(INPUT_POST, "filtro") != "") {
-      $txt_criterio = filter_input(INPUT_POST, "filtro");
-      $filtro = " where id like '%" . $txt_criterio . "%'";
-      
-      
-    }
-     header('Location: ' . $config->getUrl() . 'index.php/detalleEntradaSalidaBodega/index');
+    $criterio = filter_input(INPUT_POST, "filtro");
+    
+    if (empty ($criterio)) {
+      $this->objEntradaSalidaBodega = $entradaSalidaBodega->getAll();
+    } else {
+      $this->objFiltro = $entradaSalidaBodega->filtro($criterio);
+      $this->objEntradaSalidaBodega = $this->objFiltro;
+  }
+
+
+    header('Location: ' . $config->getUrl() . 'index.php/entradaSalidaBodega/index');
   }
 
 }

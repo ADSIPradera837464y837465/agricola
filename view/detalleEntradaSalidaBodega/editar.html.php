@@ -1,6 +1,6 @@
 <?php 
 use FStudio\fsController as controller;
-
+//
 include_once $fsConfig->getPath() . 'view/partial/head.php';
 ?>
 <h1>Modificar Informacion</h1>

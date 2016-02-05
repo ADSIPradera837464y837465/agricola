@@ -1,4 +1,6 @@
 <?php
+
+//
 include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 <h1>Nuevo Detalle Entrada Salida Bodega</h1>
 <div class="container container-fluid"> 

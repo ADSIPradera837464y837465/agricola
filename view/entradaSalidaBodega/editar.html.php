@@ -34,5 +34,7 @@
         <button> <a href="<?php echo $fsConfig->getUrl() ?>index.php/entradaSalidaBodega/index">Cancelar</a></button>
         </div>
     </form>
+<!--  ,,,-->
+  
 </div>
 <?php include_once $fsConfig->getPath() . 'view/partial/foot.php'; ?>

@@ -110,4 +110,56 @@ class entradaSalidaBodegaTable extends entradaSalidaBodegaBaseTable {
     return true;
   }
 
+  public function pager($inicio, $fin) {
+    $conn = $this->getConnection($this->config);
+    $sql = 'SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE esb_deleted_at IS NULL ORDER BY esb_created_at ASC LIMIT :inicio offset :fin';
+    $params = array(
+        ':inicio' => $inicio,
+        ':fin' => $fin
+    );
+    $answer = $conn->prepare($sql);
+    $answer->execute($params);
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+  }
+
+  public function total() {
+    $conn = $this->getConnection($this->config);
+    $sql = 'Select count(*) from bda_entrada_salida_bodega WHERE esb_deleted_at IS NULL';
+    $answer = $conn->prepare($sql);
+    $answer->execute();
+    return $answer->fetch();
+  }
+  
+//  public function filtro($indicio = null) {
+//    $conn = $this->getConnection($this->config);
+//    $sql = "SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE esb_observacion LIKE '%" . $indicio . "%' AND  esb_deleted_at IS NULL limit 2";
+//    $answer = $conn->prepare($sql);
+//    $answer->execute();
+//    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+//diana  }
+
+//  public function resultadoPaginador() {
+//    $conn = $this->getConnection($this->config);
+//    $sql = 'Select count(*) from bda_entrada_salida_bodega LIMIT 12';
+//    $answer = $conn->prepare($sql);
+//    $answer->execute();
+//    return $answer->fetch();
+//  }
+
+  public function filtro($criterio = null) {
+    $conn = $this->getConnection($this->config);
+    $sql = "SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE  esb_id like '%" . $criterio . "%' and delete_at IS NULL";
+    $answer = $conn->prepare($sql);
+    $answer->execute();
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+  }
+
+  public function reporte($reporte, $fecha1, $fecha2) {
+    $conn = $this->getConnection($this->config);
+    $sql = "SELECT esb_id AS id, ter_id_elabora AS tercero_id_elabora, ter_id_solicita AS tercero_id_solicita, tpd_id AS tipo_documento_id, esb_fecha AS fecha, esb_observacion AS observacion, esb_created_at AS created_at, esb_updated_at AS updated_at, esb_deleted_at AS deleted_at FROM bda_entrada_salida_bodega WHERE esb_created_at  BETWEEN '$fecha1' AND '$fecha2'";
+    $answer = $conn->prepare($sql);
+    $answer->execute();
+    return ($answer->rowCount() > 0) ? $answer->fetchAll(PDO::FETCH_OBJ) : false;
+  }
+
 }

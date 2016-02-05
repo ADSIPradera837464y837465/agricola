@@ -2,7 +2,7 @@
 
 require_once '../model/base/entradaSalidaBodegaBaseTable.class.php';
 require_once '../model/entradaSalidaBodegaTable.class.php';
-
+//
 include_once '../libs/fpdf/fpdf.php';
 
 use FStudio\fsController as controller;

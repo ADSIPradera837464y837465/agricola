@@ -2,6 +2,7 @@
 use FStudio\fsController as controller;
 include_once $fsConfig->getPath() . 'view/partial/head.php'; ?>
 <br>
+//
 <div class="container container-fluid"> 
     <h2>detalle entrada salida bodega numero: <?php echo $objDetalleEntradaSalidaBodega[0]->id  ?></h2>
     

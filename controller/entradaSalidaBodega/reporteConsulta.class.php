@@ -17,15 +17,16 @@ use FStudio\interfaces\fsAction as action;
  * @version 1.0.0
  */
 class reporteConsulta extends controller implements action {
-  
-  public function execute() {
-     $config = $this->getConfig();
-      $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
-      $this->objEntradaSalidaBodega = $entradaSalidaBodega->getAll();
-     
-      $this->defineView('detalleEntradaSalidaBodega', 'reporteConsulta', 'html');
-    
-  }
 
+  public function execute() {
+    $config = $this->getConfig();
+    $entradaSalidaBodega = new entradaSalidaBodegaTable($config);
+    $this->objEntradaSalidaBodega = $entradaSalidaBodega->getAll();
+    $fecha1= filter_input(INPUT_POST, 'fecha1');
+    $fecha2= filter_input(INPUT_POST, 'fecha2');
+    
+
+    $this->defineView('detalleEntradaSalidaBodega', 'reporteConsulta', 'html');
+  }
 
 }

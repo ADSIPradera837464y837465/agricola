@@ -28,6 +28,8 @@ class crear extends controller implements action {
     $entradaSalidaBodega->setTipoDocumentoId($formEntradaSalidaBodega['tpdId']);
     $entradaSalidaBodega->setFecha($formEntradaSalidaBodega['fecha']);
     $entradaSalidaBodega->setObservacion($formEntradaSalidaBodega['observacion']);
+    
+  
     $this->objEntradaSalidaBodega = $entradaSalidaBodega->save();
 
     header('Location: ' . $config->getUrl() . 'index.php/entradaSalidaBodega/index');

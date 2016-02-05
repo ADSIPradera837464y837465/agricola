@@ -8,7 +8,7 @@ use FStudio\interfaces\fsAction as action;
 
 /**
  * Description of eliminar
- *
+ *..
  * @author diana meneses <meneses_d@rocketmail.com>
  * @package FStudio
  * @subpackage controller

@@ -2,12 +2,13 @@
 include_once $fsConfig->getPath() . 'view/partial/head.php' ?>
 <div class="container container-fluid">
   <h1>reporte  </h1>
-
-  <p>
-    <label>Ver reporte entre:</label>
-    <a href="<?php echo $fsConfig->getUrl() ?>index.php/entradaSalidaBodega/index" class="btn btn-default"><input type="date" /> and <input type="date"></a>
-<!--  //SELECT  id_reporte,nombre_reporte FROM  REPORTES  WHERE  fecha_reporte BETWEEN '2013-08-01'  AND '2013-08-31' ;-->
-  </p>
+<!--//-->
+  
+    <form id="form1" action="<?php echo $fsConfig->getUrl() ?>index.php/entradaSalidaBodega/reporte" method="post">
+      <input type="date" id="fecha1" name="echa1"/> and <input type="date" id="fecha2" id="fecha2"></a>
+    <button type="submit">ver entre </button>
+  </form>
+ 
     <table  class="table table-hover">
       <thead>
         <tr>
